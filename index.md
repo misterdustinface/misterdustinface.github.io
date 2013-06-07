@@ -14,5 +14,5 @@ THIS IS TINY
 </h6>
 
 [404](http://dustin.n.shaffer.ignorelist.com/meowmix)
-
+[home](/)
 </div>
