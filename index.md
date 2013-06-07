@@ -6,6 +6,8 @@ title: Dustin
 WELCOME
 =======
 
+<a href="/">MROW</a>
+
 Blog Posts
 ----------
   {% for post in site.posts %}
