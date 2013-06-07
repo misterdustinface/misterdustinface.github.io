@@ -1,5 +1,4 @@
-  <-! something along the lines of this->
-  
+
   {% for page in site.pages %}
     {{ page.date | date_to_string }} ~ <a href="{{page.url}}"> {{page.title}} </a>
   {% endfor %}
