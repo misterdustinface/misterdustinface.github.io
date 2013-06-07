@@ -6,12 +6,11 @@ title: Dustin
 WELCOME
 =======
 
-<a href="/">MROW</a>
 
 Blog Posts
 ----------
   {% for post in site.posts %}
-    {{ post.date | date_to_string }} ~ [{{ post.title }}]({{ post.url }})
+    {{ post.date | date_to_string }} ~ <a href="{{post.url}}"> {{post.title}} </a>
   {% endfor %}
 
 [BAD LINK](/badstuff)
