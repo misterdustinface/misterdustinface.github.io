@@ -1,3 +1,4 @@
+<!--Something along the lines of this (site.pages probably needs to be changed)-->
 
   {% for page in site.pages %}
     {{ page.date | date_to_string }} ~ <a href="{{page.url}}"> {{page.title}} </a>
