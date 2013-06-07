@@ -3,17 +3,20 @@ layout: default
 title: Dustin
 ---
 
-Header 1
-========
+WELCOME
+=======
 
-Header 2
---------
+THIS IS PLACE
+-------------
 
 <div>
-<h4>
-rawr
-</h4>
+<h1>Blog Posts</h1>
+<ul class="posts">
+{% for post in site.posts %}
+  <li><span>{{ post.date | date_to_string }} </span> &raquo; <a href="{{ post.url }}"> {{ post.title }}  </a></li>
+{% endfor %}
+</ul>
 </div>
 
-[Link](/cats)
+[CATS](/cats)
 
