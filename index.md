@@ -13,6 +13,6 @@ THIS IS LARGE
 THIS IS TINY
 </h6>
 
-[404](/meowmix)
+(/meowmix)[404]
 
 </div>
