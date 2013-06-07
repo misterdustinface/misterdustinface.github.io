@@ -1,10 +1,9 @@
 ---
-layout: default
+layout: post
 title: Cats
 ---
 
-HELLO
-=====
+{{ page.title }}
+================
 
-cats
-----
+Meow.
