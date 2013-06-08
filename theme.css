@@ -14,9 +14,9 @@ padding: 0px;
 overflow:hidden;
 }
 
-li.b
+li
 {
-float:left;
+float:center;
 }
 
 a:link,a:visited{background-color:#D0D0D0; 
