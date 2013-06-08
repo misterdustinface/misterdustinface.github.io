@@ -4,7 +4,6 @@ p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-
 
 body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:40px;}
 
-li  {font-family:"Lucida Console", Monaco, monospace; color:#dddddd; background-color:#000000;}
 
 a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#a3d165;} /* unvisited link */
 a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* visited link */
