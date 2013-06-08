@@ -12,23 +12,29 @@ padding:0px;
 overflow:hidden;
 }
 
-/* link selector "PLATES" */
-
-/*
-a:link,a:visited{background-color:#D0D0D0; 
-display:block; 
-font-weight:bold; 
-width:120px; 
-text-align:center; 
-padding:4px;
-text-transform:uppercase;
-}
-
-a:hover,a:active{background-color:#909090;}
-
 /* text "FACE" */
 
 a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#a3d165;} /* unvisited link */
 a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* visited link */
 a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;}   /* mouse over link */
 a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#07f5ed;}  /* selected link */
+
+
+/* Homebar List Stuff */
+
+ul#list-nav li
+{
+float:left;
+}
+
+/* Homebar link selector "PLATES" */
+
+ul#list-nav l a:link, ul#list-nav l a:visited{background-color:#D0D0D0; 
+display:block; 
+font-weight:bold; 
+width:140px; 
+text-align:center; 
+padding:4px;
+text-transform:uppercase;
+}
+ul#list-nav l a:hover,ul#list-nav l a:active{background-color:#909090;}
