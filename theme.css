@@ -4,7 +4,7 @@ p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-
 
 body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:40px;}
 
-/* link selector "PLATES" */
+/* List Stuff */
 
 ul
 {
@@ -21,6 +21,8 @@ li
 float:left;
 }
 */
+
+/* link selector "PLATES" */
 
 a:link,a:visited{background-color:#D0D0D0; 
 display:block; 
