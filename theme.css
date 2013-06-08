@@ -4,6 +4,28 @@ p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-
 
 body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:40px;}
 
+ul
+{
+list-style-type:none;
+margin:0;
+padding:0;
+}
+a:link,a:visited
+{
+display:block;
+font-weight:bold;
+background-color:#98bf21;
+width:120px;
+text-align:center;
+padding:4px;
+text-decoration:none;
+text-transform:uppercase;
+}
+a:hover,a:active
+{
+background-color:#7A991A;
+}
+
 a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#a3d165;} /* unvisited link */
 a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* visited link */
 a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#a3d165;}   /* mouse over link */
