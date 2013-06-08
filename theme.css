@@ -7,8 +7,8 @@ body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-
 ul
 {
 list-style-type:none;
-margin:100px;
-padding:20px;
+margin: 20px;
+padding: 0px;
 }
 a:link,a:visited
 {
