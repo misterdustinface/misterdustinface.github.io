@@ -1,10 +1,10 @@
 head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000;}
 
-p{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:20px;}
+p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:20px;}
 
-body {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000;}
+body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000;}
 
-a:link{color:#a3d165;} /* unvisited link */
-a:visited {color:#bd96bd;} /* visited link */
-a:hover {color:#a3d165;}   /* mouse over link */
-a:active {color:#07f5ed;}  /* selected link */
+a:link    {font-family:"Lucida Console", Monaco, monospace; color:#a3d165;} /* unvisited link */
+a:visited {font-family:"Lucida Console", Monaco, monospace; color:#bd96bd;} /* visited link */
+a:hover   {font-family:"Lucida Console", Monaco, monospace; color:#a3d165;}   /* mouse over link */
+a:active  {font-family:"Lucida Console", Monaco, monospace; color:#07f5ed;}  /* selected link */
