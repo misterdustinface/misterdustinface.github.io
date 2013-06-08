@@ -14,10 +14,13 @@ padding: 0px;
 overflow:hidden;
 }
 
+/*
+Turns the list elements into "homebar" style
 li
 {
-float:center;
+float:left;
 }
+*/
 
 a:link,a:visited{background-color:#D0D0D0; 
 display:block; 
