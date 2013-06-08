@@ -12,16 +12,9 @@ padding: 0px;
 overflow:hidden;
 }
 
-/*
-Turns the list elements into "homebar" style
-li
-{
-float:left;
-}
-*/
-
 /* link selector "PLATES" */
 
+/*
 a:link,a:visited{background-color:#D0D0D0; 
 display:block; 
 font-weight:bold; 
@@ -30,6 +23,7 @@ text-align:center;
 padding:4px;
 text-transform:uppercase;
 }
+
 a:hover,a:active{background-color:#909090;}
 
 /* text "FACE" */
