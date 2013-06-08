@@ -20,7 +20,7 @@ display:block;
 font-weight:bold; 
 width:140px; 
 text-align:center; 
-padding:4px;
+padding:0px;
 text-transform:uppercase;
 }
 a:hover,a:active{background-color:#909090;}
