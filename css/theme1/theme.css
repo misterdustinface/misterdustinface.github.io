@@ -29,7 +29,7 @@ float:left;
 
 /* Homebar link selector "PLATES" */
 
-ul#list-nav l a:link, ul#list-nav l a:visited{background-color:#D0D0D0; 
+ul#list-nav li a:link, ul#list-nav li a:visited{background-color:#D0D0D0; 
 display:block; 
 font-weight:bold; 
 width:140px; 
@@ -37,4 +37,4 @@ text-align:center;
 padding:4px;
 text-transform:uppercase;
 }
-ul#list-nav l a:hover,ul#list-nav l a:active{background-color:#909090;}
+ul#list-nav li a:hover,ul#list-nav li a:active{background-color:#909090;}
