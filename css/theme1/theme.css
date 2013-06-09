@@ -23,10 +23,7 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 
 /* Homebar List Stuff */
 
-ul#list-nav li
-{
-float:left;
-}
+ul#list-nav li{float:left;}
 
 /* Homebar link selector "PLATES" */
 
@@ -38,4 +35,5 @@ text-align:center;
 padding:4px;
 text-transform:uppercase;
 }
+
 ul#list-nav li a:hover,ul#list-nav li a:active{background-color:#909090;}
