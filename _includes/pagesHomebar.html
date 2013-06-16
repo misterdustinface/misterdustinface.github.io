@@ -1,6 +1,10 @@
 <ul id="list-nav">
   {% for page in site.pages %}
-    <li><a href="{{page.url}}"> {{page.title}} </a> </li>
+  
+    {% if page.url != "/404.html" %}
+        <li><a href="{{page.url}}"> {{page.title}} </a> </li>
+    {% endif %}
+    
   {% endfor %}
 </ul>
 
