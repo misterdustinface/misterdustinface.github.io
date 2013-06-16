@@ -42,5 +42,5 @@ text-transform:uppercase;
 }
 
 ul#list-nav li a:hover {background-color:#909090;}
-ul#list-nav li a:active{background-color:#909090; text-shadow: #badd8c -1px -1px,
-                                                               #badd8c  1px  1px;}
+ul#list-nav li a:active{background-color:#909090; text-shadow: #c6e3a0 -1px -1px,
+                                                               #c6e3a0  1px  1px;}
