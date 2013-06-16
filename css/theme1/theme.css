@@ -29,7 +29,7 @@ ul#list-nav li{float:left;}
 
 ul#list-nav li a:link, ul#list-nav li a:visited{
      foreground-blend-mode: overlay;
-     background: linear-gradient(to bottom, #aaaaaa 20%, #c3c3c3 30%, #D0D0D0 50%);
+     background: linear-gradient(to bottom, #aaaaaa 5%, #c3c3c3 20%, #D0D0D0 50%);
      text-shadow: green 20px 54px;
      text-shadow-blend-mode: multiply;
  /*background-color:#D0D0D0;*/ 
