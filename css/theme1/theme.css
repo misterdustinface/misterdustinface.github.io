@@ -2,19 +2,6 @@ head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-
 p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:20px;}
 body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:40px;}
 
-p {
- color: green;
- foreground-blend-mode: overlay;
- background: linear-gradient(to right, #00a9e0 0%,#323290 20%,
-             #ea1688 40%, #eb2e2e 60%,#fde92e 80%,#009e54 100%);
-}
-
-p {
-    text-shadow: green 20px 54px;
-    text-shadow-blend-mode: multiply;
-}
-
-
 /* List Stuff */
 
 ul
@@ -40,7 +27,12 @@ ul#list-nav li{float:left;}
 
 /* Homebar link selector "PLATES" */
 
-ul#list-nav li a:link, ul#list-nav li a:visited{background-color:#D0D0D0; 
+ul#list-nav li a:link, ul#list-nav li a:visited{
+     foreground-blend-mode: overlay;
+     background: linear-gradient(to bottom, #D0D0D0 0%, #eb2e2e 60%);
+     text-shadow: green 20px 54px;
+     text-shadow-blend-mode: multiply;
+ /*background-color:#D0D0D0;*/ 
 display:block; 
 font-weight:bold; 
 width:140px; 
