@@ -2,6 +2,19 @@ head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-
 p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:20px;}
 body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin-left:40px;}
 
+p {
+ color: green;
+ foreground-blend-mode: overlay;
+ background: linear-gradient(to right, #00a9e0 0%,#323290 20%,
+             #ea1688 40%, #eb2e2e 60%,#fde92e 80%,#009e54 100%);
+}
+
+p {
+    text-shadow: green 20px 54px;
+    text-shadow-blend-mode: multiply;
+}
+
+
 /* List Stuff */
 
 ul
