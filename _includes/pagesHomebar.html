@@ -1,5 +1,5 @@
 <ul id="list-nav">
-  {% for page in site.pages %}
+  {% for page in site.pages.pages%}
     <li><a href="{{page.url}}"> {{page.title}} </a> </li>
   {% endfor %}
 </ul>
