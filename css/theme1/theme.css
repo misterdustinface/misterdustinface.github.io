@@ -52,9 +52,9 @@ ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1
                                                                     
 /* --  SHAPES CODE AREA  -- */
 
-.vert-rect {
+.horz-rect {
     background-color: #D0D0D0;
     float:   left;
-    height:  400px;
-    width:   20px;
+    height:  40px;
+    width:   100%;
 }
