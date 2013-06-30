@@ -50,11 +50,11 @@ ul#list-nav li a:hover {/* background-color:#909090;*/}
 ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1px -1px,
                                                                     #8bc63e  1px  1px;*/}
                                                                     
-/* --  SHAPES CODE AREA  -- /*
+/* --  SHAPES CODE AREA  -- */
 
 .vert-rect {
-    background-color: #D0D;
-    display: block;
-    height: 400px;
-    width: 20px;
+    background-color: #D0D0D0;
+    float:   left;
+    height:  400px;
+    width:   20px;
 }
