@@ -27,8 +27,7 @@ ul#list-nav li{float:left;}
 
 /* Homebar link selector "PLATES" */
 
-ul#list-nav li a:link, ul#list-nav li a:visited{
-               font-family:"Lucida Console", Monaco, monospace; 
+ul#list-nav li a:link, ul#list-nav li a:visited{ 
 /*foreground-blend-mode: overlay;
 background: linear-gradient(to bottom, #aaaaaa 5%, 
                                        #c3c3c3 20%, 
