@@ -23,7 +23,8 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 
 /* Homebar List Stuff */
 
-ul#list-nav li{float:left;}
+ul#list-nav li{float:left;
+               font-family:"Lucida Console", Monaco, monospace; }
 
 /* Homebar link selector "PLATES" */
 
