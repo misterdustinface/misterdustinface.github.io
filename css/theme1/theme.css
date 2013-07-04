@@ -23,12 +23,12 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 
 /* Homebar List Stuff */
 
-ul#list-nav li{float:left;
-               font-family:"Lucida Console", Monaco, monospace; }
+ul#list-nav li{float:left;}
 
 /* Homebar link selector "PLATES" */
 
 ul#list-nav li a:link, ul#list-nav li a:visited{
+               font-family:"Lucida Console", Monaco, monospace; 
 /*foreground-blend-mode: overlay;
 background: linear-gradient(to bottom, #aaaaaa 5%, 
                                        #c3c3c3 20%, 
