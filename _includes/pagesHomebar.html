@@ -1,12 +1,26 @@
+
+<!-- HOMEBAR MENU -->
 <ul id="list-nav">
-  {% for page in site.pages %}
+{% for page in site.pages %}
   
-    <!--{% if page.url != "/404.html" %} -->
-    {% if page.layout != default %}
-        <li><a href="{{page.url}}"> {{page.title}} </a> </li>
-    {% endif %}
+  <!-- IF THE CURRENT PAGE IS A DEFAULT PAGE [HAS A HOMEBAR], DISPLAY IT ON THE MENU -->
+  <!--{% if page.url != "/404.html" %} -->
+  {% if page.layout != default %}
     
-  {% endfor %}
+      <li><a href="{{page.url}}"> {{page.title}} </a> </li>
+        
+      <!-- DROPDOWN MENU DISPLAYING SUBPAGES TO THE CURRENT PAGE -->
+      <ul id="dropdown-menu">
+      {% for subpage in page.subpages %}
+          <li><a href="{{subpage.url}}"> {{subpage.title}} </a></li>
+      {% endfor %}
+      </ul>
+      <!-- END DROPDOWN MENU FOR PAGE -->
+        
+  {% endif %}
+    
+{% endfor %}  
 </ul>
+<!-- END HOMEBAR MENU -->
 
 <br/>
