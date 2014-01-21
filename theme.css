@@ -157,3 +157,9 @@ a {
 .cf {
   zoom:1;
 }
+
+
+
+iframe[seamless] {
+    border: none;
+}
