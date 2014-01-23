@@ -13,11 +13,11 @@ intersection, cap, hat; 		8745
 there exists, exists, E; 		8707
 1;					True
 0;					False
-reals, R;				8477
-rationals, Q;				8474
-naturals, N;				8469
-integers, I;				8484
-complex, C;				8450
+real set, reals, R;			8477
+rational set, rationals, Q;		8474
+natural set, naturals, N;		8469
+integer set, integers, I;		8484
+complex set, complex, C;		8450
+empty set, null set;			8709
 integral, $;				8747
 infinity;				8734
-empty set, null set;			8709
