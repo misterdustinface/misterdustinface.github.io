@@ -4,10 +4,10 @@ not equal to, !equal;			8800
 approximately equal to;			8773
 delta equal to;				8796
 ?=; 					8799
-<=;					8806
->=;					8807
-^2;					0178
-^3;					0179
+<=, less than or equal to;		8806
+>=, greather than or equal to;		8807
+^2, squared;				0178
+^3, cubed;				0179
 right angle;				8735
 angle;					8736
 contains;				8715
