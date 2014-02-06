@@ -12,14 +12,6 @@ padding:0px;
 overflow:hidden;
 }
 
-ul#list-nav
-{
-width: 100%;
-list-style-type:none;
-margin: 0px auto;
-padding:0px;
-overflow:hidden;
-}
 
 /* text "FACE" */
 
@@ -48,6 +40,11 @@ ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1
                                                       
        
 /* General & 'Reset' Stuff */
+
+.homebar{
+width: 90%;
+margin: 0 auto;
+}
 
 .container {
   width: 90%;
