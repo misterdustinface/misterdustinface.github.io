@@ -12,6 +12,15 @@ padding:0px;
 overflow:hidden;
 }
 
+ul#list-nav
+{
+width: 100%;
+list-style-type:none;
+margin: 0px auto;
+padding:0px;
+overflow:hidden;
+}
+
 /* text "FACE" */
 
 a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* unvisited link */
@@ -42,7 +51,7 @@ ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1
 
 .container {
   width: 90%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
