@@ -56,6 +56,11 @@ ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1
   text-align: left;
 }
 
+.footer{
+ margin: 0 auto;
+ text-align: center;                                  
+}
+
 section {
   display: block;
   margin: 0 0 20px 0;
