@@ -26,7 +26,7 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
                                        padding: 0;
                                        list-style-type: none;
                                        text-align: center;}
-ul#list-nav li{/*float:center;*/ display: inline; padding: .2em 1em;}
+ul#list-nav li{/*float:center;*/ display: inline;}
 ul#list-nav li a:link, ul#list-nav li a:visited{ 
 /*foreground-blend-mode: overlay;
 background: linear-gradient(to bottom, #aaaaaa 5%, 
