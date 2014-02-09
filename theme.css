@@ -22,7 +22,9 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 /* --  HOMEBAR CODE AREA  -- /*
 
 /* Homebar List Stuff */
-ul#list-nav {text-align: center;}
+#list-nav ul{                          margin: 0;
+                                       padding: 0;
+                                       text-align: center;}
 ul#list-nav li{float:left;}
 ul#list-nav li a:link, ul#list-nav li a:visited{ 
 /*foreground-blend-mode: overlay;
@@ -42,7 +44,7 @@ ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1
 /* General & 'Reset' Stuff */
 
 .homebar{
- width: 90%;
+ width: 100%;
  margin: 0 auto;
  text-align: center;
 }
