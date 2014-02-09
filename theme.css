@@ -35,7 +35,7 @@ background: linear-gradient(to bottom, #aaaaaa 5%,
 text-shadow: #b7b7b7  0px 2px, 
              #D0D0D0 -2px 0px;
 text-shadow-blend-mode: multiply;*/
-background-color:#111111; /*display:block;*/ font-weight:bold; width:140px; text-align:center; padding:4px; text-transform:uppercase;
+background-color:#111111; display: inline;/*display:block;*/ font-weight:bold; width:140px; text-align:center; padding:4px; text-transform:uppercase;
 }
 ul#list-nav li a:hover {background-color:#aaaaaa;}
 ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1px -1px,
