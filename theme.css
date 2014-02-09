@@ -42,7 +42,7 @@ ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1
 /* General & 'Reset' Stuff */
 
 .homebar{
- width: 100%;
+ width: 90%;
  margin: 0 auto;
  text-align: center;
 }
