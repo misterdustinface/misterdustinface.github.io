@@ -24,9 +24,9 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 /* Homebar List Stuff */
 #list-nav ul{                          margin: 0;
                                        padding: 0;
-                                       text-align: center;
-                                       list-style-type: none;}
-ul#list-nav li{/*float:center;*/ /*display: inline;*/ float:center;}
+                                       list-style-type: none;
+                                       text-align: center;}
+ul#list-nav li{/*float:center;*/ display: inline;}
 ul#list-nav li a:link, ul#list-nav li a:visited{ 
 /*foreground-blend-mode: overlay;
 background: linear-gradient(to bottom, #aaaaaa 5%, 
