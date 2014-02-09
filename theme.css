@@ -22,10 +22,10 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 /* --  HOMEBAR CODE AREA  -- /*
 
 /* Homebar List Stuff */
-#list-nav ul{                          margin: 0;
-                                       padding: 0;
-                                       text-align: center;}
-ul#list-nav li{float:center;}
+/*#list-nav ul{                          margin: 0;*/
+/*                                       padding: 0;*/
+/*                                       text-align: center;}*/
+ul#list-nav li{/*float:center;*/ float:middle;}
 ul#list-nav li a:link, ul#list-nav li a:visited{ 
 /*foreground-blend-mode: overlay;
 background: linear-gradient(to bottom, #aaaaaa 5%, 
