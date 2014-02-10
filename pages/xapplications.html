@@ -9,9 +9,9 @@ title:  Applications
 <br>
 <center>
 <div class="post">
-<ul class="posts">
-  {% for application in site.subpages %}
-    <li> <a href="{{application.url}}"> {{application.title}} </a> </li>
+<ul>
+  {% for page in site.subpages %}
+    <li><a href="{{page.url}}"> {{page.title}}</a></li>
   {% endfor %}
 <li><a href="https://github.com/misterdustinface/Pong">Simple Pong Game in Python</a></li>
 </ul>
