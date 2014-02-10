@@ -2,13 +2,15 @@
 
 <ul id="list-nav">
 
+<--
 {% for page in site.pages %}
 <!-- IF THE CURRENT PAGE IS A DEFAULT PAGE [HAS A HOMEBAR], DISPLAY IT ON THE MENU -->
 <!-- {% if page.url != "/404.html" %} -->
-	{% if page.layout != default %}
-		<li><a href="{{page.url}}"> {{page.title}} </a> </li>
-	{% endif %}
-{% endfor %}
+{% if page.layout != default %}
+<li><a href="{{page.url}}">{{page.title}}</a></li>
+{% endif %}
+{% endfor %} 
+//-->
 
 <li><a href="https://github.com/misterdustinface"> My Github </a> </li>
 <li><a href="http://x3nicole.webs.com/retro.html"> RetroActive Games </a> </li>
