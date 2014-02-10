@@ -7,16 +7,14 @@ title:  Applications
 <section id="main_content">
 
 <br>
-<center>
 <div class="post">
-<ul>
-  {% for page in site.subpages %}
-    <li><a href="{{page.url}}"> {{page.title}}</a></li>
-  {% endfor %}
-<li><a href="https://github.com/misterdustinface/Pong">Simple Pong Game in Python</a></li>
-</ul>
+{{ content }}
 </div>
-</center>
+
+<div id="related">
+  <center><h5>Applications</h5></center>
+  {% include application-posts.html %}
+</div>
 </br>
 
 </div>

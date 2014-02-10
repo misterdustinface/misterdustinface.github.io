@@ -1,0 +1,9 @@
+<center>
+<div class="post">
+<ul>
+  {% for page in site.subpages %}
+    <li>{{ post.date | date_to_string }} &raquo; <a href="{{page.url}}"> {{page.title}}</a></li>
+  {% endfor %}
+</ul>
+</div>
+</center>
