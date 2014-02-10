@@ -5,13 +5,17 @@ title:  Applications
 
 <div class="container">
 <section id="main_content">
+
 <br>
 <center>
-<ul>
-<li><a href="http://misterdustinface.github.io/_subpages/mathbox.html">Math Box</a></li>
-<li><a href="http://misterdustinface.github.io/_subpages/koch.html">Koch Snowflake</a></li>
+<div class="post">
+<ul class="posts">
+  {% for application in site.subpages %}
+    <li> <a href="{{application.url}}"> {{application.title}} </a> </li>
+  {% endfor %}
 <li><a href="https://github.com/misterdustinface/Pong">Simple Pong Game in Python</a></li>
 </ul>
+</div>
 </center>
 </br>
 
