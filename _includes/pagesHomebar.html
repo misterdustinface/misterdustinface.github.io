@@ -7,7 +7,7 @@
 <div class="homebar">
 <ul id="list-nav">
 
-{% for page in site.pages %}{% if page.layout != default %}
+{% for page in site.pages %}{% if {{page.url}} != "/404.html" %}
   <li><a href="{{page.url}}">{{page.title}}</a></li>
 {% endif %}{% endfor %}
 
