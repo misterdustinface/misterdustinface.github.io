@@ -1,55 +1,63 @@
 not identical to, not equivalent to, !equivalent, !==; 	8802
-identical to, equivalent to, ==; 		8801
-not equal to, !equal, !=;			8800
-approximately equal to;			8773
-delta equal to;				8796
-?=; 					8799
-<=, less than or equal to;		8806
->=, greather than or equal to;		8807
-^2, squared;				0178
-^3, cubed;				0179
-right angle;				8735
-angle;					8736
-contains;				8715
-does not contain;			8716
-not an element of;			8713
-an element of;				8712
-power set, P{};				8472
-real set, reals, R{};			8477
-rational set, rationals, Q{};	8474
-natural set, naturals, N{};		8469
-integer set, integers, I{};		8484
-complex set, complex, C{};		8450
-empty set, null set;			8709
-partial differential, partial diff, pdif;8706
-volume integral;			8752
-surface integral;			8751
-contour integral;			8750
-triple integral, 3 integral, $$$;	8749
-double integral, 2 integral, $$;	8748
-integral, $;				8747
-infinity;				8734
-sqrt, square root;			8730
-cbrt, cube root;			8731
-therefore;				8756
-1/4, one fourth, one quarter;		0188
-1/3, one third;				8531
-1/2, one half, half;			0189
-2/3, two thirds;			8532
-3/4, three fourths, three quarters;	0190
-mu, coefficient of friction, mean;	0956
-delta, rate of change of, change of;	8710
-because;				8757
-end;					8718
-function;				0402
-<->, iff; 				8596
-->, implies, then; 			8594
-not, -, ~; 				0172
+identical to, equivalent to, ==; 			8801
+not equal to, !equal, !=;				8800
+approximately equal to;					8773
+delta equal to;						8796
+?=; 							8799
+<=, less than or equal to;				8806
+>=, greather than or equal to;				8807
+^2, squared;						0178
+^3, cubed;						0179
+right angle;						8735
+angle;							8736
+contains;						8715
+does not contain;					8716
+not an element of;					8713
+an element of;						8712
+power set, P{};						8472
+real set, reals, R{};					8477
+rational set, rationals, Q{};				8474
+natural set, naturals, N{};				8469
+integer set, integers, I{};				8484
+complex set, complex, C{};				8450
+empty set, null set;					8709
+partial differential, partial diff, pdif;		8706
+volume integral;					8752
+surface integral;					8751
+contour integral;					8750
+triple integral, 3 integral, $$$;			8749
+double integral, 2 integral, $$;			8748
+integral, $;						8747
+infinity;						8734
+sqrt, square root;					8730
+cbrt, cube root;					8731
+therefore;						8756
+1/4, one fourth, one quarter;				0188
+1/3, one third;						8531
+1/2, one half, half;					0189
+2/3, two thirds;					8532
+3/4, three fourths, three quarters;			0190
+mu, coefficient of friction, mean;			0956
+delta, rate of change of, change of;			8710
+because;						8757
+end;							8718
+function;						0402
+union, U; 						8746
+intersection, intersect; 				8745
+not a subset of, not subset of;				8836
+not a superset of, not superset of;			8837
+subset of or equal to, subset of or =;			8838
+superset of or equal to, superset of or =;		8839
+subset of;						8834
+superset of;						8835				
+there exists, exists, E; 				8707
+possibly;						8900
+pi;							0960
+name;							Your Name Here
+<->, iff; 						8596
+->, implies, then; 					8594
+not, ~; 						0172
 for all, for every, for any, for each, all, every; 	8704
-xor, oplus; 				8853
-or, V, ||, +; 				8744
-and, ^, &&, &; 				8743
-union, U; 				8746
-intersection; 		8745				
-there exists, exists, E; 		8707
-name;					Dustin Shaffer
+xor, oplus; 						8853
+or, V, ||, +; 						8744
+and, ^, &&, &; 						8743
