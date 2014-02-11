@@ -42,15 +42,22 @@ delta, rate of change of, change of;			8710
 because;						8757
 end;							8718
 function;						0402
+union, U; 						8746
+intersection, intersect; 				8745
+not a subset of, not subset of;				8836
+not a superset of, not superset of;			8837
+subset of or equal to, subset of or =;			8838
+superset of or equal to, superset of or =;		8839
+subset of;						8834
+superset of;						8835				
+there exists, exists, E; 				8707
+possibly;						8900
+pi;							0960
+name;							Your Name Here
 <->, iff; 						8596
 ->, implies, then; 					8594
-not, -, ~; 						0172
+not, ~; 						0172
 for all, for every, for any, for each, all, every; 	8704
 xor, oplus; 						8853
 or, V, ||, +; 						8744
 and, ^, &&, &; 						8743
-union, U; 						8746
-intersection; 						8745				
-there exists, exists, E; 				8707
-pi;							0960
-name;							Your Name Here
