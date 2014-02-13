@@ -12,4 +12,4 @@ A simple notepad application.
 
 ---
 
-[Notepad]: http://misterdustinface.github.io/applets/Notepad.jar
+[Notepad]: https://raw.github.com/misterdustinface/Notepad/master/Notepad.jar
