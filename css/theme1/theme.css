@@ -57,6 +57,10 @@ ul#essay li{float:left;}
   text-align: left;
 }
 
+.paper{
+ text-align: left;
+}
+
 .post {
   width: 60%;
   /*max-width: 600px;*/
