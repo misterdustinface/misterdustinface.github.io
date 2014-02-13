@@ -2,14 +2,17 @@ not identical to, not equivalent to, !equivalent, !==; 	8802
 identical to, equivalent to, ==; 			8801
 not equal to, !equal, !=;				8800
 approximately equal to;					8773
+approximately, approx;	 8776
 delta equal to;						8796
 ?=; 							8799
 <=, less than or equal to;				8806
 >=, greather than or equal to;				8807
 ^2, squared;						0178
 ^3, cubed;						0179
-right angle;						8735
-angle;							8736
+^n;	 8319
+^o, degrees;	 0176
+right angle;	 8894
+angle;	 8736
 contains;						8715
 does not contain;					8716
 not an element of;					8713
@@ -54,6 +57,14 @@ there exists, exists, E; 				8707
 possibly;						8900
 pi;							0960
 name;							Your Name Here
+divided;	 0247
++-;	 0177
+of x;	 (x)
+of theta;	 (theta)
+theta;	 0952
+long fraction;	 fractionfractionfractionfraction
+fraction;	 drawHorzLinedrawHorzLinedrawHorzLine
+drawHorzLine;	 9472
 <->, iff; 						8596
 ->, implies, then; 					8594
 not, ~; 						0172
