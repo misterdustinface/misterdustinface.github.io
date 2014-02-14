@@ -9,9 +9,6 @@ a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#b5e853;} /* selected link */
 
 
-@media screen, print
-{
-
 /* Homebar List Stuff */
 ul                      {list-style-type: none; margin: 0px; padding:0px; overflow:   hidden;}
 #list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center;}
@@ -123,6 +120,4 @@ pre     {background: rgba(0, 0, 0, 0.9);
 
 iframe[seamless] {
     border: none;
-}
-
 }
