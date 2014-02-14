@@ -15,6 +15,11 @@ overflow:hidden;
 
 /* text "FACE" */
 
+a {
+  color: #63c0f5;
+  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
+}
+
 a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* unvisited link */
 a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* visited link */
 a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;}   /* mouse over link */
@@ -52,7 +57,7 @@ ul#essay li{float:left;}
 }
 
 .container {
-  width: 60%;
+  width: 80%;
   /*max-width: 600px;*/
   margin: 0 auto;
   text-align: left;
@@ -63,7 +68,7 @@ ul#essay li{float:left;}
 }
 
 .post {
-  width: 60%;
+  width: 70%;
   /*max-width: 600px;*/
   margin: 0 auto;
   text-align: center;
@@ -75,10 +80,6 @@ ul#essay li{float:left;}
  text-align: center;                                  
 }
 
-section {
-  display: block;
-  margin: 0 0 20px 0;
-}
                                                              
 #downloads .btn {
   display: inline-block;
@@ -92,6 +93,13 @@ section {
   width: 100%;
   -webkit-font-smoothing: antialiased;
 }
+
+
+section {
+  display: block;
+  margin: 0 0 20px 0;
+}
+
 pre {
   background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -163,14 +171,6 @@ hr {
   background: url("../images/cover.jpg") 0 0 no-repeat;
 }
 
-/* Links
-   a, a:hover, a:visited
-*/
-
-a {
-  color: #63c0f5;
-  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
-}
 
 /* Clearfix */
 
