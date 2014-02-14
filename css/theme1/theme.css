@@ -22,7 +22,7 @@ ul#essay li{float:left;}
 /* General & 'Reset' Stuff */
 
 .homebar  {margin: 0 auto; text-align: center;            }
-.container{margin: 0 auto; text-align: left;   width: 80%;}
+.container{margin: 0 auto; text-align: left;   width: 60%;}
 .post     {margin: 0 auto; text-align: center; width: 70%;}
 .paper    {                text-align: left;              }
 .footer   {margin: 0 auto; text-align: center;            }
@@ -44,7 +44,6 @@ pre     {
   text-wrap: normal;
   overflow: auto;
   overflow-y: hidden;
-  width: 70%;
 }
 /*table {*/
 /*  width: 100%;*/
