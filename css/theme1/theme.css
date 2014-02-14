@@ -10,7 +10,7 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 
 /* Homebar List Stuff */
 ul                      {list-style-type: none; margin: 0px; padding:0px; overflow:   hidden;}
-#list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center; text-wrap: none;}
+#list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center;}
 ul#list-nav li          {display: inline;}
 ul#list-nav li a:link, 
 ul#list-nav li a:visited{display: inline; width:140px; padding:4px; text-align:center; text-transform:uppercase; /*font-weight:normal;*/font-weight:bold; /*display:block;*/}
@@ -22,7 +22,7 @@ ul#essay li{float:left;}
 /* General & 'Reset' Stuff */
 
 .homebar  {margin: 0 auto; text-align: center;            }
-.container{margin: 0 auto; text-align: left;   width: 70%;}
+.container{margin: 0 auto; text-align: left;   width: 70%; text-wrap: normal;}
 .post     {margin: 0 auto; text-align: center; width: 70%; text-wrap: normal;}
 .paper    {                text-align: left;              }
 .footer   {margin: 0 auto; text-align: center;            }
