@@ -8,6 +8,10 @@ a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;} /* mouse over link */
 a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#b5e853;} /* selected link */
 
+
+@media screen, print
+{
+
 /* Homebar List Stuff */
 ul                      {list-style-type: none; margin: 0px; padding:0px; overflow:   hidden;}
 #list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center;}
@@ -32,19 +36,17 @@ ul#essay li{float:left;}
 #main_content   {width: 100%; -webkit-font-smoothing: antialiased;}
 
 section {margin: 0 0 20px 0; display: block;}
-pre     {
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 10px;
-  font-size: 14px;
-  color: #b5e853;
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  text-wrap: normal;
-  /*overflow: auto;
-  overflow-y: hidden;*/
-}
+pre     {background: rgba(0, 0, 0, 0.9);
+         border: 1px solid rgba(255, 255, 255, 0.15);
+         padding: 10px;
+         font-size: 14px;
+         color: #b5e853;
+         border-radius: 2px;
+         -moz-border-radius: 2px;
+         -webkit-border-radius: 2px;
+         text-wrap: normal;
+         overflow: auto;
+         overflow-y: hidden; }
 /*table {*/
 /*  width: 100%;*/
 /*  margin: 0 0 20px 0;*/
@@ -121,4 +123,6 @@ pre     {
 
 iframe[seamless] {
     border: none;
+}
+
 }
