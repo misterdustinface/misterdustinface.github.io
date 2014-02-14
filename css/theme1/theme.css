@@ -23,7 +23,7 @@ ul#essay li{float:left;}
 
 .homebar  {margin: 0 auto; text-align: center;            }
 .container{margin: 0 auto; text-align: left;   width: 70%;}
-.post     {margin: 0 auto; text-align: center; width: 70%;}
+.post     {margin: 0 auto; text-align: center; width: 70%; text-wrap: suppress;}
 .paper    {                text-align: left;              }
 .footer   {margin: 0 auto; text-align: center;            }
 
