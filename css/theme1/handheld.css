@@ -1,5 +1,5 @@
-head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; auto}
-p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0;}
+head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#dddddd; margin: 0; auto}
+p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#dddddd; margin: 0;}
 body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#dddddd; margin: 0;}
 
 a         {text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);                          color:#63c0f5;} 
@@ -37,7 +37,7 @@ pre     {background: rgba(0, 0, 0, 0.9);
          border: 1px solid rgba(255, 255, 255, 0.15);
          padding: 10px;
          font-size: 14px;
-         color: #b5e853;
+         color: #bd96bd;
          border-radius: 2px;
          -moz-border-radius: 2px;
          -webkit-border-radius: 2px;
