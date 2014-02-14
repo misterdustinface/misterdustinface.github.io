@@ -10,7 +10,7 @@ a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 
 /* Homebar List Stuff */
 ul                      {list-style-type: none; margin: 0px; padding:0px; overflow:   hidden;}
-#list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center;}
+#list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center; text-wrap: none;}
 ul#list-nav li          {display: inline;}
 ul#list-nav li a:link, 
 ul#list-nav li a:visited{display: inline; width:140px; padding:4px; text-align:center; text-transform:uppercase; /*font-weight:normal;*/font-weight:bold; /*display:block;*/}
