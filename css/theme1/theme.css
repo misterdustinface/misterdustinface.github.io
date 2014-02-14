@@ -2,105 +2,38 @@ head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-
 p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0;}
 body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0;}
 
-/* List Stuff */
-
-ul
-{
-list-style-type:none;
-margin: 0px;
-padding:0px;
-overflow:hidden;
-}
-
-
-/* text "FACE" */
-
-a {
-  color: #63c0f5;
-  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
-}
-
+a         {text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);                          color:#63c0f5;} 
 a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* unvisited link */
 a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* visited link */
-a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;}   /* mouse over link */
-a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#b5e853;}  /* selected link */
-/* --  HOMEBAR CODE AREA  -- /*
+a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;} /* mouse over link */
+a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#b5e853;} /* selected link */
 
 /* Homebar List Stuff */
-#list-nav ul{                          margin: 0;
-                                       padding: 0;
-                                       list-style-type: none;
-                                       text-align: center;}
-ul#list-nav li{/*float:center;*/ display: inline;}
-ul#list-nav li a:link, ul#list-nav li a:visited{ 
-/*foreground-blend-mode: overlay;
-background: linear-gradient(to bottom, #aaaaaa 5%, 
-                                       #c3c3c3 20%, 
-                                       #D0D0D0 60%);
-text-shadow: #b7b7b7  0px 2px, 
-             #D0D0D0 -2px 0px;
-text-shadow-blend-mode: multiply;*/
+ul                      {list-style-type: none; margin: 0px; padding:0px; overflow:   hidden;}
+#list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center;}
+ul#list-nav li          {display: inline;}
+ul#list-nav li a:link, 
+ul#list-nav li a:visited{display: inline; width:140px; padding:4px; text-align:center; text-transform:uppercase; font-weight:bold;/*display:block;*/}
+ul#list-nav li a:hover  {background-color:#aaaaaa;}
+ul#list-nav li a:active {}
 
-/*background-color:#111111;*/ display: inline;/*display:block;*/ font-weight:bold; width:140px; text-align:center; padding:4px; text-transform:uppercase;
-}
-ul#list-nav li a:hover {background-color:#aaaaaa;}
-ul#list-nav li a:active{/* background-color:#909090;*/ /*text-shadow: #c6e3a0 -1px -1px,
-                                                                    #8bc63e  1px  1px;*/}
-                                                      
-#essay ul{  text-align: left;}
+#essay ul  {text-align: left;}
 ul#essay li{float:left;}
 /* General & 'Reset' Stuff */
 
-.homebar{
- margin: 0 auto;
- text-align: center;
-}
-
-.container {
-  width: 80%;
-  /*max-width: 600px;*/
-  margin: 0 auto;
-  text-align: left;
-}
-
-.paper{
- text-align: left;
-}
-
-.post {
-  width: 70%;
-  /*max-width: 600px;*/
-  margin: 0 auto;
-  text-align: center;
-}
-
-
-.footer{
- margin: 0 auto;
- text-align: center;                                  
-}
+.homebar  {margin: 0 auto; text-align: center;            }
+.container{margin: 0 auto; text-align: left;   width: 80%;}
+.paper    {                text-align: left;              }
+.post     {margin: 0 auto; text-align: center; width: 70%;}
+.footer   {margin: 0 auto; text-align: center;            }
 
                                                              
-#downloads .btn {
-  display: inline-block;
-  text-align: center;
-  margin: 0;
-}
-/* Main Content
-*/
+#downloads .btn {display: inline-block; margin: 0; text-align: center;}
 
-#main_content {
-  width: 100%;
-  -webkit-font-smoothing: antialiased;
-}
+#main_content   {width: 100%; -webkit-font-smoothing: antialiased;}
 
-
-section {
-  display: block;
-  margin: 0 0 20px 0;
-}
-
-pre {
+section {margin: 0 0 20px 0; display: block;}
+pre     {
   background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 10px;
