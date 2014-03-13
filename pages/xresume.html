@@ -22,6 +22,7 @@ title:  Stuff
 	<body>
 		<center>
 		<canvas id="canvas" width="840" height="360"></canvas>
+		<br></br><h6>This is not my code. I am modifying open source HTML5 code found elsewhere on github.</h6>
 		</center>
 	</body>
 </html>
@@ -169,7 +170,7 @@ function draw(){
 
 	// DRAW AS A GIANT POLYGON
 	for(var i=1;i<polygons.length;i++){
-		drawPolygon(polygons[i],ctx,"rgba(255,255,255,0.2)");
+		drawPolygon(polygons[i],ctx,"rgba(255,0,255,0.2)");
 	}
 	drawPolygon(polygons[0],ctx,"#fff");
 
@@ -179,7 +180,7 @@ function draw(){
 	ctx.globalCompositeOperation = "source-over";
 
 	// Draw dots
-	ctx.fillStyle = "#fff";
+	ctx.fillStyle = "#f00";
 	ctx.beginPath();
     ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
     ctx.fill();
