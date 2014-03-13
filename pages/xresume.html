@@ -3,6 +3,7 @@ layout: default
 title:  Stuff
 ---
 
+<!doctype>
 <html>
 	<head>
 		<style>
@@ -11,14 +12,14 @@ title:  Stuff
 			background: #eee;
 		}
 		#canvas{
-			width:640px;
+			width:840px;
 			height:360px;
-			background: #000;
+			background: url(https://raw.github.com/misterdustinface/misterdustinface.github.io/master/images/cover.jpg?token=3992692__eyJzY29wZSI6IlJhd0Jsb2I6bWlzdGVyZHVzdGluZmFjZS9taXN0ZXJkdXN0aW5mYWNlLmdpdGh1Yi5pby9tYXN0ZXIvaW1hZ2VzL2NvdmVyLmpwZyIsImV4cGlyZXMiOjEzOTUzMzU2NzF9--c7d092126e522bc5769d5cdf1c609973dd9e81e1);
 		}
 		</style>
 	</head>
 	<body>
-		<canvas id="canvas" width="640" height="360"></canvas>
+		<canvas id="canvas" width="524" height="284"></canvas>
 	</body>
 </html>
 <script>
@@ -148,20 +149,11 @@ function getSightPolygon(sightX,sightY){
 // DRAWING
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+var foreground = new Image();
 function draw(){
 
 	// Clear canvas
 	ctx.clearRect(0,0,canvas.width,canvas.height);
-
-	// Draw segments
-	ctx.strokeStyle = "#999";
-	for(var i=0;i<segments.length;i++){
-		var seg = segments[i];
-		ctx.beginPath();
-		ctx.moveTo(seg.a.x,seg.a.y);
-		ctx.lineTo(seg.b.x,seg.b.y);
-		ctx.stroke();
-	}
 
 	// Sight Polygons
 	var fuzzyRadius = 10;
@@ -178,8 +170,13 @@ function draw(){
 	}
 	drawPolygon(polygons[0],ctx,"#fff");
 
-	// Draw red dots
-	ctx.fillStyle = "#dd3838";
+	// Masked Foreground
+	ctx.globalCompositeOperation = "source-in";
+	ctx.drawImage(foreground,0,0);
+	ctx.globalCompositeOperation = "source-over";
+
+	// Draw dots
+	ctx.fillStyle = "#fff";
 	ctx.beginPath();
     ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
     ctx.fill();
@@ -208,9 +205,9 @@ function drawPolygon(polygon,ctx,fillStyle){
 var segments = [
 
 	// Border
-	{a:{x:0,y:0}, b:{x:640,y:0}},
-	{a:{x:640,y:0}, b:{x:640,y:360}},
-	{a:{x:640,y:360}, b:{x:0,y:360}},
+	{a:{x:0,y:0}, b:{x:840,y:0}},
+	{a:{x:840,y:0}, b:{x:840,y:360}},
+	{a:{x:840,y:360}, b:{x:0,y:360}},
 	{a:{x:0,y:360}, b:{x:0,y:0}},
 
 	// Polygon #1
@@ -231,20 +228,20 @@ var segments = [
 	{a:{x:350,y:320}, b:{x:200,y:260}},
 
 	// Polygon #4
-	{a:{x:340,y:60}, b:{x:360,y:40}},
-	{a:{x:360,y:40}, b:{x:370,y:70}},
-	{a:{x:370,y:70}, b:{x:340,y:60}},
+	{a:{x:540,y:60}, b:{x:560,y:40}},
+	{a:{x:560,y:40}, b:{x:570,y:70}},
+	{a:{x:570,y:70}, b:{x:540,y:60}},
 
 	// Polygon #5
-	{a:{x:450,y:190}, b:{x:560,y:170}},
-	{a:{x:560,y:170}, b:{x:540,y:270}},
-	{a:{x:540,y:270}, b:{x:430,y:290}},
-	{a:{x:430,y:290}, b:{x:450,y:190}},
+	{a:{x:650,y:190}, b:{x:760,y:170}},
+	{a:{x:760,y:170}, b:{x:740,y:270}},
+	{a:{x:740,y:270}, b:{x:630,y:290}},
+	{a:{x:630,y:290}, b:{x:650,y:190}},
 
 	// Polygon #6
-	{a:{x:400,y:95}, b:{x:580,y:50}},
-	{a:{x:580,y:50}, b:{x:480,y:150}},
-	{a:{x:480,y:150}, b:{x:400,y:95}}
+	{a:{x:600,y:95}, b:{x:780,y:50}},
+	{a:{x:780,y:50}, b:{x:680,y:150}},
+	{a:{x:680,y:150}, b:{x:600,y:95}}
 
 ];
 
@@ -259,7 +256,10 @@ function drawLoop(){
     }
 }
 window.onload = function(){
-	drawLoop();
+	foreground.onload = function(){
+		drawLoop();
+	};
+	foreground.src = "https://raw.github.com/misterdustinface/misterdustinface.github.io/master/documents/Dustin_Shaffer.png?token=3992692__eyJzY29wZSI6IlJhd0Jsb2I6bWlzdGVyZHVzdGluZmFjZS9taXN0ZXJkdXN0aW5mYWNlLmdpdGh1Yi5pby9tYXN0ZXIvZG9jdW1lbnRzL0R1c3Rpbl9TaGFmZmVyLnBuZyIsImV4cGlyZXMiOjEzOTUzMzU1OTF9--058cfd7924b244b85b516a6fe4ad905e58c97ccc";
 };
 
 // MOUSE	
