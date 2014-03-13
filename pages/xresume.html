@@ -10,7 +10,7 @@ title:  Lighting Demo
 		#canvas{
 			width:640px;
 			height:360px;
-			background: #333;
+			background: #000;
 		}
 		</style>
 	</head>
@@ -174,9 +174,9 @@ function draw(){
 
 	// DRAW AS A GIANT POLYGON
 	for(var i=1;i<polygons.length;i++){
-		drawPolygon(polygons[i],ctx,"rgba(255,255,255,0.2)");
+		drawPolygon(polygons[i],ctx,"rgba(255,0,255,0.2)");
 	}
-	drawPolygon(polygons[0],ctx,"#fff");
+	drawPolygon(polygons[0],ctx,"#f0f");
 
 	// Draw red dots
 	ctx.fillStyle = "#dd3838";
