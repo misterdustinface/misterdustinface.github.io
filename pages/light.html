@@ -311,20 +311,16 @@ var Player = {
 };
 
 function playerController(e){
-	//W
-	if(e.keyCode == 87){
+	if(e.keyCode == 38){
 		movePlayer("up");
 	}
-	//A
-	if(e.keyCode == 65){
+	if(e.keyCode == 37){
 		movePlayer("left");
 	}
-	//S
-	if(e.keyCode == 83){
+	if(e.keyCode == 40){
 		movePlayer("down");
 	}
-	//D
-	if(e.keyCode == 68){
+	if(e.keyCode == 39){
 		movePlayer("right");
 	}
 }
