@@ -159,7 +159,7 @@ function draw(){
 
 	// Sight Polygons
 	var fuzzyRadius = 10;
-	var polygons = [getSightPolygon(Mouse.x,Mouse.y)];
+	var polygons = [getSightPolygon(Player.x,Player.y)];
 	for(var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10){
 		var dx = Math.cos(angle)*fuzzyRadius;
 		var dy = Math.sin(angle)*fuzzyRadius;
@@ -175,13 +175,13 @@ function draw(){
 	// Draw dots "#dd3838"
 	ctx.fillStyle = "#e3e";
 	ctx.beginPath();
-    ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
+    ctx.arc(Player.x, Player.y, 2, 0, 2*Math.PI, false);
     ctx.fill();
 	for(var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10){
 		var dx = Math.cos(angle)*fuzzyRadius;
 		var dy = Math.sin(angle)*fuzzyRadius;
 		ctx.beginPath();
-    	ctx.arc(Mouse.x+dx, Mouse.y+dy, 2, 0, 2*Math.PI, false);
+    	ctx.arc(Player.x+dx, Player.y+dy, 2, 0, 2*Math.PI, false);
     	ctx.fill();
     }
 
@@ -269,7 +269,35 @@ var Mouse = {
 canvas.onmousemove = function(event){	
 	Mouse.x = event.clientX;
 	Mouse.y = event.clientY;
+	Player.x = Mouse.x
+	Player.y = Mouse.y
 	updateCanvas = true;
 };
+
+// Player
+var Player = {
+	x: Mouse.x,
+	y: Mouse.y,
+	speed: 1,
+}
+canvas.addEventListener("keypress", playerController, false)
+function playerController(e){
+	//W
+	if(e.keyCode == 87){
+		Player.y -= Player.speed
+	}
+	//A
+	if(e.keyCode == 65){
+		Player.x -= Player.speed
+	}
+	//S
+	if(e.keyCode == 83){
+		Player.y += Player.speed
+	}
+	//D
+	if(e.keyCode == 68){
+		Player.x += Player.speed
+	}
+}
 
 </script>
