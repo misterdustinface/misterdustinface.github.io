@@ -178,16 +178,16 @@ function draw(){
 	};
 
 	// DRAW AS A GIANT POLYGON
-	for(var i=1;i<playerGons.length;i++){
-		drawPolygon(playerGons[i],ctx,"rgba(196,223,155,0.2)");
-	}
-	drawPolygon(playerGons[0],ctx,"#C4DF9B");
-
-	// DRAW AS A GIANT POLYGON
 	for(var i=1;i<mouseGons.length;i++){
 		drawPolygon(mouseGons[i],ctx,"rgba(189,140,191,0.2)");
 	}
 	drawPolygon(mouseGons[0],ctx,"#BC8DBF");
+	
+	// DRAW AS A GIANT POLYGON
+	for(var i=1;i<playerGons.length;i++){
+		drawPolygon(playerGons[i],ctx,"rgba(196,223,155,0.2)");
+	}
+	drawPolygon(playerGons[0],ctx,"#C4DF9B");
 
 	// Draw dots "#dd3838"
 	ctx.fillStyle = "#e3e";
