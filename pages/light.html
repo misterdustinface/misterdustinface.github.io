@@ -186,7 +186,7 @@ function draw(){
     }
 	
 	// Draw Player
-	drawPolygon(playerPolygon,ctx,"3e3");
+	drawPolygon(playerPolygon,ctx,"3E33E3");
 
 }
 
@@ -286,11 +286,11 @@ var Player = {
 	height: 8,
 	speed: 2.35
 };
-var playerPolygon = 
+var playerPolygon = [ 
 	{a:{x:Player.x - width/2,y:Player.y - height/2}, b:{x:Player.x + width/2,y:Player.y - height/2}},
 	{a:{x:Player.x + width/2,y:Player.y - height/2}, b:{x:Player.x + width/2,y:Player.y + height/2}},
 	{a:{x:Player.x + width/2,y:Player.y + height/2}, b:{x:Player.x - width/2,y:Player.y + height/2}},
-	{a:{x:Player.x - width/2,y:Player.y + height/2}, b:{x:Player.x - width/2,y:Player.y - height/2}};
+	{a:{x:Player.x - width/2,y:Player.y + height/2}, b:{x:Player.x - width/2,y:Player.y - height/2}}];
 
 function playerController(e){
 	//W
