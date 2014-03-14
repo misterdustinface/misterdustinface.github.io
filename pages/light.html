@@ -276,9 +276,9 @@ canvas.onmousemove = function(event){
 var Player = {
 	x: Mouse.x,
 	y: Mouse.y,
-	speed: 1,
+	speed: 3,
 }
-canvas.addEventListener("keypress", playerController, false)
+window.addEventListener("keypress", playerController, false)
 function playerController(e){
 	//W
 	if(e.keyCode == 87){
