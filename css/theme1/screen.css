@@ -92,7 +92,8 @@ pre     {background: rgba(0, 0, 0, 0.9);
 }
 
 .button-primary{
-	background: rgb(189,140,191); /* this is a light purple */
+	background: rgb(0,0,0);
+	color: rgb(189,140,191); /* this is a light purple */
 }
 
 
