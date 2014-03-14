@@ -181,7 +181,7 @@ function draw(){
 		var dx = Math.cos(angle)*fuzzyRadius;
 		var dy = Math.sin(angle)*fuzzyRadius;
 		ctx.beginPath();
-    	ctx.arc(Player.x+dx, Player.y+dy, 2, 0, 2*Math.PI, false);
+    	ctx.arc(Mouse.x+dx, Mouse.y+dy, 2, 0, 2*Math.PI, false);
     	ctx.fill();
     }
 
@@ -259,9 +259,11 @@ function drawLoop(){
 }
 window.onload = function(){
 	drawLoop();
-	canvas.addEventListener("keydown", keyDownEventHandler, false);
+	window.addEventListener("keydown", keyDownEventHandler, false);
 };
-
+function keyDownEventHandler(e){
+	playerController(e);
+}
 // MOUSE	
 var Mouse = {
 	x: canvas.width/2,
@@ -277,11 +279,8 @@ canvas.onmousemove = function(event){
 var Player = {
 	x: canvas.width/2,
 	y: canvas.height/2,
-	speed: 3
+	speed: 1
 };
-function keyDownEventHandler(e){
-	playerController(e);
-}
 function playerController(e){
 	//W
 	if(e.keyCode == 87){
