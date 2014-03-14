@@ -163,7 +163,7 @@ function draw(){
 	for(var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10){
 		var dx = Math.cos(angle)*fuzzyRadius;
 		var dy = Math.sin(angle)*fuzzyRadius;
-		polygons.push(getSightPolygon(Mouse.x+dx,Mouse.y+dy));
+		polygons.push(getSightPolygon(Player.x+dx,Player.y+dy));
 	};
 
 	// DRAW AS A GIANT POLYGON
@@ -276,25 +276,28 @@ canvas.onmousemove = function(event){
 var Player = {
 	x: Mouse.x,
 	y: Mouse.y,
-	speed: 3,
+	speed: 3;
 }
-window.addEventListener("keypress", playerController, false)
+window.addEventListener("keydown", keyDownEventHandler, false);
+function keyDownEventHandler(e){
+	playerController(e);
+}
 function playerController(e){
 	//W
 	if(e.keyCode == 87){
-		Player.y -= Player.speed
+		Player.y -= Player.speed;
 	}
 	//A
 	if(e.keyCode == 65){
-		Player.x -= Player.speed
+		Player.x -= Player.speed;
 	}
 	//S
 	if(e.keyCode == 83){
-		Player.y += Player.speed
+		Player.y += Player.speed;
 	}
 	//D
 	if(e.keyCode == 68){
-		Player.x += Player.speed
+		Player.x += Player.speed;
 	}
 }
 
