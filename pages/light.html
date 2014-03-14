@@ -186,7 +186,11 @@ function draw(){
     }
 	
 	// Draw Player
-	drawPolygon(playerPolygon,ctx,Player.color);
+	ctx.fillStyle = "#3e3";
+	ctx.beginPath();
+	ctx.arc(Player.x, Player.y, 8, 0, 2*Math.PI, false);
+	ctx.fill();
+	//drawPolygon(playerPolygon,ctx,Player.color);
 
 }
 
