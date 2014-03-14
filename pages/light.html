@@ -186,7 +186,7 @@ function draw(){
     }
 	
 	// Draw Player
-	drawPolygon(playerPolygon,ctx,Player.color);
+	drawPolygon(Player.polygon,ctx,Player.color);
 
 }
 
@@ -285,13 +285,20 @@ var Player = {
 	width: 8,
 	height: 8,
 	speed: 2.35,
-	color: #3E3000
-};
-var playerPolygon = [ 
+	color: #3E3000,
+	polygon: [ 
 	{a:{x:Player.x - width/2,y:Player.y - height/2}, b:{x:Player.x + width/2,y:Player.y - height/2}},
 	{a:{x:Player.x + width/2,y:Player.y - height/2}, b:{x:Player.x + width/2,y:Player.y + height/2}},
 	{a:{x:Player.x + width/2,y:Player.y + height/2}, b:{x:Player.x - width/2,y:Player.y + height/2}},
 	{a:{x:Player.x - width/2,y:Player.y + height/2}, b:{x:Player.x - width/2,y:Player.y - height/2}}];
+};
+function updatePlayerPolygon(){
+	playerPolygon = [ 
+	{a:{x:Player.x - width/2,y:Player.y - height/2}, b:{x:Player.x + width/2,y:Player.y - height/2}},
+	{a:{x:Player.x + width/2,y:Player.y - height/2}, b:{x:Player.x + width/2,y:Player.y + height/2}},
+	{a:{x:Player.x + width/2,y:Player.y + height/2}, b:{x:Player.x - width/2,y:Player.y + height/2}},
+	{a:{x:Player.x - width/2,y:Player.y + height/2}, b:{x:Player.x - width/2,y:Player.y - height/2}}];
+}
 
 function playerController(e){
 	//W
@@ -324,6 +331,7 @@ function movePlayer(direction){
 	if(direction == "right"){
 		Player.x += Player.speed;
 	}
+	updatePlayerPolygon();
 	updateCanvas = true;
 }
 
