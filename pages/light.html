@@ -184,13 +184,14 @@ function draw(){
 		}
 		drawPolygon(mouseGons[0],ctx,"#BC8DBF");
 	}
-	
-	// DRAW AS A GIANT POLYGON
-	for(var i=1;i<playerGons.length;i++){
-		drawPolygon(playerGons[i],ctx,"rgba(196,223,155,0.2)");
+	if(Player.lit){
+		// DRAW AS A GIANT POLYGON
+		for(var i=1;i<playerGons.length;i++){
+			drawPolygon(playerGons[i],ctx,"rgba(196,223,155,0.2)");
+		}
+		drawPolygon(playerGons[0],ctx,"#C4DF9B");
 	}
-	drawPolygon(playerGons[0],ctx,"#C4DF9B");
-
+	
 	// Draw Player
 	ctx.fillStyle = Player.color;
 	ctx.beginPath();
@@ -316,7 +317,8 @@ var Player = {
 	yVel: 0,
 	speed: 1,
 	size: 3,
-	color: "#fff"
+	color: "#fff",
+	lit: false
 };
 
 function playerController(e){
@@ -331,6 +333,12 @@ function playerController(e){
 	}
 	if(e.keyCode == 39){
 		movePlayer("right");
+	}
+	if(e.keyCode == 32){
+		if(Player.lit)
+			Player.lit = false;
+		else
+			Player.lit = true;
 	}
 }
 function movePlayer(direction){
