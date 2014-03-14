@@ -142,11 +142,20 @@ function getSightPolygon(sightX,sightY){
 // DRAWING
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+var FPS = 30;
+setInterval(function() {
+  update();
+  draw();
+}, 1000/FPS);
+function update(){
+	updatePlayer();
+}
+
 function draw(){
 
 	// Clear canvas
 	ctx.clearRect(0,0,canvas.width,canvas.height);
-	
+
 	// Draw segments
 	ctx.strokeStyle = "#999";
 	for(var i=0;i<segments.length;i++){
@@ -159,18 +168,26 @@ function draw(){
 
 	// Sight Polygons
 	var fuzzyRadius = 10;
-	var polygons = [getSightPolygon(Mouse.x,Mouse.y)];
+	var playerGons = [getSightPolygon(Player.x,Player.y)];
+	var mouseGons = [getSightPolygon(Mouse.x,Mouse.y)];
 	for(var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10){
 		var dx = Math.cos(angle)*fuzzyRadius;
 		var dy = Math.sin(angle)*fuzzyRadius;
-		polygons.push(getSightPolygon(Mouse.x+dx,Mouse.y+dy));
+		playerGons.push(getSightPolygon(Player.x+dx,Player.y+dy));
+		mouseGons.push(getSightPolygon(Mouse.x+dx,Mouse.y+dy));
 	};
 
 	// DRAW AS A GIANT POLYGON
-	for(var i=1;i<polygons.length;i++){
-		drawPolygon(polygons[i],ctx,"rgba(189,140,191,0.2)");
+	for(var i=1;i<playerGons.length;i++){
+		drawPolygon(playerGons[i],ctx,"rgba(196,223,155,0.2)");
 	}
-	drawPolygon(polygons[0],ctx,"#BC8DBF");
+	drawPolygon(playerGons[0],ctx,"#C4DF9B");
+
+	// DRAW AS A GIANT POLYGON
+	for(var i=1;i<mouseGons.length;i++){
+		drawPolygon(mouseGons[i],ctx,"rgba(189,140,191,0.2)");
+	}
+	drawPolygon(mouseGons[0],ctx,"#BC8DBF");
 
 	// Draw dots "#dd3838"
 	ctx.fillStyle = "#e3e";
@@ -186,10 +203,11 @@ function draw(){
     }
 	
 	// Draw Player
-	ctx.fillStyle = "#3e3";
+	ctx.fillStyle = Player.color;
 	ctx.beginPath();
-	ctx.arc(Player.x, Player.y, 2, 0, 2*Math.PI, false);
-	ctx.fill();
+    ctx.arc(Player.x, Player.y, Player.size, 0, 2*Math.PI, false);
+    ctx.fill();
+	
 }
 
 function drawPolygon(polygon,ctx,fillStyle){
@@ -265,6 +283,7 @@ function drawLoop(){
 window.onload = function(){
 	drawLoop();
 	window.addEventListener("keydown", keyDownEventHandler, false);
+	//gameLoop();
 };
 function keyDownEventHandler(e){
 	playerController(e);
@@ -284,7 +303,11 @@ canvas.onmousemove = function(event){
 var Player = {
 	x: canvas.width/2,
 	y: canvas.height/2,
-	speed: 1
+	xVel: 0,
+	yVel: 0,
+	speed: 1,
+	size: 3,
+	color: "#fff"
 };
 
 function playerController(e){
@@ -307,18 +330,42 @@ function playerController(e){
 }
 function movePlayer(direction){
 	if(direction == "up"){
-		Player.y -= Player.speed;
+		//Player.y -= Player.speed;
+		Player.yVel -= Player.speed;
 	}
 	if(direction == "down"){
-		Player.y += Player.speed;
+		//Player.y += Player.speed;
+		Player.yVel += Player.speed;
 	}
 	if(direction == "left"){
-		Player.x -= Player.speed;
+		//Player.x -= Player.speed;
+		Player.xVel -= Player.speed;
 	}
 	if(direction == "right"){
-		Player.x += Player.speed;
+		//Player.x += Player.speed;
+		Player.xVel += Player.speed;
 	}
-	updateCanvas = true;
+	//updateCanvas = true;
+}
+function updatePlayer(){
+	Player.x += Player.xVel
+	Player.y += Player.yVel
+	
+	keepPlayerInBounds();
+}
+function keepPlayerInBounds(){
+	if(Player.x < 0){
+		Player.x = canvas.width;
+	}
+	if(Player.x > canvas.width){
+		Player.x = 0;
+	}
+	if(Player.y < 0){
+		Player.y = canvas.height;
+	}
+	if(Player.y > canvas.height){
+		Player.y = 0;
+	}
 }
 
 </script>
