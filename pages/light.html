@@ -146,9 +146,6 @@ function draw(){
 
 	// Clear canvas
 	ctx.clearRect(0,0,canvas.width,canvas.height);
-
-	// Draw Player
-	drawPolygon(playerPolygon,ctx,"3e3");
 	
 	// Draw segments
 	ctx.strokeStyle = "#999";
@@ -187,6 +184,9 @@ function draw(){
     	ctx.arc(Mouse.x+dx, Mouse.y+dy, 2, 0, 2*Math.PI, false);
     	ctx.fill();
     }
+	
+	// Draw Player
+	drawPolygon(playerPolygon,ctx,"3e3");
 
 }
 
