@@ -188,10 +188,8 @@ function draw(){
 	// Draw Player
 	ctx.fillStyle = "#3e3";
 	ctx.beginPath();
-	ctx.arc(Player.x, Player.y, 8, 0, 2*Math.PI, false);
+	ctx.arc(Player.x, Player.y, 2, 0, 2*Math.PI, false);
 	ctx.fill();
-	//drawPolygon(playerPolygon,ctx,Player.color);
-
 }
 
 function drawPolygon(polygon,ctx,fillStyle){
@@ -286,9 +284,7 @@ canvas.onmousemove = function(event){
 var Player = {
 	x: canvas.width/2,
 	y: canvas.height/2,
-	width: 8,
-	height: 8,
-	speed: 2.35,
+	speed: 1,
 	color: #3E3000
 };
 
