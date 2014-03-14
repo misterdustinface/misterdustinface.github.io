@@ -1,0 +1,294 @@
+<!doctype>
+<html>
+	<head>
+		<style>
+		#canvas{
+			width:640px;
+			height:360px;
+			background: #000;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<canvas id="canvas" width="640" height="360"></canvas>
+		
+	</body>
+</html>
+<script>
+
+///////////////////////////////////////////////////////
+
+window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
+window.onload = function(){
+	window.addEventListener("keydown", keyDownEventHandler, false);
+};
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+ctx.font = "bold 16px Monospace";
+var FPS = 30;
+setInterval(function() {
+  update();
+  draw();
+}, 1000/FPS);
+
+var WINNING_SCORE = 10;
+var LEFT_SCORE    = 0;
+var RIGHT_SCORE   = 0;
+
+var MAX_PADDLE_SPEED = 8;
+
+//////////////////////////////////////////////////////////////////////////
+function update(){
+	updatePaddles();
+	updateBall();
+}
+///////////////////////////////////////////////////////////////////
+function draw(){
+	// Clear canvas
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+
+	// Draw ball
+	ctx.fillStyle = Ball.color;
+	ctx.beginPath();
+    ctx.arc(Ball.x - Ball.size/2, Ball.y - Ball.size/2, Ball.size, 0, 2*Math.PI, false);
+    ctx.fill();
+	
+	// Draw paddles
+	ctx.beginPath();
+	ctx.fillStyle = LeftPaddle.color
+    ctx.rect(LeftPaddle.x, LeftPaddle.y, LeftPaddle.width, LeftPaddle.height);
+    ctx.fill();
+	ctx.beginPath();
+	ctx.fillStyle = RightPaddle.color
+    ctx.rect(RightPaddle.x, RightPaddle.y, RightPaddle.width, RightPaddle.height);
+    ctx.fill();
+	
+	// Draw mouse dot
+	ctx.fillStyle = "#e3e";
+	ctx.beginPath();
+    ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
+    ctx.fill();
+	
+	ctx.fillStyle = "#777";
+	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - 50, 20);
+}
+
+///////////////////////////////////////////////////////////////////
+function keyDownEventHandler(e){
+	gameController(e);
+}
+function gameController(e){
+	controlGameOptions(e);
+	controlLeftPaddle(e);
+	controlRightPaddle(e);	
+}
+function controlGameOptions(e){
+	if(e.keyCode == 32){
+		serveBall();
+	}
+}
+///////////////////////////////////////////////////////////////////
+// MOUSE	
+var Mouse = {
+	x: canvas.width/2,
+	y: canvas.height/2,
+};
+canvas.onmousemove = function(event){	
+	Mouse.x = event.clientX;
+	Mouse.y = event.clientY;
+};
+canvas.onmousedown = function(){
+};
+canvas.onmouseup = function(){
+};
+
+///////////////////////////////////////////////////////////////////
+var LeftPaddle = {
+	x: 20,
+	y: canvas.height/2,
+	width: 4,
+	height: 64,
+	yVel: 0,
+	speed: 2,
+	color: "#fff"
+};
+var RightPaddle = {
+	x: canvas.width - 20,
+	y: canvas.height/2,
+	width: 4,
+	height: 64,
+	yVel: 0,
+	speed: 2,
+	color: "#fff"
+};
+
+var Ball = {
+	x: canvas.width/2,
+	y: canvas.height/2,
+	yVel: 0,
+	xVel: 0,
+	size: 4,
+	speed: 10,
+	served: false,
+	color: "#fff"
+};
+
+//WASD
+function controlLeftPaddle(e){
+	if(e.keyCode == 87){
+		//movePlayer(LeftPaddle, "up");
+		if(LeftPaddle.yVel > 0)
+			LeftPaddle.yVel *= 2/3.0;
+		
+		LeftPaddle.yVel -= LeftPaddle.speed;
+	}
+	if(e.keyCode == 65){
+		//movePlayer(LeftPaddle, "left");
+	}
+	if(e.keyCode == 83){
+		//movePlayer(LeftPaddle, "down");
+		if(LeftPaddle.yVel < 0)
+			LeftPaddle.yVel *= 2/3.0;
+		
+		LeftPaddle.yVel += LeftPaddle.speed;
+	}
+	if(e.keyCode == 68){
+		//movePlayer(LeftPaddle, "right");
+	}
+}
+// ARROW KEYS
+function controlRightPaddle(e){
+	if(e.keyCode == 38){
+		//movePlayer(RightPaddle, "up");
+		if(RightPaddle.yVel > 0)
+			RightPaddle.yVel *= 2/3.0;
+		
+		RightPaddle.yVel -= RightPaddle.speed;
+	}
+	if(e.keyCode == 37){
+		//movePlayer(RightPaddle, "left");
+	}
+	if(e.keyCode == 40){
+		//movePlayer(RightPaddle, "down");
+		if(RightPaddle.yVel < 0)
+			RightPaddle.yVel *= 2/3.0;
+		
+		RightPaddle.yVel += RightPaddle.speed;
+	}
+	if(e.keyCode == 39){
+		//movePlayer(RightPaddle, "right");
+	}
+}
+
+function updatePaddles(){
+
+	if(LeftPaddle.yVel > MAX_PADDLE_SPEED){
+		LeftPaddle.yVel = MAX_PADDLE_SPEED;
+	}
+	if(RightPaddle.yVel > MAX_PADDLE_SPEED){
+		RightPaddle.yVel = MAX_PADDLE_SPEED;
+	}
+	if(LeftPaddle.yVel < -MAX_PADDLE_SPEED){
+		LeftPaddle.yVel = -MAX_PADDLE_SPEED;
+	}
+	if(RightPaddle.yVel < -MAX_PADDLE_SPEED){
+		RightPaddle.yVel = -MAX_PADDLE_SPEED;
+	}
+
+	LeftPaddle.y += LeftPaddle.yVel
+	RightPaddle.y += RightPaddle.yVel
+	
+	keepPaddlesInBounds();
+}
+function keepPaddlesInBounds(){
+	if(LeftPaddle.y + LeftPaddle.height < 0){
+		LeftPaddle.y = canvas.height;
+	}
+	else if(LeftPaddle.y > canvas.height){
+		LeftPaddle.y = -LeftPaddle.height;
+	}
+	
+	if(RightPaddle.y + RightPaddle.height < 0){
+		RightPaddle.y = canvas.height;
+	}
+	else if(RightPaddle.y > canvas.height){
+		RightPaddle.y = -RightPaddle.height;
+	}
+}
+
+function serveBall(){
+	if(! Ball.served){
+		Ball.xVel = Math.random() * Ball.speed;
+		Ball.yVel = Math.random() * Ball.speed;
+		if(Math.random() > 0.5){
+			Ball.xVel = -Ball.xVel;
+		}
+		if(Math.random() > 0.5){
+			Ball.yVel = -Ball.yVel;
+		}
+		if(Math.abs(Ball.yVel) > Math.abs(Ball.xVel)){
+			Ball.xVel = Ball.yVel;
+		}
+		Ball.served = true;
+	}
+}
+function updateBall(){
+	Ball.x += Ball.xVel;
+	Ball.y += Ball.yVel;
+	
+	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height){
+		swatBall();
+	}
+	if(Ball.x >= RightPaddle.x && Ball.y > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height){
+		swatBall();
+	}
+	
+	keepBallInBounds();
+}
+
+function swatBall(){
+	Ball.xVel = -Ball.xVel;
+	if(Ball.xVel < 0)
+		Ball.xVel -= Math.random() * Ball.speed;
+	else
+		Ball.xVel += Math.random() * Ball.speed;
+	Ball.yVel = Math.random() * Ball.speed;
+	if(Math.random() > 0.5){
+		Ball.yVel = -Ball.yVel;
+	}
+}
+
+function keepBallInBounds(){
+	if(Ball.y > canvas.height || Ball.y < 0){
+		Ball.yVel = -Ball.yVel;
+	}
+	
+	if(Ball.x > canvas.width){
+		RIGHT_SCORE += 1;
+		resetBall();
+	}
+	if(Ball.x < 0){
+		LEFT_SCORE += 1;
+		resetBall();
+	}
+}
+
+function checkWin(){
+	if(RIGHT_SCORE > WINNING_SCORE){
+		document.write('<p>Right Player Wins!' + '</p>');
+	}
+	if(LEFT_SCORE > WINNING_SCORE){
+		document.write('<p>Left Player Wins!' + '</p>');
+	}
+}
+
+function resetBall(){
+	Ball.x = canvas.width/2;
+	Ball.y = canvas.height/2;
+	Ball.xVel = 0;
+	Ball.yVel = 0;
+	Ball.served = false;
+}
+
+</script>
