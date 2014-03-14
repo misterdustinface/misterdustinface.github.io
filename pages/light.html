@@ -285,18 +285,22 @@ function playerController(e){
 	//W
 	if(e.keyCode == 87){
 		Player.y -= Player.speed;
+		updateCanvas = true;
 	}
 	//A
 	if(e.keyCode == 65){
 		Player.x -= Player.speed;
+		updateCanvas = true;
 	}
 	//S
 	if(e.keyCode == 83){
 		Player.y += Player.speed;
+		updateCanvas = true;
 	}
 	//D
 	if(e.keyCode == 68){
 		Player.x += Player.speed;
+		updateCanvas = true;
 	}
 }
 
