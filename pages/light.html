@@ -186,7 +186,7 @@ function draw(){
     }
 	
 	// Draw Player
-	drawPolygon(playerPolygon,ctx,"3E33E3");
+	drawPolygon(playerPolygon,ctx,Player.color);
 
 }
 
@@ -284,7 +284,8 @@ var Player = {
 	y: canvas.height/2,
 	width: 8,
 	height: 8,
-	speed: 2.35
+	speed: 2.35,
+	color: #3E3000
 };
 var playerPolygon = [ 
 	{a:{x:Player.x - width/2,y:Player.y - height/2}, b:{x:Player.x + width/2,y:Player.y - height/2}},
