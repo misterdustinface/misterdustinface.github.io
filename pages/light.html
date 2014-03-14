@@ -264,7 +264,7 @@ function drawLoop(){
 }
 window.onload = function(){
 	drawLoop();
-	window.addEventListener("keypress", keyDownEventHandler, false);
+	window.addEventListener("keydown", keyDownEventHandler, false);
 };
 function keyDownEventHandler(e){
 	playerController(e);
