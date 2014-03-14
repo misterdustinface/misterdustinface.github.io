@@ -1,14 +1,29 @@
 ---
 layout: default
-title:  Lighting Demo
+title:  Demos
 ---
 
 <center>
-<embed src= "light.html" align="middle" width="680" height="400"></embed>
+
+<button id="pong">Pong Demo</button><br>
+
+<script type="text/javascript">
+var reply_click = function(){ // for testing
+    alert("Button clicked, id "+this.id+", text"+this.innerHTML);
+}
+var displayPongDemo = function(){
+	window.open("pong.html", "PONG", "menubar=no,innerWidth=680,innerHeight=400,toolbar=no,location=no,screenX=400,screenY=40");
+}
+document.getElementById('pong').onclick = displayPongDemo;
+</script>
+
+<embed src= "light.html" align="middle" width="680" height="400">
 <p>
 Click the screen to gain "focus". Then press the arrow keys to move the player.<br>
 Press space bar to toggle light for the player.<br>
 Click the mouse to light up the mouse light.<br>
 This is not my code. I am modifying open source HTML5 code found elsewhere on github.
 </p>
+</embed>
+
 </center>
