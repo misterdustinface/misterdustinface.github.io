@@ -14,6 +14,8 @@ Team: Nick deWaide, Evan Palmer, Dustin Shaffer
 
 Current Controls: W/A/S/D to move the cursor. Press spacebar to "flip" tiles. F5 makes a new board of the same size. Pressing a number key makes a board of that # size.
 
+Goal: Match all the tiles!
+
 ---
 
 [Numbers]: https://github.com/misterdustinface/misterdustinface.github.io/raw/master/jars/Numbers.jar
