@@ -16,7 +16,7 @@ Current Controls: W/A/S/D to move the cursor. Press spacebar to "flip" tiles. F5
 
 Flip: Increments the number at the chosen tile, and decrements the numbers at the surrounding, touching tiles.
 
-Goal: Match all the tiles!
+Goal: Match all the tiles! We recommend starting on the 2x2, and then moving on to 3x3 boards. We are currently creating a mathematic proof to find all solvable 4x4 grids because we believe that some are not solvable.
 
 ---
 
