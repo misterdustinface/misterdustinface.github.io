@@ -20,4 +20,4 @@ Goal: Match all the tiles! We recommend starting on the 2x2, and then moving on 
 
 ---
 
-[Numbers]: https://github.com/misterdustinface/misterdustinface.github.io/raw/master/jars/Numbers.jar
+[Numbers]: https://github.com/misterdustinface/misterdustinface.github.io/blob/master/jars/Numbers.jar
