@@ -6,7 +6,7 @@ title:  Number Game Prototype
 {{ page.title }}
 ================
 
-[Numbers][Remind me to add link] Available for Download for any computer that can run GL20 (it's a graphics thing - and it needs it at the moment because we used really wonky texture sizes for our prototype). 
+[Numbers][] Available for Download for any computer that can run GL20 (it's a graphics thing - and it needs it at the moment because we used really wonky texture sizes for our prototype). 
 
 A tile-based number game that is still in development. It will be released for android devices.
 
@@ -20,4 +20,4 @@ Goal: Match all the tiles! We recommend starting on the 2x2, and then moving on 
 
 ---
 
-[Numbers]: http://dustin.n.shaffer.ignorelist.com/404
+[Numbers]: https://github.com/misterdustinface/prototypes/raw/master/Numbers.jar
