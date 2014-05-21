@@ -6,6 +6,8 @@ title:  Notepad
 {{ page.title }}
 ================
 
+---
+
 [Notepad][] Available for Download
 
 A simple notepad application.
