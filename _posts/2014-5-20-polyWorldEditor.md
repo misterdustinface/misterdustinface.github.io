@@ -6,6 +6,8 @@ title:  Polyline World Editor
 {{ page.title }}
 ================
 
+---
+
 [PolyWorldEditor][] source code and executable available.
 
 ---
