@@ -6,8 +6,8 @@ title:  Polyline World Editor
 {{ page.title }}
 ================
 
-[editor][] Source code and executable available.
+[PolyWorldEditor][] source code and executable available.
 
 ---
 
-[editor]: https://github.com/misterdustinface/PolylineWorldEditor
+[PolyWorldEditor]: https://github.com/misterdustinface/PolylineWorldEditor
