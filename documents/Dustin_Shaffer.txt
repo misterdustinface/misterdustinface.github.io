@@ -40,7 +40,7 @@ Proficient Programming Languages:
 C++, C++ 11, Java, Python
 
 Other Familiar Programming Languages:
-Lua, x86 Assembly, SQL, JSP
+Lua, x86 Assembly, JavaScript, SQL, JSP
 _____________________________________________________________________________
 
  Other Proficiencies
