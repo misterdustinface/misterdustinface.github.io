@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  Polyline World Editor
+title:  Line Editor
 ---
 
 {{ page.title }}
 ================
 
-[PolyWorldEditor][] source code and executable available.
+[LineEditor][] source code and executable available.
 
 ---
 
-[PolyWorldEditor]: https://github.com/misterdustinface/PolylineWorldEditor
+[LineEditor]: https://github.com/misterdustinface/LineEditor
