@@ -175,18 +175,17 @@ function updatePaddles(){
 }
 
 function applyControllerCommandToPaddle(paddle){
-	if(paddle.up) {
-		if(paddle.yVel > 0)
-			paddle.yVel *= 1/4.0;
-		paddle.yVel -= paddle.speed;
-	}
-  if(paddle.down) {
-    if(paddle.yVel < 0)
-			paddle.yVel *= 1/4.0;
-		paddle.yVel += paddle.speed;
+  if(paddle.up ^ paddle.down) {
+    if(paddle.up) 
+  		paddle.yVel -= paddle.speed;
+    if(paddle.down)
+  		paddle.yVel += paddle.speed;
+  } else {
+    paddle.yVel *= 1/4.0;
   }
   
   paddle.y += paddle.yVel // move y position accordingly
+
 }
 
 function limitPaddleSpeed(paddle){
