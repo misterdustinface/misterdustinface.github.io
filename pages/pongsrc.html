@@ -39,8 +39,8 @@ var MAX_PADDLE_SPEED = 8;
 
 //////////////////////////////////////////////////////////////////////////
 function gameLoop(){
-  update();
-  draw();
+	update();
+	draw();
 }
 
 function update(){
@@ -54,49 +54,49 @@ function update(){
 
 function draw(){
 	clearCanvas();
-  drawBall();
-  drawPaddle(LeftPaddle);
-  drawPaddle(RightPaddle);
+	drawBall();
+	drawPaddle(LeftPaddle);
+	drawPaddle(RightPaddle);
 	drawTextInfo();
 }
 
 function clearCanvas() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+	ctx.clearRect(0,0,canvas.width,canvas.height);
 }
 
 function drawBall() {
-  ctx.fillStyle = Ball.color;
+	ctx.fillStyle = Ball.color;
 	ctx.beginPath();
-    ctx.arc(Ball.x - Ball.size/2, Ball.y - Ball.size/2, Ball.size, 0, 2*Math.PI, false);
-    ctx.fill();
+	ctx.arc(Ball.x - Ball.size/2, Ball.y - Ball.size/2, Ball.size, 0, 2*Math.PI, false);
+	ctx.fill();
 }
 
 function drawPaddle(paddle) {
-  ctx.beginPath();
+	ctx.beginPath();
 	ctx.fillStyle = paddle.color;
-    ctx.rect(paddle.x, paddle.y, paddle.width, paddle.height);
-    ctx.fill();
+	ctx.rect(paddle.x, paddle.y, paddle.width, paddle.height);
+	ctx.fill();
 }
 
 function drawTextInfo() {
 	ctx.fillStyle = "#777";
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - 50, 20);
 	if(!Ball.served){
-    	ctx.fillStyle = "#777";
-	    ctx.fillText("PRESS [SPACE]", canvas.width/2 - 50, 200);
-  }
-  if(RIGHT_WIN || LEFT_WIN){
-	  ctx.beginPath();
-		ctx.fillStyle = "#777";
-		ctx.fillText((RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"), canvas.width/2 - 50, 300);
+    		ctx.fillStyle = "#777";
+    		ctx.fillText("PRESS [SPACE]", canvas.width/2 - 50, 200);
 	}
+  	if(RIGHT_WIN || LEFT_WIN){
+		ctx.beginPath();
+		ctx.fillStyle = "#777";
+		ctx.fillText((RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"), canvas.width/2 - 50, 250);
+  	}
 }
 
 function drawMouse() {
 	ctx.fillStyle = "#e3e";
 	ctx.beginPath();
-    ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
-    ctx.fill();
+	ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
+	ctx.fill();
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -115,7 +115,7 @@ function keyDownEventHandler(e){
 
 function keyUpEventHandler(e){
 
-  	if(e.keyCode == 87)
+  if(e.keyCode == 87)
 		LeftPaddle.up = false;
 	if(e.keyCode == 83)
 		LeftPaddle.down = false;
