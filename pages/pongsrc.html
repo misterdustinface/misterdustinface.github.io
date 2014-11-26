@@ -63,6 +63,11 @@ function drawBall() {
 	ctx.beginPath();
     ctx.arc(Ball.x - Ball.size/2, Ball.y - Ball.size/2, Ball.size, 0, 2*Math.PI, false);
     ctx.fill();
+    
+    if(!Ball.served){
+    	ctx.fillStyle = "#777";
+	ctx.fillText("PRESS [SPACE] TO SERVE", canvas.width/2 - 50, 200);
+    }
 }
 
 function drawPaddle(paddle) {
@@ -254,10 +259,14 @@ function keepBallInBounds(){
 }
 
 function checkWin(){
-	if(RIGHT_SCORE > WINNING_SCORE)
-		document.write('<p>Right Player Wins!' + '</p>');
-	if(LEFT_SCORE > WINNING_SCORE)
-		document.write('<p>Left Player Wins!' + '</p>');
+	if(RIGHT_SCORE > WINNING_SCORE){
+		ctx.fillStyle = "#777";
+		ctx.fillText("LEFT WINS", canvas.width/2 - 50, 300);
+	}
+	if(LEFT_SCORE > WINNING_SCORE){
+		ctx.fillStyle = "#777";
+		ctx.fillText("RIGHT WINS", canvas.width/2 - 50, 300);
+	}
 }
 
 function resetBall(){
