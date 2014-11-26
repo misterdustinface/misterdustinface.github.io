@@ -100,9 +100,7 @@ function keyDownEventHandler(e){
 }
 
 function keyUpEventHandler(e){
-	if(e.keyCode == 32)
-		RIGHT_SCORE = -1
-	
+
   	if(e.keyCode == 87)
 		LeftPaddle.up = false;
 	if(e.keyCode == 83)
@@ -177,18 +175,17 @@ function updatePaddles(){
   keepPaddleInBounds(RightPaddle);
 }
 
-function applyControllerCommandToPaddle(paddle){
+function applyControllerCommandToPaddle(paddle) {
   if(paddle.up ^ paddle.down) {
     if(paddle.up) 
   		paddle.yVel -= paddle.speed;
     if(paddle.down)
   		paddle.yVel += paddle.speed;
+    paddle.y += paddle.yVel // move y position accordingly
   } else {
-    //paddle.yVel *= 1/4.0;
-    paddle.yVel = 0;
+    paddle.yVel *= 1/4.0;
+    //paddle.yVel = 0;
   }
-  
-  paddle.y += paddle.yVel // move y position accordingly
 
 }
 
