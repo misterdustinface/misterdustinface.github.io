@@ -44,6 +44,7 @@ function gameLoop(){
 function update(){
 	updatePaddles();
 	updateBall();
+	checkWin();
 }
 
 function draw(){
@@ -66,7 +67,7 @@ function drawBall() {
     
     if(!Ball.served){
     	ctx.fillStyle = "#777";
-	ctx.fillText("PRESS [SPACE] TO SERVE", canvas.width/2 - 50, 200);
+	ctx.fillText("PRESS [SPACE]", canvas.width/2 - 50, 200);
     }
 }
 
