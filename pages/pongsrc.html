@@ -32,6 +32,8 @@ setInterval(gameLoop, 1000/FPS);
 var WINNING_SCORE = 10;
 var LEFT_SCORE    = 0;
 var RIGHT_SCORE   = 0;
+var LEFT_WIN      = false;
+var RIGHT_WIN     = false;
 
 var MAX_PADDLE_SPEED = 8;
 
@@ -45,6 +47,9 @@ function update(){
 	updatePaddles();
 	updateBall();
 	checkWin();
+	if(shouldResetGame()){
+	  resetGameData();
+	}
 }
 
 function draw(){
@@ -52,7 +57,7 @@ function draw(){
   drawBall();
   drawPaddle(LeftPaddle);
   drawPaddle(RightPaddle);
-	drawScore();
+	drawTextInfo();
 }
 
 function clearCanvas() {
@@ -64,11 +69,6 @@ function drawBall() {
 	ctx.beginPath();
     ctx.arc(Ball.x - Ball.size/2, Ball.y - Ball.size/2, Ball.size, 0, 2*Math.PI, false);
     ctx.fill();
-    
-    if(!Ball.served){
-    	ctx.fillStyle = "#777";
-	ctx.fillText("PRESS [SPACE]", canvas.width/2 - 50, 200);
-    }
 }
 
 function drawPaddle(paddle) {
@@ -78,9 +78,18 @@ function drawPaddle(paddle) {
     ctx.fill();
 }
 
-function drawScore() {
+function drawTextInfo() {
 	ctx.fillStyle = "#777";
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - 50, 20);
+	if(!Ball.served){
+    	ctx.fillStyle = "#777";
+	    ctx.fillText("PRESS [SPACE]", canvas.width/2 - 50, 200);
+  }
+  if(RIGHT_WIN || LEFT_WIN){
+	  ctx.beginPath();
+		ctx.fillStyle = "#777";
+		ctx.fillText((RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"), canvas.width/2 - 50, 300);
+	}
 }
 
 function drawMouse() {
@@ -260,14 +269,10 @@ function keepBallInBounds(){
 }
 
 function checkWin(){
-	if(RIGHT_SCORE > WINNING_SCORE){
-		ctx.fillStyle = "#777";
-		ctx.fillText("LEFT WINS", canvas.width/2 - 50, 300);
-	}
-	if(LEFT_SCORE > WINNING_SCORE){
-		ctx.fillStyle = "#777";
-		ctx.fillText("RIGHT WINS", canvas.width/2 - 50, 300);
-	}
+	if(RIGHT_SCORE > WINNING_SCORE)
+	  RIGHT_WIN = true;
+	if(LEFT_SCORE > WINNING_SCORE)
+	  LEFT_WIN = true;
 }
 
 function resetBall(){
@@ -276,6 +281,17 @@ function resetBall(){
 	Ball.xVel = 0;
 	Ball.yVel = 0;
 	Ball.served = false;
+}
+
+function shouldResetGame() {
+  return (RIGHT_WIN || LEFT_WIN) && (Ball.served);
+}
+
+function resetGameData(){
+  RIGHT_WIN = false;
+  LEFT_WIN = false;
+  RIGHT_SCORE = 0;
+  LEFT_SCORE = 0;
 }
 
 </script>
