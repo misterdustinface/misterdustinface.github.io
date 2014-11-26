@@ -75,7 +75,7 @@ function drawPaddle(paddle) {
 
 function drawScore() {
 	ctx.fillStyle = "#777";
-	ctx.fillText(RIGHT_SCORE + " [Score] " + LEFT_SCORE, canvas.width/2 - 50, 20);
+	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - 50, 20);
 }
 
 function drawMouse() {
@@ -184,6 +184,7 @@ function applyControllerCommandToPaddle(paddle) {
     paddle.y += paddle.yVel // move y position accordingly
   } else {
     paddle.yVel *= 1/4.0;
+    paddle.y += paddle.yVel // move y position accordingly
     //paddle.yVel = 0;
   }
 
@@ -244,11 +245,11 @@ function keepBallInBounds(){
 		Ball.yVel = -Ball.yVel;
 	
 	if(Ball.x > canvas.width){
-		RIGHT_SCORE += 1;
+		LEFT_SCORE += 1;
 		resetBall();
 	}
 	if(Ball.x < 0){
-		LEFT_SCORE += 1;
+		RIGHT_SCORE += 1;
 		resetBall();
 	}
 }
