@@ -27,10 +27,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 ctx.font = "bold 16px Monospace";
 var FPS = 30;
-setInterval(function() {
-  update();
-  draw();
-}, 1000/FPS);
+setInterval(gameLoop, 1000/FPS);
 
 var WINNING_SCORE = 10;
 var LEFT_SCORE    = 0;
@@ -39,39 +36,52 @@ var RIGHT_SCORE   = 0;
 var MAX_PADDLE_SPEED = 8;
 
 //////////////////////////////////////////////////////////////////////////
+function gameLoop(){
+  update();
+  draw();
+}
+
 function update(){
 	updatePaddles();
 	updateBall();
 }
-///////////////////////////////////////////////////////////////////
-function draw(){
-	// Clear canvas
-	ctx.clearRect(0,0,canvas.width,canvas.height);
 
-	// Draw ball
-	ctx.fillStyle = Ball.color;
+function draw(){
+	clearCanvas();
+  drawBall();
+  drawPaddle(LeftPaddle);
+  drawPaddle(RightPaddle);
+	drawScore();
+}
+
+function clearCanvas() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+
+function drawBall() {
+  ctx.fillStyle = Ball.color;
 	ctx.beginPath();
     ctx.arc(Ball.x - Ball.size/2, Ball.y - Ball.size/2, Ball.size, 0, 2*Math.PI, false);
     ctx.fill();
-	
-	// Draw paddles
-	ctx.beginPath();
-	ctx.fillStyle = LeftPaddle.color
-    ctx.rect(LeftPaddle.x, LeftPaddle.y, LeftPaddle.width, LeftPaddle.height);
+}
+
+function drawPaddle(paddle) {
+  ctx.beginPath();
+	ctx.fillStyle = paddle.color;
+    ctx.rect(paddle.x, paddle.y, paddle.width, paddle.height);
     ctx.fill();
-	ctx.beginPath();
-	ctx.fillStyle = RightPaddle.color
-    ctx.rect(RightPaddle.x, RightPaddle.y, RightPaddle.width, RightPaddle.height);
-    ctx.fill();
-	
-	// Draw mouse dot
+}
+
+function drawScore() {
+	ctx.fillStyle = "#777";
+	ctx.fillText(RIGHT_SCORE + " [Score] " + LEFT_SCORE, canvas.width/2 - 50, 20);
+}
+
+function drawMouse() {
 	ctx.fillStyle = "#e3e";
 	ctx.beginPath();
     ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
     ctx.fill();
-	
-	ctx.fillStyle = "#777";
-	ctx.fillText(RIGHT_SCORE + " [Score] " + LEFT_SCORE, canvas.width/2 - 50, 20);
 }
 
 ///////////////////////////////////////////////////////////////////
