@@ -22,6 +22,7 @@
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
 window.onload = function(){
 	window.addEventListener("keydown", keyDownEventHandler, false);
+	window.addEventListener("keyup",   keyUpEventHandler, false);
 };
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -86,17 +87,32 @@ function drawMouse() {
 
 ///////////////////////////////////////////////////////////////////
 function keyDownEventHandler(e){
-	gameController(e);
-}
-function gameController(e){
 	controlGameOptions(e);
-	controlLeftPaddle(e);
-	controlRightPaddle(e);	
+	
+	if(e.keyCode == 87)
+		LeftPaddle.up = true;
+	if(e.keyCode == 83)
+		LeftPaddle.down = true;
+	if(e.keyCode == 38)
+		RightPaddle.up = true;
+	if(e.keyCode == 40)
+		RightPaddle.down = true;
 }
+
+function keyUpEventHandler(e){
+  if(e.keyCode == 87)
+		LeftPaddle.up = false;
+	if(e.keyCode == 83)
+		LeftPaddle.down = false;
+	if(e.keyCode == 38)
+		RightPaddle.up = false;
+	if(e.keyCode == 40)
+		RightPaddle.down = false;
+}
+
 function controlGameOptions(e){
-	if(e.keyCode == 32){
+	if(e.keyCode == 32)
 		serveBall();
-	}
 }
 ///////////////////////////////////////////////////////////////////
 // MOUSE	
@@ -121,7 +137,9 @@ var LeftPaddle = {
 	height: 64,
 	yVel: 0,
 	speed: 2,
-	color: "#fff"
+	color: "#fff",
+	up: false,
+	down: false,
 };
 var RightPaddle = {
 	x: canvas.width - 20,
@@ -130,7 +148,9 @@ var RightPaddle = {
 	height: 64,
 	yVel: 0,
 	speed: 2,
-	color: "#fff"
+	color: "#fff",
+	up: false,
+	down: false,
 };
 
 var Ball = {
@@ -144,102 +164,55 @@ var Ball = {
 	color: "#fff"
 };
 
-//WASD
-function controlLeftPaddle(e){
-	if(e.keyCode == 87){
-		//movePlayer(LeftPaddle, "up");
-		if(LeftPaddle.yVel > 0)
-			LeftPaddle.yVel *= 2/3.0;
-		
-		LeftPaddle.yVel -= LeftPaddle.speed;
-	}
-	if(e.keyCode == 65){
-		//movePlayer(LeftPaddle, "left");
-	}
-	if(e.keyCode == 83){
-		//movePlayer(LeftPaddle, "down");
-		if(LeftPaddle.yVel < 0)
-			LeftPaddle.yVel *= 2/3.0;
-		
-		LeftPaddle.yVel += LeftPaddle.speed;
-	}
-	if(e.keyCode == 68){
-		//movePlayer(LeftPaddle, "right");
-	}
-}
-// ARROW KEYS
-function controlRightPaddle(e){
-	if(e.keyCode == 38){
-		//movePlayer(RightPaddle, "up");
-		if(RightPaddle.yVel > 0)
-			RightPaddle.yVel *= 2/3.0;
-		
-		RightPaddle.yVel -= RightPaddle.speed;
-	}
-	if(e.keyCode == 37){
-		//movePlayer(RightPaddle, "left");
-	}
-	if(e.keyCode == 40){
-		//movePlayer(RightPaddle, "down");
-		if(RightPaddle.yVel < 0)
-			RightPaddle.yVel *= 2/3.0;
-		
-		RightPaddle.yVel += RightPaddle.speed;
-	}
-	if(e.keyCode == 39){
-		//movePlayer(RightPaddle, "right");
-	}
-}
-
 function updatePaddles(){
-
-	if(LeftPaddle.yVel > MAX_PADDLE_SPEED){
-		LeftPaddle.yVel = MAX_PADDLE_SPEED;
-	}
-	if(RightPaddle.yVel > MAX_PADDLE_SPEED){
-		RightPaddle.yVel = MAX_PADDLE_SPEED;
-	}
-	if(LeftPaddle.yVel < -MAX_PADDLE_SPEED){
-		LeftPaddle.yVel = -MAX_PADDLE_SPEED;
-	}
-	if(RightPaddle.yVel < -MAX_PADDLE_SPEED){
-		RightPaddle.yVel = -MAX_PADDLE_SPEED;
-	}
-
-	LeftPaddle.y += LeftPaddle.yVel
-	RightPaddle.y += RightPaddle.yVel
-	
-	keepPaddlesInBounds();
+  applyControllerCommandToPaddle(LeftPaddle);
+  limitPaddleSpeed(LeftPaddle);
+  keepPaddleInBounds(LeftPaddle);
+  
+  applyControllerCommandToPaddle(RightPaddle);
+  limitPaddleSpeed(RightPaddle);
+	keepPaddleInBounds(RightPaddle);
 }
-function keepPaddlesInBounds(){
-	if(LeftPaddle.y + LeftPaddle.height < 0){
-		LeftPaddle.y = canvas.height;
+
+function applyControllerCommandToPaddle(paddle){
+	if(paddle.up) {
+		if(paddle.yVel > 0)
+			paddle.yVel *= 2/3.0;
+		paddle.yVel -= paddle.speed;
 	}
-	else if(LeftPaddle.y > canvas.height){
-		LeftPaddle.y = -LeftPaddle.height;
-	}
-	
-	if(RightPaddle.y + RightPaddle.height < 0){
-		RightPaddle.y = canvas.height;
-	}
-	else if(RightPaddle.y > canvas.height){
-		RightPaddle.y = -RightPaddle.height;
-	}
+  if(paddle.down) {
+    if(paddle.yVel < 0)
+			paddle.yVel *= 2/3.0;
+		paddle.yVel += paddle.speed;
+  }
+  
+  paddle.y += paddle.yVel // move y position accordingly
+}
+
+function limitPaddleSpeed(paddle){
+  if(paddle.yVel > MAX_PADDLE_SPEED)
+		paddle.yVel = MAX_PADDLE_SPEED;
+	if(paddle.yVel < -MAX_PADDLE_SPEED)
+		paddle.yVel = -MAX_PADDLE_SPEED;
+}
+
+function keepPaddleInBounds(paddle){
+  if(paddle.y + paddle.height < 0)
+		paddle.y = canvas.height;
+	else if(paddle.y > canvas.height)
+		paddle.y = -paddle.height;
 }
 
 function serveBall(){
 	if(! Ball.served){
 		Ball.xVel = Math.random() * Ball.speed;
 		Ball.yVel = Math.random() * Ball.speed;
-		if(Math.random() > 0.5){
+		if(Math.random() > 0.5)
 			Ball.xVel = -Ball.xVel;
-		}
-		if(Math.random() > 0.5){
+		if(Math.random() > 0.5)
 			Ball.yVel = -Ball.yVel;
-		}
-		if(Math.abs(Ball.yVel) > Math.abs(Ball.xVel)){
+		if(Math.abs(Ball.yVel) > Math.abs(Ball.xVel))
 			Ball.xVel = Ball.yVel;
-		}
 		Ball.served = true;
 	}
 }
@@ -247,12 +220,10 @@ function updateBall(){
 	Ball.x += Ball.xVel;
 	Ball.y += Ball.yVel;
 	
-	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height){
+	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height)
 		swatBall();
-	}
-	if(Ball.x >= RightPaddle.x && Ball.y > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height){
+	if(Ball.x >= RightPaddle.x && Ball.y > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height)
 		swatBall();
-	}
 	
 	keepBallInBounds();
 }
@@ -264,15 +235,13 @@ function swatBall(){
 	else
 		Ball.xVel += Math.random() * Ball.speed;
 	Ball.yVel = Math.random() * Ball.speed;
-	if(Math.random() > 0.5){
+	if(Math.random() > 0.5)
 		Ball.yVel = -Ball.yVel;
-	}
 }
 
 function keepBallInBounds(){
-	if(Ball.y > canvas.height || Ball.y < 0){
+	if(Ball.y > canvas.height || Ball.y < 0)
 		Ball.yVel = -Ball.yVel;
-	}
 	
 	if(Ball.x > canvas.width){
 		RIGHT_SCORE += 1;
@@ -285,12 +254,10 @@ function keepBallInBounds(){
 }
 
 function checkWin(){
-	if(RIGHT_SCORE > WINNING_SCORE){
+	if(RIGHT_SCORE > WINNING_SCORE)
 		document.write('<p>Right Player Wins!' + '</p>');
-	}
-	if(LEFT_SCORE > WINNING_SCORE){
+	if(LEFT_SCORE > WINNING_SCORE)
 		document.write('<p>Left Player Wins!' + '</p>');
-	}
 }
 
 function resetBall(){
