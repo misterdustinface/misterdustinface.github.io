@@ -171,18 +171,18 @@ function updatePaddles(){
   
   applyControllerCommandToPaddle(RightPaddle);
   limitPaddleSpeed(RightPaddle);
-	keepPaddleInBounds(RightPaddle);
+  keepPaddleInBounds(RightPaddle);
 }
 
 function applyControllerCommandToPaddle(paddle){
 	if(paddle.up) {
 		if(paddle.yVel > 0)
-			paddle.yVel *= 2/3.0;
+			paddle.yVel *= 1/4.0;
 		paddle.yVel -= paddle.speed;
 	}
   if(paddle.down) {
     if(paddle.yVel < 0)
-			paddle.yVel *= 2/3.0;
+			paddle.yVel *= 1/4.0;
 		paddle.yVel += paddle.speed;
   }
   
