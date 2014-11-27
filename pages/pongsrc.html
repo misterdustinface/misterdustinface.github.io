@@ -78,15 +78,14 @@ function drawPaddle(paddle) {
 	ctx.fill();
 }
 
+var SCOREFIELD_LENGTH = ctx.measureText("XX [Score] XX").width;
+var PROMPT_BALL_SERVE_TEXT = "PRESS [SPACE]";
+var PROMPT_BAlL_SERVE_TEXT_LENGTH = ctx.measureText(PROMPT_BALL_SERVE_TEXT).width;
 function drawTextInfo() {
 	ctx.fillStyle = "#777";
-	var scoreField = "XX";
-	var length = ctx.measureText(scoreField + " [Score] " + scoreField).width;
-	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (length/2), 20);
+	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (SCOREFIELD_LENGTH/2), 20);
 	if(!Ball.served) {
-		var promptBallServeText = "PRESS [SPACE]";
-		var length = ctx.measureText(promptBallServeText).width;
-    		ctx.fillText(promptBallServeText, canvas.width/2 - (length/2), 200);
+    		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BAlL_SERVE_TEXT_LENGTH/2), 200);
 	}
   	if(RIGHT_WIN || LEFT_WIN) {
   		var winnerText = (RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"); 
