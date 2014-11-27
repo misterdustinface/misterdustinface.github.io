@@ -115,7 +115,7 @@ function keyDownEventHandler(e){
 
 function keyUpEventHandler(e){
 
-  if(e.keyCode == 87)
+  	if(e.keyCode == 87)
 		LeftPaddle.up = false;
 	if(e.keyCode == 83)
 		LeftPaddle.down = false;
@@ -191,21 +191,21 @@ function updatePaddles(){
 
 function applyControllerCommandToPaddle(paddle) {
   if(paddle.up ^ paddle.down) {
-    if(paddle.up) 
+  	if(paddle.up) 
   		paddle.yVel -= paddle.speed;
-    if(paddle.down)
+  	if(paddle.down)
   		paddle.yVel += paddle.speed;
-    paddle.y += paddle.yVel // move y position accordingly
+  	paddle.y += paddle.yVel // move y position accordingly
   } else {
-    paddle.yVel *= 1/4.0;
-    paddle.y += paddle.yVel // move y position accordingly
-    //paddle.yVel = 0;
+  	paddle.yVel *= 1/4.0;
+  	paddle.y += paddle.yVel // move y position accordingly
+  	//paddle.yVel = 0;
   }
 
 }
 
 function limitPaddleSpeed(paddle){
-  if(paddle.yVel > MAX_PADDLE_SPEED)
+  	if(paddle.yVel > MAX_PADDLE_SPEED)
 		paddle.yVel = MAX_PADDLE_SPEED;
 	if(paddle.yVel < -MAX_PADDLE_SPEED)
 		paddle.yVel = -MAX_PADDLE_SPEED;
@@ -270,9 +270,9 @@ function keepBallInBounds(){
 
 function checkWin(){
 	if(RIGHT_SCORE > WINNING_SCORE)
-	  RIGHT_WIN = true;
+		RIGHT_WIN = true;
 	if(LEFT_SCORE > WINNING_SCORE)
-	  LEFT_WIN = true;
+		LEFT_WIN = true;
 }
 
 function resetBall(){
