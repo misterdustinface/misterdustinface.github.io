@@ -80,7 +80,9 @@ function drawPaddle(paddle) {
 
 function drawTextInfo() {
 	ctx.fillStyle = "#777";
-	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - 50, 20);
+	var scoreField = "XX";
+	var length = ctx.measureText(scoreField + " [Score] " + scoreField).width;
+	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (length/2), 20);
 	if(!Ball.served) {
 		var promptBallServeText = "PRESS [SPACE]";
 		var length = ctx.measureText(promptBallServeText).width;
