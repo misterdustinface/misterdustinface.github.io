@@ -47,7 +47,7 @@ function update(){
 	updatePaddles();
 	updateBall();
 	checkWin();
-	if(shouldResetGame()){
+	if(shouldResetGame()) {
 		resetGameData();
 	}
 }
@@ -191,10 +191,8 @@ function updatePaddles(){
 
 function applyControllerCommandToPaddle(paddle) {
   if(paddle.up ^ paddle.down) {
-  	if(paddle.up) 
-  		paddle.yVel -= paddle.speed;
-  	if(paddle.down)
-  		paddle.yVel += paddle.speed;
+  	if(paddle.up) 	paddle.yVel -= paddle.speed;
+  	if(paddle.down)	paddle.yVel += paddle.speed;
   	paddle.y += paddle.yVel // move y position accordingly
   } else {
   	paddle.yVel *= 1/4.0;
@@ -212,12 +210,13 @@ function limitPaddleSpeed(paddle){
 }
 
 function keepPaddleInBounds(paddle){
-  if(paddle.y + paddle.height < 0)
+	if(paddle.y + paddle.height < 0)
 		paddle.y = canvas.height;
 	else if(paddle.y > canvas.height)
 		paddle.y = -paddle.height;
 }
 
+// TODO - give the loser the ball to serve and have it serve from their paddle
 function serveBall(){
 	if(! Ball.served){
 		Ball.xVel = Math.random() * Ball.speed;
@@ -231,6 +230,7 @@ function serveBall(){
 		Ball.served = true;
 	}
 }
+
 function updateBall(){
 	Ball.x += Ball.xVel;
 	Ball.y += Ball.yVel;
@@ -243,6 +243,7 @@ function updateBall(){
 	keepBallInBounds();
 }
 
+// TODO - pass in paddle so we can make the swat based on the paddle and ball velocity vectors
 function swatBall(){
 	Ball.xVel = -Ball.xVel;
 	if(Ball.xVel < 0)
@@ -269,10 +270,8 @@ function keepBallInBounds(){
 }
 
 function checkWin(){
-	if(RIGHT_SCORE > WINNING_SCORE)
-		RIGHT_WIN = true;
-	if(LEFT_SCORE > WINNING_SCORE)
-		LEFT_WIN = true;
+	if(RIGHT_SCORE >= WINNING_SCORE) RIGHT_WIN = true;
+	if(LEFT_SCORE  >= WINNING_SCORE) LEFT_WIN  = true;
 }
 
 function resetBall(){
