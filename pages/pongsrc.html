@@ -83,12 +83,12 @@ function drawTextInfo() {
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - 50, 20);
 	if(!Ball.served) {
 		var promptBallServeText = "PRESS [SPACE]";
-		var length = ctx.measureText(promptBallServeText);
+		var length = ctx.measureText(promptBallServeText).width;
     		ctx.fillText(promptBallServeText, canvas.width/2 - (length/2), 200);
 	}
   	if(RIGHT_WIN || LEFT_WIN) {
   		var winnerText = (RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"); 
-  		var length = ctx.measureText(winnerText);
+  		var length = ctx.measureText(winnerText).width;
 		ctx.fillText(winnerText, canvas.width/2 - (length/2), 250);
   	}
 }
