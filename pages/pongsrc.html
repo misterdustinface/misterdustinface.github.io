@@ -36,13 +36,16 @@ var LEFT_SCORE		= 0;
 var RIGHT_SCORE		= 0;
 var LEFT_WIN		= false;
 var RIGHT_WIN		= false;
-var MAX_PADDLE_SPEED	= 12;
-var MAX_BALL_XVEL	= 18;
-var MIN_BALL_XVEL	= 1;
+var MAX_PADDLE_SPEED	= 6;
+var MAX_BALL_XVEL	= 9;
+var MIN_BALL_XVEL	= 0.5;
 var PADDLE_OFFSET	= 20;
 var BALL_SERVE_WITH_PADDLE_OFFSET = 20;
 var SCORE_YPOS		= 20;
 var MESSAGE_YPOS	= 250;
+var BALL_SPEED		= 5;
+var PADDLE_SPEED	= 1;
+var PADDLE_DIRECTION_TRANSITION_RATE = 1/8;
 
 var COLORS = [	"#FFFFFF", 
 		"#77C621", "#21C6A3", "#C621AC", "#C62721",
@@ -192,7 +195,7 @@ function PaddleObject(xPos) {
 	this.x = xPos;
 	this.y = canvas.height/2 - this.height/2;
 	this.yVel = 0;
-	this.speed = 2;
+	this.speed = PADDLE_SPEED;
 	this.colorindex = 0;
 	this.up    = false;
 	this.down  = false;
@@ -206,7 +209,7 @@ function BallObject() {
 	this.y = canvas.height/2;
 	this.xVel = 0;
 	this.yVel = 0;
-	this.speed = 10;
+	this.speed = BALL_SPEED;
 	this.colorindex = 0;
 	this.isServed = false;
 }
@@ -237,7 +240,7 @@ function applyControllerCommandToPaddle(paddle) {
  		if(paddle.down)	paddle.yVel += paddle.speed;
  		paddle.y += paddle.yVel // move y position accordingly
 	} else {
-  		paddle.yVel *= 1/4.0;
+  		paddle.yVel *= PADDLE_DIRECTION_TRANSITION_RATE;
   		paddle.y += paddle.yVel // move y position accordingly
   		//paddle.yVel = 0;
 	}
