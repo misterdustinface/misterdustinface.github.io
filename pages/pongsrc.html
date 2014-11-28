@@ -254,7 +254,7 @@ function keepPaddleInBounds(paddle){
 function serveBall(){
 	if(! Ball.isServed){
 		
-		Ball.xVel = Math.random() * Ball.speed;
+		Ball.xVel = Math.random() * Ball.speed + 0.1;
 		
 		if(shouldBallFollowLeftPaddle() ^ shouldBallFollowRightPaddle()){
 			if(shouldBallFollowLeftPaddle()) {
@@ -269,7 +269,7 @@ function serveBall(){
 				Ball.xVel = -Ball.xVel;
 		}
 		
-		if(Ball.yVel < 0.01) {
+		if(Math.abs(Ball.yVel) < 0.01) {
 			Ball.yVel = Math.random() * Ball.speed;
 			if(Math.random() > 0.5)
 				Ball.yVel = -Ball.yVel;
