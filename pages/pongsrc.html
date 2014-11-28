@@ -226,12 +226,19 @@ function serveBall(){
 	if(! Ball.served){
 		Ball.xVel = Math.random() * Ball.speed;
 		Ball.yVel = Math.random() * Ball.speed;
-		if(Math.random() > 0.5)
-			Ball.xVel = -Ball.xVel;
+		
+		if(Ball.yVel > Ball.xVel)
+			Ball.xVel = Ball.yVel;
 		if(Math.random() > 0.5)
 			Ball.yVel = -Ball.yVel;
-		if(Math.abs(Ball.yVel) > Math.abs(Ball.xVel))
-			Ball.xVel = Ball.yVel;
+		
+		if (LEFT_SCORE > RIGHT_SCORE) {
+			Ball.xVel = -Ball.xVel;
+		} else if (LEFT_SCORE == RIGHT_SCORE) {
+			if(Math.random() > 0.5)
+				Ball.xVel = -Ball.xVel;
+		}
+		
 		Ball.served = true;
 	}
 }
@@ -287,8 +294,16 @@ function checkWin(){
 }
 
 function resetBall(){
-	Ball.x = canvas.width/2;
-	Ball.y = canvas.height/2;
+	if (LEFT_SCORE == RIGHT_SCORE) {
+		Ball.x = canvas.width/2;
+		Ball.y = canvas.height/2;
+	} else if (LEFT_SCORE < RIGHT_SCORE) {
+		Ball.x = canvas.width/4;
+		Ball.y = LeftPaddle.y
+	} else {
+		Ball.x = 3*canvas.width/4;
+		Ball.y = LeftPaddle.y
+	}
 	Ball.xVel = 0;
 	Ball.yVel = 0;
 	Ball.served = false;
