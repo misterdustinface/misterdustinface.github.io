@@ -265,7 +265,7 @@ function swatBallIfTouchingPaddle() {
 function haveBallFollowLosingPaddle() {
 	if (LEFT_SCORE < RIGHT_SCORE)
 		Ball.y = LeftPaddle.y + (LeftPaddle.height/2);
-	else if (RIGHT_SCORE > LEFT_SCORE) 
+	else if (RIGHT_SCORE < LEFT_SCORE)
 		Ball.y = RightPaddle.y + (RightPaddle.height/2);
 }
 
@@ -284,7 +284,7 @@ function swatBall(paddle){
 		
 	if( (paddle.yVel < 0 && Ball.yVel > 0) || (paddle.yVel > 0 && Ball.yVel < 0) )
 		Ball.yVel = - Math.abs(Math.abs(paddle.yVel) - Math.abs(Ball.yVel));
-	else if (Math.random() > 0.5) 
+	else if (Math.random() > 0.5)
 		Ball.yVel = - Math.random() * Ball.speed;
 }
 
@@ -312,8 +312,8 @@ function resetBall(){
 	Ball.y = canvas.height/2;
 	if (LEFT_SCORE < RIGHT_SCORE)
 		Ball.x = LeftPaddle.x + (LeftPaddle.width + 20);
-	else if (RIGHT_SCORE > LEFT_SCORE)
-		Ball.x = RightPaddle.x + (-20);
+	else if (RIGHT_SCORE < LEFT_SCORE)
+		Ball.x = RightPaddle.x - 20);
 	Ball.xVel = 0;
 	Ball.yVel = 0;
 	Ball.served = false;
