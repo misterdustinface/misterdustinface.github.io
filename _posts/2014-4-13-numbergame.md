@@ -6,9 +6,9 @@ title:  Number Game Prototype
 {{ page.title }}
 ================
 
----
-
 [Numbers][] Available for Download for any computer that can run GL20 (it's a graphics thing - and it needs it at the moment because we used really wonky texture sizes for our prototype). 
+
+---
 
 A tile-based number game that is still in development. It will be released for android devices.
 
