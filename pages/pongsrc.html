@@ -28,8 +28,8 @@ var ctx = canvas.getContext("2d");
 ctx.font = "bold 16px Monospace";
 var UPS = 60;
 var FPS = 30;
-setInterval(gameLogicThread, 1000/UPS);
-setInterval(renderThread, 1000/FPS)
+setInterval(update, 1000/UPS);
+setInterval(draw, 1000/FPS)
 
 var WINNING_SCORE	= 10;
 var LEFT_SCORE		= 0;
@@ -61,13 +61,6 @@ var Ball = new BallObject();
 //var BALLS = [Ball];
 
 //////////////////////////////////////////////////////////////////////////
-function gameLogicThread(){
-	update();
-}
-function renderThread(){
-	draw();
-}
-
 
 function update(){
 	updatePaddles();
