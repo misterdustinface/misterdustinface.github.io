@@ -287,11 +287,11 @@ function swatBallIfTouchingPaddle() {
 
 function haveBallFollowLosingPaddle() {
 	if (RIGHT_SCORE > LEFT_SCORE && !RIGHT_WIN) {
-		Ball.x = LeftPaddle.x + (LeftPaddle.width + BALL_SERVE_WITH_PADDLE_OFFSET) + 3*Ball.radius/2;
-		Ball.y = LeftPaddle.y + (LeftPaddle.height/2) + Ball.radius/2;
+		Ball.x = LeftPaddle.x + (LeftPaddle.width + BALL_SERVE_WITH_PADDLE_OFFSET) + Ball.radius;
+		Ball.y = LeftPaddle.y + (LeftPaddle.height/2);
 	} else if (LEFT_SCORE > RIGHT_SCORE && !LEFT_WIN) {
-		Ball.x = RightPaddle.x - (BALL_SERVE_WITH_PADDLE_OFFSET) - Ball.radius/2;
-		Ball.y = RightPaddle.y + (RightPaddle.height/2) + Ball.radius/2;
+		Ball.x = RightPaddle.x - (BALL_SERVE_WITH_PADDLE_OFFSET) - Ball.radius;
+		Ball.y = RightPaddle.y + (RightPaddle.height/2);
 	}
 }
 
