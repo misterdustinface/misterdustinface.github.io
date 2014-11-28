@@ -81,7 +81,7 @@ function clearCanvas() {
 function drawBall() {
 	ctx.beginPath();
 	ctx.fillStyle = COLORS[ (Math.abs(Ball.colorindex) % COLORS.length) ];
-	ctx.arc(Ball.x - Ball.size/2, Ball.y - Ball.size/2, Ball.size, 0, 2*Math.PI, false);
+	ctx.arc(Ball.x - Ball.radius/2, Ball.y - Ball.radius/2, Ball.radius, 0, 2*Math.PI, false);
 	ctx.fill();
 }
 
@@ -189,9 +189,9 @@ function PaddleObject(xPos) {
 }
 
 function BallObject() {
-	this.size = 64;
-	this.x = canvas.width/2 + this.size/2;
-	this.y = canvas.height/2 + this.size/2;
+	this.radius = 64;
+	this.x = canvas.width/2 + this.radius/2;
+	this.y = canvas.height/2 + this.radius/2;
 	this.xVel = 0;
 	this.yVel = 0;
 	this.speed = 10;
@@ -266,19 +266,19 @@ function updateBalls(){
 }
 
 function swatBallIfTouchingPaddle() {
-	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y + Ball.size > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height)
+	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y + Ball.radius > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height)
 		swatBall(LeftPaddle);
-	if(Ball.x + Ball.size >= RightPaddle.x && Ball.y + Ball.size > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height)
+	if(Ball.x + Ball.radius >= RightPaddle.x && Ball.y + Ball.radius > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height)
 		swatBall(RightPaddle);
 }
 
 function haveBallFollowLosingPaddle() {
 	if (RIGHT_SCORE > LEFT_SCORE && !RIGHT_WIN) {
-		Ball.x = LeftPaddle.x + (LeftPaddle.width + BALL_SERVE_WITH_PADDLE_OFFSET) + 3*Ball.size/2;
-		Ball.y = LeftPaddle.y + (LeftPaddle.height/2) + Ball.size/2;
+		Ball.x = LeftPaddle.x + (LeftPaddle.width + BALL_SERVE_WITH_PADDLE_OFFSET) + 3*Ball.radius/2;
+		Ball.y = LeftPaddle.y + (LeftPaddle.height/2) + Ball.radius/2;
 	} else if (LEFT_SCORE > RIGHT_SCORE && !LEFT_WIN) {
-		Ball.x = RightPaddle.x - (BALL_SERVE_WITH_PADDLE_OFFSET) - Ball.size/2;
-		Ball.y = RightPaddle.y + (RightPaddle.height/2) + Ball.size/2;
+		Ball.x = RightPaddle.x - (BALL_SERVE_WITH_PADDLE_OFFSET) - Ball.radius/2;
+		Ball.y = RightPaddle.y + (RightPaddle.height/2) + Ball.radius/2;
 	}
 }
 
@@ -301,14 +301,14 @@ function swatBall(paddle){
 }
 
 function keepBallInBounds(){
-	if(Ball.y + Ball.size > canvas.height || Ball.y < 0)
+	if(Ball.y + Ball.radius > canvas.height || Ball.y < 0)
 		Ball.yVel = -Ball.yVel;
 	
 	if(Ball.x > canvas.width){
 		LEFT_SCORE += 1;
 		resetBall();
 	}
-	if(Ball.x + Ball.size < 0){
+	if(Ball.x + Ball.radius < 0){
 		RIGHT_SCORE += 1;
 		resetBall();
 	}
