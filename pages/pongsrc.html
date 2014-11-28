@@ -69,14 +69,14 @@ function clearCanvas() {
 
 function drawBall() {
 	ctx.beginPath();
-	ctx.fillStyle = COLORS[BALL.colorindex % COLORS.length];
+	ctx.fillStyle = COLORS[Math.abs(BALL.colorindex) % COLORS.length];
 	ctx.arc(Ball.x - Ball.size/2, Ball.y - Ball.size/2, Ball.size, 0, 2*Math.PI, false);
 	ctx.fill();
 }
 
 function drawPaddle(paddle) {
 	ctx.beginPath();
-	ctx.fillStyle = COLORS[paddle.colorindex % COLORS.length];
+	ctx.fillStyle = COLORS[Math.abs(paddle.colorindex) % COLORS.length];
 	ctx.rect(paddle.x, paddle.y, paddle.width, paddle.height);
 	ctx.fill();
 }
@@ -127,13 +127,13 @@ function keyDownEventHandler(e){
 		RightPaddle.down = true;
 		
 	if(e.keyCode == KEYS.D)
-		++LeftPaddle.colorindex; 
+		LeftPaddle.colorindex++; 
 	if(e.keyCode == KEYS.A)
-		--LeftPaddle.colorindex;
+		LeftPaddle.colorindex--;
 	if(e.keyCode == KEYS.RIGHT_ARROW)
-		++RightPaddle.colorindex;
+		RightPaddle.colorindex++;
 	if(e.keyCode == KEYS.LEFT_ARROW)
-		--RightPaddle.colorindex;
+		RightPaddle.colorindex--;
 }
 
 function keyUpEventHandler(e){
