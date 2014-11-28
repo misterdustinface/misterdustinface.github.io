@@ -76,7 +76,7 @@ function drawBall() {
 
 function drawPaddle(paddle) {
 	ctx.beginPath();
-	ctx.fillStyle = "#fff";//COLORS[Math.abs(paddle.colorindex) % COLORS.length];
+	ctx.fillStyle = COLORS[ (Math.abs(paddle.colorindex) % COLORS.length) ];
 	ctx.rect(paddle.x, paddle.y, paddle.width, paddle.height);
 	ctx.fill();
 }
