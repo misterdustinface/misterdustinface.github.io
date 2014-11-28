@@ -125,6 +125,9 @@ function keyDownEventHandler(e){
 		RightPaddle.up = true;
 	if(e.keyCode == KEYS.DOWN_ARROW)
 		RightPaddle.down = true;
+		
+	if(e.keyCode == KEYS.D)
+		LeftPaddle.color = COLORS[2];
 }
 
 function keyUpEventHandler(e){
