@@ -98,14 +98,14 @@ var PROMPT_BALL_SERVE_TEXT_LENGTH = ctx.measureText(PROMPT_BALL_SERVE_TEXT).widt
 function drawTextInfo() {
 	ctx.fillStyle = TEXTCOLOR;
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (SCOREFIELD_LENGTH/2), 20);
-	if(! Ball.isServed) {
-    		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), 200);
-	}
+
   	if(RIGHT_WIN || LEFT_WIN) {
   		var winnerText = (RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"); 
   		var length = ctx.measureText(winnerText).width;
-		ctx.fillText(winnerText, canvas.width/2 - (length/2), 250);
-  	}
+		ctx.fillText(winnerText, canvas.width/2 - (length/2), 200);
+  	} else if (! Ball.isServed) {
+    		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), 200);
+	}
 }
 
 function drawMouse() {
