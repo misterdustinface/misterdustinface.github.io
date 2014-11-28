@@ -98,7 +98,7 @@ var PROMPT_BAlL_SERVE_TEXT_LENGTH = ctx.measureText(PROMPT_BALL_SERVE_TEXT).widt
 function drawTextInfo() {
 	ctx.fillStyle = TEXTCOLOR;
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (SCOREFIELD_LENGTH/2), 20);
-	if(!Ball.served) {
+	if(!Ball.isServed) {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BAlL_SERVE_TEXT_LENGTH/2), 200);
 	}
   	if(RIGHT_WIN || LEFT_WIN) {
@@ -159,20 +159,19 @@ function keyUpEventHandler(e){
 		RightPaddle.down = false;
 }
 
-///////////////////////////////////////////////////////////////////
-// MOUSE	
-var Mouse = {
-	x: canvas.width/2,
-	y: canvas.height/2,
-};
-canvas.onmousemove = function(event){	
-	Mouse.x = event.clientX;
-	Mouse.y = event.clientY;
-};
-canvas.onmousedown = function(){
-};
-canvas.onmouseup = function(){
-};
+// // MOUSE	
+// var Mouse = {
+// 	x: canvas.width/2,
+// 	y: canvas.height/2,
+// };
+// canvas.onmousemove = function(event){	
+// 	Mouse.x = event.clientX;
+// 	Mouse.y = event.clientY;
+// };
+// canvas.onmousedown = function(){
+// };
+// canvas.onmouseup = function(){
+// };
 
 ///////////////////////////////////////////////////////////////////
 function PaddleObject(xPos) {
@@ -183,19 +182,21 @@ function PaddleObject(xPos) {
 	this.yVel = 0;
 	this.speed = 2;
 	this.colorindex = 0;
-	this.up = false;
-	this.down = false;
+	this.up    = false;
+	this.down  = false;
+	this.right = false;
+	this.left  = false;
 }
 
 function BallObject() {
-    this.x = canvas.width/2;
-    this.y = canvas.height/2;
-    this.xVel = 0;
-    this.yVel = 0;
-    this.size = 4;
-    this.speed = 10;
-    this.served = false;
-    this.colorindex = 0;
+	this.size = 4;
+	this.x = canvas.width/2;
+	this.y = canvas.height/2;
+	this.xVel = 0;
+	this.yVel = 0;
+	this.speed = 10;
+	this.colorindex = 0;
+	this.isServed = false;
 }
 
 function updatePaddles(){
@@ -207,15 +208,15 @@ function updatePaddles(){
 }
 
 function applyControllerCommandToPaddle(paddle) {
-  if(paddle.up ^ paddle.down) {
-  	if(paddle.up) 	paddle.yVel -= paddle.speed;
-  	if(paddle.down)	paddle.yVel += paddle.speed;
-  	paddle.y += paddle.yVel // move y position accordingly
-  } else {
-  	paddle.yVel *= 1/4.0;
-  	paddle.y += paddle.yVel // move y position accordingly
-  	//paddle.yVel = 0;
-  }
+	if(paddle.up ^ paddle.down) {
+ 		if(paddle.up) 	paddle.yVel -= paddle.speed;
+ 		if(paddle.down)	paddle.yVel += paddle.speed;
+ 		paddle.y += paddle.yVel // move y position accordingly
+	} else {
+  		paddle.yVel *= 1/4.0;
+  		paddle.y += paddle.yVel // move y position accordingly
+  		//paddle.yVel = 0;
+	}
 }
 
 function limitPaddleSpeed(paddle){
@@ -232,9 +233,8 @@ function keepPaddleInBounds(paddle){
 		paddle.y = -paddle.height;
 }
 
-// TODO - give the loser the ball to serve and have it serve from their paddle
 function serveBall(){
-	if(! Ball.served){
+	if(! Ball.isServed){
 		Ball.xVel = Math.random() * Ball.speed;
 		Ball.yVel = Math.random() * Ball.speed;
 		
@@ -250,13 +250,12 @@ function serveBall(){
 				Ball.xVel = -Ball.xVel;
 		}
 		
-		Ball.served = true;
+		Ball.isServed = true;
 	}
 }
 
 function updateBalls(){
-	
-	if(Ball.served) {
+	if(Ball.isServed) {
 		Ball.x += Ball.xVel;
 		Ball.y += Ball.yVel;
 		swatBallIfTouchingPaddle();
@@ -283,7 +282,6 @@ function haveBallFollowLosingPaddle() {
 	}
 }
 
-// TODO - pass in paddle so we can make the swat based on the paddle and ball velocity vectors
 function swatBall(paddle){
 	Ball.xVel = -Ball.xVel;
 	if( Ball.xVel < 0 ) {
@@ -326,11 +324,11 @@ function resetBall(){
 	Ball.y = canvas.height/2;
 	Ball.xVel = 0;
 	Ball.yVel = 0;
-	Ball.served = false;
+	Ball.isServed = false;
 }
 
 function shouldResetGame() {
-  return (RIGHT_WIN || LEFT_WIN) && (Ball.served);
+	return (RIGHT_WIN || LEFT_WIN) && (Ball.isServed);
 }
 
 function resetGame() {
@@ -339,10 +337,10 @@ function resetGame() {
 }
 
 function resetGameData(){
-  RIGHT_WIN = false;
-  LEFT_WIN = false;
-  RIGHT_SCORE = 0;
-  LEFT_SCORE = 0;
+	RIGHT_WIN = false;
+	LEFT_WIN = false;
+	RIGHT_SCORE = 0;
+	LEFT_SCORE = 0;
 }
 
 </script>
