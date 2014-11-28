@@ -51,7 +51,7 @@ function update(){
 	updateBall();
 	checkWin();
 	if(shouldResetGame()) {
-		resetGameData();
+		resetGame();
 	}
 }
 
@@ -105,35 +105,37 @@ function drawMouse() {
 }
 
 ///////////////////////////////////////////////////////////////////
-var W		= 87;
-var S		= 83;
-var UP_ARROW	= 38;
-var DOWN_ARROW	= 40;
-var SPACEBAR	= 32;
+var KEYS = {
+	W = 87, A = 65, S = 83, D = 68,
+	UP_ARROW = 38, LEFT_ARROW = 37, DOWN_ARROW = 40, RIGHT_ARROW = 39,
+	SPACEBAR = 32, ESC = 27,
+}
 
 function keyDownEventHandler(e){
-	if(e.keyCode == SPACEBAR)
+	if(e.keyCode == KEYS.SPACEBAR)
 		serveBall();
+	if(e.keyCode == KEYS.ESC)
+		resetGame();
 	
-	if(e.keyCode == W)
+	if(e.keyCode == KEYS.W)
 		LeftPaddle.up = true;
-	if(e.keyCode == S)
+	if(e.keyCode == KEYS.S)
 		LeftPaddle.down = true;
-	if(e.keyCode == UP_ARROW)
+	if(e.keyCode == KEYS.UP_ARROW)
 		RightPaddle.up = true;
-	if(e.keyCode == DOWN_ARROW)
+	if(e.keyCode == KEYS.DOWN_ARROW)
 		RightPaddle.down = true;
 }
 
 function keyUpEventHandler(e){
 
-  	if(e.keyCode == W)
+  	if(e.keyCode == KEYS.W)
 		LeftPaddle.up = false;
-	if(e.keyCode == S)
+	if(e.keyCode == KEYS.S)
 		LeftPaddle.down = false;
-	if(e.keyCode == UP_ARROW)
+	if(e.keyCode == KEYS.UP_ARROW)
 		RightPaddle.up = false;
-	if(e.keyCode == DOWN_ARROW)
+	if(e.keyCode == KEYS.DOWN_ARROW)
 		RightPaddle.down = false;
 }
 
@@ -323,6 +325,11 @@ function resetBall(){
 
 function shouldResetGame() {
   return (RIGHT_WIN || LEFT_WIN) && (Ball.served);
+}
+
+function resetGame() {
+	resetGameData();
+	resetBall();
 }
 
 function resetGameData(){
