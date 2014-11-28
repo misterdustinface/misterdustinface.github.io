@@ -328,7 +328,11 @@ function resetBall(){
 }
 
 function shouldResetGame() {
-	return (RIGHT_WIN || LEFT_WIN) && (Ball.isServed);
+	return (RIGHT_WIN || LEFT_WIN) && isPlayRequested();
+}
+
+function isPlayRequested() {
+	return Ball.isServed;
 }
 
 function resetGame() {
