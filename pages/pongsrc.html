@@ -266,9 +266,9 @@ function updateBalls(){
 }
 
 function swatBallIfTouchingPaddle() {
-	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height)
+	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y + Ball.size > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height)
 		swatBall(LeftPaddle);
-	if(Ball.x >= RightPaddle.x && Ball.y > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height)
+	if(Ball.x + Ball.size >= RightPaddle.x && Ball.y + Ball.size > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height)
 		swatBall(RightPaddle);
 }
 
@@ -308,7 +308,7 @@ function keepBallInBounds(){
 		LEFT_SCORE += 1;
 		resetBall();
 	}
-	if(Ball.x < 0){
+	if(Ball.x + Ball.size < 0){
 		RIGHT_SCORE += 1;
 		resetBall();
 	}
@@ -320,11 +320,8 @@ function checkWin(){
 }
 
 function resetBall(){
-	Ball.x = canvas.width/2;
-	Ball.y = canvas.height/2;
-	Ball.xVel = 0;
-	Ball.yVel = 0;
-	Ball.isServed = false;
+	delete Ball;
+	Ball = new BallObject();
 }
 
 function shouldResetGame() {
