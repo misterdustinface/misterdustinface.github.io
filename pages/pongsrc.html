@@ -181,7 +181,7 @@ var Ball = {
 	size: 4,
 	speed: 10,
 	served: false,
-	color: "#fff"
+	color: "#fff",
 };
 
 function updatePaddles(){
@@ -244,15 +244,32 @@ function serveBall(){
 }
 
 function updateBall(){
-	Ball.x += Ball.xVel;
-	Ball.y += Ball.yVel;
 	
+	if(Ball.served) {
+		Ball.x += Ball.xVel;
+		Ball.y += Ball.yVel;
+		swatBallIfTouchingPaddle();
+		keepBallInBounds();
+	} else {
+		haveBallFollowLosingPaddle();	
+	}
+}
+
+function swatBallIfTouchingPaddle() {
 	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height)
 		swatBall(LeftPaddle);
 	if(Ball.x >= RightPaddle.x && Ball.y > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height)
 		swatBall(RightPaddle);
-	
-	keepBallInBounds();
+}
+
+function haveBallFollowLosingPaddle() {
+	if (LEFT_SCORE < RIGHT_SCORE) {
+		Ball.x = LeftPaddle.x + LeftPaddle.width + 20;
+		Ball.y = LeftPaddle.y + LeftPaddle.height/2;
+	} else if (RIGHT_SCORE > LEFT_SCORE){
+		Ball.x = RightPaddle.x - 20;
+		Ball.y = RightPaddle.y + RightPaddle.height/2;
+	}
 }
 
 // TODO - pass in paddle so we can make the swat based on the paddle and ball velocity vectors
@@ -294,16 +311,8 @@ function checkWin(){
 }
 
 function resetBall(){
-	if (LEFT_SCORE == RIGHT_SCORE) {
-		Ball.x = canvas.width/2;
-		Ball.y = canvas.height/2;
-	} else if (LEFT_SCORE < RIGHT_SCORE) {
-		Ball.x = LeftPaddle.x + LeftPaddle.width + 20;
-		Ball.y = LeftPaddle.y + LeftPaddle.height/2;
-	} else {
-		Ball.x = RightPaddle.x - 20;
-		Ball.y = RightPaddle.y + RightPaddle.height/2;
-	}
+	Ball.x = canvas.width/2;
+	Ball.y = canvas.height/2;
 	Ball.xVel = 0;
 	Ball.yVel = 0;
 	Ball.served = false;
