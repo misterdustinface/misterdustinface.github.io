@@ -102,7 +102,7 @@ function drawTextInfo() {
 	ctx.fillStyle = TEXTCOLOR;
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (SCOREFIELD_LENGTH/2), SCORE_YPOS);
 
-  	if(RIGHT_WIN || LEFT_WIN) {
+  	if(RIGHT_WIN ^ LEFT_WIN) {
   		var winnerText = (RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"); 
   		var length = ctx.measureText(winnerText).width;
 		ctx.fillText(winnerText, canvas.width/2 - (length/2), MESSAGE_YPOS);
@@ -265,11 +265,14 @@ function serveBall(){
 				Ball.xVel = -Ball.xVel;
 			}
 		} else {
+			if(Math.random() > 0.5)
+				Ball.xVel = -Ball.xVel;
+		}
+		
+		if(Ball.yVel == 0) {
 			Ball.yVel = Math.random() * Ball.speed;
 			if(Math.random() > 0.5)
 				Ball.yVel = -Ball.yVel;
-			if(Math.random() > 0.5)
-				Ball.xVel = -Ball.xVel;
 		}
 		
 		Ball.isServed = true;
