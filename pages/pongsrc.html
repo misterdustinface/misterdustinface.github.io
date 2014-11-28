@@ -35,7 +35,7 @@ var RIGHT_SCORE   = 0;
 var LEFT_WIN      = false;
 var RIGHT_WIN     = false;
 
-var MAX_PADDLE_SPEED = 10;
+var MAX_PADDLE_SPEED = 12;
 
 //////////////////////////////////////////////////////////////////////////
 function gameLoop(){
@@ -241,22 +241,26 @@ function updateBall(){
 	Ball.y += Ball.yVel;
 	
 	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height)
-		swatBall();
+		swatBall(LeftPaddle);
 	if(Ball.x >= RightPaddle.x && Ball.y > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height)
-		swatBall();
+		swatBall(RightPaddle);
 	
 	keepBallInBounds();
 }
 
 // TODO - pass in paddle so we can make the swat based on the paddle and ball velocity vectors
-function swatBall(){
+function swatBall(paddle){
 	Ball.xVel = -Ball.xVel;
-	if(Ball.xVel < 0)
+	if( Ball.xVel < 0 )
 		Ball.xVel -= Math.random() * Ball.speed;
 	else
 		Ball.xVel += Math.random() * Ball.speed;
-	Ball.yVel = Math.random() * Ball.speed;
-	if(Math.random() > 0.5)
+	
+	Ball.yVel = Math.abs(Math.abs(paddle.yVel) - Math.abs(Ball.yVel));
+	
+	if( (paddle.yVel < 0 && Ball.yVel > 0) || (paddle.yVel > 0 && Ball.yVel < 0) ) 
+		Ball.yVel = -Ball.yVel
+	else if (Math.random() > 0.5)
 		Ball.yVel = -Ball.yVel;
 }
 
