@@ -8,6 +8,8 @@ title:  Notepad
 
 [Notepad][] Available for Download
 
+---
+
 A simple notepad application.
 
 ---
