@@ -275,11 +275,11 @@ function swatBall(paddle){
 	if( Ball.xVel < 0 ) {
 		Ball.xVel -= Math.random() * Ball.speed;
 		if (Ball.xVel < -MAX_BALL_XVEL)
-			Ball.xVel = -MAX_BALL_XVEL
+			Ball.xVel = -MAX_BALL_XVEL;
 	}else{
 		Ball.xVel += Math.random() * Ball.speed;
 		if (Ball.xVel > MAX_BALL_XVEL)
-			Ball.xVel = MAX_BALL_XVEL
+			Ball.xVel = MAX_BALL_XVEL;
 	}
 		
 	if( (paddle.yVel < 0 && Ball.yVel > 0) || (paddle.yVel > 0 && Ball.yVel < 0) )
@@ -313,7 +313,7 @@ function resetBall(){
 	if (LEFT_SCORE < RIGHT_SCORE)
 		Ball.x = LeftPaddle.x + (LeftPaddle.width + 20);
 	else if (RIGHT_SCORE < LEFT_SCORE)
-		Ball.x = RightPaddle.x - 20);
+		Ball.x = RightPaddle.x + (-20);
 	Ball.xVel = 0;
 	Ball.yVel = 0;
 	Ball.served = false;
