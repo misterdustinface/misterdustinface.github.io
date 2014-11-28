@@ -9,7 +9,7 @@ title:  Number Game Prototype
 [Numbers][] Available for Download for any computer that can run GL20 (it's a graphics thing - and it needs it at the moment because we used really wonky texture sizes for our prototype). 
 
 ---
-
+<div class="paper">
 A tile-based number game proof of concept demonstration.
 
 Team: 
@@ -28,6 +28,7 @@ Goal:
 Match all the tiles! 
 We recommend starting on the 2x2, and then moving on to 3x3 boards. 
 Not all 4x4+ grids are solvable.
+</div>
 
 ---
 
