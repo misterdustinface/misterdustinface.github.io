@@ -37,6 +37,9 @@ var RIGHT_WIN		= false;
 var MAX_PADDLE_SPEED	= 12;
 var MAX_BALL_XVEL	= 20;
 
+var COLORS = ["#fff", "#e3e", "#3e3", "#44d"];
+var TEXTCOLOR = "#777";
+
 //////////////////////////////////////////////////////////////////////////
 function gameLoop(){
 	update();
@@ -82,7 +85,7 @@ var SCOREFIELD_LENGTH = ctx.measureText("XX [Score] XX").width;
 var PROMPT_BALL_SERVE_TEXT = "PRESS [SPACE]";
 var PROMPT_BAlL_SERVE_TEXT_LENGTH = ctx.measureText(PROMPT_BALL_SERVE_TEXT).width;
 function drawTextInfo() {
-	ctx.fillStyle = "#777";
+	ctx.fillStyle = TEXTCOLOR;
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (SCOREFIELD_LENGTH/2), 20);
 	if(!Ball.served) {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BAlL_SERVE_TEXT_LENGTH/2), 200);
@@ -95,7 +98,7 @@ function drawTextInfo() {
 }
 
 function drawMouse() {
-	ctx.fillStyle = "#e3e";
+	ctx.fillStyle = COLORS[1];
 	ctx.beginPath();
 	ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
 	ctx.fill();
@@ -157,7 +160,7 @@ var LeftPaddle = {
 	height: 64,
 	yVel: 0,
 	speed: 2,
-	color: "#fff",
+	color: COLORS[0],
 	up: false,
 	down: false,
 };
@@ -168,7 +171,7 @@ var RightPaddle = {
 	height: 64,
 	yVel: 0,
 	speed: 2,
-	color: "#fff",
+	color: COLORS[0],
 	up: false,
 	down: false,
 };
@@ -181,7 +184,7 @@ var Ball = {
 	size: 4,
 	speed: 10,
 	served: false,
-	color: "#fff",
+	color: COLORS[0],
 };
 
 function updatePaddles(){
