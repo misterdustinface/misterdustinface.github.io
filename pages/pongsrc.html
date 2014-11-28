@@ -36,6 +36,8 @@ var LEFT_WIN		= false;
 var RIGHT_WIN		= false;
 var MAX_PADDLE_SPEED	= 12;
 var MAX_BALL_XVEL	= 20;
+var PADDLE_OFFSET	= 20;
+var BALL_SERVE_WITH_PADDLE_OFFSET = 20;
 
 var COLORS = ["#fff", 
 		"#77C621", "#21C6A3", "#C621AC", "#C62721",
@@ -166,28 +168,20 @@ canvas.onmouseup = function(){
 };
 
 ///////////////////////////////////////////////////////////////////
-var LeftPaddle = {
-	x: 20,
-	y: canvas.height/2 - 32,
-	width: 4,
-	height: 64,
-	yVel: 0,
-	speed: 2,
-	colorindex: 0,
-	up: false,
-	down: false,
-};
-var RightPaddle = {
-	x: canvas.width - 20,
-	y: canvas.height/2 - 32,
-	width: 4,
-	height: 64,
-	yVel: 0,
-	speed: 2,
-	colorindex: 0,
-	up: false,
-	down: false,
-};
+function PaddleObject(xPos) {
+	this.width  = 4;
+	this.height = 64;
+	this.x = xPos;
+	this.y = canvas.height/2 - this.height/2;
+	this.yVel = 0;
+	this.speed = 2;
+	this.colorindex = 0;
+	this.up = false;
+	this.down = false;
+}
+
+var LeftPaddle  = new PaddleObject(PADDLE_OFFSET);
+var RightPaddle = new PaddleObject(canvas.width - PADDLE_OFFSET);
 
 function BallObject() {
     this.x = canvas.width/2;
@@ -281,10 +275,10 @@ function swatBallIfTouchingPaddle() {
 
 function haveBallFollowLosingPaddle() {
 	if (RIGHT_SCORE > LEFT_SCORE && !RIGHT_WIN) {
-		Ball.x = LeftPaddle.x + (LeftPaddle.width + 20);
+		Ball.x = LeftPaddle.x + (LeftPaddle.width + BALL_SERVE_WITH_PADDLE_OFFSET);
 		Ball.y = LeftPaddle.y + (LeftPaddle.height/2);
 	} else if (LEFT_SCORE > RIGHT_SCORE && !LEFT_WIN) {
-		Ball.x = RightPaddle.x - 20;
+		Ball.x = RightPaddle.x - (BALL_SERVE_WITH_PADDLE_OFFSET);
 		Ball.y = RightPaddle.y + (RightPaddle.height/2);
 	}
 }
