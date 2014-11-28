@@ -189,15 +189,27 @@ function PaddleObject(xPos) {
 }
 
 function BallObject() {
-	this.radius = 64;
-	this.x = canvas.width/2 + this.radius/2;
-	this.y = canvas.height/2 + this.radius/2;
+	this.radius = 32;
+	this.x = canvas.width/2;
+	this.y = canvas.height/2;
 	this.xVel = 0;
 	this.yVel = 0;
 	this.speed = 10;
 	this.colorindex = 0;
 	this.isServed = false;
 }
+
+function intersects(circle, rectangle) {
+	return 	circle.x + circle.radius >= rectangle.x
+	&&	circle.x - circle.radius <= rectangle.x + rectangle.width
+	&&	circle.y + circle.radius >= rectangle.y
+	&&	circle.y - circle.radius <= rectangle.y + rectangle.height;
+}
+
+//function intersects(point, rectangle) {
+//	return 	point.x >= rectangle.x && point.x <= rectangle.x + rectangle.width
+//	&& 	point.y >= rectangle.y && point.y <= rectangle.y + rectangle.height;
+//}
 
 function updatePaddles(){
 	for (var i = 0; i < PADDLES.length; i++) {
@@ -266,10 +278,11 @@ function updateBalls(){
 }
 
 function swatBallIfTouchingPaddle() {
-	if(Ball.x <= LeftPaddle.x + LeftPaddle.width && Ball.y + Ball.radius > LeftPaddle.y && Ball.y < LeftPaddle.y + LeftPaddle.height)
-		swatBall(LeftPaddle);
-	if(Ball.x + Ball.radius >= RightPaddle.x && Ball.y + Ball.radius > RightPaddle.y && Ball.y < RightPaddle.y + RightPaddle.height)
-		swatBall(RightPaddle);
+	for(var i = 0; i < PADDLES.length; i++) {
+		if(intersects(Ball, PADDLES[i])) {
+			swatBall(PADDLES[i]);
+		}
+	}
 }
 
 function haveBallFollowLosingPaddle() {
