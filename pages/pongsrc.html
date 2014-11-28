@@ -252,17 +252,21 @@ function keepPaddleInBounds(paddle){
 
 function serveBall(){
 	if(! Ball.isServed){
+		
 		Ball.xVel = Math.random() * Ball.speed;
-		Ball.yVel = Math.random() * Ball.speed;
 		
-		if(Ball.yVel > Ball.xVel)
-			Ball.xVel = Ball.yVel;
-		if(Math.random() > 0.5)
-			Ball.yVel = -Ball.yVel;
-		
-		if (LEFT_SCORE > RIGHT_SCORE) {
-			Ball.xVel = -Ball.xVel;
-		} else if (LEFT_SCORE == RIGHT_SCORE) {
+		if(shouldBallFollowLeftPaddle() ^ shouldBallFollowRightPaddle()){
+			if(shouldBallFollowLeftPaddle()) {
+				Ball.yVel = LeftPaddle.yVel;
+			}
+			if(shouldBallFollowRightPaddle()) {
+				Ball.yVel = RightPaddle.yVel;
+				Ball.xVel = -Ball.xVel;
+			}
+		} else {
+			Ball.yVel = Math.random() * Ball.speed;
+			if(Math.random() > 0.5)
+				Ball.yVel = -Ball.yVel;
 			if(Math.random() > 0.5)
 				Ball.xVel = -Ball.xVel;
 		}
@@ -291,13 +295,20 @@ function swatBallIfTouchingPaddle() {
 }
 
 function haveBallFollowLosingPaddle() {
-	if (RIGHT_SCORE > LEFT_SCORE && !RIGHT_WIN) {
+	if (shouldBallFollowLeftPaddle()) {
 		Ball.x = LeftPaddle.x + (LeftPaddle.width + BALL_SERVE_WITH_PADDLE_OFFSET) + Ball.radius;
 		Ball.y = LeftPaddle.y + (LeftPaddle.height/2);
-	} else if (LEFT_SCORE > RIGHT_SCORE && !LEFT_WIN) {
+	} else if (shouldBallFollowRightPaddle()) {
 		Ball.x = RightPaddle.x - (BALL_SERVE_WITH_PADDLE_OFFSET) - Ball.radius;
 		Ball.y = RightPaddle.y + (RightPaddle.height/2);
 	}
+}
+
+function shouldBallFollowLeftPaddle() {
+	return RIGHT_SCORE > LEFT_SCORE && !RIGHT_WIN;
+}
+function shouldBallFollowRightPaddle() {
+	return LEFT_SCORE > RIGHT_SCORE && !LEFT_WIN;
 }
 
 function swatBall(paddle){
