@@ -106,9 +106,9 @@ function drawMouse() {
 
 ///////////////////////////////////////////////////////////////////
 var KEYS = {
-	W = 87, A = 65, S = 83, D = 68,
-	UP_ARROW = 38, LEFT_ARROW = 37, DOWN_ARROW = 40, RIGHT_ARROW = 39,
-	SPACEBAR = 32, ESC = 27,
+	W: 87, A: 65, S: 83, D: 68,
+	UP_ARROW: 38, LEFT_ARROW: 37, DOWN_ARROW: 40, RIGHT_ARROW: 39,
+	SPACEBAR: 32, ESC: 27,
 };
 
 function keyDownEventHandler(e){
@@ -209,7 +209,6 @@ function applyControllerCommandToPaddle(paddle) {
   	paddle.y += paddle.yVel // move y position accordingly
   	//paddle.yVel = 0;
   }
-
 }
 
 function limitPaddleSpeed(paddle){
