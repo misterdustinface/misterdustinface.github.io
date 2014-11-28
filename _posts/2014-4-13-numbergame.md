@@ -6,7 +6,7 @@ title:  Number Game Prototype
 {{ page.title }}
 ================
 
-[Numbers][] Available for Download for any computer that can run GL20 (it's a graphics thing - and it needs it at the moment because we used really wonky texture sizes for our prototype). 
+[Numbers][] Available for Download for any computer that can run GL20 (we used really wonky texture sizes for our prototype). 
 
 ---
 <div class="paper">
