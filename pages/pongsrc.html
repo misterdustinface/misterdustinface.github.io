@@ -269,7 +269,7 @@ function serveBall(){
 				Ball.xVel = -Ball.xVel;
 		}
 		
-		if(Ball.yVel == 0) {
+		if(Ball.yVel < 0.01) {
 			Ball.yVel = Math.random() * Ball.speed;
 			if(Math.random() > 0.5)
 				Ball.yVel = -Ball.yVel;
