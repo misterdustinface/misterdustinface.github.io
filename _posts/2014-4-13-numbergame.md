@@ -10,7 +10,7 @@ title:  Number Game Prototype
 
 ---
 
-A tile-based number game that is still in development. It will be released for android devices.
+A tile-based number game proof of concept demonstration.
 
 Team: Nick deWaide, Evan Palmer, Dustin Shaffer
 
@@ -18,7 +18,7 @@ Current Controls: W/A/S/D to move the cursor. Press spacebar to "flip" tiles. F5
 
 Flip: Increments the number at the chosen tile, and decrements the numbers at the surrounding, touching tiles.
 
-Goal: Match all the tiles! We recommend starting on the 2x2, and then moving on to 3x3 boards. We are currently creating a mathematic proof to find all solvable 4x4 grids because we believe that some are not solvable.
+Goal: Match all the tiles! We recommend starting on the 2x2, and then moving on to 3x3 boards. Not all 4x4+ grids are solvable.
 
 ---
 
