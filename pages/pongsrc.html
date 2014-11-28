@@ -44,6 +44,13 @@ var COLORS = ["#fff",
 		"#0066FF", "#00FF66", "#FF6600", "#FF0066", "#6600FF", "#CCCCCC"];
 var TEXTCOLOR = "#CCCCCC"; //"#777"
 
+var LeftPaddle  = new PaddleObject(PADDLE_OFFSET);
+var RightPaddle = new PaddleObject(canvas.width - PADDLE_OFFSET);
+var PADDLES = [LeftPaddle, RightPaddle];
+
+var Ball = new BallObject();
+//var BALLS = [Ball];
+
 //////////////////////////////////////////////////////////////////////////
 function gameLoop(){
 	update();
@@ -52,7 +59,7 @@ function gameLoop(){
 
 function update(){
 	updatePaddles();
-	updateBall();
+	updateBalls();
 	checkWin();
 	if(shouldResetGame()) {
 		resetGame();
@@ -62,8 +69,8 @@ function update(){
 function draw(){
 	clearCanvas();
 	drawBall();
-	drawPaddle(LeftPaddle);
-	drawPaddle(RightPaddle);
+	for (var i = 0; i < PADDLES.length; i++)
+		drawPaddle(PADDLES[i]);
 	drawTextInfo();
 }
 
@@ -180,9 +187,6 @@ function PaddleObject(xPos) {
 	this.down = false;
 }
 
-var LeftPaddle  = new PaddleObject(PADDLE_OFFSET);
-var RightPaddle = new PaddleObject(canvas.width - PADDLE_OFFSET);
-
 function BallObject() {
     this.x = canvas.width/2;
     this.y = canvas.height/2;
@@ -194,16 +198,12 @@ function BallObject() {
     this.colorindex = 0;
 }
 
-var Ball = new BallObject();
-
 function updatePaddles(){
-  applyControllerCommandToPaddle(LeftPaddle);
-  limitPaddleSpeed(LeftPaddle);
-  keepPaddleInBounds(LeftPaddle);
-  
-  applyControllerCommandToPaddle(RightPaddle);
-  limitPaddleSpeed(RightPaddle);
-  keepPaddleInBounds(RightPaddle);
+	for (var i = 0; i < PADDLES.length; i++) {
+		applyControllerCommandToPaddle(PADDLES[i]);
+		limitPaddleSpeed(PADDLES[i]);
+		keepPaddleInBounds(PADDLES[i]);
+    	}
 }
 
 function applyControllerCommandToPaddle(paddle) {
@@ -254,7 +254,7 @@ function serveBall(){
 	}
 }
 
-function updateBall(){
+function updateBalls(){
 	
 	if(Ball.served) {
 		Ball.x += Ball.xVel;
