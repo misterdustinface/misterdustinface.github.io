@@ -35,7 +35,7 @@ var RIGHT_SCORE   = 0;
 var LEFT_WIN      = false;
 var RIGHT_WIN     = false;
 
-var MAX_PADDLE_SPEED = 8;
+var MAX_PADDLE_SPEED = 10;
 
 //////////////////////////////////////////////////////////////////////////
 function gameLoop(){
@@ -102,35 +102,38 @@ function drawMouse() {
 }
 
 ///////////////////////////////////////////////////////////////////
+var W		= 87;
+var S		= 83;
+var UP_ARROW	= 38;
+var DOWN_ARROW	= 40;
+var SPACEBAR	= 32;
+
 function keyDownEventHandler(e){
-	controlGameOptions(e);
+	if(e.keyCode == SPACEBAR)
+		serveBall();
 	
-	if(e.keyCode == 87)
+	if(e.keyCode == W)
 		LeftPaddle.up = true;
-	if(e.keyCode == 83)
+	if(e.keyCode == S)
 		LeftPaddle.down = true;
-	if(e.keyCode == 38)
+	if(e.keyCode == UP_ARROW)
 		RightPaddle.up = true;
-	if(e.keyCode == 40)
+	if(e.keyCode == DOWN_ARROW)
 		RightPaddle.down = true;
 }
 
 function keyUpEventHandler(e){
 
-  	if(e.keyCode == 87)
+  	if(e.keyCode == W)
 		LeftPaddle.up = false;
-	if(e.keyCode == 83)
+	if(e.keyCode == S)
 		LeftPaddle.down = false;
-	if(e.keyCode == 38)
+	if(e.keyCode == UP_ARROW)
 		RightPaddle.up = false;
-	if(e.keyCode == 40)
+	if(e.keyCode == DOWN_ARROW)
 		RightPaddle.down = false;
 }
 
-function controlGameOptions(e){
-	if(e.keyCode == 32)
-		serveBall();
-}
 ///////////////////////////////////////////////////////////////////
 // MOUSE	
 var Mouse = {
