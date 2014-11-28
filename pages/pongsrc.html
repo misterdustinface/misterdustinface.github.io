@@ -274,11 +274,11 @@ function swatBallIfTouchingPaddle() {
 
 function haveBallFollowLosingPaddle() {
 	if (RIGHT_SCORE > LEFT_SCORE && !RIGHT_WIN) {
-		Ball.x = LeftPaddle.x + (LeftPaddle.width + BALL_SERVE_WITH_PADDLE_OFFSET);
-		Ball.y = LeftPaddle.y + (LeftPaddle.height/2);
+		Ball.x = LeftPaddle.x + (LeftPaddle.width + BALL_SERVE_WITH_PADDLE_OFFSET) + Ball.size/2;
+		Ball.y = LeftPaddle.y + (LeftPaddle.height/2) + Ball.size/2;
 	} else if (LEFT_SCORE > RIGHT_SCORE && !LEFT_WIN) {
-		Ball.x = RightPaddle.x - (BALL_SERVE_WITH_PADDLE_OFFSET);
-		Ball.y = RightPaddle.y + (RightPaddle.height/2);
+		Ball.x = RightPaddle.x - (BALL_SERVE_WITH_PADDLE_OFFSET) - Ball.size/2;
+		Ball.y = RightPaddle.y + (RightPaddle.height/2) + Ball.size/2;
 	}
 }
 
@@ -301,7 +301,7 @@ function swatBall(paddle){
 }
 
 function keepBallInBounds(){
-	if(Ball.y > canvas.height || Ball.y < 0)
+	if(Ball.y > canvas.height || Ball.y + Ball.size < 0)
 		Ball.yVel = -Ball.yVel;
 	
 	if(Ball.x > canvas.width){
