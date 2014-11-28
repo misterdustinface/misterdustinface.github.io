@@ -10,29 +10,27 @@ title:  Number Game Prototype
 
 ---
 <div class="paper">
+
 A tile-based number game proof of concept demonstration.
 
 Team: 
 Nick deWaide, Evan Palmer, Dustin Shaffer
 
-
 Controls: 
-W/A/S/D to move the cursor. 
-Press spacebar to "flip" tiles. 
-F5 makes a new board of the same size. 
-Pressing a number key makes a board of that # size.
-
+<li>W/A/S/D to move the cursor.</li>
+<li>Press spacebar to "flip" tiles.</li>
+<li>F5 makes a new board of the same size.</li>
+<li>Pressing a number key makes a board of that # size.</li>
 
 Flip: 
-Increments the number at the chosen tile, and decrements the numbers at the surrounding, touching tiles.
-
+<li>Increments the number at the chosen tile, and decrements the numbers at the surrounding, touching tiles.</li>
 
 Goal: 
-Match all the tiles! 
-We recommend starting on the 2x2, and then moving on to 3x3 boards. 
-Not all 4x4+ grids are solvable.
-</div>
+<li>Match all the tiles!</li>
+<li>We recommend starting on the 2x2, and then moving on to 3x3 boards.</li>
+<li>Not all 4x4+ grids are solvable.</li>
 
+</div>
 ---
 
 [Numbers]: https://github.com/misterdustinface/prototypes/raw/master/Numbers.jar
