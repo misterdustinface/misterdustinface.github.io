@@ -81,7 +81,7 @@ function clearCanvas() {
 function drawBall() {
 	ctx.beginPath();
 	ctx.fillStyle = COLORS[ (Math.abs(Ball.colorindex) % COLORS.length) ];
-	ctx.arc(Ball.x - Ball.radius/2, Ball.y - Ball.radius/2, Ball.radius, 0, 2*Math.PI, false);
+	ctx.arc(Ball.x, Ball.y, Ball.radius, 0, 2*Math.PI, false);
 	ctx.fill();
 }
 
