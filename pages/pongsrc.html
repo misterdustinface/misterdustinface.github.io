@@ -145,6 +145,11 @@ function keyDownEventHandler(e){
 		RightPaddle.colorindex++;
 	if(e.keyCode == KEYS.LEFT_ARROW)
 		RightPaddle.colorindex--;
+		
+	if(e.keyCode == KEYS.D) 
+		Ball.radius++;
+	if(e.keyCode == KEYS.A)
+		Ball.radius--;
 }
 
 function keyUpEventHandler(e){
@@ -189,7 +194,7 @@ function PaddleObject(xPos) {
 }
 
 function BallObject() {
-	this.radius = 32;
+	this.radius = 4;
 	this.x = canvas.width/2;
 	this.y = canvas.height/2;
 	this.xVel = 0;
