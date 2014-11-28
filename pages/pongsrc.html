@@ -152,7 +152,7 @@ canvas.onmouseup = function(){
 ///////////////////////////////////////////////////////////////////
 var LeftPaddle = {
 	x: 20,
-	y: canvas.height/2,
+	y: canvas.height/2 - 32,
 	width: 4,
 	height: 64,
 	yVel: 0,
@@ -163,7 +163,7 @@ var LeftPaddle = {
 };
 var RightPaddle = {
 	x: canvas.width - 20,
-	y: canvas.height/2,
+	y: canvas.height/2 - 32,
 	width: 4,
 	height: 64,
 	yVel: 0,
@@ -298,11 +298,11 @@ function resetBall(){
 		Ball.x = canvas.width/2;
 		Ball.y = canvas.height/2;
 	} else if (LEFT_SCORE < RIGHT_SCORE) {
-		Ball.x = canvas.width/4;
-		Ball.y = LeftPaddle.y
+		Ball.x = LeftPaddle.x + LeftPaddle.width + 20;
+		Ball.y = LeftPaddle.y + LeftPaddle.height/2;
 	} else {
-		Ball.x = 3*canvas.width/4;
-		Ball.y = LeftPaddle.y
+		Ball.x = RightPaddle.x - 20;
+		Ball.y = RightPaddle.y + RightPaddle.height/2;
 	}
 	Ball.xVel = 0;
 	Ball.yVel = 0;
