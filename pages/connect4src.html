@@ -93,24 +93,43 @@ var Mouse = {
  };
 
 ///////////////////////////////////////////////////////////////////
-function TokenObject(owner) {
-  this.x = 0;
-  this.y = 0;
-  this.owner = owner;
-  this.colorindex = 0;
-  this.radius = 16;
+// function Point() {
+// 	this.x = 0;
+// 	this.y = 0;
+// 	this.intersectsRectangle = function(rectangle) {
+// 		return 	this.x >= rectangle.x && this.x <= rectangle.x + rectangle.width
+// 		&& 	this.y >= rectangle.y && this.y <= rectangle.y + rectangle.height;
+// 	};
+// }
+
+function Rectangle() {
+	this.x = 0;
+	this.y = 0;
+	this.width = 0;
+	this.height = 0;
 }
 
-function intersects(circle, rectangle) {
-	return 	circle.x + circle.radius >= rectangle.x
-	&&	circle.x - circle.radius <= rectangle.x + rectangle.width
-	&&	circle.y + circle.radius >= rectangle.y
-	&&	circle.y - circle.radius <= rectangle.y + rectangle.height;
+function Circle() {
+	this.x = 0;
+	this.y = 0;
+	this.radius = 0;
+	this.intersectsRectangle = function(rectangle) {
+		return 	this.x + this.radius >= rectangle.x
+		&&	this.x - this.radius <= rectangle.x + rectangle.width
+		&&	this.y + this.radius >= rectangle.y
+		&&	this.y - this.radius <= rectangle.y + rectangle.height;
+	};
+	this.intersectsCircle = function(other) {
+		//distance formula between centers <= sum of two radii
+	};
 }
-//function intersects(point, rectangle) {
-//	return 	point.x >= rectangle.x && point.x <= rectangle.x + rectangle.width
-//	&& 	point.y >= rectangle.y && point.y <= rectangle.y + rectangle.height;
-//}
+
+function TokenObject(owner) {
+  this.circle = new Circle();
+  this.circle.radius = 16;
+  this.owner = owner;
+  this.colorindex = 0;
+}
 
 function resetGame() {
 }
