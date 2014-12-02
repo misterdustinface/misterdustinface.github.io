@@ -56,6 +56,7 @@ function drawTextInfo() {
 	ctx.fillStyle = TEXTCOLOR;
 	ctx.fillText(PROMPT_GAME_START_TEXT, canvas.width/2 - (PROMPT_GAME_START_TEXT_LENGTH/2), MESSAGE_YPOS);
 }
+
 function drawMouse() {
 	ctx.fillStyle = COLORS[1];
 	ctx.beginPath();
@@ -76,9 +77,6 @@ function keyDownEventHandler(e){
 function keyUpEventHandler(e){
 }
 
-function resetGame() {
-}
-
 // MOUSE	
 var Mouse = {
   x: canvas.width/2,
@@ -92,6 +90,7 @@ var Mouse = {
  };
  canvas.onmouseup = function(){
  };
+
 ///////////////////////////////////////////////////////////////////
 function TokenObject(owner) {
   this.x = 0;
@@ -111,5 +110,8 @@ function intersects(circle, rectangle) {
 //	return 	point.x >= rectangle.x && point.x <= rectangle.x + rectangle.width
 //	&& 	point.y >= rectangle.y && point.y <= rectangle.y + rectangle.height;
 //}
+
+function resetGame() {
+}
 
 </script>
