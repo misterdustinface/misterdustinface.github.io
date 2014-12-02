@@ -20,8 +20,8 @@
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
 window.onload = function(){
-	window.addEventListener("keydown", keyDownEventHandler, false);
-	window.addEventListener("keyup",   keyUpEventHandler, false);
+	window.addEventListener("keydown", keyDownEventHandler, true);
+	window.addEventListener("keyup",   keyUpEventHandler, true);
 };
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
