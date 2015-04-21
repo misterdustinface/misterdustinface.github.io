@@ -1,20 +1,3 @@
-<!doctype>
-<html>
-	<head>
-		<style>
-		#canvas{
-			background: #000;
-		}
-		</style>
-	</head>
-	<body>
-		
-		<canvas id="canvas" width="640" height="360"></canvas>
-		
-	</body>
-</html>
-
-<script>
 
 ///////////////////////////////////////////////////////
 
@@ -385,5 +368,3 @@ function resetGameData(){
 	RIGHT_SCORE = 0;
 	LEFT_SCORE = 0;
 }
-
-</script>
