@@ -9,7 +9,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 ctx.font = "bold 16px Monospace";
 var UPS = 60;
-var FPS = 30;
+var FPS = 60;
 setInterval(update, 1000/UPS);
 setInterval(draw, 1000/FPS)
 
