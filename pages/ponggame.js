@@ -1,6 +1,4 @@
 
-///////////////////////////////////////////////////////
-
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
 window.onload = function(){
 	window.addEventListener("keydown", keyDownEventHandler);
