@@ -6,7 +6,7 @@ title:  File Chooser
 {{ page.title }}
 ================
 
-[FileChooser][] source code available.
+[FileChooser][] Source code and jar lib available
 
 ---
 
