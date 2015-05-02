@@ -10,4 +10,10 @@ title:  Color Palette Editor
 
 ---
 
+Work in Progress.
+
+Color Palette Creator built with the Editor Lib.
+
+---
+
 [ColorPaletteEditor]: https://github.com/misterdustinface/ColorPaletteEditor
