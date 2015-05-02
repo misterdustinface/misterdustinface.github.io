@@ -14,8 +14,8 @@ A pac-man game engine which utilizes the Feature Loader Engine.
 
 In-Progress projects being built on the PacDaddy Engine:
 
-- [PacCat][] - A modified version of pac man with a cat theme
-- [AI-Project][] - An AI that plays a non-deterministic version of pac man
+- [PacCat][]: A modified version of pac man with a cat theme
+- [AI-Project][]: An AI that plays a non-deterministic version of pac man
 
 ---
 
