@@ -6,7 +6,7 @@ title:  Editor Lib
 {{ page.title }}
 ================
 
-[EditorLib][] source code available.
+[EditorLib][] Source code and jar lib available
 
 ---
 
