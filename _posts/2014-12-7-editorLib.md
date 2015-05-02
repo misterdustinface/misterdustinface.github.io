@@ -10,4 +10,10 @@ title:  Editor Lib
 
 ---
 
+Work in Progress.  
+
+Generic Editor Tool Library.
+
+---
+
 [EditorLib]: https://github.com/misterdustinface/EditorLib
