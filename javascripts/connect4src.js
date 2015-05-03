@@ -1,21 +1,4 @@
-<!doctype>
-<html>
-	<head>
-		<style>
-		#canvas{
-			background: #000;
-		}
-		</style>
-	</head>
-	<body>
-		
-		<canvas id="canvas" width="640" height="360"></canvas>
-		
-	</body>
-</html>
 
-<script>
-///////////////////////////////////////////////////////
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
 window.onload = function(){
 	window.addEventListener("keydown", keyDownEventHandler);
@@ -133,5 +116,3 @@ function TokenObject(owner) {
 
 function resetGame() {
 }
-
-</script>
