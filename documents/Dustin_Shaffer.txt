@@ -5,15 +5,18 @@
 
 
  Accomplishments
+ 
+[August 2014 - Present]		- Software Engineer Intern at CareFusion
+
+Worked with embedded systems.  Programming in C, C++, and lua.
+Practiced Pair Programming, Test Driven Development, and Clean Coding techniques.
 
 [February 2013 - Present] 	- Game Development
 
 Worked with a small team of my closest/most talented peers on a variety of game projects. 
-Fulfilled the roles of Producer, Co-Software Engineer, Programmer, and Designer - though I would 
-most often play the roles of Programmer and Software Engineer.
+Fulfilled the roles of Producer, Co-Software Engineer, Programmer, and Designer.
 	
 A few examples that demonstrate the importance of my roles:
-Came up with a memory/processor efficient way to simplify 2 dimensional collisions by translating them into streams of 1 dimensional bounds.
 Initiated spike development cycles, analyzed features and drawbacks, then built optimized, desired features using test-driven development.
 Scaled project features based on deadlines and team size/availability fluctuations.
 	
@@ -33,25 +36,27 @@ _____________________________________________________________________________
 
 University of California, Irvine.
 Computer Science B.S. Undergrad - Senior
+Specialization: Algorithms
 
 _____________________________________________________________________________
 
 Proficient Programming Languages:
-C++, C++ 11, Java, Python
+Java, Lua, C, C++, Python, JavaScript
 
 Other Familiar Programming Languages:
-Lua, x86 Assembly, JavaScript, SQL, JSP
+Clojure, C++ 11, x86 Assembly, SQL, JSP
 _____________________________________________________________________________
 
  Other Proficiencies
 
 Data Structures / Algorithm Design
-Eclipse, Netbeans, IDLE, Notepad++
-Git, GitHub
-JUnit, GoogleTest
-phpMyAdmin, TomCat, ftp, ssh
-Windows and Linux operating systems
-Microsoft Office Applications: Word, Excel, Powerpoint
+The SOLID Principles
+Software Design Patterns
+IDE's such as: Eclipse, IDLE, Notepad++
+Version control systems similar to Git
+Test infrastructures such as: JUnit, GoogleTest
+Linux operating systems
+Google Applications: Docs, Slides
 
 _____________________________________________________________________________
 
@@ -73,4 +78,4 @@ Game Development
 
 _____________________________________________________________________________ 
 
-http://dustin.n.shaffer.ignorelist.com/
+http://misterdustinface.github.io/
