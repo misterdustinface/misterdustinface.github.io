@@ -1,22 +1,3 @@
-<!doctype>
-<html>
-	<head>
-		<style>
-		#canvas{
-			width:640px;
-			height:360px;
-			background: #000;
-		}
-		</style>
-	</head>
-	<body>
-		
-		<canvas id="canvas" width="640" height="360"></canvas>
-		
-	</body>
-</html>
-<script>
-
 // Find intersection of RAY & SEGMENT
 function getIntersection(ray,segment){
 
@@ -380,5 +361,3 @@ function keepPlayerInBounds(){
 		Player.y = 0;
 	}
 }
-
-</script>
