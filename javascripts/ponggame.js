@@ -58,16 +58,7 @@ function update() {
 }
 
 function draw() {
-	clearCanvas();
-	drawBall();
-	for (var i = 0; i < PADDLES.length; i++)
-		drawPaddle(PADDLES[i]);
-	drawTextInfo();
-}
-
-function clearCanvas() {
-	//ctx.clearRect(0, 0, canvas.width, canvas.height);
-	
+	//clearCanvas();
 	setColor(TEXTCOLOR)
 	ctx.beginPath();
 	ctx.rect(8, 8, canvas.width-16, canvas.height-16);
@@ -77,6 +68,15 @@ function clearCanvas() {
 	ctx.moveTo(20,20);
 	ctx.lineTo(200,20);
 	ctx.stroke();
+	
+	drawBall();
+	for (var i = 0; i < PADDLES.length; i++)
+		drawPaddle(PADDLES[i]);
+	drawTextInfo();
+}
+
+function clearCanvas() {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawBall() {
