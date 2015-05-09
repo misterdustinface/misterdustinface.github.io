@@ -67,9 +67,9 @@ function draw() {
 
 function clearCanvas() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	setColor(COLORS[0])
+	setColor(TEXTCOLOR)
 	ctx.beginPath();
-	ctx.rect(0, 0, canvas.width, canvas.height);
+	ctx.rect(1, 1, canvas.width-2, canvas.height-2);
 }
 
 function drawBall() {
