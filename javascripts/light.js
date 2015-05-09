@@ -158,13 +158,13 @@ function draw(){
 		mouseGons.push(getSightPolygon(Mouse.x+dx,Mouse.y+dy));
 	};
 
-	if(Mouse.lit){
-		// DRAW AS A GIANT POLYGON
-		for(var i=1;i<mouseGons.length;i++){
-			drawPolygon(mouseGons[i],ctx,"rgba(189,140,191,0.2)");
-		}
-		drawPolygon(mouseGons[0],ctx,"rgba(189,140,191,0.1)");//"#BC8DBF"
-	}
+	// if(Mouse.lit){
+	// 	// DRAW AS A GIANT POLYGON
+	// 	for(var i=1;i<mouseGons.length;i++){
+	// 		drawPolygon(mouseGons[i],ctx,"rgba(189,140,191,0.2)");
+	// 	}
+	// 	drawPolygon(mouseGons[0],ctx,"rgba(189,140,191,0.1)");//"#BC8DBF"
+	// }
 	if(Player.lit){
 		// DRAW AS A GIANT POLYGON
 		for(var i=1;i<playerGons.length;i++){
@@ -179,17 +179,17 @@ function draw(){
     ctx.arc(Player.x, Player.y, Player.size, 0, 2*Math.PI, false);
     ctx.fill();
 	
-	// Draw dots "#dd3838"
-	ctx.fillStyle = "#e3e";
-	ctx.beginPath();
-    ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
-    ctx.fill();
-	for(var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10){
-		var dx = Math.cos(angle)*fuzzyRadius;
-		var dy = Math.sin(angle)*fuzzyRadius;
-		ctx.beginPath();
-    	ctx.arc(Mouse.x+dx, Mouse.y+dy, 2, 0, 2*Math.PI, false);
-    	ctx.fill();
+	// // Draw dots "#dd3838"
+	// ctx.fillStyle = "#e3e";
+	// ctx.beginPath();
+ //   ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
+ //   ctx.fill();
+	// for(var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10){
+	// 	var dx = Math.cos(angle)*fuzzyRadius;
+	// 	var dy = Math.sin(angle)*fuzzyRadius;
+	// 	ctx.beginPath();
+ //   	ctx.arc(Mouse.x+dx, Mouse.y+dy, 2, 0, 2*Math.PI, false);
+ //   	ctx.fill();
     }
 	
 }
