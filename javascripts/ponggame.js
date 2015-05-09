@@ -66,10 +66,10 @@ function draw() {
 }
 
 function clearCanvas() {
-	//ctx.clearRect(0, 0, canvas.width, canvas.height);
-	var i = (COLORS.length/2 + (Math.abs(LeftPaddle.colorindex) % COLORS.length) + (Math.abs(RightPaddle.colorindex) % COLORS.length)) % COLORS.length;
-	setColor(COLORS[i]);
-	drawRect(0, 0, canvas.width, canvas.height);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	setColor(COLORS[0])
+	ctx.beginPath();
+	ctx.rect(0, 0, canvas.width, canvas.height);
 }
 
 function drawBall() {
