@@ -303,6 +303,8 @@ function updatePlayerMovement() {
 		Player.xVel += Player.speed;
 	}
 	
+	Player.direction = "none"
+	
 	Player.x += Player.xVel
 	Player.y += Player.yVel
 }
