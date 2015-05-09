@@ -1,6 +1,6 @@
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
-window.onload = function(){
+window.onload = function() {
 	window.addEventListener("keydown", keyDownEventHandler);
 	window.addEventListener("keyup",   keyUpEventHandler);
 	window.focus();
@@ -28,6 +28,7 @@ var MESSAGE_YPOS	= 250;
 var BALL_SPEED		= 5;
 var PADDLE_SPEED	= 1;
 var PADDLE_DIRECTION_TRANSITION_RATE = 1/8;
+var WALL_OFFSET         = 8;
 
 var COLORS = [	"#FFFFFF", 
 		"#77C621", "#21C6A3", "#C621AC", "#C62721",
@@ -35,20 +36,23 @@ var COLORS = [	"#FFFFFF",
 		"#000000"];
 var TEXTCOLOR = "#CCCCCC"; //"#777"
 
-var LeftPaddle  = new PaddleObject(PADDLE_OFFSET);
-var RightPaddle = new PaddleObject(canvas.width - PADDLE_OFFSET);
+var LeftPaddle  = new VerticalPaddleObject(PADDLE_OFFSET);
+var RightPaddle = new VerticalPaddleObject(canvas.width - PADDLE_OFFSET);
 var PADDLES = [LeftPaddle, RightPaddle];
+var TopWall = new HorizontalWallObject(WALL_OFFSET)
+var BottomWall = new HorizontalWallObject(canvas.height - WALL_OFFSET)
+var WALLS = [TopWall, BottomWall]
 
 var Ball = new BallObject();
 //var BALLS = [Ball];
 
 //////////////////////////////////////////////////////////////////////////
 
-function update(){
+function update() {
 	updatePaddles();
 	updateBalls();
 	checkWin();
-	if(shouldResetGame()) {
+	if (shouldResetGame()) {
 		resetGame();
 	}
 }
@@ -98,20 +102,13 @@ function drawTextInfo() {
 	ctx.fillStyle = TEXTCOLOR;
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (SCOREFIELD_LENGTH/2), SCORE_YPOS);
 
-  	if(RIGHT_WIN ^ LEFT_WIN) {
+  	if (RIGHT_WIN ^ LEFT_WIN) {
   		var winnerText = (RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"); 
   		var length = ctx.measureText(winnerText).width;
 		ctx.fillText(winnerText, canvas.width/2 - (length/2), MESSAGE_YPOS);
   	} else if (! Ball.isServed) {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
-}
-
-function drawMouse() {
-	ctx.fillStyle = COLORS[1];
-	ctx.beginPath();
-	ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
-	ctx.fill();
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -121,48 +118,56 @@ var KEYS = {
 	SPACEBAR: 32, ESC: 27,
 };
 
-function keyDownEventHandler(e){
-	if(e.keyCode == KEYS.SPACEBAR)
+function keyDownEventHandler(e) {
+	if (e.keyCode == KEYS.SPACEBAR)
 		serveBall();
-	if(e.keyCode == KEYS.ESC)
+	if (e.keyCode == KEYS.ESC)
 		resetGame();
 	
-	if(e.keyCode == KEYS.W)
+	if (e.keyCode == KEYS.W)
 		LeftPaddle.up = true;
-	if(e.keyCode == KEYS.S)
+	if (e.keyCode == KEYS.S)
 		LeftPaddle.down = true;
-	if(e.keyCode == KEYS.UP_ARROW)
+	if (e.keyCode == KEYS.UP_ARROW)
 		RightPaddle.up = true;
-	if(e.keyCode == KEYS.DOWN_ARROW)
+	if (e.keyCode == KEYS.DOWN_ARROW)
 		RightPaddle.down = true;
 		
-	if(e.keyCode == KEYS.D)
+	if (e.keyCode == KEYS.D)
 		LeftPaddle.colorindex++; 
-	if(e.keyCode == KEYS.A)
+	if (e.keyCode == KEYS.A)
 		LeftPaddle.colorindex--;
-	if(e.keyCode == KEYS.RIGHT_ARROW)
+	if (e.keyCode == KEYS.RIGHT_ARROW)
 		RightPaddle.colorindex++;
-	if(e.keyCode == KEYS.LEFT_ARROW)
+	if (e.keyCode == KEYS.LEFT_ARROW)
 		RightPaddle.colorindex--;
 		
 	//if(e.keyCode == KEYS.D) Ball.radius++;
 	//if(e.keyCode == KEYS.A) Ball.radius--;
 }
 
-function keyUpEventHandler(e){
+function keyUpEventHandler(e) {
 
-  	if(e.keyCode == KEYS.W)
+  	if (e.keyCode == KEYS.W)
 		LeftPaddle.up = false;
-	if(e.keyCode == KEYS.S)
+	if (e.keyCode == KEYS.S)
 		LeftPaddle.down = false;
-	if(e.keyCode == KEYS.UP_ARROW)
+	if (e.keyCode == KEYS.UP_ARROW)
 		RightPaddle.up = false;
-	if(e.keyCode == KEYS.DOWN_ARROW)
+	if (e.keyCode == KEYS.DOWN_ARROW)
 		RightPaddle.down = false;
 }
 
 ///////////////////////////////////////////////////////////////////
-function PaddleObject(xPos) {
+function HorizontalWallObject(yCenterPos) {
+	this.width = canvas.width;
+	this.height = 4;
+	this.x = 0;
+	this.y = yCenterPos - this.width/2;
+	this.colorindex = 0;
+}
+
+function VerticalPaddleObject(xPos) {
 	this.width  = 4;
 	this.height = 64;
 	this.x = xPos;
@@ -187,7 +192,7 @@ function BallObject() {
 	this.isServed = false;
 }
 
-function intersects(circle, rectangle) {
+function intersects (circle, rectangle) {
 	return 	circle.x + circle.radius >= rectangle.x
 	&&	circle.x - circle.radius <= rectangle.x + rectangle.width
 	&&	circle.y + circle.radius >= rectangle.y
@@ -199,7 +204,7 @@ function intersects(circle, rectangle) {
 //	&& 	point.y >= rectangle.y && point.y <= rectangle.y + rectangle.height;
 //}
 
-function updatePaddles(){
+function updatePaddles() {
 	for (var i = 0; i < PADDLES.length; i++) {
 		applyControllerCommandToPaddle(PADDLES[i]);
 		limitPaddleSpeed(PADDLES[i]);
@@ -208,7 +213,7 @@ function updatePaddles(){
 }
 
 function applyControllerCommandToPaddle(paddle) {
-	if(paddle.up ^ paddle.down) {
+	if (paddle.up ^ paddle.down) {
  		if(paddle.up) 	paddle.yVel -= paddle.speed;
  		if(paddle.down)	paddle.yVel += paddle.speed;
  		paddle.y += paddle.yVel // move y position accordingly
@@ -219,30 +224,30 @@ function applyControllerCommandToPaddle(paddle) {
 	}
 }
 
-function limitPaddleSpeed(paddle){
-  	if(paddle.yVel > MAX_PADDLE_SPEED)
+function limitPaddleSpeed(paddle) {
+  	if (paddle.yVel > MAX_PADDLE_SPEED)
 		paddle.yVel = MAX_PADDLE_SPEED;
-	if(paddle.yVel < -MAX_PADDLE_SPEED)
+	if (paddle.yVel < -MAX_PADDLE_SPEED)
 		paddle.yVel = -MAX_PADDLE_SPEED;
 }
 
-function keepPaddleInBounds(paddle){
-	if(paddle.y + paddle.height < 0)
+function keepPaddleInBounds(paddle) {
+	if (paddle.y + paddle.height < 0)
 		paddle.y = canvas.height;
-	else if(paddle.y > canvas.height)
+	else if (paddle.y > canvas.height)
 		paddle.y = -paddle.height;
 }
 
-function serveBall(){
-	if(! Ball.isServed){
+function serveBall() {
+	if (! Ball.isServed) {
 		
 		Ball.xVel = Math.random() * Ball.speed + MIN_BALL_XVEL;
 		
-		if(shouldBallFollowLeftPaddle() ^ shouldBallFollowRightPaddle()){
-			if(shouldBallFollowLeftPaddle()) {
+		if (shouldBallFollowLeftPaddle() ^ shouldBallFollowRightPaddle()) {
+			if (shouldBallFollowLeftPaddle()) {
 				Ball.yVel = LeftPaddle.yVel;
 			}
-			if(shouldBallFollowRightPaddle()) {
+			if (shouldBallFollowRightPaddle()) {
 				Ball.yVel = RightPaddle.yVel;
 				Ball.xVel = -Ball.xVel;
 			}
@@ -251,9 +256,9 @@ function serveBall(){
 				Ball.xVel = -Ball.xVel;
 		}
 		
-		if(Math.abs(Ball.yVel) < 0.01) {
+		if (Math.abs(Ball.yVel) < 0.01) {
 			Ball.yVel = Math.random() * Ball.speed;
-			if(Math.random() > 0.5)
+			if (Math.random() > 0.5)
 				Ball.yVel = -Ball.yVel;
 		}
 		
@@ -261,8 +266,8 @@ function serveBall(){
 	}
 }
 
-function updateBalls(){
-	if(! Ball.isServed) {
+function updateBalls() {
+	if (! Ball.isServed) {
 		haveBallFollowLosingPaddle();
 	} else {
 		Ball.x += Ball.xVel;
@@ -273,8 +278,8 @@ function updateBalls(){
 }
 
 function swatBallIfTouchingPaddle() {
-	for(var i = 0; i < PADDLES.length; i++) {
-		if(intersects(Ball, PADDLES[i])) {
+	for (var i = 0; i < PADDLES.length; i++) {
+		if (intersects(Ball, PADDLES[i])) {
 			swatBall(PADDLES[i]);
 		}
 	}
@@ -299,9 +304,9 @@ function shouldBallFollowRightPaddle() {
 	return LEFT_SCORE > RIGHT_SCORE && !LEFT_WIN;
 }
 
-function swatBall(paddle){
+function swatBall(paddle) {
 	Ball.xVel = -Ball.xVel;
-	if( Ball.xVel < 0 ) {
+	if ( Ball.xVel < 0 ) {
 		Ball.xVel -= Math.random() * Ball.speed;
 		if (Ball.xVel < -MAX_BALL_XVEL)
 			Ball.xVel = -MAX_BALL_XVEL;
@@ -311,36 +316,36 @@ function swatBall(paddle){
 			Ball.xVel = MAX_BALL_XVEL;
 	}
 		
-	if( (paddle.yVel < 0 && Ball.yVel > 0) || (paddle.yVel > 0 && Ball.yVel < 0) )
+	if ( (paddle.yVel < 0 && Ball.yVel > 0) || (paddle.yVel > 0 && Ball.yVel < 0) )
 		Ball.yVel = - Math.abs(Math.abs(paddle.yVel) - Math.abs(Ball.yVel));
 	else if (Math.random() > 0.5)
 		Ball.yVel = - Math.random() * Ball.speed;
 }
 
-function keepBallInBounds(){
-	if(Ball.y + Ball.radius > canvas.height) {
+function keepBallInBounds() {
+	if (Ball.y + Ball.radius > canvas.height) {
 		Ball.y = canvas.height - Ball.radius;
 		Ball.yVel = -Ball.yVel;
-	} else if(Ball.y - Ball.radius < 0) {
+	} else if (Ball.y - Ball.radius < 0) {
 		Ball.y = Ball.radius;
 		Ball.yVel = -Ball.yVel;
 	}
 	
-	if(Ball.x - Ball.radius > canvas.width){
+	if (Ball.x - Ball.radius > canvas.width) {
 		LEFT_SCORE += 1;
 		resetBall();
-	} else if(Ball.x + Ball.radius < 0){
+	} else if (Ball.x + Ball.radius < 0) {
 		RIGHT_SCORE += 1;
 		resetBall();
 	}
 }
 
-function checkWin(){
-	if(RIGHT_SCORE >= WINNING_SCORE) RIGHT_WIN = true;
-	if(LEFT_SCORE  >= WINNING_SCORE) LEFT_WIN  = true;
+function checkWin() {
+	if (RIGHT_SCORE >= WINNING_SCORE) RIGHT_WIN = true;
+	if (LEFT_SCORE  >= WINNING_SCORE) LEFT_WIN  = true;
 }
 
-function resetBall(){
+function resetBall() {
 	delete Ball;
 	Ball = new BallObject();
 }
