@@ -181,16 +181,16 @@ function draw(){
 	
 	// // Draw dots "#dd3838"
 	// ctx.fillStyle = "#e3e";
-	ctx.beginPath();
+	// ctx.beginPath();
  //   ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
  //   ctx.fill();
-	for(var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10){
-		var dx = Math.cos(angle)*fuzzyRadius;
-		var dy = Math.sin(angle)*fuzzyRadius;
-		ctx.beginPath();
-    	ctx.arc(Mouse.x+dx, Mouse.y+dy, 2, 0, 2*Math.PI, false);
-    	ctx.fill();
-    }
+	// for (var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10) {
+	// 	var dx = Math.cos(angle)*fuzzyRadius;
+	// 	var dy = Math.sin(angle)*fuzzyRadius;
+	// 	ctx.beginPath();
+	// 	ctx.arc(Mouse.x+dx, Mouse.y+dy, 2, 0, 2*Math.PI, false);
+	// 	ctx.fill();
+	// }
 	
 }
 
