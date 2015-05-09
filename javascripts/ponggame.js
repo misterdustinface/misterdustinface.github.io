@@ -58,7 +58,7 @@ function update() {
 }
 
 function draw() {
-	//clearCanvas();
+	clearCanvas();
 	setColor(TEXTCOLOR)
 	ctx.beginPath();
 	ctx.rect(8, 8, canvas.width-16, canvas.height-16);
@@ -76,7 +76,7 @@ function draw() {
 }
 
 function clearCanvas() {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	//ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawBall() {
