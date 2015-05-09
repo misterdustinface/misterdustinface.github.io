@@ -277,7 +277,7 @@ function playerController(e){
 }
 
 function movePlayerInDirection(direction){
-	Player.direction = direction
+	Player.direction = direction;
 }
 
 function updatePlayer(){
@@ -286,19 +286,19 @@ function updatePlayer(){
 }
 
 function updatePlayerMovement() {
-	if(Player.direction == "up"){
+	if(Player.direction === "up"){
 		//Player.y -= Player.speed;
 		Player.yVel -= Player.speed;
 	}
-	if(Player.direction == "down"){
+	if(Player.direction === "down"){
 		//Player.y += Player.speed;
 		Player.yVel += Player.speed;
 	}
-	if(Player.direction == "left"){
+	if(Player.direction === "left"){
 		//Player.x -= Player.speed;
 		Player.xVel -= Player.speed;
 	}
-	if(Player.direction == "right"){
+	if(Player.direction === "right"){
 		//Player.x += Player.speed;
 		Player.xVel += Player.speed;
 	}
