@@ -70,11 +70,7 @@ function clearCanvas() {
 	
 	setColor(TEXTCOLOR)
 	ctx.beginPath();
-	ctx.moveTo(0, 8);
-	ctx.lineTo(canvas.width, 8);
-	ctx.stroke();
-	ctx.moveTo(0, canvas.height-16);
-	ctx.lineTo(canvas.width, canvas.height-16);
+	ctx.rect(8, 8, canvas.width-16, canvas.height-16);
 	ctx.stroke();
 }
 
