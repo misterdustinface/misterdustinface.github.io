@@ -66,8 +66,13 @@ function clearCanvas() {
 }
 
 function drawBall() {
-	ctx.fillStyle = COLORS[ (Math.abs(Ball.colorindex) % COLORS.length) ];
+	setColor(COLORS[ (Math.abs(Ball.colorindex) % COLORS.length) ]);
 	drawCircle(Ball.x, Ball.y, Ball.radius);
+}
+
+function drawPaddle(paddle) {
+	setColor(COLORS[ (Math.abs(paddle.colorindex) % COLORS.length) ]);
+	drawRect(paddle.x, paddle.y, paddle.width, paddle.height);
 }
 
 function drawCircle(x, y, r) {
@@ -76,11 +81,14 @@ function drawCircle(x, y, r) {
 	ctx.fill();
 }
 
-function drawPaddle(paddle) {
+function drawRect(x, y, w, h) {
 	ctx.beginPath();
-	ctx.fillStyle = COLORS[ (Math.abs(paddle.colorindex) % COLORS.length) ];
-	ctx.rect(paddle.x, paddle.y, paddle.width, paddle.height);
+	ctx.rect(x, y, w, h);
 	ctx.fill();
+}
+
+function setColor(c) {
+	ctx.fillStyle = c
 }
 
 var SCOREFIELD_LENGTH = ctx.measureText("XX [Score] XX").width;
