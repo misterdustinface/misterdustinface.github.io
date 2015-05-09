@@ -123,11 +123,11 @@ function getSightPolygon(sightX,sightY){
 // DRAWING
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-var FPS = 30;
-setInterval(function() {
-  update();
-  draw();
-}, 1000/FPS);
+var UPS = 60;
+var FPS = 60;
+setInterval(draw,   1000/FPS);
+setInterval(update, 1000/UPS);
+
 function update(){
 	updatePlayer();
 }
@@ -150,48 +150,27 @@ function draw(){
 	// Sight Polygons
 	var fuzzyRadius = 10;
 	var playerGons = [getSightPolygon(Player.x,Player.y)];
-	var mouseGons = [getSightPolygon(Mouse.x,Mouse.y)];
 	for(var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10){
 		var dx = Math.cos(angle)*fuzzyRadius;
 		var dy = Math.sin(angle)*fuzzyRadius;
 		playerGons.push(getSightPolygon(Player.x+dx,Player.y+dy));
-		mouseGons.push(getSightPolygon(Mouse.x+dx,Mouse.y+dy));
 	};
 
-	// if(Mouse.lit){
-	// 	// DRAW AS A GIANT POLYGON
-	// 	for(var i=1;i<mouseGons.length;i++){
-	// 		drawPolygon(mouseGons[i],ctx,"rgba(189,140,191,0.2)");
-	// 	}
-	// 	drawPolygon(mouseGons[0],ctx,"rgba(189,140,191,0.1)");//"#BC8DBF"
-	// }
 	if(Player.lit){
 		// DRAW AS A GIANT POLYGON
 		for(var i=1;i<playerGons.length;i++){
 			drawPolygon(playerGons[i],ctx,"rgba(196,223,155,0.2)");
+			//"rgba(189,140,191,0.2)");
 		}
 		drawPolygon(playerGons[0],ctx,"rgba(196,223,155,0.1)");//"#C4DF9B"
+		//"rgba(189,140,191,0.1)");//"#BC8DBF"
 	}
 	
 	// Draw Player
 	ctx.fillStyle = Player.color;
 	ctx.beginPath();
-    ctx.arc(Player.x, Player.y, Player.size, 0, 2*Math.PI, false);
-    ctx.fill();
-	
-	// // Draw dots "#dd3838"
-	// ctx.fillStyle = "#e3e";
-	// ctx.beginPath();
- //   ctx.arc(Mouse.x, Mouse.y, 2, 0, 2*Math.PI, false);
- //   ctx.fill();
-	// for (var angle=0;angle<Math.PI*2;angle+=(Math.PI*2)/10) {
-	// 	var dx = Math.cos(angle)*fuzzyRadius;
-	// 	var dy = Math.sin(angle)*fuzzyRadius;
-	// 	ctx.beginPath();
-	// 	ctx.arc(Mouse.x+dx, Mouse.y+dy, 2, 0, 2*Math.PI, false);
-	// 	ctx.fill();
-	// }
-	
+	ctx.arc(Player.x, Player.y, Player.size, 0, 2*Math.PI, false);
+	ctx.fill();
 }
 
 function drawPolygon(polygon,ctx,fillStyle){
@@ -256,39 +235,12 @@ var segments = [
 
 // DRAW LOOP
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
-var updateCanvas = true;
-function drawLoop(){
-    requestAnimationFrame(drawLoop);
-    if(updateCanvas){
-    	draw();
-    	updateCanvas = false;
-    }
-}
-window.onload = function(){
-	drawLoop();
-	window.addEventListener("keydown", keyDownEventHandler, false);
-	//gameLoop();
-};
+window.addEventListener("keydown", keyDownEventHandler, false);
+window.onload = function(){ };
+
 function keyDownEventHandler(e){
 	playerController(e);
 }
-// MOUSE	
-var Mouse = {
-	x: canvas.width/2,
-	y: canvas.height/2,
-	lit: false
-};
-canvas.onmousemove = function(event){	
-	Mouse.x = event.clientX;
-	Mouse.y = event.clientY;
-	updateCanvas = true;
-};
-canvas.onmousedown = function(){
-	Mouse.lit = true;
-};
-canvas.onmouseup = function(){
-	Mouse.lit = false;
-};
 
 // Player
 var Player = {
@@ -304,16 +256,16 @@ var Player = {
 
 function playerController(e){
 	if(e.keyCode == 38){
-		movePlayer("up");
+		movePlayerInDirection("up");
 	}
 	if(e.keyCode == 37){
-		movePlayer("left");
+		movePlayerInDirection("left");
 	}
 	if(e.keyCode == 40){
-		movePlayer("down");
+		movePlayerInDirection("down");
 	}
 	if(e.keyCode == 39){
-		movePlayer("right");
+		movePlayerInDirection("right");
 	}
 	if(e.keyCode == 32){
 		if(Player.lit)
@@ -322,29 +274,35 @@ function playerController(e){
 			Player.lit = true;
 	}
 }
-function movePlayer(direction){
-	if(direction == "up"){
+
+function movePlayerInDirection(direction){
+	Player.direction = direction
+}
+
+function updatePlayerMovement() {
+	if(Player.direction == "up"){
 		//Player.y -= Player.speed;
 		Player.yVel -= Player.speed;
 	}
-	if(direction == "down"){
+	if(Player.direction == "down"){
 		//Player.y += Player.speed;
 		Player.yVel += Player.speed;
 	}
-	if(direction == "left"){
+	if(Player.direction == "left"){
 		//Player.x -= Player.speed;
 		Player.xVel -= Player.speed;
 	}
-	if(direction == "right"){
+	if(Player.direction == "right"){
 		//Player.x += Player.speed;
 		Player.xVel += Player.speed;
 	}
-	//updateCanvas = true;
-}
-function updatePlayer(){
+	
 	Player.x += Player.xVel
 	Player.y += Player.yVel
-	
+}
+
+function updatePlayerMovement(){
+	updatePlayerMovement();
 	keepPlayerInBounds();
 }
 function keepPlayerInBounds(){
