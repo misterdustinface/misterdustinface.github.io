@@ -67,7 +67,7 @@ function draw() {
 
 function clearCanvas() {
 	//ctx.clearRect(0, 0, canvas.width, canvas.height);
-	var i = (COLORS.length/2 + (Math.abs(LeftPaddle.colorindex) % COLORS.length) + (Math.abs(RightPaddle.colorindex) % COLORS.length)) % COLORS.length
+	var i = (COLORS.length/2 + (Math.abs(LeftPaddle.colorindex) % COLORS.length) + (Math.abs(RightPaddle.colorindex) % COLORS.length)) % COLORS.length;
 	setColor(COLORS[]);
 	drawRect(0, 0, canvas.width, canvas.height);
 }
