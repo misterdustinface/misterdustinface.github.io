@@ -1,8 +1,8 @@
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
 window.onload = function() {
-	window.addEventListener("keydown", keyDownEventHandler);
-	window.addEventListener("keyup",   keyUpEventHandler);
-	window.focus();
+  window.addEventListener("keydown", keyDownEventHandler);
+  window.addEventListener("keyup",   keyUpEventHandler);
+  window.focus();
 };
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -17,8 +17,8 @@ var Mouse = {
 };
 
 canvas.onmousemove = function(event) {	
- 	Mouse.x = event.clientX;
- 	Mouse.y = event.clientY;
+  Mouse.x = event.clientX;
+  Mouse.y = event.clientY;
 };
 
 canvas.onmousedown = function() {
@@ -33,16 +33,16 @@ function draw() {
 }
 
 function clearCanvas() {
-	ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 }
 
 function drawCursor() {
-	ctx.fillStyle = "#FFFFFF";
-	drawCircle(Mouse.x, Mouse.y, 3)
+  ctx.fillStyle = "#FFFFFF";
+  drawCircle(Mouse.x, Mouse.y, 3);
 }
 
 function drawCircle(x, y, r) {
   ctx.beginPath();
-	ctx.arc(x, y, r, 0, 2*Math.PI, false);
-	ctx.fill();
+  ctx.arc(x, y, r, 0, 2*Math.PI, false);
+  ctx.fill();
 }
