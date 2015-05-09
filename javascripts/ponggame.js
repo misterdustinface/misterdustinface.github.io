@@ -53,7 +53,7 @@ function update(){
 	}
 }
 
-function draw(){
+function draw() {
 	clearCanvas();
 	drawBall();
 	for (var i = 0; i < PADDLES.length; i++)
@@ -66,9 +66,13 @@ function clearCanvas() {
 }
 
 function drawBall() {
-	ctx.beginPath();
 	ctx.fillStyle = COLORS[ (Math.abs(Ball.colorindex) % COLORS.length) ];
-	ctx.arc(Ball.x, Ball.y, Ball.radius, 0, 2*Math.PI, false);
+	drawCircle(Ball.x, Ball.y, Ball.radius);
+}
+
+function drawCircle(x, y, r) {
+	ctx.beginPath();
+	ctx.arc(x, y, r, 0, 2*Math.PI, false);
 	ctx.fill();
 }
 
@@ -148,20 +152,6 @@ function keyUpEventHandler(e){
 	if(e.keyCode == KEYS.DOWN_ARROW)
 		RightPaddle.down = false;
 }
-
-// // MOUSE	
-// var Mouse = {
-// 	x: canvas.width/2,
-// 	y: canvas.height/2,
-// };
-// canvas.onmousemove = function(event){	
-// 	Mouse.x = event.clientX;
-// 	Mouse.y = event.clientY;
-// };
-// canvas.onmousedown = function(){
-// };
-// canvas.onmouseup = function(){
-// };
 
 ///////////////////////////////////////////////////////////////////
 function PaddleObject(xPos) {
