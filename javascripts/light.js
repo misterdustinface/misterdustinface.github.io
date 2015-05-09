@@ -251,7 +251,8 @@ var Player = {
 	speed: 1,
 	size: 3,
 	color: "#fff",
-	lit: false
+	lit: false,
+	direction: "none"
 };
 
 function playerController(e){
@@ -279,6 +280,11 @@ function movePlayerInDirection(direction){
 	Player.direction = direction
 }
 
+function updatePlayer(){
+	updatePlayerMovement();
+	keepPlayerInBounds();
+}
+
 function updatePlayerMovement() {
 	if(Player.direction == "up"){
 		//Player.y -= Player.speed;
@@ -301,10 +307,6 @@ function updatePlayerMovement() {
 	Player.y += Player.yVel
 }
 
-function updatePlayerMovement(){
-	updatePlayerMovement();
-	keepPlayerInBounds();
-}
 function keepPlayerInBounds(){
 	if(Player.x < 0){
 		Player.x = canvas.width;
