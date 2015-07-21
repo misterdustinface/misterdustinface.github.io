@@ -1,6 +1,6 @@
 head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; auto}
 p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0;}
-body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; min-height: 10em; display: table-cell; vertical-align: middle}
+body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; vertical-align: middle}
 
 a         {text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);                          color:#63c0f5;} 
 a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* unvisited link */
