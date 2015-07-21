@@ -1,6 +1,6 @@
 head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; auto}
 p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0;}
-body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; vertical-align: middle}
+body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0;}
 
 a         {text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);                          color:#63c0f5;} 
 a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* unvisited link */
@@ -23,7 +23,7 @@ ul#essay li{float:left;}
 /* General & 'Reset' Stuff */
 
 .homebar  {margin: 0 auto; text-align: center;            }
-.container{margin: 0 auto; text-align: left;   width: 70%;}
+.container{margin: 0 auto; text-align: left;   width: 70%; vertical-align: middle }
 .post     {margin: 0 auto; text-align: center; width: 70%;}
 .paper    {                text-align: left;              }
 .footer   {margin: 0 auto; text-align: center;            }
