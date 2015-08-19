@@ -1,0 +1,26 @@
+---
+layout: default
+title:  Home
+---
+
+<div class="container">
+<section id="main_content">
+
+<center style="vertical-align:middle"> 
+  
+<head>
+	<style>
+	#canvas{
+	  background: #000;
+	}
+	</style>
+</head>
+<body>	
+	<canvas id="canvas" width="640" height="360"></canvas>
+	<script type="text/javascript" src="javascripts/ponggame.js"></script>
+</body>
+
+</center>
+
+</section>
+</div>

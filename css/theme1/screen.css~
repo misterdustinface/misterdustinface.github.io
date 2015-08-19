@@ -1,0 +1,50 @@
+head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; auto}
+p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0;}
+body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0;}
+
+a         {text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);                          color:#63c0f5;} 
+a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* unvisited link */
+a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* visited link */
+a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;} /* mouse over link */
+a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#b5e853;} /* selected link */
+
+
+/* Homebar List Stuff */
+ul                      {list-style-type: none; margin: 0px; padding:0px; overflow:   hidden;}
+#list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center;}
+ul#list-nav li          {display: inline;}
+ul#list-nav li a:link, 
+ul#list-nav li a:visited{display: inline; width:140px; padding:4px; text-align:center; text-transform:uppercase; /*font-weight:normal;*/font-weight:bold; /*display:block;*/}
+ul#list-nav li a:hover  {background-color:#aaaaaa;}
+ul#list-nav li a:active {}
+
+#essay ul  {text-align: left;}
+ul#essay li{float:left;}
+/* General & 'Reset' Stuff */
+
+.homebar  {margin: 0 auto; text-align: center;            }
+.container{margin: 0 auto; text-align: left;   width: 70%;}
+.post     {margin: 0 auto; text-align: center; width: 70%;}
+.paper    {                text-align: left;              }
+.footer   {margin: 0 auto; text-align: center;            }
+
+                                                             
+#downloads .btn {display: inline-block; margin: 0; text-align: center;}
+#main_content   {width: 100%; -webkit-font-smoothing: antialiased;}
+
+section {margin: 0 0 20px 0; display: block;}
+pre     {background: rgba(0, 0, 0, 0.9);
+         border: 1px solid rgba(255, 255, 255, 0.15);
+         padding: 10px;
+         font-size: 14px;
+         color: #b5e853;
+         border-radius: 2px;
+         -moz-border-radius: 2px;
+         -webkit-border-radius: 2px;
+         text-wrap: normal;
+         overflow: auto;
+         overflow-y: hidden; }
+
+iframe[seamless] {
+    border: none;
+}
