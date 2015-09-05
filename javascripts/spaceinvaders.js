@@ -68,7 +68,7 @@ function test_FAIL_B() {
 <!-- TEST LIBRARY -->
 function runTests() {
     var testsysdata = { failures:[], passes:0, numTests:0 };
-    shuffleTests();
+    <!--shuffleTests();-->
     for (var i = 0; i < TESTS.length; i++) {
         runTest(TESTS[i], testsysdata);
     }
