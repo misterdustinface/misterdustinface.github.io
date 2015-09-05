@@ -22,6 +22,12 @@ var KEYS = {
     SPACEBAR: 32, ESC: 27,
 };
 
+var playerShipUserIntData = {
+    shoot:false,
+    moveLeft:false,
+    moveRight:false,
+};
+
 function update() {
 }
 
@@ -30,6 +36,13 @@ function draw() {
 
 function keyDownEventHandler(e) {
     if (e.keyCode == KEYS.SPACEBAR) {
+        playerShipUserIntData.shoot = true;
+    }
+    if (e.keyCode == KEYS.LEFT_ARROW) {
+        playerShipUserIntData.moveLeft = true;
+    }
+    if (e.keyCode == KEYS.RIGHT_ARROW) {
+        playerShipUserIntData.moveRight = true;
     }
 }
 
