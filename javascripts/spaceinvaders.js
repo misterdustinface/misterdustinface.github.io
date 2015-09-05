@@ -64,10 +64,15 @@ function test_FAIL() {
 <!-- TEST LIBRARY -->
 function runTests() {
     var testsysdata = { failures:[], passes:0, numTests:0 };
+    shuffleTests();
     for (var i = 0; i < TESTS.length; i++) {
         runTest(TESTS[i], testsysdata);
     }
     displayTestResults(testsysdata);
+}
+
+function shuffleTests() {
+    shuffle(TESTS)
 }
 
 function displayTestResults(testsysdata) {
@@ -143,4 +148,15 @@ function drawText(text, xPos, yPos) {
 function drawTextCentered(text, xPos, yPos) {
     var length = ctx.measureText(text).width;
     drawText(text, xPos - (length/2), yPos);
+}
+
+<!-- MISC -
+function shuffle(array) {
+    for (var i = array.length, i > 0, i--) {
+        var X = Math.floor(Math.random() * i);
+        var temp = array[i];
+        array[i] = array[X];
+        array[X] = temp;
+    }
+    return array;
 }
