@@ -21,29 +21,6 @@ var playerShipUserIntData = {
     moveRight:false,
 };
 
-function runTests() {
-    testdata.numTests = TESTS.length
-    for (var i = 0; i < TESTS.length; i++) {
-        runTest(TESTS[i]);
-    }
-    displayTestResults();
-}
-
-var testdata = { failures:[], passes:0, numTests:0 };
-
-function displayTestResults() {
-    var results = "Passed:  " + testdata.passes + "/" + testdata.numTests + "\n"
-    if (testdata.passes === testdata.numTests) {
-        window.confirm(results);
-    } else {
-        var results = results + "Failed:  \n";
-        for (var i = 0; i < testdata.failures.length; i++) {
-            results = results + testdata.failures[i] + "\n" ;
-        }
-        window.alert(results);
-    }
-}
-
 function loadGame() {
     window.addEventListener("keydown", keyDownEventHandler);
     window.addEventListener("keyup",   keyUpEventHandler);
@@ -77,33 +54,53 @@ function keyUpEventHandler(e) {
 var TESTS = [test_example, test_example];
 
 function test_example() {
-    window.confirm("Example Test");
+    window.confirm("Test Example");
     expectEQ(0, 0, "0 == 0");
 }
 
 <!-- TEST LIBRARY -->
-var testresult = { passed:0, failures:[] }
+function runTests() {
+    var testsysdata = { failures:[], passes:0, numTests:0 };
+    for (var i = 0; i < TESTS.length; i++) {
+        runTest(TESTS[i], testsysdata);
+    }
+    displayTestResults(testsysdata);
+}
 
+function displayTestResults(testsysdata) {
+    var results = "Passed:  " + testsysdata.passes + "/" + testsysdata.numTests + "\n";
+    if (testsysdata.passes === testsysdata.numTests) {
+        window.confirm(results);
+    } else {
+        var results = results + "Failed:  \n";
+        for (var i = 0; i < testsysdata.failures.length; i++) {
+            results = results + testsysdata.failures[i] + "\n" ;
+        }
+        window.alert(results);
+    }
+}
+
+var testresult = { passed:0, failures:[] };
 function initRunTest() {
     testresult.passed = 0;
     testresult.failures = [];
 }
 
-function recordTestResult() {
-    testdata.numTests = testdata.numTests + 1;
+function recordTestResult(testsysdata) {
+    testsysdata.numTests = testsysdata.numTests + 1;
     if (testresult.failures.length > 0) {
         for (var i = 0; i < testresult.failures.length; i++) {
-            testdata.failures.push(testresult.failures[i]);   
+            testsysdata.failures.push(testresult.failures[i]);   
         }
     } else {
-        testdata.passes = testdata.passes + 1;
+        testsysdata.passes = testsysdata.passes + 1;
     }
 }
 
-function runTest(xTest) {
+function runTest(xTest, testsysdata) {
     initRunTest();
     xTest();
-    recordTestResult();
+    recordTestResult(testsysdata);
 }
 
 function expectEQ(xExpected, xReceived, xLabel) {
