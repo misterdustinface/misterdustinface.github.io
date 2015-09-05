@@ -154,7 +154,7 @@ function drawTextCentered(text, xPos, yPos) {
     drawText(text, xPos - (length/2), yPos);
 }
 
-<!-- MISC -
+<!-- MISC -->
 function shuffle(xArray) {
     for (var i = (xArray.length-1), i > 0, i--) {
         var X = Math.floor(Math.random() * i);
