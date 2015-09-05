@@ -60,13 +60,13 @@ function test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData() {
     playerShipUserIntData.moveLeft = false;
     playerShipUserIntData.moveRight = false;
     
-    keyDownEventHandler({keycode:KEYS.SPACEBAR});
+    keyDownEventHandler({keyCode:KEYS.SPACEBAR});
     expectEQ(true, playerShipUserIntData.shoot, "shoot should be true");
     
-    keyDownEventHandler({keycode:KEYS.LEFT_ARROW});
+    keyDownEventHandler({keyCode:KEYS.LEFT_ARROW});
     expectEQ(true, playerShipUserIntData.moveLeft, "moveLeft should be true");
     
-    keyDownEventHandler({keycode:KEYS.RIGHT_ARROW});
+    keyDownEventHandler({keyCode:KEYS.RIGHT_ARROW});
     expectEQ(true, playerShipUserIntData.moveRight, "moveRight should be true");
 }
 
