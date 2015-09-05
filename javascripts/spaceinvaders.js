@@ -51,11 +51,14 @@ function keyUpEventHandler(e) {
 }
 
 <!-- TESTS -->
-var TESTS = [test_example, test_example];
+var TESTS = [test_PASS, test_FAIL];
 
-function test_example() {
-    window.confirm("Test Example");
+function test_PASS() {
     expectEQ(0, 0, "0 == 0");
+}
+
+function test_FAIL() {
+    expectEQ(0, 1, "Should Fail");
 }
 
 <!-- TEST LIBRARY -->
