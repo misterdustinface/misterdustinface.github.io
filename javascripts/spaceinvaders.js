@@ -48,6 +48,15 @@ function keyDownEventHandler(e) {
 }
 
 function keyUpEventHandler(e) {
+    if (e.keyCode == KEYS.SPACEBAR) {
+        playerShipUserIntData.shoot = false;
+    }
+    if (e.keyCode == KEYS.LEFT_ARROW) {
+        playerShipUserIntData.moveLeft = false;
+    }
+    if (e.keyCode == KEYS.RIGHT_ARROW) {
+        playerShipUserIntData.moveRight = false;
+    }
 }
 
 <!-- TESTS -->
