@@ -22,7 +22,7 @@ var playerShipUserIntData = {
 };
 
 var testdata = {
-    failedTests:[],
+    failures:[],
     passes:0,
     numTests:0,
 };
@@ -33,18 +33,17 @@ function runTests() {
     testdata.numTests = TESTS.length
     for (var i = 0; i < TESTS.length; i++) {
         runTest(TESTS[i]);
-        var test = TESTS[i];
-        test();
     }
     
+    var results = "Passed:  " + testdata.passes + "/" + testdata.numTests + "\n"
     if (testdata.passes === testdata.numTests) {
-        window.confirm("All Tests Passed");
+        window.confirm(results);
     } else {
-        var str = "Failures:\n";
-        for (var i = 0; i < testdata.failedTests.length; i++) {
-            str = str + testdata.failedTests[i] + "\n" ;
+        var results = results + "Failed:  \n";
+        for (var i = 0; i < testdata.failures.length; i++) {
+            results = results + testdata.failures[i] + "\n" ;
         }
-        window.alert(str);
+        window.alert(results);
     }
 }
 
@@ -94,10 +93,11 @@ function runTest(xTest) {
     testresult.passed = 0;
     testresult.failures = [];
     xTest();
+    
     testdata.numTests = testdata.numTests + 1;
     if (testresult.failures.length > 0) {
         for (var i = 0; i < testresult.failures.length; i++) {
-            testdata.failedTests.push(testresult.failures[i]);   
+            testdata.failures.push(testresult.failures[i]);   
         }
     } else {
         testdata.passes = testdata.passes + 1;
@@ -109,7 +109,7 @@ function expectEQ(xExpected, xReceived, xLabel) {
     if (result) {
         testresult.passed = testresult.passed + 1;
     } else {
-        testresult.failureLabels.push(xLabel);
+        testresult.failures.push(xLabel);
     }
     testresult.evaluations = testresult.evaluations + 1;
 }
