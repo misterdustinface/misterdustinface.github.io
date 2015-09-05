@@ -32,6 +32,7 @@ function update() {
 }
 
 function draw() {
+    clearCanvas();
 }
 
 function keyDownEventHandler(e) {
@@ -47,6 +48,10 @@ function keyDownEventHandler(e) {
 }
 
 function keyUpEventHandler(e) {
+}
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawCircle(x, y, r) {
