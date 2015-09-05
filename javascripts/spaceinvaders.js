@@ -53,6 +53,7 @@ function keyUpEventHandler(e) {
 <!-- TESTS -->
 var TESTS = [
     test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData,
+    test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData,
 ];
 
 function test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData() {
@@ -68,6 +69,21 @@ function test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData() {
     
     keyDownEventHandler({keyCode:KEYS.RIGHT_ARROW});
     expectEQ(true, playerShipUserIntData.moveRight, "moveRight should be true");
+}
+
+function test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData() {
+    playerShipUserIntData.shoot = true;
+    playerShipUserIntData.moveLeft = true;
+    playerShipUserIntData.moveRight = true;
+    
+    keyUpEventHandler({keyCode:KEYS.SPACEBAR});
+    expectEQ(false, playerShipUserIntData.shoot, "shoot should be false");
+    
+    keyUpEventHandler({keyCode:KEYS.LEFT_ARROW});
+    expectEQ(false, playerShipUserIntData.moveLeft, "moveLeft should be false");
+    
+    keyUpEventHandler({keyCode:KEYS.RIGHT_ARROW});
+    expectEQ(false, playerShipUserIntData.moveRight, "moveRight should be false");
 }
 
 <!-- TEST LIBRARY -->
