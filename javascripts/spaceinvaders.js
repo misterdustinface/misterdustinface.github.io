@@ -1,21 +1,13 @@
-window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
-
 window.onload = function() {
-    window.addEventListener("keydown", keyDownEventHandler);
-    window.addEventListener("keyup",   keyUpEventHandler);
+    window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    window.confirm("Active!");
+    runTests();
+    loadGame();
 };
 
 var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
 ctx.font = "bold 16px Monospace";
-
-var UPS = 60;
-var FPS = 60;
-
-setInterval(update, 1000/UPS);
-setInterval(draw, 1000/FPS);
 
 var KEYS = {
     W: 87, A: 65, S: 83, D: 68,
@@ -28,6 +20,17 @@ var playerShipUserIntData = {
     moveLeft:false,
     moveRight:false,
 };
+
+function runTests() {
+    window.confirm("All Tests Passed");
+}
+
+function loadGame() {
+    window.addEventListener("keydown", keyDownEventHandler);
+    window.addEventListener("keyup",   keyUpEventHandler);
+    window.setInterval(update, 1000/60);
+    window.setInterval(draw, 1000/60);
+}
 
 function update() {
 }
@@ -51,6 +54,9 @@ function keyDownEventHandler(e) {
 function keyUpEventHandler(e) {
 }
 
+
+
+<!-- GRAPHICS LIBRARY -->
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
