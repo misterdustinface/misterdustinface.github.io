@@ -54,6 +54,10 @@ function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function setColor(c) {
+    ctx.fillStyle = c
+}
+
 function drawCircle(x, y, r) {
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2*Math.PI, false);
@@ -64,10 +68,6 @@ function drawRect(x, y, w, h) {
     ctx.beginPath();
     ctx.rect(x, y, w, h);
     ctx.fill();
-}
-
-function setColor(c) {
-    ctx.fillStyle = c
 }
 
 function drawText(text, xPos, yPos) {
