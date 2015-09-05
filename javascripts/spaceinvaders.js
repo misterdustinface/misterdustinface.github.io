@@ -21,8 +21,31 @@ var playerShipUserIntData = {
     moveRight:false,
 };
 
+var testdata = {
+    failedTests:[],
+    passes:0,
+    numTests:0,
+};
+
+var TESTS = [test_example];
+
 function runTests() {
-    window.confirm("All Tests Passed");
+    testdata.numTests = TESTS.length
+    for (var i = 0; i < TESTS.length; i++) {
+        runTest(TESTS[i]);
+        var test = TESTS[i];
+        test();
+    }
+    
+    if (testdata.passes === testdata.numTests) {
+        window.confirm("All Tests Passed");
+    } else {
+        var str = "Failures:\n";
+        for (var i = 0; i < testdata.failedTests.length; i++) {
+            str = str + testdata.failedTests[i] + "\n" ;
+        }
+        window.alert(str);
+    }
 }
 
 function loadGame() {
@@ -54,7 +77,42 @@ function keyDownEventHandler(e) {
 function keyUpEventHandler(e) {
 }
 
+<!-- TESTS -->
+function test_example() {
+    window.confirm("Example Test");
+    expectEQ(0, 0, "0 == 0")
+}
 
+<!-- TEST LIBRARY -->
+var testresult = {
+    passed:0,
+    failures:[],
+    evaluations:0,
+}
+
+function runTest(xTest) {
+    testresult.passed = 0;
+    testresult.failures = [];
+    xTest();
+    testdata.numTests = testdata.numTests + 1;
+    if (testresult.failures.length > 0) {
+        for (var i = 0; i < testresult.failures.length; i++) {
+            testdata.failedTests.push(testresult.failures[i]);   
+        }
+    } else {
+        testdata.passes = testdata.passes + 1;
+    }
+}
+
+function expectEQ(xExpected, xReceived, xLabel) {
+    var result = (xExpected === xReceived);
+    if (result) {
+        testresult.passed = testresult.passed + 1;
+    } else {
+        testresult.failureLabels.push(xLabel);
+    }
+    testresult.evaluations = testresult.evaluations + 1;
+}
 
 <!-- GRAPHICS LIBRARY -->
 function clearCanvas() {
