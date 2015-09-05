@@ -86,15 +86,13 @@ function shuffleTests() {
 
 function displayTestResults(testsysdata) {
     var results = "Passed:  " + testsysdata.passes + "/" + testsysdata.numTests + "\n";
-    if (testsysdata.passes === testsysdata.numTests) {
-        window.confirm(results);
-    } else {
+    if (testsysdata.passes !== testsysdata.numTests) {
         var results = results + "Failed:  \n";
         for (var i = 0; i < testsysdata.failures.length; i++) {
             results = results + testsysdata.failures[i] + "\n" ;
         }
-        window.alert(results);
     }
+    window.alert(results);
 }
 
 var testresult = { passed:0, failures:[] };
