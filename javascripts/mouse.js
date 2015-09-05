@@ -9,7 +9,7 @@ var ctx = canvas.getContext("2d");
 ctx.font = "bold 16px Monospace";
 
 var FPS = 60;
-setInterval(draw, 1000/FPS);
+window.setInterval(draw, 1000/FPS);
 
 var Mouse = {
   x: canvas.width/2,
