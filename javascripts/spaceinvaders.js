@@ -35,3 +35,19 @@ function keyDownEventHandler(e) {
 
 function keyUpEventHandler(e) {
 }
+
+function drawCircle(x, y, r) {
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, 2*Math.PI, false);
+    ctx.fill();
+}
+
+function drawRect(x, y, w, h) {
+    ctx.beginPath();
+    ctx.rect(x, y, w, h);
+    ctx.fill();
+}
+
+function setColor(c) {
+    ctx.fillStyle = c
+}
