@@ -20,6 +20,8 @@ ul#list-nav li a:active {}
 
 #essay ul  {text-align: left;}
 ul#essay li{float:left;}
+
+#gamecanvas {background: #000;}
 /* General & 'Reset' Stuff */
 
 .homebar  {margin: 0 auto; text-align: center;            }
