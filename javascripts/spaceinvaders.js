@@ -69,3 +69,12 @@ function drawRect(x, y, w, h) {
 function setColor(c) {
     ctx.fillStyle = c
 }
+
+function drawText(text, xPos, yPos) {
+    ctx.fillText(xText, xPos, yPos);
+}
+
+function drawTextCentered(text, xPos, yPos) {
+    var length = ctx.measureText(text).width;
+    drawText(text, xPos - (length/2), yPos);
+}
