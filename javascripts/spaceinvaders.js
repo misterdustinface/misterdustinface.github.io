@@ -68,7 +68,7 @@ function test_FAIL_B() {
 <!-- TEST LIBRARY -->
 function runTests() {
     var testsysdata = { failures:[], passes:0, numTests:0 };
-    <!--shuffleTests();-->
+    shuffleTests();
     for (var i = 0; i < TESTS.length; i++) {
         runTest(TESTS[i], testsysdata);
     }
@@ -76,7 +76,7 @@ function runTests() {
 }
 
 function shuffleTests() {
-    shuffle(TESTS)
+    shuffle(TESTS);
 }
 
 function displayTestResults(testsysdata) {
@@ -130,7 +130,7 @@ function clearCanvas() {
 }
 
 function setColor(c) {
-    ctx.fillStyle = c
+    ctx.fillStyle = c;
 }
 
 function drawCircle(x, y, r) {
