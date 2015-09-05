@@ -155,12 +155,12 @@ function drawTextCentered(text, xPos, yPos) {
 }
 
 <!-- MISC -
-function shuffle(array) {
-    for (var i = array.length, i > 0, i--) {
+function shuffle(xArray) {
+    for (var i = (xArray.length-1), i > 0, i--) {
         var X = Math.floor(Math.random() * i);
-        var temp = array[i];
-        array[i] = array[X];
-        array[X] = temp;
+        var temp = xArray[i];
+        xArray[i] = xArray[X];
+        xArray[X] = temp;
     }
-    return array;
+    return xArray;
 }
