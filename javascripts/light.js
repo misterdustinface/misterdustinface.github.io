@@ -121,7 +121,7 @@ function getSightPolygon(sightX,sightY){
 ///////////////////////////////////////////////////////
 
 // DRAWING
-var canvas = document.getElementById("canvas");
+var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
 var UPS = 60;
 var FPS = 60;
