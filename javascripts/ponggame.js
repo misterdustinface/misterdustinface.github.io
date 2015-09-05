@@ -5,7 +5,7 @@ window.onload = function() {
 	window.addEventListener("keyup",   keyUpEventHandler);
 	window.focus();
 };
-var canvas = document.getElementById("canvas");
+var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
 ctx.font = "bold 16px Monospace";
 var UPS = 60;
