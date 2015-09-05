@@ -51,14 +51,18 @@ function keyUpEventHandler(e) {
 }
 
 <!-- TESTS -->
-var TESTS = [test_PASS, test_FAIL];
+var TESTS = [test_PASS, test_FAIL, test_FAIL_B];
 
 function test_PASS() {
-    expectEQ(0, 0, "0 == 0");
+    expectEQ(0, 0, "Should Pass");
 }
 
 function test_FAIL() {
     expectEQ(0, 1, "Should Fail");
+}
+
+function test_FAIL_B() {
+    expectEQ(0, 1, "Also Fails");
 }
 
 <!-- TEST LIBRARY -->
