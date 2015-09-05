@@ -4,6 +4,7 @@ window.onload = function() {
     window.addEventListener("keydown", keyDownEventHandler);
     window.addEventListener("keyup",   keyUpEventHandler);
     window.focus();
+    window.confirm("Active!");
 };
 
 var canvas = document.getElementById("gamecanvas");
