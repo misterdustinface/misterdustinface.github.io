@@ -1,8 +1,8 @@
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    $.getScript("/javascripts/TDD.js", doTDD);
-    $.getScript("/javascripts/graphics.js", loadGame);
+    $.getScript("/javascripts/TDD.js", runTDD);
+    $.getScript("/javascripts/Graphics.js", loadGame);
 };
 
 var GFX;
@@ -61,7 +61,7 @@ function keyUpEventHandler(e) {
     }
 }
 
-function doTDD() {
+function runTDD() {
     var x = new TDD();
     x.setResultsCallback(function(xResultsString) {
         window.alert(xResultsString);
