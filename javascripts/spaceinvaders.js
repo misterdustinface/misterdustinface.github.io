@@ -3,6 +3,7 @@ window.onload = function() {
     window.focus();
     //$.getScript("/javascripts/TDD.js", runTDD);
     $.getScript("/javascripts/Graphics.js", loadGame);
+    window.alert("Load complete");
 };
 
 var GFX;
