@@ -22,7 +22,29 @@ function emptyFunction() {
 }
 
 var GFX;
-var DRAW_FUNC = emptyFunction;
+var UPDATE_FUNC = emptyFunction;
+var DRAW_FUNC   = emptyFunction;
+
+function update() {
+    UPDATE_FUNC();
+}
+
+function draw() {
+    GFX.clearCanvas();
+    DRAW_FUNC();
+}
+
+var CONTEXT_PROFILES = {
+    NULL: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction},
+    GAME: {UPDATE_FUNC: GAME_UPDATE,   DRAW_FUNC: GAME_DRAW},
+    TEST: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: TEST_RESULTS_DRAW},
+};
+
+function setContext(xContext) {
+    var contextProfile = CONTEXT_PROFILES[xContext];
+    UPDATE_FUNC = contextProfile.UPDATE_FUNC;
+    DRAW_FUNC   = contextProfile.DRAW_FUNC;
+}
 
 var KEYS = {
     W: 87, A: 65, S: 83, D: 68, T:84, P:80,
@@ -46,15 +68,11 @@ function loadGame() {
     window.addEventListener("keyup",   keyUpEventHandler);
     window.setInterval(update, 1000/60);
     window.setInterval(draw, 1000/60);
-    DRAW_FUNC = GAME_DRAW;
+    setContext("GAME");
 }
 
-function update() {
-}
-
-function draw() {
-    GFX.clearCanvas();
-    DRAW_FUNC();
+function GAME_UPDATE() {
+    
 }
 
 function GAME_DRAW() {
@@ -72,6 +90,7 @@ function GAME_DRAW() {
 
 function keyDownEventHandler(e) {
     if (e.keyCode == KEYS.SPACEBAR) {
+        setContext("GAME");
         playerShipUserIntData.shoot = true;
     }
     if (e.keyCode == KEYS.LEFT_ARROW) {
@@ -79,9 +98,6 @@ function keyDownEventHandler(e) {
     }
     if (e.keyCode == KEYS.RIGHT_ARROW) {
         playerShipUserIntData.moveRight = true;
-    }
-    if (e.keyCode == KEYS.P) {
-        DRAW_FUNC = GAME_DRAW;
     }
 }
 
@@ -96,6 +112,7 @@ function keyUpEventHandler(e) {
         playerShipUserIntData.moveRight = false;
     }
     if (e.keyCode == KEYS.T) {
+        setContext("NULL");
         runTDD();
     }
 }
@@ -103,7 +120,7 @@ function keyUpEventHandler(e) {
 var TEST_RESULTS = {};
 function displayTestResults(xResults) {
     TEST_RESULTS = xResults;
-    DRAW_FUNC = TEST_RESULTS_DRAW;
+    setContext("TEST");
 }
 
 function TEST_RESULTS_DRAW() {
