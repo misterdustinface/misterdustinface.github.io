@@ -1,7 +1,7 @@
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    //$.getScript("/javascripts/TDD.js", runTDD);
+    $.getScript("/javascripts/TDD.js", runTDD);
     $.getScript("/javascripts/Graphics.js", loadGame);
 };
 
@@ -26,7 +26,6 @@ function loadGame() {
     var canvas = document.getElementById("gamecanvas");
     GFX = new Graphics(canvas);
     window.setInterval(draw, 1000/60);
-    window.alert("Game Loaded");
 }
 
 function update() {
@@ -36,6 +35,8 @@ function draw() {
     GFX.clearCanvas();
     GFX.setColor("#FFFFFF");
     GFX.drawRect(20,20,20,20);
+    GFX.drawText("TEXT", 50, 50);
+    
     GFX.drawTextCentered("Game Running", getWidth()/2, getHeight()/2);
     var isShooting = playerShipUserIntData.shoot;
     if (isShooting) {
