@@ -76,16 +76,14 @@ function loadGame() {
 
 function initPlayerShip() {
     playerShip = {
-        xPos:250,
-        yPos:250,
+        xPos: (GFX.getWidth()/2),
+        yPos: (GFX.getHeight() * 3/4),
         width:20,
         height:20,
         xVel:0,
         xSpeed:0.15,
     };
-    playerShip.xPos = GFX.getWidth()/2;
     playerShip.xPos -= (playerShip.width/2);
-    playerShip.yPos = GFX.getHeight() * 3/4;
     playerShip.yPos -= (playerShip.height/2);
 }
 
