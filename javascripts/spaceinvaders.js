@@ -88,6 +88,8 @@ function keyUpEventHandler(e) {
 }
 
 function runTDD() {
+    window.alert("runTDD is called");
+    
     var x = new TDD();
     x.setResultsCallback(function(xResultsString) {
         //DRAWINGS.push(function(){
@@ -129,5 +131,5 @@ function runTDD() {
     
     x.runTests();
     //delete x;
-    window.alert("finished call");
+    window.alert("finished runTDD call");
 }
