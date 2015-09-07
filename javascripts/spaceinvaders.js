@@ -1,3 +1,7 @@
+function emptyFunction() {
+    
+}
+
 function getScriptClosure(xFunc) {
     return function(xResponse, xStatus) {
         if (xStatus !== "success") {
@@ -13,13 +17,9 @@ window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
     $.getScript("/javascripts/Graphics.js", getScriptClosure(loadGraphics));
-    $.getScript("/javascripts/TDD.js", getScriptClosure(runTDD));
+    $.getScript("/javascripts/TDD.js", getScriptClosure(emptyFunction));
     loadGame();
 };
-
-function emptyFunction() {
-    
-}
 
 var GFX;
 var UPDATE_FUNC = emptyFunction;
@@ -88,6 +88,25 @@ function GAME_DRAW() {
     }
 }
 
+var TEST_RESULTS = {};
+function TEST_RESULTS_DRAW() {
+    var CENTER_X = GFX.getWidth()/2;
+    var yPos = 20;
+    GFX.setColor("#FFFFFF");
+    GFX.drawTextCentered("[TEST RESULTS]", CENTER_X, yPos);
+    yPos += 30;
+    GFX.drawTextCentered("Passed: " +  TEST_RESULTS.passes + "/" + TEST_RESULTS.numTests, CENTER_X, yPos);
+    yPos += 30;
+    if (TEST_RESULTS.passes !== TEST_RESULTS.numTests) {
+        GFX.drawTextCentered("Failed:", CENTER_X, yPos);
+        yPos += 30;
+        for (var i = 0; i < TEST_RESULTS.failures.length; i++) {
+            GFX.drawTextCentered(TEST_RESULTS.failures[i], CENTER_X, yPos);
+            yPos += 30;
+        }
+    }
+}
+
 function keyDownEventHandler(e) {
     if (e.keyCode == KEYS.SPACEBAR) {
         setContext("GAME");
@@ -117,28 +136,9 @@ function keyUpEventHandler(e) {
     }
 }
 
-var TEST_RESULTS = {};
 function displayTestResults(xResults) {
     TEST_RESULTS = xResults;
     setContext("TEST");
-}
-
-function TEST_RESULTS_DRAW() {
-    var CENTER_X = GFX.getWidth()/2;
-    var yPos = 20;
-    GFX.setColor("#FFFFFF");
-    GFX.drawTextCentered("[TEST RESULTS]", CENTER_X, yPos);
-    yPos += 30;
-    GFX.drawTextCentered("Passed: " +  TEST_RESULTS.passes + "/" + TEST_RESULTS.numTests, CENTER_X, yPos);
-    yPos += 30;
-    if (TEST_RESULTS.passes !== TEST_RESULTS.numTests) {
-        GFX.drawTextCentered("Failed:", CENTER_X, yPos);
-        yPos += 30;
-        for (var i = 0; i < TEST_RESULTS.failures.length; i++) {
-            GFX.drawTextCentered(TEST_RESULTS.failures[i], CENTER_X, yPos);
-            yPos += 30;
-        }
-    }
 }
 
 function runTDD() {
