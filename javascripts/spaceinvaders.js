@@ -33,7 +33,8 @@ function update() {
 function draw() {
     clearCanvas();
     setColor("#FFFFFF");
-    drawRect(20, 20, 200, 200);
+    drawTextCentered("Game Running", getWidth(), getHeight());
+    drawRect(20,20,20,20);
 }
 
 function keyDownEventHandler(e) {
