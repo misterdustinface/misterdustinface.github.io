@@ -37,11 +37,11 @@ Graphics.prototype.drawRect = function(x, y, w, h) {
     this.ctx.fill();
 }
 
-Graphics.prototype.drawText = function(text, xPos, yPos) {
+Graphics.prototype.drawText = function(xText, xPos, yPos) {
     this.ctx.fillText(xText, xPos, yPos);
 }
 
-Graphics.prototype.drawTextCentered = function(text, xPos, yPos) {
-    var length = this.ctx.measureText(text).width;
-    this.drawText(text, xPos - (length/2), yPos);
+Graphics.prototype.drawTextCentered = function(xText, xPos, yPos) {
+    var length = this.ctx.measureText(xText).width;
+    this.drawText(xText, xPos - (length/2), yPos);
 }
