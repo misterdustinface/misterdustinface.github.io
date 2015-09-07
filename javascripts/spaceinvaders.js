@@ -88,6 +88,7 @@ function keyUpEventHandler(e) {
 }
 
 function displayTestResults(xResults) {
+    window.alert("Custom callback called");
     var resultsString = "Passed:  " + xResults.passes + "/" + xResults.numTests + "\n";
     if (xResults.passes !== xResults.numTests) {
         var resultsString = resultsString + "Failed:  \n";
