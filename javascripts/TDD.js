@@ -1,6 +1,6 @@
 function TDD() {
     this.TESTS = [];
-    this.resultsCallback = function(xResultsString) {};
+    this.onResults = function(xResults) {};
 }
 
 TDD.prototype.test = function(xTestName, xTest) {
@@ -8,36 +8,18 @@ TDD.prototype.test = function(xTestName, xTest) {
 }
 
 TDD.prototype.runTests = function() {
-    window.alert("Has scope of window in runTests");
     var tests = this.TESTS;
     var testsysdata = { failures:[], passes:0, numTests:0 };
     shuffle(tests);
-    window.alert("Can shuffle tests. Now running tests.");
     for (var i = 0; i < tests.length; i++) {
         testsysdata.testname = tests[i].testname;
         runTest(tests[i].exec, testsysdata);
     }
-    window.alert("Finished running each test, about to display results");
-    displayTestResults(testsysdata);
+    this.onResults(testsysdata);
 }
 
-TDD.prototype.setResultsCallback = function(xCallback) {
-    this.resultsCallback = xCallback;
-}
-
-function displayTestResults(testsysdata) {
-    window.alert("Inside display test results");
-    var resultsString = "Passed:  " + testsysdata.passes + "/" + testsysdata.numTests + "\n";
-    window.alert(resultsString);
-    if (testsysdata.passes !== testsysdata.numTests) {
-        var resultsString = resultsString + "Failed:  \n";
-        for (var i = 0; i < testsysdata.failures.length; i++) {
-            resultsString = resultsString + testsysdata.failures[i] + "\n" ;
-        }
-    }
-    window.alert(resultsString);
-    window.alert("Calling callback function");
-    this.resultsCallback(resultsString);
+TDD.prototype.setOnResultsCallback = function(xCallback) {
+    this.onResults = xCallback;
 }
 
 var testresult = { passed:0, failures:[] };
