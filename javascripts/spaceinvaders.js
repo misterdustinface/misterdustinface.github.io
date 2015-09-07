@@ -1,8 +1,8 @@
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    $.getScript("/javascripts/TDD.js");
-    $.getScript("/javascripts/graphics.js");
+    $.getScript("/javascripts/TDD.js", doTDD);
+    $.getScript("/javascripts/graphics.js", loadGame);
 };
 
 var KEYS = {
@@ -58,41 +58,42 @@ function keyUpEventHandler(e) {
     }
 }
 
-<!-- TESTS -->
-var TDD = new TDD();
-TDD.setResultsCallback(function(xResultsString) {
-    window.alert(xResultsString);
-});
-
-TDD.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
-    playerShipUserIntData.shoot = false;
-    playerShipUserIntData.moveLeft = false;
-    playerShipUserIntData.moveRight = false;
+function doTDD() {
+    var TDD = new TDD();
+    TDD.setResultsCallback(function(xResultsString) {
+        window.alert(xResultsString);
+    });
     
-    keyDownEventHandler({keyCode:KEYS.SPACEBAR});
-    expectEQ(true, playerShipUserIntData.shoot, "shoot should be true");
+    TDD.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
+        playerShipUserIntData.shoot = false;
+        playerShipUserIntData.moveLeft = false;
+        playerShipUserIntData.moveRight = false;
+        
+        keyDownEventHandler({keyCode:KEYS.SPACEBAR});
+        expectEQ(true, playerShipUserIntData.shoot, "shoot should be true");
+        
+        keyDownEventHandler({keyCode:KEYS.LEFT_ARROW});
+        expectEQ(true, playerShipUserIntData.moveLeft, "moveLeft should be true");
+        
+        keyDownEventHandler({keyCode:KEYS.RIGHT_ARROW});
+        expectEQ(true, playerShipUserIntData.moveRight, "moveRight should be true");    
+    });
     
-    keyDownEventHandler({keyCode:KEYS.LEFT_ARROW});
-    expectEQ(true, playerShipUserIntData.moveLeft, "moveLeft should be true");
+    TDD.test("keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
+        playerShipUserIntData.shoot = true;
+        playerShipUserIntData.moveLeft = true;
+        playerShipUserIntData.moveRight = true;
+        
+        keyUpEventHandler({keyCode:KEYS.SPACEBAR});
+        expectEQ(false, playerShipUserIntData.shoot, "shoot should be false");
+        
+        keyUpEventHandler({keyCode:KEYS.LEFT_ARROW});
+        expectEQ(false, playerShipUserIntData.moveLeft, "moveLeft should be false");
+        
+        keyUpEventHandler({keyCode:KEYS.RIGHT_ARROW});
+        expectEQ(false, playerShipUserIntData.moveRight, "moveRight should be false");
+    });
     
-    keyDownEventHandler({keyCode:KEYS.RIGHT_ARROW});
-    expectEQ(true, playerShipUserIntData.moveRight, "moveRight should be true");    
-});
-
-TDD.test("keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
-    playerShipUserIntData.shoot = true;
-    playerShipUserIntData.moveLeft = true;
-    playerShipUserIntData.moveRight = true;
-    
-    keyUpEventHandler({keyCode:KEYS.SPACEBAR});
-    expectEQ(false, playerShipUserIntData.shoot, "shoot should be false");
-    
-    keyUpEventHandler({keyCode:KEYS.LEFT_ARROW});
-    expectEQ(false, playerShipUserIntData.moveLeft, "moveLeft should be false");
-    
-    keyUpEventHandler({keyCode:KEYS.RIGHT_ARROW});
-    expectEQ(false, playerShipUserIntData.moveRight, "moveRight should be false");
-});
-
-TDD.runTests();
-loadGame();
+    TDD.runTests();
+    delete TDD
+}
