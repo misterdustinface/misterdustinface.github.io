@@ -24,7 +24,8 @@ function loadGame() {
     window.addEventListener("keydown", keyDownEventHandler);
     window.addEventListener("keyup",   keyUpEventHandler);
     window.setInterval(update, 1000/60);
-    GFX = new Graphics();
+    var canvas = document.getElementById("gamecanvas");
+    GFX = new Graphics(canvas);
     window.setInterval(draw, 1000/60);
 }
 
