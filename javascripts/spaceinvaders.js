@@ -2,14 +2,8 @@ window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
     $.getScript("/javascripts/TDD.js", function() {
-       window.alert("TDD library loaded");
-       TDD.addTest(test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData);
-       TDD.addTest(test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData);
-       TDD.runTests();
-    });
-    $.getScript("/javascripts/graphics.js", function() {
-        window.alert("graphics library loaded");
-        loadGame();
+        runTests();
+        $.getScript("/javascripts/graphics.js", loadGame);
     });
 };
 
@@ -64,6 +58,12 @@ function keyUpEventHandler(e) {
 }
 
 <!-- TESTS -->
+function runTests() {
+    TDD.addTest(test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData);
+    TDD.addTest(test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData);
+    TDD.runTests();   
+}
+
 function test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData() {
     playerShipUserIntData.shoot = false;
     playerShipUserIntData.moveLeft = false;
