@@ -16,9 +16,18 @@ function getScriptClosure(xFunc) {
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    $.getScript("/javascripts/Graphics.js", getScriptClosure(loadGraphics));
-    $.getScript("/javascripts/TDD.js", getScriptClosure(emptyFunction));
-    loadGame();
+    
+    $.when(
+        $.getScript("/javascripts/Graphics.js", getScriptClosure(loadGraphics)),
+        $.getScript("/javascripts/TDD.js", getScriptClosure(emptyFunction)),
+        $.Deferred(function( deferred ){
+            $( deferred.resolve );
+        })
+    ).done(loadGame);
+    
+    //$.getScript("/javascripts/Graphics.js", getScriptClosure(loadGraphics));
+    //$.getScript("/javascripts/TDD.js", getScriptClosure(emptyFunction));
+    //loadGame();
 };
 
 var GFX;
@@ -70,7 +79,6 @@ var playerShip = {
 function loadGraphics() {
     var canvas = document.getElementById("gamecanvas");
     GFX = new Graphics(canvas);
-    setPlayerShipToDefaultPosition();
 }
 
 function loadGame() {
@@ -79,6 +87,7 @@ function loadGame() {
     window.setInterval(update, 1000/60);
     window.setInterval(draw, 1000/60);
     setContext("GAME");
+    setPlayerShipToDefaultPosition();
 }
 
 function setPlayerShipToDefaultPosition() {
