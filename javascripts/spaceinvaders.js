@@ -1,8 +1,11 @@
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
+    window.alert("A");
     $.getScript("/javascripts/TDD.js");
+    window.alert("B");
     $.getScript("/javascripts/graphics.js");
+    window.alert("C");
 };
 
 var KEYS = {
@@ -29,6 +32,8 @@ function update() {
 
 function draw() {
     clearCanvas();
+    setColor("#FFFFFF");
+    drawRect(20, 20, 200, 200);
 }
 
 function keyDownEventHandler(e) {
