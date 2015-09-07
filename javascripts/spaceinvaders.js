@@ -49,10 +49,10 @@ function draw() {
     GFX.drawText("TEXT", 50, 50);
     GFX.drawTextCentered("TEXT", 50, 100)
     
-    GFX.drawTextCentered("Game Running", getWidth()/2, getHeight()/2);
+    GFX.drawTextCentered("Game Running", GFX.getWidth()/2, GFX.getHeight()/2);
     var isShooting = playerShipUserIntData.shoot;
     if (isShooting) {
-        GFX.drawTextCentered("Shooting", getWidth()/2, getHeight()/2 + 60);
+        GFX.drawTextCentered("Shooting", GFX.getWidth()/2, GFX.getHeight()/2 + 60);
     }
 }
 
