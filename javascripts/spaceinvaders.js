@@ -88,8 +88,8 @@ function keyUpEventHandler(e) {
 }
 
 function displayTestResults(xResults) {
-    window.alert("Custom callback called");
-    var resultsString = "Passed:  " + xResults.passes + "/" + xResults.numTests + "\n";
+    var resultsString = "[TEST RESULTS]\n";
+    resultsString = resultsString + "Passed:  " + xResults.passes + "/" + xResults.numTests + "\n";
     if (xResults.passes !== xResults.numTests) {
         var resultsString = resultsString + "Failed:  \n";
         for (var i = 0; i < xResults.failures.length; i++) {
@@ -135,5 +135,4 @@ function runTDD() {
     
     x.runTests();
     delete x;    
-    window.alert("finished runTDD call");
 }
