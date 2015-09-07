@@ -16,15 +16,19 @@ TDD.prototype.runTests = function() {
     displayTestResults(testsysdata);
 }
 
+TDD.prototype.setResultsCallback = function(xCallback) {
+    this.resultsCallback = xCallback;
+}
+
 function displayTestResults(testsysdata) {
-    var results = "Passed:  " + testsysdata.passes + "/" + testsysdata.numTests + "\n";
+    var resultsString = "Passed:  " + testsysdata.passes + "/" + testsysdata.numTests + "\n";
     if (testsysdata.passes !== testsysdata.numTests) {
-        var results = results + "Failed:  \n";
+        var resultsString = resultsString + "Failed:  \n";
         for (var i = 0; i < testsysdata.failures.length; i++) {
-            results = results + testsysdata.failures[i] + "\n" ;
+            resultsString = resultsString + testsysdata.failures[i] + "\n" ;
         }
     }
-    window.alert(results);
+    this.resultsCallback(resultsString);
 }
 
 var testresult = { passed:0, failures:[] };
