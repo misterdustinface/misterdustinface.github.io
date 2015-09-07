@@ -6,6 +6,10 @@ TDD.prototype.addTest = function(xTest) {
     this.TESTS.push(xTest);
 };
 
+TDD.prototype.test = function(xTestName, xTest) {
+    TDD.addTest(xTest);
+}
+
 TDD.prototype.runTests = function() {
     var TESTS = this.TESTS;
     var testsysdata = { failures:[], passes:0, numTests:0 };
