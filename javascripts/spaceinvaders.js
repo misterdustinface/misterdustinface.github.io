@@ -22,6 +22,7 @@ function loadGame() {
     window.addEventListener("keyup",   keyUpEventHandler);
     window.setInterval(update, 1000/60);
     window.setInterval(draw, 1000/60);
+    window.alert("Game Loaded");
 }
 
 function update() {
@@ -59,12 +60,12 @@ function keyUpEventHandler(e) {
 }
 
 function doTDD() {
-    var TDD = new TDD();
-    TDD.setResultsCallback(function(xResultsString) {
+    var x = new TDD();
+    x.setResultsCallback(function(xResultsString) {
         window.alert(xResultsString);
     });
     
-    TDD.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
+    x.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
         playerShipUserIntData.shoot = false;
         playerShipUserIntData.moveLeft = false;
         playerShipUserIntData.moveRight = false;
@@ -79,7 +80,7 @@ function doTDD() {
         expectEQ(true, playerShipUserIntData.moveRight, "moveRight should be true");    
     });
     
-    TDD.test("keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
+    x.test("keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
         playerShipUserIntData.shoot = true;
         playerShipUserIntData.moveLeft = true;
         playerShipUserIntData.moveRight = true;
@@ -94,6 +95,6 @@ function doTDD() {
         expectEQ(false, playerShipUserIntData.moveRight, "moveRight should be false");
     });
     
-    TDD.runTests();
-    delete TDD
+    x.runTests();
+    delete x;
 }
