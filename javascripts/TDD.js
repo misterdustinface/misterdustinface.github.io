@@ -4,16 +4,16 @@ function TDD() {
 }
 
 TDD.prototype.test = function(xTestName, xTest) {
-    this.TESTS.push(xTest);
+    this.TESTS.push({name:xTestName, exec:xTest});
 }
 
 TDD.prototype.runTests = function() {
     var tests = this.TESTS;
     var testsysdata = { failures:[], passes:0, numTests:0 };
-    displayTestResults(testsysdata);
     shuffle(tests);
     for (var i = 0; i < tests.length; i++) {
-        runTest(tests[i], testsysdata);
+        testsysdata.name = tests[i].name;
+        runTest(tests[i].exec, testsysdata);
     }
     displayTestResults(testsysdata);
 }
@@ -39,11 +39,15 @@ function initRunTest() {
     testresult.failures = [];
 }
 
+var TEST_LABEL = "[TEST]: "
+var FAIL_LABEL = "      > "
+
 function recordTestResult(testsysdata) {
     testsysdata.numTests = testsysdata.numTests + 1;
     if (testresult.failures.length > 0) {
+        testsysdata.failures.push(TEST_LABEL + testsysdata.name);
         for (var i = 0; i < testresult.failures.length; i++) {
-            testsysdata.failures.push(testresult.failures[i]);   
+            testsysdata.failures.push(FAIL_LABEL + testresult.failures[i]);   
         }
     } else {
         testsysdata.passes = testsysdata.passes + 1;
