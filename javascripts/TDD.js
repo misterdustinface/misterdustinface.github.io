@@ -4,15 +4,16 @@ function TDD() {
 }
 
 TDD.prototype.test = function(xTestName, xTest) {
-    this.TESTS.push({name:xTestName, exec:xTest});
+    this.TESTS.push({testname:xTestName, exec:xTest});
 }
 
 TDD.prototype.runTests = function() {
+    window.alert("Has scope of window in runTests");
     var tests = this.TESTS;
     var testsysdata = { failures:[], passes:0, numTests:0 };
     shuffle(tests);
     for (var i = 0; i < tests.length; i++) {
-        testsysdata.name = tests[i].name;
+        testsysdata.testname = tests[i].testname;
         runTest(tests[i].exec, testsysdata);
     }
     displayTestResults(testsysdata);
@@ -45,7 +46,7 @@ var FAIL_LABEL = "      > "
 function recordTestResult(testsysdata) {
     testsysdata.numTests = testsysdata.numTests + 1;
     if (testresult.failures.length > 0) {
-        testsysdata.failures.push(TEST_LABEL + testsysdata.name);
+        testsysdata.failures.push(TEST_LABEL + testsysdata.testname);
         for (var i = 0; i < testresult.failures.length; i++) {
             testsysdata.failures.push(FAIL_LABEL + testresult.failures[i]);   
         }
