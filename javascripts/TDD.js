@@ -26,13 +26,17 @@ TDD.prototype.setResultsCallback = function(xCallback) {
 }
 
 function displayTestResults(testsysdata) {
+    window.alert("Inside display test results");
     var resultsString = "Passed:  " + testsysdata.passes + "/" + testsysdata.numTests + "\n";
+    window.alert(resultsString);
     if (testsysdata.passes !== testsysdata.numTests) {
         var resultsString = resultsString + "Failed:  \n";
         for (var i = 0; i < testsysdata.failures.length; i++) {
             resultsString = resultsString + testsysdata.failures[i] + "\n" ;
         }
     }
+    window.alert(resultsString);
+    window.alert("Calling callback function");
     this.resultsCallback(resultsString);
 }
 
