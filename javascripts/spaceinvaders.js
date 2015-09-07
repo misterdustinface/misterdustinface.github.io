@@ -129,4 +129,5 @@ function runTDD() {
     
     x.runTests();
     //delete x;
+    window.alert("finished call");
 }
