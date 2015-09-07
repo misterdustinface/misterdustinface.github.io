@@ -12,11 +12,14 @@ function getScriptClosure(xFunc) {
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
+    $.getScript("/javascripts/Graphics.js", getScriptClosure(loadGraphics));
     $.getScript("/javascripts/TDD.js", getScriptClosure(runTDD));
-    $.getScript("/javascripts/Graphics.js", getScriptClosure(loadGame));
+    loadGame();
 };
 
 var GFX;
+var DRAWINGS = [];
+var TEMP_DRAW_QUEUE = [];
 
 var KEYS = {
     W: 87, A: 65, S: 83, D: 68, T:84,
@@ -30,12 +33,15 @@ var playerShipUserIntData = {
     moveRight:false,
 };
 
+function loadGraphics() {
+    var canvas = document.getElementById("gamecanvas");
+    GFX = new Graphics(canvas);   
+}
+
 function loadGame() {
     window.addEventListener("keydown", keyDownEventHandler);
     window.addEventListener("keyup",   keyUpEventHandler);
     window.setInterval(update, 1000/60);
-    var canvas = document.getElementById("gamecanvas");
-    GFX = new Graphics(canvas);
     window.setInterval(draw, 1000/60);
 }
 
@@ -53,6 +59,15 @@ function draw() {
     var isShooting = playerShipUserIntData.shoot;
     if (isShooting) {
         GFX.drawTextCentered("Shooting", GFX.getWidth()/2, GFX.getHeight()/2 + 60);
+    }
+    
+    for (var i = 0; i < DRAWINGS.length; i++) {
+        DRAWINGS[i]();
+    }
+    
+    while (TEMP_DRAW_QUEUE.length > 0) {
+        var drawingFunc = TEMP_DRAW_QUEUE.shift();
+        drawingFunc();
     }
 }
 
@@ -86,7 +101,15 @@ function keyUpEventHandler(e) {
 function runTDD() {
     var x = new TDD();
     x.setResultsCallback(function(xResultsString) {
-        window.alert(xResultsString);
+        DRAWINGS.push(function(){
+            GFX.setColor("#FFFFFF");
+            GFX.drawText(xResultsString, 50, 200);
+        });
+        TEMP_DRAW_QUEUE.push(function(){
+            GFX.setColor("#FFFFFF");
+            GFX.drawText("COMPLETE", 50, 250);
+        });
+        //window.alert(xResultsString);
     });
     
     x.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
