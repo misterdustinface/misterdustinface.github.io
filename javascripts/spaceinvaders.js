@@ -3,9 +3,9 @@ window.onload = function() {
     window.focus();
     $.getScript("/javascripts/TDD.js", function() {
        window.alert("TDD library loaded");
-       addTest(test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData);
-       addTest(test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData);
-       runTests();
+       TDD.addTest(test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData);
+       TDD.addTest(test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData);
+       TDD.runTests();
     });
     $.getScript("/javascripts/graphics.js", function() {
         window.alert("graphics library loaded");
