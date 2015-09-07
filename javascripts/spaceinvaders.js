@@ -91,6 +91,9 @@ function runTDD() {
     window.alert("runTDD is called");
     
     var x = new TDD();
+    
+    window.alert("can create a new TDD object");
+    
     x.setResultsCallback(function(xResultsString) {
         //DRAWINGS.push(function(){
         //    GFX.setColor("#FFFFFF");
@@ -98,6 +101,8 @@ function runTDD() {
         //});
         window.alert(xResultsString);
     });
+    
+    window.alert("can set the callback function");
     
     x.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
         playerShipUserIntData.shoot = false;
@@ -114,6 +119,8 @@ function runTDD() {
         expectEQ(true, playerShipUserIntData.moveRight, "moveRight should be true");    
     });
     
+    window.alert("can add the first test");
+    
     x.test("keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
         playerShipUserIntData.shoot = true;
         playerShipUserIntData.moveLeft = true;
@@ -129,7 +136,13 @@ function runTDD() {
         expectEQ(false, playerShipUserIntData.moveRight, "moveRight should be false");
     });
     
+    window.alert("can add the second test");
+    
     x.runTests();
-    //delete x;
+    
+    window.alert("can run the tests");
+    
+    delete x;    
+    
     window.alert("finished runTDD call");
 }
