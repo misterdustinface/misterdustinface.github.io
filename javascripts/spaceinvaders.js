@@ -76,8 +76,8 @@ function loadGame() {
 
 function initPlayerShip() {
     playerShip = {
-        xPos:0,
-        yPos:0,
+        xPos:250,
+        yPos:250,
         width:20,
         height:20,
         xVel:0,
