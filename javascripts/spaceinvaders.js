@@ -1,13 +1,8 @@
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    $.getScript("/javascripts/TDD.js", function() {
-        runTests();
-        QUnit.test("hello test", function( assert ) {
-            assert.deepEqual(0, 0, "0 === 0");
-        });
-        $.getScript("/javascripts/graphics.js", loadGame);
-    });
+    $.getScript("/javascripts/TDD.js");
+    $.getScript("/javascripts/graphics.js");
 };
 
 var KEYS = {
@@ -61,13 +56,7 @@ function keyUpEventHandler(e) {
 }
 
 <!-- TESTS -->
-function runTests() {
-    TDD.addTest(test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData);
-    TDD.addTest(test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData);
-    TDD.runTests();   
-}
-
-function test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData() {
+TDD.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
     playerShipUserIntData.shoot = false;
     playerShipUserIntData.moveLeft = false;
     playerShipUserIntData.moveRight = false;
@@ -79,10 +68,10 @@ function test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData() {
     expectEQ(true, playerShipUserIntData.moveLeft, "moveLeft should be true");
     
     keyDownEventHandler({keyCode:KEYS.RIGHT_ARROW});
-    expectEQ(true, playerShipUserIntData.moveRight, "moveRight should be true");
-}
+    expectEQ(true, playerShipUserIntData.moveRight, "moveRight should be true");    
+});
 
-function test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData() {
+TDD.test("keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
     playerShipUserIntData.shoot = true;
     playerShipUserIntData.moveLeft = true;
     playerShipUserIntData.moveRight = true;
@@ -95,4 +84,7 @@ function test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData() {
     
     keyUpEventHandler({keyCode:KEYS.RIGHT_ARROW});
     expectEQ(false, playerShipUserIntData.moveRight, "moveRight should be false");
-}
+});
+
+TDD.runTests();
+loadGame();
