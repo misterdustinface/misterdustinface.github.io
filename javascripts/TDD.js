@@ -12,10 +12,12 @@ TDD.prototype.runTests = function() {
     var tests = this.TESTS;
     var testsysdata = { failures:[], passes:0, numTests:0 };
     shuffle(tests);
+    window.alert("Can shuffle tests. Now running tests.");
     for (var i = 0; i < tests.length; i++) {
         testsysdata.testname = tests[i].testname;
         runTest(tests[i].exec, testsysdata);
     }
+    window.alert("Finished running each test, about to display results");
     displayTestResults(testsysdata);
 }
 
