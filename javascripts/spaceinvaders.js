@@ -87,18 +87,20 @@ function keyUpEventHandler(e) {
     }
 }
 
+function displayTestResults(xResults) {
+    var resultsString = "Passed:  " + xResults.passes + "/" + xResults.numTests + "\n";
+    if (xResults.passes !== xResults.numTests) {
+        var resultsString = resultsString + "Failed:  \n";
+        for (var i = 0; i < xResults.failures.length; i++) {
+            resultsString = resultsString + xResults.failures[i] + "\n" ;
+        }
+    }
+    window.alert(resultsString);    
+}
+
 function runTDD() {
     var x = new TDD();
-    x.setResultsCallback(function(xResults) {
-        var resultsString = "Passed:  " + xResults.passes + "/" + xResults.numTests + "\n";
-        if (xResults.passes !== xResults.numTests) {
-            var resultsString = resultsString + "Failed:  \n";
-            for (var i = 0; i < xResults.failures.length; i++) {
-                resultsString = resultsString + xResults.failures[i] + "\n" ;
-            }
-        }
-        window.alert(resultsString);
-    });
+    x.setOnResultsCallback(displayTestResults);
     
     x.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
         playerShipUserIntData.shoot = false;
