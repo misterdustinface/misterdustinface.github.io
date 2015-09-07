@@ -17,7 +17,12 @@ window.onload = function() {
     loadGame();
 };
 
+function emptyFunction() {
+    
+}
+
 var GFX;
+var DRAW_FUNC = emptyFunction;
 
 var KEYS = {
     W: 87, A: 65, S: 83, D: 68, T:84,
@@ -41,6 +46,7 @@ function loadGame() {
     window.addEventListener("keyup",   keyUpEventHandler);
     window.setInterval(update, 1000/60);
     window.setInterval(draw, 1000/60);
+    DRAW_FUNC = GAME_DRAW;
 }
 
 function update() {
@@ -48,6 +54,10 @@ function update() {
 
 function draw() {
     GFX.clearCanvas();
+    DRAW_FUNC();
+}
+
+function GAME_DRAW() {
     GFX.setColor("#FFFFFF");
     GFX.drawRect(20,20,20,20);
     GFX.drawText("TEXT", 50, 50);
@@ -70,9 +80,6 @@ function keyDownEventHandler(e) {
     if (e.keyCode == KEYS.RIGHT_ARROW) {
         playerShipUserIntData.moveRight = true;
     }
-    if (e.keyCode == KEYS.T) {
-        runTDD();
-    }
 }
 
 function keyUpEventHandler(e) {
@@ -85,8 +92,12 @@ function keyUpEventHandler(e) {
     if (e.keyCode == KEYS.RIGHT_ARROW) {
         playerShipUserIntData.moveRight = false;
     }
+    if (e.keyCode == KEYS.T) {
+        runTDD();
+    }
 }
 
+var TEST_RESULTS_STRING = "";
 function displayTestResults(xResults) {
     var resultsString = "[TEST RESULTS]\n";
     resultsString = resultsString + "Passed:  " + xResults.passes + "/" + xResults.numTests + "\n";
@@ -96,7 +107,14 @@ function displayTestResults(xResults) {
             resultsString = resultsString + xResults.failures[i] + "\n" ;
         }
     }
-    window.alert(resultsString);    
+    
+    TEST_RESULTS_STRING = resultsString;
+    DRAW_FUNC = TEST_RESULTS_DRAW;
+}
+
+function TEST_RESULTS_DRAW() {
+    GFX.setColor("#FFFFFF");
+    GFX.drawText(TEST_RESULTS_STRING, 20, 20);
 }
 
 function runTDD() {
