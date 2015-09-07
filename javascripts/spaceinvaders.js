@@ -97,24 +97,28 @@ function keyUpEventHandler(e) {
     }
 }
 
-var TEST_RESULTS_STRING = "";
+var TEST_RESULTS = {};
 function displayTestResults(xResults) {
-    var resultsString = "[TEST RESULTS]\n";
-    resultsString = resultsString + "Passed:  " + xResults.passes + "/" + xResults.numTests + "\n";
-    if (xResults.passes !== xResults.numTests) {
-        var resultsString = resultsString + "Failed:  \n";
-        for (var i = 0; i < xResults.failures.length; i++) {
-            resultsString = resultsString + xResults.failures[i] + "\n" ;
-        }
-    }
-    
-    TEST_RESULTS_STRING = resultsString;
+    TEST_RESULTS = xResults;
     DRAW_FUNC = TEST_RESULTS_DRAW;
 }
 
 function TEST_RESULTS_DRAW() {
+    var CENTER_X = GFX.getWidth()/2;
+    var yPos = 20;
     GFX.setColor("#FFFFFF");
-    GFX.drawText(TEST_RESULTS_STRING, 20, 20);
+    GFX.drawTextCentered("[TEST RESULTS]", CENTER_X, yPos);
+    yPos += 30;
+    GFX.drawTextCentered("Passed: " +  TEST_RESULTS.passes + "/" + TEST_RESULTS.numTests, CENTER_X, yPos);
+    yPos += 30;
+    if (TEST_RESULTS.passes !== TEST_RESULTS.numTests) {
+        GFX.drawTextCentered("Failed:", CENTER_X, yPos);
+        yPos += 30;
+        for (var i = 0; i < TEST_RESULTS.failures.length; i++) {
+            GFX.drawTextCentered(TEST_RESULTS.failures[i], CENTER_X, yPos);
+            yPos += 30;
+        }
+    }
 }
 
 function runTDD() {
