@@ -47,6 +47,7 @@ function draw() {
     GFX.setColor("#FFFFFF");
     GFX.drawRect(20,20,20,20);
     GFX.drawText("TEXT", 50, 50);
+    GFX.drawTextCentered("TEXT", 50, 100)
     
     GFX.drawTextCentered("Game Running", getWidth()/2, getHeight()/2);
     var isShooting = playerShipUserIntData.shoot;
