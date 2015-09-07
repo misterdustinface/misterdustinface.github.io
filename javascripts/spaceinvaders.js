@@ -8,7 +8,7 @@ window.onload = function() {
 var GFX;
 
 var KEYS = {
-    W: 87, A: 65, S: 83, D: 68,
+    W: 87, A: 65, S: 83, D: 68, T:84,
     UP_ARROW: 38, LEFT_ARROW: 37, DOWN_ARROW: 40, RIGHT_ARROW: 39,
     SPACEBAR: 32, ESC: 27,
 };
@@ -46,6 +46,9 @@ function keyDownEventHandler(e) {
     }
     if (e.keyCode == KEYS.RIGHT_ARROW) {
         playerShipUserIntData.moveRight = true;
+    }
+    if (e.keyCode == KEYS.T) {
+        runTDD();
     }
 }
 
