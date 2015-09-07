@@ -1,7 +1,7 @@
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    $.getScript("/javascripts/TDD.js", runTDD);
+    //$.getScript("/javascripts/TDD.js", runTDD);
     $.getScript("/javascripts/Graphics.js", loadGame);
 };
 
