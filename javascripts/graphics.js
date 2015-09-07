@@ -2,6 +2,13 @@ var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
 ctx.font = "bold 16px Monospace";
 
+function getWidth() {
+    return canvas.width;
+}
+function getHeight() {
+    return canvas.height;
+}
+
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
