@@ -18,8 +18,6 @@ window.onload = function() {
 };
 
 var GFX;
-var DRAWINGS = [];
-var TEMP_DRAW_QUEUE = [];
 
 var KEYS = {
     W: 87, A: 65, S: 83, D: 68, T:84,
@@ -60,15 +58,6 @@ function draw() {
     if (isShooting) {
         GFX.drawTextCentered("Shooting", GFX.getWidth()/2, GFX.getHeight()/2 + 60);
     }
-    
-    for (var i = 0; i < DRAWINGS.length; i++) {
-        DRAWINGS[i]();
-    }
-    
-    while (TEMP_DRAW_QUEUE.length > 0) {
-        var drawingFunc = TEMP_DRAW_QUEUE.shift();
-        drawingFunc();
-    }
 }
 
 function keyDownEventHandler(e) {
@@ -101,15 +90,11 @@ function keyUpEventHandler(e) {
 function runTDD() {
     var x = new TDD();
     x.setResultsCallback(function(xResultsString) {
-        DRAWINGS.push(function(){
-            GFX.setColor("#FFFFFF");
-            GFX.drawText(xResultsString, 50, 200);
-        });
-        TEMP_DRAW_QUEUE.push(function(){
-            GFX.setColor("#FFFFFF");
-            GFX.drawText("COMPLETE", 50, 250);
-        });
-        //window.alert(xResultsString);
+        //DRAWINGS.push(function(){
+        //    GFX.setColor("#FFFFFF");
+        //    GFX.drawText(xResultsString, 50, 200);
+        //});
+        window.alert(xResultsString);
     });
     
     x.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
@@ -143,5 +128,5 @@ function runTDD() {
     });
     
     x.runTests();
-    delete x;
+    //delete x;
 }
