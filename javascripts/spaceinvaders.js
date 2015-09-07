@@ -57,6 +57,9 @@ function keyUpEventHandler(e) {
 
 <!-- TESTS -->
 var TDD = new TDD();
+TDD.setResultsCallback(function(xResultsString) {
+    window.alert(xResultsString);
+});
 
 TDD.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
     playerShipUserIntData.shoot = false;
