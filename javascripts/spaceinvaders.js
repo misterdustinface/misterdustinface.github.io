@@ -58,11 +58,19 @@ var playerShipUserIntData = {
     moveRight:false,
 };
 
-var playerShip = {};
+var playerShip = {        
+    xPos:0,
+    yPos:0,
+    width:20,
+    height:20,
+    xVel:0,
+    xSpeed:0.15,
+};
 
 function loadGraphics() {
     var canvas = document.getElementById("gamecanvas");
-    GFX = new Graphics(canvas);   
+    GFX = new Graphics(canvas);
+    setPlayerShipToDefaultPosition();
 }
 
 function loadGame() {
@@ -71,19 +79,12 @@ function loadGame() {
     window.setInterval(update, 1000/60);
     window.setInterval(draw, 1000/60);
     setContext("GAME");
-    initPlayerShip();
 }
 
-function initPlayerShip() {
-    playerShip = {
-        xPos: (GFX.getWidth()/2),
-        yPos: (GFX.getHeight() * 3/4),
-        width:20,
-        height:20,
-        xVel:0,
-        xSpeed:0.15,
-    };
+function setPlayerShipToDefaultPosition() {
+    playerShip.xPos = (GFX.getWidth()/2);
     playerShip.xPos -= (playerShip.width/2);
+    playerShip.yPos = (GFX.getHeight() * 3/4);
     playerShip.yPos -= (playerShip.height/2);
 }
 
