@@ -3,6 +3,8 @@ window.onload = function() {
     window.focus();
     $.getScript("/javascripts/TDD.js", function() {
        window.alert("TDD library loaded");
+       addTest(test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData);
+       addTest(test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData);
        runTests();
     });
     $.getScript("/javascripts/graphics.js", function() {
@@ -91,6 +93,3 @@ function test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData() {
     keyUpEventHandler({keyCode:KEYS.RIGHT_ARROW});
     expectEQ(false, playerShipUserIntData.moveRight, "moveRight should be false");
 }
-
-addTest(test_keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData);
-addTest(test_keyUpEventHandler_expectKeysManipulatePlayerShipUserIntData);
