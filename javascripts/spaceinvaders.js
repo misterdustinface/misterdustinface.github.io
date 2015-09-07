@@ -1,8 +1,16 @@
+function getScriptClosure(xFunc) {
+    return function(xResponse, xStatus) {
+        var statusString = "Status of getScript(" + (xFunc.name) + "): " + xStatus;
+        window.alert(statusString);
+        xFunc();  
+    };
+}
+
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    $.getScript("/javascripts/TDD.js", runTDD);
-    $.getScript("/javascripts/Graphics.js", loadGame);
+    $.getScript("/javascripts/TDD.js", getScriptClosure(runTDD));
+    $.getScript("/javascripts/Graphics.js", getScriptClosure(loadGame));
 };
 
 var GFX;
