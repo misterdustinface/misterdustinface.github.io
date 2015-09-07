@@ -33,8 +33,12 @@ function update() {
 function draw() {
     GFX.clearCanvas();
     GFX.setColor("#FFFFFF");
-    GFX.drawTextCentered("Game Running", getWidth(), getHeight());
     GFX.drawRect(20,20,20,20);
+    GFX.drawTextCentered("Game Running", getWidth()/2, getHeight()/2);
+    var isShooting = playerShipUserIntData.shoot;
+    if (isShooting) {
+        GFX.drawTextCentered("Shooting", getWidth()/2, getHeight()/2 + 60);
+    }
 }
 
 function keyDownEventHandler(e) {
