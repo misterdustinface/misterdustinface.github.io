@@ -2,12 +2,8 @@ function TDD() {
     this.TESTS = [];
 }
 
-TDD.prototype.addTest = function(xTest) {
-    this.TESTS.push(xTest);
-};
-
 TDD.prototype.test = function(xTestName, xTest) {
-    TDD.addTest(xTest);
+    this.TESTS.push(xTest);
 }
 
 TDD.prototype.runTests = function() {
