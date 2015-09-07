@@ -3,7 +3,6 @@ window.onload = function() {
     window.focus();
     //$.getScript("/javascripts/TDD.js", runTDD);
     $.getScript("/javascripts/Graphics.js", loadGame);
-    window.alert("Load Complete");
 };
 
 var GFX;
@@ -27,6 +26,7 @@ function loadGame() {
     var canvas = document.getElementById("gamecanvas");
     GFX = new Graphics(canvas);
     window.setInterval(draw, 1000/60);
+    window.alert("Game Loaded");
 }
 
 function update() {
