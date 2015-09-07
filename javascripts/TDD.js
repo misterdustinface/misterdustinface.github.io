@@ -1,5 +1,6 @@
 function TDD() {
     this.TESTS = [];
+    this.resultsCallback = function(xResultsString) {};
 }
 
 TDD.prototype.test = function(xTestName, xTest) {
@@ -7,11 +8,11 @@ TDD.prototype.test = function(xTestName, xTest) {
 }
 
 TDD.prototype.runTests = function() {
-    var TESTS = this.TESTS;
+    var tests = this.TESTS;
     var testsysdata = { failures:[], passes:0, numTests:0 };
-    shuffle(TESTS);
-    for (var i = 0; i < TESTS.length; i++) {
-        runTest(TESTS[i], testsysdata);
+    shuffle(tests);
+    for (var i = 0; i < tests.length; i++) {
+        runTest(tests[i], testsysdata);
     }
     displayTestResults(testsysdata);
 }
@@ -54,15 +55,6 @@ function runTest(xTest, testsysdata) {
     recordTestResult(testsysdata);
 }
 
-function expectEQ(xExpected, xReceived, xLabel) {
-    var result = (xExpected === xReceived);
-    if (result) {
-        testresult.passed = testresult.passed + 1;
-    } else {
-        testresult.failures.push(xLabel);
-    }
-}
-
 function shuffle(xArray) {
     for (var i = (xArray.length - 1); i > 0; i--) {
         var X = Math.floor(Math.random() * i);
@@ -71,4 +63,13 @@ function shuffle(xArray) {
         xArray[X] = temp;
     }
     return xArray;
+}
+
+function expectEQ(xExpected, xReceived, xLabel) {
+    var result = (xExpected === xReceived);
+    if (result) {
+        testresult.passed = testresult.passed + 1;
+    } else {
+        testresult.failures.push(xLabel);
+    }
 }
