@@ -4,11 +4,7 @@
     {% assign sorted_pages = site.pages | sort:"name" %}
     {% for page in sorted_pages %}
       {% if {{page.url}} != "/404.html" %} <!-- AVOID LISTING 404 ERROR PAGE IN HOMEBAR -->
-      {% if {{page.url}} != "/page2/index.html" %} <!-- PAGINATION ISSUE WITH JEKYLL'S about FOLDER -->
-      {% if {{page.url}} != "/page3/index.html" %} <!-- PAGINATION ISSUE WITH JEKYLL'S about FOLDER -->
         <li><a href="{{page.url}}">{{page.title}}</a></li>
-      {% endif %}
-      {% endif %}
       {% endif %}
     {% endfor %}
     <li><a href="https://github.com/misterdustinface">My Github</a></li>

@@ -1,4 +1,0 @@
-command is
-cd E:\GitHub\misterdustinface.github.io
-E:
-jekyll build --watch
