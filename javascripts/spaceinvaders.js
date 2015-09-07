@@ -1,8 +1,11 @@
 function getScriptClosure(xFunc) {
     return function(xResponse, xStatus) {
-        var statusString = "Status of getScript(" + (xFunc.name) + "): " + xStatus;
-        window.alert(statusString);
-        xFunc();  
+        if (xStatus !== "success") {
+            var statusString = "Status of getScript(" + (xFunc.name) + "): " + xStatus;
+            window.alert(statusString);
+        } else {
+            xFunc();
+        }
     };
 }
 
