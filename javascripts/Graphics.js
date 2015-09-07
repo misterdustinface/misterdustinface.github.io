@@ -1,11 +1,11 @@
-function Graphics() {
-    this.canvas = document.getElementById("gamecanvas");
-    this.ctx = canvas.getContext("2d");
+function Graphics(xCanvas) {
+    this.canvas = xCanvas;
+    this.ctx = this.canvas.getContext("2d");
     this.ctx.font = "bold 16px Monospace";
 }
 
 Graphics.prototype.update = function() {
-    this.ctx = canvas.getContext("2d");
+    this.ctx = this.canvas.getContext("2d");
     this.ctx.font = "bold 16px Monospace";
 }
 
@@ -18,7 +18,7 @@ Graphics.prototype.getHeight = function() {
 }
 
 Graphics.prototype.clearCanvas = function() {
-    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 }
 
 Graphics.prototype.setColor = function(c) {
