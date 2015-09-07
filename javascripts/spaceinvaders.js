@@ -1,7 +1,7 @@
 window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    $.getScript("/javscripts/TDD.js", function() {
+    $.getScript("/javascripts/TDD.js", function() {
        window.alert("TDD library loaded");
        runTests();
     });
