@@ -1,20 +1,19 @@
-var TESTS = []
-
-function addTest(xTest) {
-    TESTS.push(xTest);
+function TDD() {
+    this.TESTS = [];
 }
 
-function runTests() {
+TDD.prototype.addTest = function(xTest) {
+    this.TESTS.push(xTest);
+};
+
+TDD.prototype.runTests = function() {
+    var TESTS = this.TESTS;
     var testsysdata = { failures:[], passes:0, numTests:0 };
-    shuffleTests();
+    shuffle(TESTS);
     for (var i = 0; i < TESTS.length; i++) {
         runTest(TESTS[i], testsysdata);
     }
     displayTestResults(testsysdata);
-}
-
-function shuffleTests() {
-    shuffle(TESTS);
 }
 
 function displayTestResults(testsysdata) {
