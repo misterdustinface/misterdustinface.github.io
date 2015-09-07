@@ -5,6 +5,8 @@ window.onload = function() {
     $.getScript("/javascripts/graphics.js", loadGame);
 };
 
+var GFX;
+
 var KEYS = {
     W: 87, A: 65, S: 83, D: 68,
     UP_ARROW: 38, LEFT_ARROW: 37, DOWN_ARROW: 40, RIGHT_ARROW: 39,
@@ -21,18 +23,18 @@ function loadGame() {
     window.addEventListener("keydown", keyDownEventHandler);
     window.addEventListener("keyup",   keyUpEventHandler);
     window.setInterval(update, 1000/60);
+    GFX = new Graphics();
     window.setInterval(draw, 1000/60);
-    window.alert("Game Loaded");
 }
 
 function update() {
 }
 
 function draw() {
-    clearCanvas();
-    setColor("#FFFFFF");
-    drawTextCentered("Game Running", getWidth(), getHeight());
-    drawRect(20,20,20,20);
+    GFX.clearCanvas();
+    GFX.setColor("#FFFFFF");
+    GFX.drawTextCentered("Game Running", getWidth(), getHeight());
+    GFX.drawRect(20,20,20,20);
 }
 
 function keyDownEventHandler(e) {
