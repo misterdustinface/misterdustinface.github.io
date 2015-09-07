@@ -1,6 +1,10 @@
+function emptyFunction() {
+    
+}
+
 function TDD() {
     this.TESTS = [];
-    this.onResults = function(xResults) {};
+    this.onResults = emptyFunction;
 }
 
 TDD.prototype.test = function(xTestName, xTest) {
