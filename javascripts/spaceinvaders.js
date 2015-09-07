@@ -3,6 +3,9 @@ window.onload = function() {
     window.focus();
     $.getScript("/javascripts/TDD.js", function() {
         runTests();
+        QUnit.test("hello test", function( assert ) {
+            assert.deepEqual(0, 0, "0 === 0");
+        });
         $.getScript("/javascripts/graphics.js", loadGame);
     });
 };
