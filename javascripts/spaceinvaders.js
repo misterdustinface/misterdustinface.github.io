@@ -2,6 +2,9 @@ window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
     runTests();
+    $.getScript("/javascripts/graphics.js", function() {
+        window.alert("graphics library loaded");
+    });
     loadGame();
 };
 
