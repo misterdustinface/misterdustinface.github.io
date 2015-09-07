@@ -58,6 +58,15 @@ var playerShipUserIntData = {
     moveRight:false,
 };
 
+var playerShip = {
+    xPos:0,
+    yPos:0,
+    width:20,
+    height:20,
+    xVel:0,
+    xSpeed:0.15,
+};
+
 function loadGraphics() {
     var canvas = document.getElementById("gamecanvas");
     GFX = new Graphics(canvas);   
@@ -69,23 +78,44 @@ function loadGame() {
     window.setInterval(update, 1000/60);
     window.setInterval(draw, 1000/60);
     setContext("GAME");
+    
+    playerShip.xPos = GFX.getWidth()/2 - playerShip.width/2;
+    playerShip.yPos = GFX.getHeight() * 3/4 - playerShip.height/2;
 }
 
 function GAME_UPDATE() {
+    if (playerShipUserIntData.moveRight ^ playerShipUserIntData.moveLeft) {
+        if (playerShipUserIntData.moveRight) {
+            playerShip.xVel += playerShip.xSpeed;   
+        } else {
+            playerShip.xVel -= playerShip.xSpeed;
+        }
+    } else {
+        playerShip.xVel = 0;
+    }
     
+    playerShip.xPos += playerShip.xVel;
 }
 
 function GAME_DRAW() {
     GFX.setColor("#FFFFFF");
-    GFX.drawRect(20,20,20,20);
-    GFX.drawText("TEXT", 50, 50);
-    GFX.drawTextCentered("TEXT", 50, 100)
     
+    drawShip(playerShip);
+
     GFX.drawTextCentered("Game Running", GFX.getWidth()/2, GFX.getHeight()/2);
-    var isShooting = playerShipUserIntData.shoot;
-    if (isShooting) {
-        GFX.drawTextCentered("Shooting", GFX.getWidth()/2, GFX.getHeight()/2 + 60);
+    if (playerShipUserIntData.shoot) {
+        GFX.drawTextCentered("Shooting", GFX.getWidth()/2, GFX.getHeight() * 5/6);
     }
+    if (playerShipUserIntData.moveRight) {
+        GFX.drawTextCentered("Moving Right", GFX.getWidth() * 3/4, GFX.getHeight() * 5/6);
+    }
+    if (playerShipUserIntData.moveLeft) {
+        GFX.drawTextCentered("Moving Left", GFX.getWidth() * 1/4, GFX.getHeight() * 5/6);
+    }
+}
+
+function drawShip(xShip) {
+    GFX.drawRect(xShip.xPos, xShip.yPos, xShip.width, xShip.height);
 }
 
 var TEST_RESULTS = {};
