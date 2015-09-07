@@ -10,6 +10,7 @@ TDD.prototype.test = function(xTestName, xTest) {
 TDD.prototype.runTests = function() {
     var tests = this.TESTS;
     var testsysdata = { failures:[], passes:0, numTests:0 };
+    displayTestResults(testsysdata);
     shuffle(tests);
     for (var i = 0; i < tests.length; i++) {
         runTest(tests[i], testsysdata);
