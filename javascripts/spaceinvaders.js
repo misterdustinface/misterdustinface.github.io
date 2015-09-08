@@ -183,14 +183,18 @@ function keyUpEventHandler(e) {
     }
 }
 
-function displayTestResults(xResults) {
+function recordAndDisplayTestResults(xResults) {
     TEST_RESULTS = xResults;
     setContext("TEST");
+    
+    playerShipUserIntData.shoot = false;
+    playerShipUserIntData.moveLeft = false;
+    playerShipUserIntData.moveRight = false;
 }
 
 function runTDD() {
     var x = new TDD();
-    x.setOnResultsCallback(displayTestResults);
+    x.setOnResultsCallback(recordAndDisplayTestResults);
     
     x.test("keyDownEventHandler_expectKeysManipulatePlayerShipUserIntData", function() {
         playerShipUserIntData.shoot = false;
