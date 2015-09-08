@@ -63,14 +63,7 @@ var playerShipUserIntData = {
     moveRight:false,
 };
 
-var playerShip = {        
-    xPos:0,
-    yPos:0,
-    width:20,
-    height:20,
-    xVel:0,
-    xSpeed:0.15,
-};
+var playerShip = {};
 
 function loadGraphics() {
     var canvas = document.getElementById("gamecanvas");
@@ -83,6 +76,16 @@ function loadGame() {
     window.setInterval(update, 1000/60);
     window.setInterval(draw, 1000/60);
     setContext("GAME");
+    initPlayerShip();
+}
+
+function initPlayerShip() {
+    playerShip.xPos = 0;
+    playerShip.yPos = 0;
+    playerShip.width = 20;
+    playerShip.height = 20;
+    playerShip.xVel = 0;
+    playerShip.xSpeed = 0.15;
     setPlayerShipToDefaultPosition();
 }
 
@@ -221,8 +224,8 @@ function runTDD() {
     
     x.test("moveLeft_expectIncreasesShipVelocityInMinusX", function() {
         playerShip.xVel = 0;
-        playerShip.moveLeft = true;
-        playerShip.moveRight = false;
+        playerShipUserIntData.moveLeft = true;
+        playerShipUserIntData.moveRight = false;
         
         updatePlayerShip();
         expectEQ(-playerShip.xSpeed, playerShip.xVel, "xVel should equal -xSpeed when left is selected");
@@ -230,8 +233,8 @@ function runTDD() {
     
     x.test("moveRight_expectIncreasesShipVelocityInPlusX", function() {
         playerShip.xVel = 0;
-        playerShip.moveLeft = false;
-        playerShip.moveRight = true;
+        playerShipUserIntData.moveLeft = false;
+        playerShipUserIntData.moveRight = true;
         
         updatePlayerShip();
         expectEQ(playerShip.xSpeed, playerShip.xVel, "xVel should equal xSpeed when right is selected");
@@ -239,8 +242,8 @@ function runTDD() {
     
     x.test("moveRight+moveLeft_xVelIsZero_expectShipXVelocityDoesNotChange", function() {
         playerShip.xVel = 0;
-        playerShip.moveLeft = true;
-        playerShip.moveRight = true;
+        playerShipUserIntData.moveLeft = true;
+        playerShipUserIntData.moveRight = true;
         var originalXVel = playerShip.xVel;
         
         updatePlayerShip();
@@ -249,8 +252,8 @@ function runTDD() {
     
     x.test("moveRight+moveLeft_expectShipXVelocitySetToZero", function() {
         playerShip.xVel = 20;
-        playerShip.moveLeft = true;
-        playerShip.moveRight = true;
+        playerShipUserIntData.moveLeft = true;
+        playerShipUserIntData.moveRight = true;
         
         updatePlayerShip();
         expectEQ(0, playerShip.xVel, "xVel should be set to zero when left+right selected");
