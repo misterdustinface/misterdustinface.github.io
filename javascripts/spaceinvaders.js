@@ -50,7 +50,7 @@ function keyDownEventHandler(e) {
 }
 
 var CONTEXT_PROFILES = {
-    NULL: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction,     KEY_UP_FUNC: emptyFunction,         KEY_DOWN_FUNC: emptyFunction},
+    NULL: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction,     KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyUpEventHandler},
     GAME: {UPDATE_FUNC: GAME_UPDATE,   DRAW_FUNC: GAME_DRAW,         KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
     TEST: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: TEST_RESULTS_DRAW, KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
 };
