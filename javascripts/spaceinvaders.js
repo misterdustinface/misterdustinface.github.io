@@ -1,14 +1,17 @@
+var GRAPHICS_LIB_FILE_PATH = "/javascripts/Graphics.js";
+var TDD_LIB_FILE_PATH = "/javascripts/TDD.js";
+
 function emptyFunction() {
     
 }
 
-function getScriptCallbackClosure(xFunc) {
+function getScriptCallbackClosure(xScriptFilePath, xCallback) {
     return function(xResponse, xStatus) {
         if (xStatus !== "success") {
-            var statusString = "Status of getScript(" + (xFunc.name) + "): " + xStatus;
+            var statusString = "Status of getScript(" + xScriptFilePath + "): " + xStatus;
             window.alert(statusString);
         } else {
-            xFunc();
+            xCallback();
         }
     };
 }
@@ -17,8 +20,8 @@ window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
     $.when(
-        $.getScript("/javascripts/Graphics.js", getScriptCallbackClosure(loadGraphics)),
-        $.getScript("/javascripts/TDD.js",      getScriptCallbackClosure(emptyFunction)),
+        $.getScript(GRAPHICS_LIB_FILE_PATH, getScriptCallbackClosure(GRAPHICS_LIB_FILE_PATH, loadGraphics)),
+        $.getScript(TDD_LIB_FILE_PATH,      getScriptCallbackClosure(TDD_LIB_FILE_PATH,      emptyFunction)),
         $.Deferred(function(xDeferred) { $( xDeferred.resolve ); })
     ).done(loadGame);
 };
