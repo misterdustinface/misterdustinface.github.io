@@ -1,5 +1,5 @@
 var GRAPHICS_LIB_FILE_PATH = "/javascripts/Graphics.js";
-var TDD_LIB_FILE_PATH = "/javascripts/TDD.js";
+var TDD_LIB_FILE_PATH      = "/javascripts/TDD.js";
 
 function emptyFunction() {
     
@@ -27,8 +27,10 @@ window.onload = function() {
 };
 
 var GFX;
-var UPDATE_FUNC = emptyFunction;
-var DRAW_FUNC   = emptyFunction;
+var UPDATE_FUNC   = emptyFunction;
+var DRAW_FUNC     = emptyFunction;
+var KEY_UP_FUNC   = emptyFunction;
+var KEY_DOWN_FUNC = emptyFunction;
 
 function update() {
     UPDATE_FUNC();
@@ -39,16 +41,26 @@ function draw() {
     DRAW_FUNC();
 }
 
+function keyUpEventHandler(e) {
+    KEY_UP_FUNC(e.keyCode);
+}
+
+function keyDownEventHandler(e) {
+    KEY_DOWN_FUNC(e.keyCode);
+}
+
 var CONTEXT_PROFILES = {
-    NULL: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction},
-    GAME: {UPDATE_FUNC: GAME_UPDATE,   DRAW_FUNC: GAME_DRAW},
-    TEST: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: TEST_RESULTS_DRAW},
+    NULL: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction,     KEY_UP_FUNC: emptyFunction,         KEY_DOWN_FUNC: emptyFunction},
+    GAME: {UPDATE_FUNC: GAME_UPDATE,   DRAW_FUNC: GAME_DRAW,         KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
+    TEST: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: TEST_RESULTS_DRAW, KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
 };
 
 function setContext(xContext) {
     var contextProfile = CONTEXT_PROFILES[xContext];
     UPDATE_FUNC = contextProfile.UPDATE_FUNC;
     DRAW_FUNC   = contextProfile.DRAW_FUNC;
+    KEY_UP_FUNC = contextProfile.KEY_UP_FUNC;
+    KEY_DOWN_FUNC = contextProfile.KEY_DOWN_FUNC;
 }
 
 var KEYS = {
@@ -87,6 +99,10 @@ function initPlayerShip() {
     playerShip.xVel = 0;
     playerShip.xSpeed = 0.15;
     setPlayerShipToDefaultPosition();
+    
+    playerShipUserIntData.shoot = false;
+    playerShipUserIntData.moveLeft = false;
+    playerShipUserIntData.moveRight = false;
 }
 
 function setPlayerShipToDefaultPosition() {
@@ -135,6 +151,35 @@ function updatePlayerShip() {
     playerShip.xPos += playerShip.xVel;
 }
 
+function gameKeyUpEventHandler(xKeycode) {
+    if (xKeycode == KEYS.SPACEBAR) {
+        playerShipUserIntData.shoot = false;
+    }
+    if (xKeycode == KEYS.LEFT_ARROW) {
+        playerShipUserIntData.moveLeft = false;
+    }
+    if (xKeycode == KEYS.RIGHT_ARROW) {
+        playerShipUserIntData.moveRight = false;
+    }
+    if (xKeycode == KEYS.T) {
+        setContext("NULL");
+        runTDD();
+    }
+}
+
+function gameKeyDownEventHandler(xKeycode) {
+    if (xKeycode == KEYS.SPACEBAR) {
+        setContext("GAME");
+        playerShipUserIntData.shoot = true;
+    }
+    if (xKeycode == KEYS.LEFT_ARROW) {
+        playerShipUserIntData.moveLeft = true;
+    }
+    if (xKeycode == KEYS.RIGHT_ARROW) {
+        playerShipUserIntData.moveRight = true;
+    }
+}
+
 var TEST_RESULTS = {};
 function TEST_RESULTS_DRAW() {
     var CENTER_X = GFX.getWidth()/2;
@@ -154,42 +199,10 @@ function TEST_RESULTS_DRAW() {
     }
 }
 
-function keyDownEventHandler(e) {
-    if (e.keyCode == KEYS.SPACEBAR) {
-        setContext("GAME");
-        playerShipUserIntData.shoot = true;
-    }
-    if (e.keyCode == KEYS.LEFT_ARROW) {
-        playerShipUserIntData.moveLeft = true;
-    }
-    if (e.keyCode == KEYS.RIGHT_ARROW) {
-        playerShipUserIntData.moveRight = true;
-    }
-}
-
-function keyUpEventHandler(e) {
-    if (e.keyCode == KEYS.SPACEBAR) {
-        playerShipUserIntData.shoot = false;
-    }
-    if (e.keyCode == KEYS.LEFT_ARROW) {
-        playerShipUserIntData.moveLeft = false;
-    }
-    if (e.keyCode == KEYS.RIGHT_ARROW) {
-        playerShipUserIntData.moveRight = false;
-    }
-    if (e.keyCode == KEYS.T) {
-        setContext("NULL");
-        runTDD();
-    }
-}
-
 function recordAndDisplayTestResults(xResults) {
     TEST_RESULTS = xResults;
     setContext("TEST");
-    
-    playerShipUserIntData.shoot = false;
-    playerShipUserIntData.moveLeft = false;
-    playerShipUserIntData.moveRight = false;
+    initPlayerShip();
 }
 
 function runTDD() {
