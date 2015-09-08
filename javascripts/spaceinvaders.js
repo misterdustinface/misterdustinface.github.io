@@ -19,6 +19,7 @@ window.onload = function() {
     $.when(
         $.getScript("/javascripts/Graphics.js", getScriptCallbackClosure(loadGraphics)),
         $.getScript("/javascripts/TDD.js",      getScriptCallbackClosure(emptyFunction)),
+        $.Deferred(function(xDeferred) { $( xDeferred.resolve ); })
     ).done(loadGame);
 };
 
