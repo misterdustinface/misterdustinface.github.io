@@ -13,7 +13,7 @@ function getScriptCallbackClosure(xFunc) {
     };
 }
 
-window.onLoad = function() {
+window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
     $.when(
