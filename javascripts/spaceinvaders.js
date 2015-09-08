@@ -2,7 +2,7 @@ function emptyFunction() {
     
 }
 
-function getScriptClosure(xFunc) {
+function getScriptCallbackClosure(xFunc) {
     return function(xResponse, xStatus) {
         if (xStatus !== "success") {
             var statusString = "Status of getScript(" + (xFunc.name) + "): " + xStatus;
@@ -13,22 +13,14 @@ function getScriptClosure(xFunc) {
     };
 }
 
-window.onload = function() {
+$(function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
-    
     $.when(
-        $.getScript("/javascripts/Graphics.js", getScriptClosure(loadGraphics)),
-        $.getScript("/javascripts/TDD.js", getScriptClosure(emptyFunction)),
-        $.Deferred(function( deferred ){
-            $( deferred.resolve );
-        })
+        $.getScript("/javascripts/Graphics.js", getScriptCallbackClosure(loadGraphics)),
+        $.getScript("/javascripts/TDD.js",      getScriptCallbackClosure(emptyFunction)),
     ).done(loadGame);
-    
-    //$.getScript("/javascripts/Graphics.js", getScriptClosure(loadGraphics));
-    //$.getScript("/javascripts/TDD.js", getScriptClosure(emptyFunction));
-    //loadGame();
-};
+});
 
 var GFX;
 var UPDATE_FUNC = emptyFunction;
