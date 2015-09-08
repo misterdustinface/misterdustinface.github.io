@@ -57,9 +57,9 @@ var CONTEXT_PROFILES = {
 
 function setContext(xContext) {
     var contextProfile = CONTEXT_PROFILES[xContext];
-    UPDATE_FUNC = contextProfile.UPDATE_FUNC;
-    DRAW_FUNC   = contextProfile.DRAW_FUNC;
-    KEY_UP_FUNC = contextProfile.KEY_UP_FUNC;
+    UPDATE_FUNC   = contextProfile.UPDATE_FUNC;
+    DRAW_FUNC     = contextProfile.DRAW_FUNC;
+    KEY_UP_FUNC   = contextProfile.KEY_UP_FUNC;
     KEY_DOWN_FUNC = contextProfile.KEY_DOWN_FUNC;
 }
 
