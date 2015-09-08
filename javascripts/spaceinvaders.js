@@ -94,17 +94,7 @@ function setPlayerShipToDefaultPosition() {
 }
 
 function GAME_UPDATE() {
-    if (playerShipUserIntData.moveRight ^ playerShipUserIntData.moveLeft) {
-        if (playerShipUserIntData.moveRight) {
-            playerShip.xVel += playerShip.xSpeed;   
-        } else {
-            playerShip.xVel -= playerShip.xSpeed;
-        }
-    } else {
-        playerShip.xVel = 0;
-    }
-    
-    playerShip.xPos += playerShip.xVel;
+    updatePlayerShip();
 }
 
 function GAME_DRAW() {
@@ -126,6 +116,20 @@ function GAME_DRAW() {
 
 function drawShip(xShip) {
     GFX.drawRect(xShip.xPos, xShip.yPos, xShip.width, xShip.height);
+}
+
+function updatePlayerShip() {
+    if (playerShipUserIntData.moveRight ^ playerShipUserIntData.moveLeft) {
+        if (playerShipUserIntData.moveRight) {
+            playerShip.xVel += playerShip.xSpeed;   
+        } else {
+            playerShip.xVel -= playerShip.xSpeed;
+        }
+    } else {
+        playerShip.xVel = 0;
+    }
+    
+    playerShip.xPos += playerShip.xVel;
 }
 
 var TEST_RESULTS = {};
@@ -213,6 +217,52 @@ function runTDD() {
         
         keyUpEventHandler({keyCode:KEYS.RIGHT_ARROW});
         expectEQ(false, playerShipUserIntData.moveRight, "moveRight should be false");
+    });
+    
+    x.test("moveLeft_expectIncreasesShipVelocityInMinusX", function() {
+        playerShip.xVel = 0;
+        playerShip.moveLeft = true;
+        playerShip.moveRight = false;
+        
+        updatePlayerShip();
+        expectEQ(-playerShip.xSpeed, playerShip.xVel, "xVel should equal -xSpeed when left is selected");
+    });
+    
+    x.test("moveRight_expectIncreasesShipVelocityInPlusX", function() {
+        playerShip.xVel = 0;
+        playerShip.moveLeft = false;
+        playerShip.moveRight = true;
+        
+        updatePlayerShip();
+        expectEQ(playerShip.xSpeed, playerShip.xVel, "xVel should equal xSpeed when right is selected");
+    });
+    
+    x.test("moveRight+moveLeft_xVelIsZero_expectShipXVelocityDoesNotChange", function() {
+        playerShip.xVel = 0;
+        playerShip.moveLeft = true;
+        playerShip.moveRight = true;
+        var originalXVel = playerShip.xVel;
+        
+        updatePlayerShip();
+        expectEQ(originalXVel, playerShip.xVel, "xVel should not change when originally zero and left+right are selected");
+    });
+    
+    x.test("moveRight+moveLeft_expectShipXVelocitySetToZero", function() {
+        playerShip.xVel = 20;
+        playerShip.moveLeft = true;
+        playerShip.moveRight = true;
+        
+        updatePlayerShip();
+        expectEQ(0, playerShip.xVel, "xVel should be set to zero when left+right selected");
+    });
+    
+    x.test("noMovement_expectShipXVelocityIsZero", function() {
+        playerShip.xVel = 20;
+        playerShip.moveLeft = false;
+        playerShip.moveRight = false;
+        
+        updatePlayerShip();
+        expectEQ(0, playerShip.xVel, "xVel should be set to zero when neither left or right is selected");
     });
     
     x.runTests();
