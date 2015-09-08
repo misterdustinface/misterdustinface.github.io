@@ -265,8 +265,8 @@ function runTDD() {
     
     x.test("noMovement_expectShipXVelocityIsZero", function() {
         playerShip.xVel = 20;
-        playerShip.moveLeft = false;
-        playerShip.moveRight = false;
+        playerShipUserIntData.moveLeft = false;
+        playerShipUserIntData.moveRight = false;
         
         updatePlayerShip();
         expectEQ(0, playerShip.xVel, "xVel should be set to zero when neither left or right is selected");
