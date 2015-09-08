@@ -13,14 +13,14 @@ function getScriptCallbackClosure(xFunc) {
     };
 }
 
-$(function() {
+window.onLoad = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
     $.when(
         $.getScript("/javascripts/Graphics.js", getScriptCallbackClosure(loadGraphics)),
         $.getScript("/javascripts/TDD.js",      getScriptCallbackClosure(emptyFunction)),
     ).done(loadGame);
-});
+};
 
 var GFX;
 var UPDATE_FUNC = emptyFunction;
