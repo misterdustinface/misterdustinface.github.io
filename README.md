@@ -1,4 +1,4 @@
 misterdustinface.github.io
 ==========================
 
-This is my website.
+This website uses Jekyll.  Look it up and try it out.
