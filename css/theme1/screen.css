@@ -8,7 +8,6 @@ a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: non
 a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;} /* mouse over link */
 a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#b5e853;} /* selected link */
 
-
 /* Homebar List Stuff */
 ul                      {list-style-type: none; margin: 0px; padding:0px; overflow:   hidden;}
 #list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center;}
@@ -17,29 +16,17 @@ ul#list-nav li a:link,
 ul#list-nav li a:visited{display: inline; width:140px; padding:4px; text-align:center; text-transform:uppercase; /*font-weight:normal;*/font-weight:bold; /*display:block;*/}
 ul#list-nav li a:hover  {background-color:#aaaaaa;}
 ul#list-nav li a:active {}
+/* End of Homebar List Defs */
 
-#essay ul  {text-align: left;}
-ul#essay li{float:left;}
+.paper {text-align: left;}
+.centered {margin: 0 auto; text-align: center;}
+.footer {margin: 0 auto; text-align: center;}
+.homebar {margin: 0 auto; text-align: center;}
+.post {margin: 0 auto; text-align: left; width: 70%;}
+.container {margin: 0 auto; text-align: left; width: 70%; position: relative;}
 
 #gamecanvas {background: #000;}
-/* General & 'Reset' Stuff */
-
-.homebar
-{margin: 0 auto; text-align: center;}
-.container
-{margin: 0 auto; text-align: left; width: 70%; position: relative;}
-.centered-text-container
-{margin: 0 auto; text-align: center; width: 70%; position: relative;}
-.post
-{margin: 0 auto; text-align: left; width: 70%;}
-.paper
-{text-align: left;}
-.footer
-{margin: 0 auto; text-align: center;}
-
-                                                             
-#downloads .btn {display: inline-block; margin: 0; text-align: center;}
-#main_content   {width: 100%; -webkit-font-smoothing: antialiased;}
+#main_content {width: 100%; -webkit-font-smoothing: antialiased;}
 
 section {margin: 0 0 20px 0; display: block;}
 pre     {background: rgba(0, 0, 0, 0.9);
