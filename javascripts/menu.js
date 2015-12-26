@@ -1,19 +1,19 @@
-var openMenu = function() {
-  $("#thing").animate({
+function openMenu() {
+  $("#menubutton").animate({
     left: "0px";
   }, 200);
   
-  // $("#homebar").animate({
-  //   top: "0px";
-  // }, 200);
+  $("#homebar").animate({
+    top: "0px";
+  }, 200);
 
   // $('body').animate({
   //   top: "285px";
   // }, 200);
-};
+}
 
-var closeMenu = function() {
-  $("#thing").animate({
+function closeMenu() {
+  $("#menubutton").animate({
     left: "200px";
   }, 200);
   
@@ -22,22 +22,22 @@ var closeMenu = function() {
   // $('body').animate({
   //   top: "0px";
   // }, 200);
-};
+}
 
 var isMenuOpen;
-var clickMenuButton = function() {
+function clickMenuButton() {
   isMenuOpen = !isMenuOpen;
   if (isMenuOpen) {
     openMenu();
   } else {
     closeMenu();
   }
-};
+}
 
-var setMenuButtonClickFunction = function() {
+function setMenuButtonClickFunction() {
   isMenuOpen = false;
   clickMenuButton();
   $("#menubutton").click(clickMenuButton);
-};
+}
 
 $(document).ready(setMenuButtonClickFunction);
