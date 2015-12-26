@@ -25,7 +25,17 @@ ul#list-nav li a:active {}
 .homebar {margin: 0 auto; text-align: center;}
 .post {margin: 0 auto; text-align: left; width: 70%;}
 .container {margin: 0 auto; text-align: left; width: 70%; position: relative;}
-.menubutton i {background-color: #000000;}
+.menubutton {
+  background-color: #000000;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-top: 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
 /* section id */
 #gamecanvas {background: #000;}
