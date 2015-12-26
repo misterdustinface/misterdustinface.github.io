@@ -50,7 +50,7 @@ function keyDownEventHandler(e) {
 }
 
 var CONTEXT_PROFILES = {
-    NULL: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction,     KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
+    KEYS: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction,     KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
     GAME: {UPDATE_FUNC: GAME_UPDATE,   DRAW_FUNC: GAME_DRAW,         KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
     TEST: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: TEST_RESULTS_DRAW, KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
 };
@@ -162,7 +162,6 @@ function gameKeyUpEventHandler(xKeycode) {
         playerShipUserIntData.moveRight = false;
     }
     if (xKeycode == KEYS.T) {
-        setContext("NULL");
         runTDD();
     }
 }
@@ -206,6 +205,7 @@ function recordAndDisplayTestResults(xResults) {
 }
 
 function runTDD() {
+    setContext("KEYS");
     var x = new TDD();
     x.setOnResultsCallback(recordAndDisplayTestResults);
     
