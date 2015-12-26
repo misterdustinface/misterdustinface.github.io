@@ -29,19 +29,22 @@ var closeMenu = function() {
 var isMenuOpen;
 var clickMenuButton = function() {
   alert( "Handler for .click() called." );
-  closeMenu();
-  //isMenuOpen = !isMenuOpen;
-  //if (isMenuOpen) {
-  //  openMenu();
-  //} else {
-  //  closeMenu();
-  //}
+  isMenuOpen = !isMenuOpen;
+  if (isMenuOpen) {
+    openMenu();
+  } else {
+    closeMenu();
+  }
 };
 
 var setMenuButtonClickFunction = function() {
+  alert("running");
+
   isMenuOpen = false;
   clickMenuButton();
   $('#menubutton').click(clickMenuButton);
+  
+  alert("completed");
 };
 
 $(document).ready(setMenuButtonClickFunction);
