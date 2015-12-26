@@ -1,4 +1,4 @@
-alert("trying");
+window.alert("trying");
 
 var openMenu = function() {
   $('.X').animate({
@@ -30,7 +30,7 @@ var closeMenu = function() {
 
 var isMenuOpen;
 var clickMenuButton = function() {
-  alert( "Handler for .click() called." );
+  window.alert( "Handler for .click() called." );
   isMenuOpen = !isMenuOpen;
   if (isMenuOpen) {
     openMenu();
@@ -40,17 +40,17 @@ var clickMenuButton = function() {
 };
 
 var setMenuButtonClickFunction = function() {
-  alert("running");
+  window.alert("running");
 
   isMenuOpen = false;
   clickMenuButton();
   $('#menubutton').click(clickMenuButton);
   
-  alert("completed");
+  window.alert("completed");
 };
 
-alert("A");
+window.alert("A");
 
 $(document).ready(setMenuButtonClickFunction);
 
-alert("B");
+window.alert("B");
