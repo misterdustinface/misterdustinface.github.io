@@ -1,13 +1,13 @@
 function openMenu() {
   $("#homebar").slideDown();
   $("#footer").show();
-  $('#menubutton').html('<center>menu ^</center>');
+  $('#menubutton').html('<img src="/images/menu-icon.png" alt="[menu]" style="width:32px;height:32px;"></img><center>menu ^</center>');
 }
 
 function closeMenu() {
   $("#homebar").slideUp();
   $("#footer").hide();
-  $('#menubutton').html('<center>menu v</center>');
+  $('#menubutton').html('<img src="/images/menu-icon.png" alt="[menu]" style="width:32px;height:32px;"></img><center>menu v</center>');
 }
 
 var isMenuOpen = false;
