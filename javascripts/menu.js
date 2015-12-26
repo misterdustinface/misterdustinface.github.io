@@ -1,6 +1,6 @@
 function openMenu() {
-  $("#homebar").slideDown();
   $("#footer").slideUp();
+  $("#homebar").slideDown();
 }
 
 function closeMenu() {
