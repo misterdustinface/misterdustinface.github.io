@@ -1,11 +1,13 @@
 function openMenu() {
   $("#homebar").slideDown();
   $("#footer").show();
+  $('#menubutton').html('menu ^');
 }
 
 function closeMenu() {
   $("#homebar").slideUp();
   $("#footer").hide();
+  $('#menubutton').html('menu v');
 }
 
 var isMenuOpen = false;
