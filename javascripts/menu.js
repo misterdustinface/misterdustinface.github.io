@@ -13,18 +13,18 @@ function openMenu() {
 }
 
 function closeMenu() {
+  $("#homebar").slideUp();
+  
   $("#menubutton").animate({
     left: "200px";
   }, 200);
   
-  $("#homebar").slideUp();
-
   // $('body').animate({
   //   top: "0px";
   // }, 200);
 }
 
-var isMenuOpen;
+var isMenuOpen = false;
 function clickMenuButton() {
   //isMenuOpen = !isMenuOpen;
   if (isMenuOpen) {
