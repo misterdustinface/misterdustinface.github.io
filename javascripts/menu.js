@@ -24,7 +24,7 @@ function clickMenuButton() {
 function initMenu() {
   //var containsGame = $("#gamecanvas").length;
   //var containsPost = $("#selected-post").length;
-  var shouldCloseMenu = $('#close-menu').length;
+  var shouldCloseMenu = $('#should-close-menu').length;
   if (shouldCloseMenu) {
     closeMenu();
   } else {
