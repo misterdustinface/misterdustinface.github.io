@@ -28,12 +28,13 @@ var closeMenu = function() {
 
 var isMenuOpen;
 var clickMenuButton = function() {
-  isMenuOpen = !isMenuOpen;
-  if (isMenuOpen) {
-    openMenu();
-  } else {
-    closeMenu();
-  }
+  closeMenu();
+  //isMenuOpen = !isMenuOpen;
+  //if (isMenuOpen) {
+  //  openMenu();
+  //} else {
+  //  closeMenu();
+  //}
 };
 
 var setMenuButtonClickFunction = function() {
