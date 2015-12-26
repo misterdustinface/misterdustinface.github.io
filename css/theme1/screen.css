@@ -25,7 +25,10 @@ ul#list-nav li a:active {}
 .homebar {margin: 0 auto; text-align: center;}
 .post {margin: 0 auto; text-align: left; width: 70%;}
 .container {margin: 0 auto; text-align: left; width: 70%; position: relative;}
-.menubutton {background-image: url("../images/homeImage.png");}
+.menubutton {
+  background-image: url("/images/homeImage.png");
+  background-color: #ffffff;
+}
 
 /* section id */
 #gamecanvas {background: #000;}
