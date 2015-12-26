@@ -26,7 +26,7 @@ function closeMenu() {
 
 var isMenuOpen = false;
 function clickMenuButton() {
-  //isMenuOpen = !isMenuOpen;
+  isMenuOpen = !isMenuOpen;
   if (isMenuOpen) {
     openMenu();
   } else {
