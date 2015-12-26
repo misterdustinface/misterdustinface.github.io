@@ -38,7 +38,7 @@ function clickMenuButton() {
 }
 
 function setMenuButtonClickFunction() {
-  isMenuOpen = false;
+  isMenuOpen = true;
   clickMenuButton();
   $("#menubutton").click(clickMenuButton);
 }
