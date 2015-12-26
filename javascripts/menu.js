@@ -21,7 +21,7 @@ function clickMenuButton() {
 function initMenu() {
   closeMenu();
   isMenuOpen = false;
-  //clickMenuButton();
+  clickMenuButton();
 }
 
 function setMenuButtonClickFunction() {
