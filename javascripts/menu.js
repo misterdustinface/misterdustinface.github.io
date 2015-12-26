@@ -1,9 +1,9 @@
 var openMenu = function() {
-  $('.X').animate({
+  $("#thing").animate({
     left: "0px";
   }, 200);
   
-  // $('#homebar').animate({
+  // $("#homebar").animate({
   //   top: "0px";
   // }, 200);
 
@@ -13,11 +13,11 @@ var openMenu = function() {
 };
 
 var closeMenu = function() {
-  $('.X').animate({
+  $("#thing").animate({
     left: "200px";
   }, 200);
   
-  $('#homebar').slideUp();
+  $("#homebar").slideUp();
 
   // $('body').animate({
   //   top: "0px";
@@ -37,7 +37,7 @@ var clickMenuButton = function() {
 var setMenuButtonClickFunction = function() {
   isMenuOpen = false;
   clickMenuButton();
-  $('#menubutton').click(clickMenuButton);
+  $("#menubutton").click(clickMenuButton);
 };
 
 $(document).ready(setMenuButtonClickFunction);
