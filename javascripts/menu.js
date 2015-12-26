@@ -19,7 +19,7 @@ function clickMenuButton() {
 }
 
 function initMenu() {
-  //closeMenu();
+  closeMenu();
   isMenuOpen = false;
   //clickMenuButton();
 }
