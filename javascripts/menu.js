@@ -17,10 +17,8 @@ function clickMenuButton() {
 }
 
 function initMenu() {
-  $("#homebar").hide();
   closeMenu();
   isMenuOpen = false;
-  $("#homebar").show();
 }
 
 function setMenuButtonClickFunction() {
