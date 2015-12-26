@@ -1,3 +1,5 @@
+alert("trying");
+
 var openMenu = function() {
   $('.X').animate({
     left: "0px";
@@ -47,4 +49,8 @@ var setMenuButtonClickFunction = function() {
   alert("completed");
 };
 
+alert("A");
+
 $(document).ready(setMenuButtonClickFunction);
+
+alert("B");
