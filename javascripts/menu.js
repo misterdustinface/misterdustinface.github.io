@@ -28,9 +28,10 @@ var clickMenuButton = function() {
   }
 };
 
-var main = function() {
+var setMenuButtonClickFunction = function() {
   $('.menubutton').click(clickMenuButton);
 };
 
+setMenuButtonClickFunction();
 
-$(document).ready(main);
+//$(document).ready(setMenuButtonClickFunction);
