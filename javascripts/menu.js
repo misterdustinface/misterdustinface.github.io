@@ -3,7 +3,7 @@ var openMenu = function() {
     left: "0px";
   }, 200);
   
-  $('.homebar').animate({
+  $('#homebar').animate({
     top: "0px";
   }, 200);
 
@@ -17,7 +17,7 @@ var closeMenu = function() {
     left: "200px";
   }, 200);
   
-  $('.homebar').animate({
+  $('#homebar').animate({
     top: "-285px";
   }, 200);
 
@@ -40,7 +40,7 @@ var clickMenuButton = function() {
 var setMenuButtonClickFunction = function() {
   isMenuOpen = false;
   clickMenuButton();
-  $('.menubutton').click(clickMenuButton);
+  $('#menubutton').click(clickMenuButton);
 };
 
 $(document).ready(setMenuButtonClickFunction);
