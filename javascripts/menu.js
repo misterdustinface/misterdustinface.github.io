@@ -23,7 +23,8 @@ function clickMenuButton() {
 
 function initMenu() {
   var containsGame = $("#gamecanvas").length;
-  if (containsGame) {
+  var containsPost = $("#selected-post").length;
+  if (containsGame || containsPost) {
     closeMenu();
   } else {
     openMenu();
