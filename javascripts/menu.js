@@ -1,5 +1,5 @@
 var openMenu = function() {
-  $('.menubutton').animate({
+  $('.X').animate({
     left: "0px";
   }, 200);
   
@@ -13,7 +13,7 @@ var openMenu = function() {
 };
 
 var closeMenu = function() {
-  $('.menubutton').animate({
+  $('.X').animate({
     left: "200px";
   }, 200);
   
