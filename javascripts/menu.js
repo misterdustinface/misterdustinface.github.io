@@ -2,27 +2,32 @@ function openMenu() {
   $("#homebar").slideDown();
   $("#footer").show();
   $('#menubutton').html('<center>menu &#9650;</center>');
+  isMenuOpen = true;
 }
 
 function closeMenu() {
   $("#homebar").slideUp();
   $("#footer").hide();
   $('#menubutton').html('<center>menu &#9660;</center>');
+  isMenuOpen = false;
 }
 
 var isMenuOpen = false;
 function clickMenuButton() {
-  isMenuOpen = !isMenuOpen;
   if (isMenuOpen) {
-    openMenu();
-  } else {
     closeMenu();
+  } else {
+    openMenu();
   }
 }
 
 function initMenu() {
-  openMenu();
-  isMenuOpen = true;
+  var containsGame = !!document.getElementById("#gamecanvas");
+  if (containsGame) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 }
 
 function setMenuButtonClickFunction() {
