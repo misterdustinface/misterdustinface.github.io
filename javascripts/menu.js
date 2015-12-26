@@ -1,13 +1,11 @@
 function openMenu() {
   $("#homebar").slideDown();
   $("#footer").slideDown();
-  $("#gamecanvas").slideDown();
 }
 
 function closeMenu() {
   $("#homebar").slideUp();
   $("#footer").slideUp();
-  $("#gamecanvas").slideDown();
 }
 
 var isMenuOpen = false;
