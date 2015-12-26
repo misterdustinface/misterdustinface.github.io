@@ -3,9 +3,12 @@ function openMenu() {
     left: "0px"
   }, 200);
   
-  $("#homebar").animate({
-    top: "0px"
-  }, 200);
+  // $("#homebar").animate({
+  //   top: "0px"
+  // }, 200);
+  
+  $("#homebar").slideDown();
+
 
   // $('body').animate({
   //   top: "285px"
