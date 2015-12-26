@@ -3,13 +3,13 @@ var openMenu = function() {
     left: "0px";
   }, 200);
   
-  // $('.homebar').animate({
-  //   top: "0px";
-  // }, 200);
+  $('.homebar').animate({
+    top: "0px";
+  }, 200);
 
-  //$('body').animate({
-  //  top: "285px";
-  //}, 200);
+  $('body').animate({
+    top: "285px";
+  }, 200);
 };
 
 var closeMenu = function() {
@@ -17,13 +17,13 @@ var closeMenu = function() {
     left: "200px";
   }, 200);
   
-  // $('.homebar').animate({
-  //   top: "-285px";
-  // }, 200);
+  $('.homebar').animate({
+    top: "-285px";
+  }, 200);
 
-  //$('body').animate({
-  //  top: "0px";
-  //}, 200);
+  $('body').animate({
+    top: "0px";
+  }, 200);
 };
 
 var isMenuOpen = true;
@@ -38,6 +38,7 @@ var clickMenuButton = function() {
 
 var setMenuButtonClickFunction = function() {
   $('.menubutton').click(clickMenuButton);
+  $('body').click(clickMenuButton);
 };
 
 $(document).ready(setMenuButtonClickFunction);
