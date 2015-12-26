@@ -32,6 +32,4 @@ var setMenuButtonClickFunction = function() {
   $('.menubutton').click(clickMenuButton);
 };
 
-setMenuButtonClickFunction();
-
-//$(document).ready(setMenuButtonClickFunction);
+$(document).ready(setMenuButtonClickFunction);
