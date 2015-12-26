@@ -13,7 +13,7 @@ ul                      {list-style-type: none; margin: 0px; padding:0px; overfl
 #list-nav ul            {list-style-type: none; margin: 0px; padding:0px; text-align: center;}
 ul#list-nav li          {display: inline;}
 ul#list-nav li a:link, 
-ul#list-nav li a:visited{display: inline; width:140px; padding:4px; text-align:center; text-transform:uppercase; /*font-weight:normal;*/font-weight:bold; /*display:block;*/}
+ul#list-nav li a:visited{display: inline; width:140px; padding:4px; text-align:center; /*text-transform:uppercase;*/ /*font-weight:normal;*/font-weight:bold; /*display:block;*/}
 ul#list-nav li a:hover  {background-color:#aaaaaa;}
 ul#list-nav li a:active {}
 /* End of Homebar List Defs */
