@@ -17,10 +17,10 @@ function clickMenuButton() {
 }
 
 function initMenu() {
-  //$("#homebar").hide();
+  $("#homebar").hide();
   closeMenu();
   isMenuOpen = false;
-  //$("#homebar").show();
+  $("#homebar").show();
 }
 
 function setMenuButtonClickFunction() {
