@@ -26,7 +26,7 @@ var closeMenu = function() {
   }, 200);
 };
 
-var isMenuOpen = true;
+var isMenuOpen;
 var clickMenuButton = function() {
   isMenuOpen = !isMenuOpen;
   if (isMenuOpen) {
@@ -37,8 +37,9 @@ var clickMenuButton = function() {
 };
 
 var setMenuButtonClickFunction = function() {
+  isMenuOpen = false;
+  clickMenuButton();
   $('.menubutton').click(clickMenuButton);
-  $('body').click(clickMenuButton);
 };
 
 $(document).ready(setMenuButtonClickFunction);
