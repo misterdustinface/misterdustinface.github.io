@@ -1,14 +1,14 @@
 function openMenu() {
   $("#menubutton").animate({
-    left: "0px";
+    left: "0px"
   }, 200);
   
   $("#homebar").animate({
-    top: "0px";
+    top: "0px"
   }, 200);
 
   // $('body').animate({
-  //   top: "285px";
+  //   top: "285px"
   // }, 200);
 }
 
@@ -16,11 +16,11 @@ function closeMenu() {
   $("#homebar").slideUp();
   
   $("#menubutton").animate({
-    left: "200px";
+    left: "200px"
   }, 200);
   
   // $('body').animate({
-  //   top: "0px";
+  //   top: "0px"
   // }, 200);
 }
 
