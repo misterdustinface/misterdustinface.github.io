@@ -1,14 +1,10 @@
 function openMenu() {
   $("#homebar").slideDown();
-  //$("#footer").slideDown();
-  //$("#homebar").show();
   $("#footer").show();
 }
 
 function closeMenu() {
   $("#homebar").slideUp();
-  //$("#footer").slideUp();
-  //$("#homebar").hide();
   $("#footer").hide();
 }
 
