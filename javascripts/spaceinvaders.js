@@ -31,6 +31,7 @@ var UPDATE_FUNC   = emptyFunction;
 var DRAW_FUNC     = emptyFunction;
 var KEY_UP_FUNC   = emptyFunction;
 var KEY_DOWN_FUNC = emptyFunction;
+var CONTEXT
 
 function update() {
     UPDATE_FUNC();
@@ -50,12 +51,14 @@ function keyDownEventHandler(e) {
 }
 
 var CONTEXT_PROFILES = {
-    KEYS: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction,     KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
-    GAME: {UPDATE_FUNC: GAME_UPDATE,   DRAW_FUNC: GAME_DRAW,         KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
+    MENU: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: MENU_DRAW, KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
+    GAME_KEYS: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: emptyFunction, KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
+    GAME: {UPDATE_FUNC: GAME_UPDATE, DRAW_FUNC: GAME_DRAW, KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
     TEST: {UPDATE_FUNC: emptyFunction, DRAW_FUNC: TEST_RESULTS_DRAW, KEY_UP_FUNC: gameKeyUpEventHandler, KEY_DOWN_FUNC: gameKeyDownEventHandler},
 };
 
 function setContext(xContext) {
+    CONTEXT = xContext
     var contextProfile = CONTEXT_PROFILES[xContext];
     UPDATE_FUNC   = contextProfile.UPDATE_FUNC;
     DRAW_FUNC     = contextProfile.DRAW_FUNC;
@@ -110,6 +113,11 @@ function setPlayerShipToDefaultPosition() {
     playerShip.xPos -= (playerShip.width/2);
     playerShip.yPos = (GFX.getHeight() * 3/4);
     playerShip.yPos -= (playerShip.height/2);
+}
+
+function MENU_DRAW() {
+    GFX.setColor("#FFFFFF");
+    GFX.drawTextCentered("Game Paused", GFX.getWidth()/2, GFX.getHeight()/2);
 }
 
 function GAME_UPDATE() {
@@ -167,6 +175,13 @@ function gameKeyUpEventHandler(xKeycode) {
 }
 
 function gameKeyDownEventHandler(xKeycode) {
+    if (xKeycode == KEYS.ESC) {
+        if (CONTEXT !== "MENU") {
+            setContext("MENU")
+        } else {
+            setContext("GAME")
+        }
+    }
     if (xKeycode == KEYS.SPACEBAR) {
         setContext("GAME");
         playerShipUserIntData.shoot = true;
@@ -205,7 +220,7 @@ function recordAndDisplayTestResults(xResults) {
 }
 
 function runTDD() {
-    setContext("KEYS");
+    setContext("GAME_KEYS");
     var x = new TDD();
     x.setOnResultsCallback(recordAndDisplayTestResults);
     
