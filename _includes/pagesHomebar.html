@@ -1,6 +1,6 @@
 <header>
 
-  <div class="X">
+  <div id="thing">
     X
   </div>
 
@@ -12,7 +12,8 @@
   
   <script>
     $("#menubutton").click(function() {
-      $(".X").slideUp();
+      $("#thing").slideUp();
+      $(this).slideUp();
     });
   </script>
   
