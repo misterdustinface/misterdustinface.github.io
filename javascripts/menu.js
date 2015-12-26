@@ -1,7 +1,11 @@
 var openMenu = function() {
-  $('.homebar').animate({
-    top: "0px";
+  $('.menubutton').animate({
+    left: "0px";
   }, 200);
+  
+  // $('.homebar').animate({
+  //   top: "0px";
+  // }, 200);
 
   //$('body').animate({
   //  top: "285px";
@@ -9,9 +13,13 @@ var openMenu = function() {
 };
 
 var closeMenu = function() {
-  $('.homebar').animate({
-    top: "-285px";
+  $('.menubutton').animate({
+    left: "200px";
   }, 200);
+  
+  // $('.homebar').animate({
+  //   top: "-285px";
+  // }, 200);
 
   //$('body').animate({
   //  top: "0px";
