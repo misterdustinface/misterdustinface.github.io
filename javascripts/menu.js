@@ -22,7 +22,7 @@ function clickMenuButton() {
 }
 
 function initMenu() {
-  var containsGame = !!document.getElementById("#gamecanvas");
+  var containsGame = $("#gamecanvas").length;
   if (containsGame) {
     closeMenu();
   } else {
