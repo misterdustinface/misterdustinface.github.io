@@ -27,12 +27,13 @@ ul#list-nav li a:active {}
 .container {margin: 0 auto; text-align: left; width: 70%; position: relative;}
 .menubutton {
   cursor: pointer;
-  font-family:"Lucida Console", Monaco, monospace;
+  font-family:"Montserrat", Monaco, monospace;
   font-size: 16px;
   padding-bottom: 25px;
   padding-top: 25px;
   text-decoration: none;
 }
+/* font-family:"Lucida Console", Monaco, monospace; */
 
 /* section id */
 #gamecanvas {background: #000;}
