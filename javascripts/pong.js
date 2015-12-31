@@ -11,7 +11,7 @@ ctx.font = "bold 16px Monospace";
 var UPS = 60;
 var FPS = 60;
 setInterval(update, 1000/UPS);
-setInterval(draw, 1000/FPS)
+setInterval(draw, 1000/FPS);
 
 var WINNING_SCORE	= 10;
 var LEFT_SCORE		= 0;
@@ -39,9 +39,9 @@ var TEXTCOLOR = "#CCCCCC"; //"#777"
 var LeftPaddle  = new VerticalPaddleObject(PADDLE_OFFSET);
 var RightPaddle = new VerticalPaddleObject(canvas.width - PADDLE_OFFSET);
 var PADDLES = [LeftPaddle, RightPaddle];
-var TopWall = new HorizontalWallObject(WALL_OFFSET)
-var BottomWall = new HorizontalWallObject(canvas.height - WALL_OFFSET)
-var WALLS = [TopWall, BottomWall]
+var TopWall = new HorizontalWallObject(WALL_OFFSET);
+var BottomWall = new HorizontalWallObject(canvas.height - WALL_OFFSET);
+var WALLS = [TopWall, BottomWall];
 
 var Ball = new BallObject();
 //var BALLS = [Ball];
@@ -92,7 +92,7 @@ function drawRect(x, y, w, h) {
 }
 
 function setColor(c) {
-	ctx.fillStyle = c
+	ctx.fillStyle = c;
 }
 
 var SCOREFIELD_LENGTH = ctx.measureText("XX [Score] XX").width;
@@ -193,10 +193,10 @@ function BallObject() {
 }
 
 function intersects (circle, rectangle) {
-	return 	circle.x + circle.radius >= rectangle.x
-	&&	circle.x - circle.radius <= rectangle.x + rectangle.width
-	&&	circle.y + circle.radius >= rectangle.y
-	&&	circle.y - circle.radius <= rectangle.y + rectangle.height;
+	return 	circle.x + circle.radius >= rectangle.x && 
+      circle.x - circle.radius <= rectangle.x + rectangle.width && 
+      circle.y + circle.radius >= rectangle.y &&
+      circle.y - circle.radius <= rectangle.y + rectangle.height;
 }
 
 //function intersects(point, rectangle) {
@@ -216,10 +216,10 @@ function applyControllerCommandToPaddle(paddle) {
 	if (paddle.up ^ paddle.down) {
  		if(paddle.up) 	paddle.yVel -= paddle.speed;
  		if(paddle.down)	paddle.yVel += paddle.speed;
- 		paddle.y += paddle.yVel // move y position accordingly
+ 		paddle.y += paddle.yVel; // move y position accordingly
 	} else {
   		paddle.yVel *= PADDLE_DIRECTION_TRANSITION_RATE;
-  		paddle.y += paddle.yVel // move y position accordingly
+  		paddle.y += paddle.yVel; // move y position accordingly
   		//paddle.yVel = 0;
 	}
 }
