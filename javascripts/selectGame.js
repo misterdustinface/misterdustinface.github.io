@@ -1,7 +1,7 @@
 function newButtonSelect(xLink) {
   var link = xLink;
   return function() {
-    var scriptTag = string.concat("<script type=", "'", "text/javascript", "'", " src=", "'", link, "'", ">", </script>);
+    var scriptTag = string.concat("<script type=", "'", "text/javascript", "'", " src=", "'", link, "'", ">", "</script>");
     $("#game").html(scriptTag);
   };
 }
