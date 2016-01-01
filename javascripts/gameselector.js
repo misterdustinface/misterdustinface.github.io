@@ -39,13 +39,17 @@ function setGameSelections() {
     if (selection === 1) {
       loadGame('/javascripts/pong.js');
       makeButton('Ping', 'ping-game-selector');
-      write('Left  Controls: WASD');
+      write('Left Controls: WASD');
       write('Right Controls: Arrows');
+      write('Serve: Spacebar');
+      write('Restart: Esc');
     } else {
       loadGame('/javascripts/spaceinvaders.js');
       makeButton('Invaders', 'invaders-game-selector');
       write('Fire: Spacebar');
       write('Move: Arrows');
+      write('Pause: Esc');
+      write('Run Tests: T');
     }
   }
 }
