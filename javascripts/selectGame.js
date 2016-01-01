@@ -1,22 +1,22 @@
 // function newLoadGameClosure(xLink) {
 //   var link = xLink;
 //   return function() {
-//     var scriptTag = string.concat("<script type=", "'", "text/javascript", "'", " src=", "'", link, "'", ">", "</script>");
-//     $("#game").html(scriptTag);
+//     var setScriptToLink = '<script type="text/javascript" src="' + link + '"></script>'
+//     $("#game").html(setScriptToLink);
 //   };
 // }
 
 // function makeButton(xText, xLink) {
-//   var buttonElement = string.concat("<div", " class=", "'", "menubutton", "'", " id=", "'", xText, "'", ">", xText, "</div>");
+//   var buttonElement = '<div class="menubutton" id="' + xText, + '">' + xText + '</div>';
 //   $("#gameselector").append(buttonElement);
-//   var elementID = string.concat("#", xText);
+//   var elementID = '#' + xText;
 //   var loadGame = newLoadGameClosure(xLink);
 //   $(elementID).click(loadGame);
 // }
 
 function setSelectorButtons() {
   var xText = 'Pong';
-  var buttonElement = string.concat("<div", " class=", "'", "menubutton", "'", " id=", "'", xText, "'", ">", xText, "</div>");
+  var buttonElement = '<div class="menubutton" id="' + xText, + '">' + xText + '</div>';
   $("#gameselector").append(buttonElement);
   //makeButton('Pong', '/javascripts/pong.js');
   //makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
