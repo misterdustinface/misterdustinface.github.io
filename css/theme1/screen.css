@@ -66,7 +66,7 @@ ul.list-nav li a:active {
 .game-nav ul {
   list-style-type: none; 
   margin: 0px; 
-  padding:0px; 
+  padding:10px; 
   text-align: center;
   display: block;
   -webkit-margin-before: 1em;
