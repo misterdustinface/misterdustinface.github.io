@@ -1,15 +1,14 @@
 // function newLoadGameClosure(xLink) {
 //   var link = xLink;
 //   return function() {
-//     var setScriptToLink = '<script type="text/javascript" src="' + link + '"></script>'
+//     var setScriptToLink = '<script type=\"text/javascript\" src=\"' + link + '\"></script>'
 //     $("#game").html(setScriptToLink);
 //   };
 // }
 
 function makeButton(xText, xLink) {
-  $("#gameselector").append("<strong>games3</strong>");
-  //var buttonElement = '<div class="menubutton" id="' + xText, + '">' + xText + '</div>';
-  //$("#gameselector").append(buttonElement);
+  var buttonElement = '<div class=\"menubutton\" id=\"' + xText, + '\">' + xText + '</div>';
+  $("#gameselector").append(buttonElement);
   //var elementID = '#' + xText;
   //var loadGame = newLoadGameClosure(xLink);
   //$(elementID).click(loadGame);
