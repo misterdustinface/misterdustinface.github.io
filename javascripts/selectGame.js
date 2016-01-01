@@ -7,8 +7,10 @@ function select(xOption) {
 function newLoadGameClosure(xOption, xLink) {
   return function() {
     if (xOption !== selected) {
-      var setScriptToLink = '<script type="text/javascript" src=' + '"' + xLink + '"' + '>' + '</script>';
-      $("#game").html(setScriptToLink);
+      $('<script>').attr({
+        src: xLink,
+        type: 'text/javascript'
+      }).appendTo('#game');
       select(xOption);
     }
   };
