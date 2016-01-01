@@ -18,9 +18,12 @@ function init() {
 }
 
 function setSelectorButtons() {
-  init();
-  makeButton('Ping', '/javascripts/pong.js');
-  makeButton('Invaders', '/javascripts/spaceinvaders.js');
+  var hasGame = $('#game').length;
+  if (hasGame) {
+    init();
+    makeButton('Ping', '/javascripts/pong.js');
+    makeButton('Invaders', '/javascripts/spaceinvaders.js');
+  }
 }
 
 $(document).ready(setSelectorButtons);
