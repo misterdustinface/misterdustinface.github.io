@@ -25,6 +25,8 @@ iframe[seamless] {
     border: none;
 }
 
+/* div classes */
+
 .list-nav ul {
   list-style-type: none; 
   margin: 0px; 
@@ -83,7 +85,6 @@ ul.game-nav li:hover {
   font-weight:bold;
 }
 
-/* div classes */
 .paper {text-align: left;}
 .centered {margin: 0 auto; text-align: center;}
 .footer {margin: 0 auto; text-align: center;}
@@ -99,6 +100,6 @@ ul.game-nav li:hover {
   text-decoration: none;
 }
 
-/* section id */
+/* div ids */
 #gamecanvas {background: #000;}
 #main_content {width: 100%; -webkit-font-smoothing: antialiased;}
