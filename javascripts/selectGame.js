@@ -1,41 +1,39 @@
-var selected;
 
-function select(xOption) {
-  selected = xOption
-}
 
-function newLoadGameClosure(xOption, xLink) {
+function newSelectGameClosure(xUniqueID, xGameTitle) {
   return function() {
-    if (xOption !== selected) {
-      select(xOption);
-    }
+    
   };
 }
 
-function makeButton(xText, xLink) {
-  var buttonElement = '<li id=' + '"' + xText + '"' + '>' + xText + '</li>';
-  $("#selector-button-list").append(buttonElement);
-  var elementID = '#' + xText;
-  var loadGame = newLoadGameClosure(xText, xLink);
-  $(elementID).click(loadGame);
-  
+function loadGame(xGameSrc) {
   $('<script>').attr({
-    src: xLink,
+    src: xGameSrc,
     type: 'text/javascript'
   }).appendTo('#game');
+}
+
+function makeButton(xGameTitle, xUniqueID) {
+  var buttonElement = '<li id=' + '"' + xUniqueID + '"' + '>' + xGameTitle + '</li>';
+  $("#selector-button-list").append(buttonElement);
+  var elementID = '#' + xUniqueID;
+  var selectGame = newSelectGameClosure(xUniqueID, xGameTitle);
+  $(elementID).click(selectGame);
 }
 
 function init() {
   $("#gameselector").append('<h4><ul class="game-nav" id="selector-button-list"></ul></h4>');
 }
 
-function setSelectorButtons() {
+function setGameSelections() {
   var hasGame = $('#game').length;
   if (hasGame) {
     init();
-    makeButton('Ping', '/javascripts/pong.js');
-    makeButton('Invaders', '/javascripts/spaceinvaders.js');
+    loadGame('/javascripts/pong.js');
+    loadGame('/javascripts/spaceinvaders.js');
+    makeButton('Ping', 'ping-game-selector');
+    makeButton('Spice Invaders', 'invaders-game-selector');
   }
 }
 
-$(document).ready(setSelectorButtons);
+$(document).ready(setGameSelections);
