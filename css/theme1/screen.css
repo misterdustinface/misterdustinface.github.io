@@ -54,6 +54,9 @@ ul.list-nav li a:active {
   padding:0px; 
   text-align: center;
 }
+ul.game-nav li {
+  display: inline;
+}
 ul.game-nav li:active {
   cursor: pointer;
   font-family:"Lucida Console", Monaco, monospace; 
