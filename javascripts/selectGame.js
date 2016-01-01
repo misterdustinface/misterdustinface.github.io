@@ -32,7 +32,6 @@ function setSelectorButtons() {
   var hasGame = $('#game').length;
   if (hasGame) {
     init();
-    select('Ping');
     makeButton('Ping', '/javascripts/pong.js');
     makeButton('Invaders', '/javascripts/spaceinvaders.js');
   }
