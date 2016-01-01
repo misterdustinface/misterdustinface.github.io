@@ -15,11 +15,10 @@
 // }
 
 function setSelectorButtons() {
-  var xText = 'Pong';
-  var buttonElement = '<div class="menubutton" id="' + xText, + '">' + xText + '</div>';
-  $("#gameselector").append(buttonElement);
   //makeButton('Pong', '/javascripts/pong.js');
   //makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
+  $("#gameselector").html("<strong>games</strong>");
+ // $("#gameselector").append("<strong>games2</strong>")
 }
 
 $(document).ready(setSelectorButtons);
