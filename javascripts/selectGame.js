@@ -1,7 +1,16 @@
-function newLoadGameClosure(xLink) {
+var selected;
+
+function select(xOption) {
+  selected = xOption
+}
+
+function newLoadGameClosure(xOption, xLink) {
   return function() {
-    var setScriptToLink = '<script type="text/javascript" src=' + '"' + xLink + '"' + '>' + '</script>';
-    $("#game").html(setScriptToLink);
+    if (xOption !== selected) {
+      var setScriptToLink = '<script type="text/javascript" src=' + '"' + xLink + '"' + '>' + '</script>';
+      $("#game").html(setScriptToLink);
+      select(xOption);
+    }
   };
 }
 
@@ -9,7 +18,7 @@ function makeButton(xText, xLink) {
   var buttonElement = '<li id=' + '"' + xText + '"' + '>' + xText + '</li>';
   $("#selector-button-list").append(buttonElement);
   var elementID = '#' + xText;
-  var loadGame = newLoadGameClosure(xLink);
+  var loadGame = newLoadGameClosure(xText, xLink);
   $(elementID).click(loadGame);
 }
 
@@ -23,6 +32,7 @@ function setSelectorButtons() {
     init();
     makeButton('Ping', '/javascripts/pong.js');
     makeButton('Invaders', '/javascripts/spaceinvaders.js');
+    select('Pong');
   }
 }
 
