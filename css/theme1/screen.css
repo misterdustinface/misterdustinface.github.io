@@ -35,7 +35,7 @@ ul.list-nav li {
   display: inline;
   text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
   text-decoration: none;
-  color:#63c0f5;
+  color:#bd96bd;
 }
 ul.list-nav li a:link, 
 ul.list-nav li a:visited {
@@ -61,7 +61,7 @@ ul.game-nav li {
   display: inline;
   text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
   text-decoration: none;
-  color:#63c0f5;
+  color:#bd96bd;
 }
 ul.game-nav li:active {
   cursor: pointer;
