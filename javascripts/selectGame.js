@@ -22,11 +22,10 @@ function rememberNewSelection(xName) {
 }
 
 function newLoadGameClosure(xName, xLink) {
-  var link = xLink;
   return function() {
     select(xName);
-    //var setScriptToLink = '<script type="text/javascript" src=' + '"' + link + '"' + '>' + '</script>';
-    //$("#game").html(setScriptToLink);
+    var setScriptToLink = '<script type="text/javascript" src=' + '"' + xLink + '"' + '>' + '</script>';
+    $("#game").html(setScriptToLink);
   };
 }
 
@@ -39,10 +38,9 @@ function makeButton(xText, xLink) {
 }
 
 function setSelectorButtons() {
-  makeButton('Pong', '/javascripts/pong.js');
-  makeButton('Game', '/javascripts/pong.js');
-  makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
-  select('Pong');
+  makeButton('Ping', '/javascripts/pong.js');
+  makeButton('Invaders', '/javascripts/spaceinvaders.js');
+  select('Ping');
 }
 
 $(document).ready(setSelectorButtons);
