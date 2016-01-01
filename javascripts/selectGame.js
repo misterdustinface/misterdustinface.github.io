@@ -30,16 +30,26 @@ function newLoadGameClosure(xName, xLink) {
 }
 
 function makeButton(xText, xLink) {
-  var buttonElement = '<div class="menubutton" id=' + '"' + xText + '"' + '>' + xText + '</div>';
+  var buttonElement = '<li id=' + '"' + xText + '"' + '>' + xText + '</li>';
   $("#gameselector").append(buttonElement);
   var elementID = '#' + xText;
   var loadGame = newLoadGameClosure(xText, xLink);
   $(elementID).click(loadGame);
 }
 
+function startButtons() {
+  $("#gameselector").append('<ul class="list-nav" id="selector-button-list">');
+}
+
+function endButtons() {
+  $("#gameselector").append('</ul>');
+}
+
 function setSelectorButtons() {
+  startButtons();
   makeButton('Ping', '/javascripts/pong.js');
   makeButton('Invaders', '/javascripts/spaceinvaders.js');
+  endButtons();
   select('Ping');
 }
 
