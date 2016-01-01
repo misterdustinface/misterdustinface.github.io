@@ -45,7 +45,7 @@ function setSelectorButtons() {
   init();
   makeButton('Ping', '/javascripts/pong.js');
   makeButton('Invaders', '/javascripts/spaceinvaders.js');
-  //select('Ping');
+  select('Ping');
 }
 
 $(document).ready(setSelectorButtons);
