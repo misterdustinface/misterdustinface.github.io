@@ -17,8 +17,14 @@ ul.list-nav li a:visited{display: inline; width:140px; padding:4px; text-align:c
 ul.list-nav li a:hover  {background-color:#aaaaaa;}
 ul.list-nav li a:active {}
 
-ul.list-nav li:link, 
-ul.list-nav li:visited {
+.game-nav ul {
+  list-style-type: none; 
+  margin: 0px; 
+  padding:0px; 
+  text-align: center;
+}
+ul.game-nav li:link, 
+ul.game-nav li:visited {
   cursor: pointer;
   font-family:"Lucida Console", Monaco, monospace; 
   text-decoration: none; 
@@ -29,9 +35,8 @@ ul.list-nav li:visited {
   text-align:center; 
   font-weight:bold;
 }
-
-ul.list-nav li:hover,
-ul.list-nav li:active {
+ul.game-nav li:hover,
+ul.game-nav li:active {
   cursor: pointer;
   font-family:"Lucida Console", Monaco, monospace; 
   text-decoration: none; 
