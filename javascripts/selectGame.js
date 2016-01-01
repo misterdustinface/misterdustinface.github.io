@@ -42,6 +42,7 @@ function initSelect(xSelection) {
 
 function setSelectorButtons() {
   makeButton('Pong', '/javascripts/pong.js');
+  makeButton('Pong2', '/javascripts/pong.js');
   makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
   initSelect('Pong');
 }
