@@ -18,7 +18,7 @@ function setSelectorButtons() {
   //makeButton('Pong', '/javascripts/pong.js');
   //makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
   $("#gameselector").html("<strong>games</strong>");
- // $("#gameselector").append("<strong>games2</strong>")
+  $("#gameselector").append("<strong>games2</strong>");
 }
 
 $(document).ready(setSelectorButtons);
