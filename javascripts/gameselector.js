@@ -39,17 +39,13 @@ function setGameSelections() {
     if (selection === 1) {
       loadGame('/javascripts/pong.js');
       makeButton('Ping', 'ping-game-selector');
-      write('[Control] [Left]     [Right] ');
-      write('   UP       W       Arrow Up ');
-      write('  DOWN      S      Arrow Down');
-      write(' COLOR+     D     Arrow Right');
-      write(' COLOR-     A      Arrow Left');
+      write('Left  Controls: WASD');
+      write('Right Controls: Arrows');
     } else {
       loadGame('/javascripts/spaceinvaders.js');
       makeButton('Invaders', 'invaders-game-selector');
-      write('[Control]  [Keys] ')
-      write('  Fire:   Spacebar');
-      write('  Move:    Arrows ');
+      write('Fire: Spacebar');
+      write('Move: Arrows');
     }
   }
 }
