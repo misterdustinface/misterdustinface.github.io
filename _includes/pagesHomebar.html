@@ -6,7 +6,7 @@
       <img src="/images/homeImage.png" alt="[Dustin Shaffer]"></img>
     </center>
     <h4>
-      <ul id="list-nav">
+      <ul class="list-nav" id="list-nav">
         {% assign sorted_pages = site.pages | sort:"name" %}
         {% for page in sorted_pages %}
           {% if {{page.url}} != "/404.html" %} <!-- AVOID LISTING 404 ERROR PAGE IN HOMEBAR -->
