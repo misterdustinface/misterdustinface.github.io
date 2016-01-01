@@ -40,6 +40,7 @@ function makeButton(xText, xLink) {
 
 function setSelectorButtons() {
   makeButton('Pong', '/javascripts/pong.js');
+  makeButton('Game', '/javascripts/pong.js');
   makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
   select('Pong');
 }
