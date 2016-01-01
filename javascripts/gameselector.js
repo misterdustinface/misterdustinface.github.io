@@ -21,6 +21,10 @@ function makeButton(xGameTitle, xUniqueID) {
   $(elementID).click(selectGame);
 }
 
+function write(xStr) {
+  $("#gameselector").append(xStr);
+}
+
 function init() {
   $("#gameselector").append('<h4><ul class="game-nav" id="selector-button-list"></ul></h4>');
 }
@@ -35,9 +39,17 @@ function setGameSelections() {
     if (selection === 1) {
       loadGame('/javascripts/pong.js');
       makeButton('Ping', 'ping-game-selector');
+      write('[Control] [Left]     [Right] ');
+      write('   UP       W       Arrow Up ');
+      write('  DOWN      S      Arrow Down');
+      write(' COLOR+     D     Arrow Right');
+      write(' COLOR-     A      Arrow Left');
     } else {
       loadGame('/javascripts/spaceinvaders.js');
       makeButton('Invaders', 'invaders-game-selector');
+      write('[Control]  [Keys] ')
+      write('  Fire:   Spacebar');
+      write('  Move:    Arrows ');
     }
   }
 }
