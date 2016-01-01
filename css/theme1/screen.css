@@ -33,6 +33,9 @@ iframe[seamless] {
 }
 ul.list-nav li {
   display: inline;
+  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
+  text-decoration: none;
+  color:#63c0f5;
 }
 ul.list-nav li a:link, 
 ul.list-nav li a:visited {
@@ -55,8 +58,10 @@ ul.list-nav li a:active {
   text-align: center;
 }
 ul.game-nav li {
-  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
   display: inline;
+  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
+  text-decoration: none;
+  color:#63c0f5;
 }
 ul.game-nav li:active {
   cursor: pointer;
