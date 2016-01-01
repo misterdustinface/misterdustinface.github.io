@@ -30,7 +30,8 @@ function newLoadGameClosure(xName, xLink) {
 }
 
 function makeButton(xText, xLink) {
-  var buttonElement = '<li id=' + '"' + xText + '"' + '>' + xText + '</li>';
+//  <a href="https://github.com/misterdustinface" target="_blank">
+  var buttonElement = '<li><a id=' + '"' + xText + '"' + '>' + xText + '</a></li>';
   $("#selector-button-list").append(buttonElement);
   var elementID = '#' + xText;
   var loadGame = newLoadGameClosure(xText, xLink);
