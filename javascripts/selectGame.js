@@ -23,7 +23,7 @@ function rememberNewSelection(xName) {
 
 function newLoadGameClosure(xName, xLink) {
   return function() {
-    select(xName);
+    //select(xName);
     var setScriptToLink = '<script type="text/javascript" src=' + '"' + xLink + '"' + '>' + '</script>';
     $("#game").html(setScriptToLink);
   };
@@ -46,7 +46,7 @@ function setSelectorButtons() {
   init();
   makeButton('Ping', '/javascripts/pong.js');
   makeButton('Invaders', '/javascripts/spaceinvaders.js');
-  select('Ping');
+  //select('Ping');
 }
 
 $(document).ready(setSelectorButtons);
