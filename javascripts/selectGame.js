@@ -15,8 +15,11 @@ function makeButton(xText, xLink){
 }
 
 function setSelectorButtons() {
-  makeButton('Pong', '/javascripts/pong.js');
-  makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
+  var xText = 'Pong';
+  var buttonElement = string.concat("<div", " class=", "'", "menubutton", "'", " id=", "'", xText, "'", ">", xText, "</div>");
+  $("#gameselector").append(buttonElement);
+  //makeButton('Pong', '/javascripts/pong.js');
+  //makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
 }
 
 $(document).ready(setSelectorButtons);
