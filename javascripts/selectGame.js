@@ -1,4 +1,4 @@
-function newButtonSelect(xLink) {
+function newLoadGameClosure(xLink) {
   var link = xLink;
   return function() {
     var scriptTag = string.concat("<script type=", "'", "text/javascript", "'", " src=", "'", link, "'", ">", "</script>");
@@ -10,8 +10,8 @@ function makeButton(xText, xLink){
   var buttonElement = string.concat("<div", " class=", "'", "menubutton", "'", " id=", "'", xText, "'", ">", xText, "</div>");
   $("#gameselector").append(buttonElement);
   var elementID = string.concat("#", xText);
-  var select = newButtonSelect(xLink);
-  $(elementID).click(select);
+  var loadGame = newLoadGameClosure(xLink);
+  $(elementID).click(loadGame);
 }
 
 function setSelectorButtons() {
