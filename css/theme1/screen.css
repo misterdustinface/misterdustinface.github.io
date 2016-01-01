@@ -30,6 +30,7 @@ h4 {
     -webkit-margin-end: 0px;
     font-weight: bold;
 }
+
 iframe[seamless] {
     border: none;
 }
@@ -67,6 +68,12 @@ ul.list-nav li a:active {
   margin: 0px; 
   padding:0px; 
   text-align: center;
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
 }
 ul.game-nav li {
   text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
