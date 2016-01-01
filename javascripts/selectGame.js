@@ -7,7 +7,7 @@
 // }
 
 function makeButton(xText, xLink) {
-  $("#gameselector").append('"Play"' + xText + '!!!');
+  $("#gameselector").append('<div><strong>"Play"</strong>' + xText + '!!!</div>');
   //var buttonElement = '<div class="menubutton" id=' + '\"' + xText, + '\"' + '>' + xText + '</div>';
   //$("#gameselector").append(buttonElement);
   //var elementID = '#' + xText;
