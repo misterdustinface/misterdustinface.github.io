@@ -22,7 +22,7 @@ function makeButton(xGameTitle, xUniqueID) {
 }
 
 function write(xStr) {
-  $("#gameselector").append(xStr);
+  $("#gameselector").append('<br>' + xStr + '</br>');
 }
 
 function init() {
