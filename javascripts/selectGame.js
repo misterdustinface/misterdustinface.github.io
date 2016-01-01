@@ -20,8 +20,8 @@ function newLoadGameClosure(xText, xLink) {
   var link = xLink;
   return function() {
     select(xText);
-    var setScriptToLink = '<script type="text/javascript" src=' + '"' + link + '"' + '>' + '</script>';
-    $("#game").html(setScriptToLink);
+    //var setScriptToLink = '<script type="text/javascript" src=' + '"' + link + '"' + '>' + '</script>';
+    //$("#game").html(setScriptToLink);
   };
 }
 
