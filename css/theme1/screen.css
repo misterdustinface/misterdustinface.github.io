@@ -58,23 +58,19 @@ ul.list-nav li a:active {
   text-align: center;
 }
 ul.game-nav li {
-  display: inline;
   text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
-  text-decoration: none;
-  color:#bd96bd;
-}
-ul.game-nav li:active {
   cursor: pointer;
   font-family:"Lucida Console", Monaco, monospace; 
-  text-decoration: none; 
+  text-decoration: none;
   color:#bd96bd;
-  display: inline; 
+  display: inline;
   width:140px; 
   padding:4px; 
   text-align:center; 
   font-weight:bold;
 }
 ul.game-nav li:hover {
+  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
   cursor: pointer;
   font-family:"Lucida Console", Monaco, monospace; 
   text-decoration: none; 
