@@ -7,10 +7,6 @@ function select(xOption) {
 function newLoadGameClosure(xOption, xLink) {
   return function() {
     if (xOption !== selected) {
-      $('<script>').attr({
-        src: xLink,
-        type: 'text/javascript'
-      }).appendTo('#game');
       select(xOption);
     }
   };
@@ -22,6 +18,11 @@ function makeButton(xText, xLink) {
   var elementID = '#' + xText;
   var loadGame = newLoadGameClosure(xText, xLink);
   $(elementID).click(loadGame);
+  
+  $('<script>').attr({
+    src: xLink,
+    type: 'text/javascript'
+  }).appendTo('#game');
 }
 
 function init() {
