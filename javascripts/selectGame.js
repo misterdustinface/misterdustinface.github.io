@@ -2,9 +2,11 @@ var lastClickedName;
 var lastClickedID;
 
 function select(xText) {
-  $('#'+xText).html('<strong>'+xText+'</strong>');
-  restoreOldSelection();
-  rememberNewSelection(xText);
+  if (lastClickedName !== xText) {
+    $('#'+xText).html('<strong>'+xText+'</strong>');
+    restoreOldSelection();
+    rememberNewSelection(xText);
+  }
 }
 
 function restoreOldSelection() {
@@ -33,10 +35,15 @@ function makeButton(xText, xLink) {
   $(elementID).click(loadGame);
 }
 
+function initSelect(xSelection) {
+  rememberNewSelection(xSelection);
+  select(xSelection);
+}
+
 function setSelectorButtons() {
   makeButton('Pong', '/javascripts/pong.js');
   makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
-  select('Pong');
+  initSelect('Pong');
 }
 
 $(document).ready(setSelectorButtons);
