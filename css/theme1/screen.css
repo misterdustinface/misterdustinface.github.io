@@ -19,6 +19,7 @@ ul.list-nav li a:active {}
 
 ul.list-nav li:link, 
 ul.list-nav li:visited {
+  cursor: pointer;
   font-family:"Lucida Console", Monaco, monospace; 
   text-decoration: none; 
   color:#bd96bd;
@@ -31,6 +32,7 @@ ul.list-nav li:visited {
 
 ul.list-nav li:hover,
 ul.list-nav li:active {
+  cursor: pointer;
   font-family:"Lucida Console", Monaco, monospace; 
   text-decoration: none; 
   color:#ffffff;
