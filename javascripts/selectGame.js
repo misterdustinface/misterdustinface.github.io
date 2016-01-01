@@ -4,7 +4,7 @@ var lastClickedID;
 function select(xName) {
   if (lastClickedName !== xName) {
     var currentID = '#' + xName
-    $(currentID).html('<strong>' + xName + '</strong>');
+    $(currentID).html('[' + xName + ']');
     restoreOldSelection();
     rememberNewSelection(xName);
   }
@@ -23,14 +23,13 @@ function rememberNewSelection(xName) {
 
 function newLoadGameClosure(xName, xLink) {
   return function() {
-    //select(xName);
+    select(xName);
     var setScriptToLink = '<script type="text/javascript" src=' + '"' + xLink + '"' + '>' + '</script>';
     $("#game").html(setScriptToLink);
   };
 }
 
 function makeButton(xText, xLink) {
-//  <a href="https://github.com/misterdustinface" target="_blank">
   var buttonElement = '<li id=' + '"' + xText + '"' + '>' + xText + '</li>';
   $("#selector-button-list").append(buttonElement);
   var elementID = '#' + xText;
