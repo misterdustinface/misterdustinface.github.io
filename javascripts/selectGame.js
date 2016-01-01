@@ -3,7 +3,8 @@ var lastClickedID;
 
 function select(xText) {
   if (lastClickedName !== xText) {
-    $('#'+xText).html('<strong>'+xText+'</strong>');
+    var currentID = '#' + xText
+    $(currentID).html('<strong>' + xText + '</strong>');
     restoreOldSelection();
     rememberNewSelection(xText);
   }
@@ -33,7 +34,7 @@ function makeButton(xText, xLink) {
   var buttonElement = '<div class="menubutton" id=' + '"' + xText + '"' + '>' + xText + '</div>';
   $("#gameselector").append(buttonElement);
   var elementID = '#' + xText;
-  var loadGame = newLoadGameClosure(xLink);
+  var loadGame = newLoadGameClosure(xText, xLink);
   $(elementID).click(loadGame);
 }
 
