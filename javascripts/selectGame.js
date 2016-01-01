@@ -32,7 +32,7 @@ function setGameSelections() {
     loadGame('/javascripts/pong.js');
     loadGame('/javascripts/spaceinvaders.js');
     makeButton('Ping', 'ping-game-selector');
-    makeButton('Spice Invaders', 'invaders-game-selector');
+    makeButton('Invaders', 'invaders-game-selector');
   }
 }
 
