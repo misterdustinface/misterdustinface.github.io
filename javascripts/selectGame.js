@@ -1,12 +1,12 @@
 var lastClickedName;
 var lastClickedID;
 
-function select(xText) {
-  if (lastClickedName !== xText) {
-    var currentID = '#' + xText
-    $(currentID).html('<strong>' + xText + '</strong>');
+function select(xName) {
+  if (lastClickedName !== xName) {
+    var currentID = '#' + xName
+    $(currentID).html('<strong>' + xName + '</strong>');
     restoreOldSelection();
-    rememberNewSelection(xText);
+    rememberNewSelection(xName);
   }
 }
 
@@ -16,15 +16,15 @@ function restoreOldSelection() {
   }
 }
 
-function rememberNewSelection(xText) {
-  lastClickedName = xText;
+function rememberNewSelection(xName) {
+  lastClickedName = xName;
   lastClickedID = '#' + lastClickedName;
 }
 
-function newLoadGameClosure(xText, xLink) {
+function newLoadGameClosure(xName, xLink) {
   var link = xLink;
   return function() {
-    select(xText);
+    select(xName);
     //var setScriptToLink = '<script type="text/javascript" src=' + '"' + link + '"' + '>' + '</script>';
     //$("#game").html(setScriptToLink);
   };
