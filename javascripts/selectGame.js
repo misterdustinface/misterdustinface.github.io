@@ -39,7 +39,7 @@ function makeButton(xText, xLink) {
 }
 
 function init() {
-  $("#gameselector").append('<ul class="list-nav" id="selector-button-list"></ul>');
+  $("#gameselector").append('<div class="homebar"><ul class="list-nav" id="selector-button-list"></ul></div>');
 }
 
 function setSelectorButtons() {
