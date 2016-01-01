@@ -6,19 +6,20 @@
 //   };
 // }
 
-// function makeButton(xText, xLink) {
-//   var buttonElement = '<div class="menubutton" id="' + xText, + '">' + xText + '</div>';
-//   $("#gameselector").append(buttonElement);
-//   var elementID = '#' + xText;
-//   var loadGame = newLoadGameClosure(xLink);
-//   $(elementID).click(loadGame);
-// }
+function makeButton(xText, xLink) {
+  var buttonElement = '<div class="menubutton" id="' + xText, + '">' + xText + '</div>';
+  $("#gameselector").append(buttonElement);
+  //var elementID = '#' + xText;
+  //var loadGame = newLoadGameClosure(xLink);
+  //$(elementID).click(loadGame);
+}
 
 function setSelectorButtons() {
-  //makeButton('Pong', '/javascripts/pong.js');
+  makeButton('Pong', '/javascripts/pong.js');
   //makeButton('Space Invaders', '/javascripts/spaceinvaders.js');
-  $("#gameselector").html("<strong>games</strong>");
-  $("#gameselector").append("<strong>games2</strong>");
+  
+  //$("#gameselector").html("<strong>games</strong>");
+  //$("#gameselector").append("<strong>games2</strong>");
 }
 
 $(document).ready(setSelectorButtons);
