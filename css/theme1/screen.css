@@ -1,12 +1,12 @@
-head{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; auto}
-footer{margin: 0 auto; text-align: center;}
-p   {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; }
-body{font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; }
-a         {text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);                          color:#63c0f5;} 
-a:link    {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* unvisited link */
+head {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; auto}
+footer {margin: 0 auto; text-align: center;}
+p {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; }
+body {font-family:"Lucida Console", Monaco, monospace; color:#ffffff; background-color:#000000; margin: 0; }
+a {text-shadow: 0 0 5px rgba(104, 182, 255, 0.5); color:#63c0f5;} 
+a:link {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* unvisited link */
 a:visited {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#bd96bd;} /* visited link */
-a:hover   {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;} /* mouse over link */
-a:active  {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#b5e853;} /* selected link */
+a:hover {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#ffffff;} /* mouse over link */
+a:active {font-family:"Lucida Console", Monaco, monospace; text-decoration: none; color:#b5e853;} /* selected link */
 ul {list-style-type: none; margin: 0px; padding:0px; overflow: hidden;}
 section {margin: 0 0 20px 0; display: block;}
 pre {
@@ -21,6 +21,14 @@ pre {
   text-wrap: normal;
   overflow: auto;
   overflow-y: hidden; 
+}
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 iframe[seamless] {
     border: none;
