@@ -3,6 +3,7 @@ function newLoadGameClosure(xLink) {
   return function() {
     var setScriptToLink = '<script type="text/javascript" src=' + '"' + link + '"' + '>' + '</script>';
     $("#game").html(setScriptToLink);
+    $(this).html('CLICKED');
   };
 }
 
