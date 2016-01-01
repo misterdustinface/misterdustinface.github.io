@@ -30,9 +30,9 @@ function setGameSelections() {
   if (hasGame) {
     init();
     loadGame('/javascripts/pong.js');
-    loadGame('/javascripts/spaceinvaders.js');
-    makeButton('Ping', 'ping-game-selector');
-    makeButton('Invaders', 'invaders-game-selector');
+    //loadGame('/javascripts/spaceinvaders.js');
+    //makeButton('Ping', 'ping-game-selector');
+    //makeButton('Invaders', 'invaders-game-selector');
   }
 }
 
