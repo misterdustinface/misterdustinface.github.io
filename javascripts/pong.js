@@ -219,8 +219,7 @@ function touchStartEventHandler(e) {
 			if (touch.y > paddleMid) {
 				LeftPaddle.up = false;
 				LeftPaddle.down = true;
-			}
-			if (touch.y < paddleMid) {
+			} else if (touch.y < paddleMid) {
 				LeftPaddle.up = true;
 				LeftPaddle.down = false;
 			}
@@ -232,8 +231,7 @@ function touchStartEventHandler(e) {
 			if (touch.y > paddleMid) {
 				RightPaddle.up = false;
 				RightPaddle.down = true;
-			}
-			if (touch.y < paddleMid) {
+			} else if (touch.y < paddleMid) {
 				RightPaddle.up = true;
 				RightPaddle.down = false;
 			}
@@ -266,9 +264,11 @@ function touchMoveEventHandler(e) {
 			if (touch.dy > TOUCH_TOLERANCE) {
 				LeftPaddle.up = false;
 				LeftPaddle.down = true;
-			}
-			if (touch.dy < -TOUCH_TOLERANCE) {
+			} else if (touch.dy < -TOUCH_TOLERANCE) {
 				LeftPaddle.up = true;
+				LeftPaddle.down = false;
+			} else {
+				LeftPaddle.up = false;
 				LeftPaddle.down = false;
 			}
 		}
@@ -280,10 +280,12 @@ function touchMoveEventHandler(e) {
 			if (touch.dy > TOUCH_TOLERANCE) {
 				RightPaddle.up = false;
 				RightPaddle.down = true;
-			}
-			if (touch.dy < -TOUCH_TOLERANCE) {
+			} else if (touch.dy < -TOUCH_TOLERANCE) {
 				RightPaddle.up = true;
 				RightPaddle.down = false;
+			} else {
+				RightPaddle.up = false;
+				RightPaddle.down = false;	
 			}
 		}
 		
