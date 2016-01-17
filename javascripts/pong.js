@@ -38,7 +38,7 @@ var COLORS = [	"#FFFFFF",
 		"#00FF66", "#0066FF", "#FF0066", "#FF6600", 
 		"#000000"];
 var TEXTCOLOR = "#CCCCCC"; //"#777"
-var TOUCHCOLOR = "#111111";
+var TOUCHCOLOR = "#333333";
 
 var LeftPaddle  = new VerticalPaddleObject(PADDLE_OFFSET);
 var RightPaddle = new VerticalPaddleObject(canvas.width - PADDLE_OFFSET);
