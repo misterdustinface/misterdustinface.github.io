@@ -56,6 +56,7 @@ var touch = {
 	dx: 0,
 	dy: 0,
 	targetID: "",
+	fingerID: "",
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -180,6 +181,7 @@ function touchStartEventHandler(e) {
 	var firstFinger = e.changedTouches[0];
 	var targetElement = document.elementFromPoint(firstFinger.clientX, firstFinger.clientY);
 	touch.targetID = targetElement.id;
+	touch.fingerID = firstFinger.identifier;
 	
 	var rect = canvas.getBoundingClientRect();
 	touch.x = parseInt(firstFinger.clientX) - rect.left;
