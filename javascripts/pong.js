@@ -178,18 +178,15 @@ function keyUpEventHandler(e) {
 
 function touchStartEventHandler(e) {
 	var firstFinger = e.changedTouches[0];
-	touch.x = parseInt(firstFinger.clientX);
-	touch.y = parseInt(firstFinger.clientY);
-	
-	var targetElement = document.elementFromPoint(touch.x, touch.y);
+	var targetElement = document.elementFromPoint(firstFinger.clientX, firstFinger.clientY);
 	touch.targetID = targetElement.id;
+	
+	var rect = canvas.getBoundingClientRect();
+	touch.x = parseInt(firstFinger.clientX) - rect.left;
+	touch.y = parseInt(firstFinger.clientY) - rect.top;
+	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
-		var rect = canvas.getBoundingClientRect();
-		var top = rect.top;
-		var left = rect.left;
-		touch.x = touch.x - left;
-		touch.y = touch.y - top;
 	}
 	
 	touch.isActive = true;
@@ -197,31 +194,25 @@ function touchStartEventHandler(e) {
 
 function touchMoveEventHandler(e) {
 	var firstFinger = e.changedTouches[0];
-	touch.dx = parseInt(firstFinger.clientX) - touch.x;
-	touch.dy = parseInt(firstFinger.clientY) - touch.y;
+	
+	var rect = canvas.getBoundingClientRect();
+	touch.dx = parseInt(firstFinger.clientX) - rect.left - touch.x;
+	touch.dy = parseInt(firstFinger.clientY) - rect.top - touch.y;
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
-		var rect = canvas.getBoundingClientRect();
-		var top = rect.top;
-		var left = rect.left;
-		touch.dx = touch.dx - left;
-		touch.dy = touch.dy - top;
 	}
 }
 
 function touchEndEventHandler(e) {
 	var firstFinger = e.changedTouches[0];
-	touch.dx = parseInt(firstFinger.clientX) - touch.x;
-	touch.dy = parseInt(firstFinger.clientY) - touch.y;
+
+	var rect = canvas.getBoundingClientRect();
+	touch.dx = parseInt(firstFinger.clientX) - rect.left - touch.x;
+	touch.dy = parseInt(firstFinger.clientY) - rect.top - touch.y;
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
-		var rect = canvas.getBoundingClientRect();
-		var top = rect.top;
-		var left = rect.left;
-		touch.dx = touch.dx - left;
-		touch.dy = touch.dy - top;
 	}
 	
 	touch.isActive = false;
