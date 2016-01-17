@@ -209,7 +209,9 @@ function touchStartEventHandler(e) {
 	activeTouchesMap[fingerID] = touch;
 
 	if (touch.targetID == 'gamecanvas') {
-		serveBall();
+		if (touch.x > canvas.width * (1/3) && touch.x < canvas.width * (2/3)) {
+			serveBall();
+		}
 		
 		if (touch.x < canvas.width * (1/3)) {
 			var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
