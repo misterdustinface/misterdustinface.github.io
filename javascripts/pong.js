@@ -54,6 +54,7 @@ var touch = {
 	y: 0,
 	dx: 0,
 	dy: 0,
+	target = "",
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -120,7 +121,7 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
-	ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy, 10, canvas.height - 10);
+	ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.target, 10, canvas.height - 10);
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -174,6 +175,8 @@ function touchStartEventHandler(e) {
 	var firstFinger = e.changedTouches[0];
 	touch.x = parseInt(firstFinger.clientX);
 	touch.y = parseInt(firstFinger.clientY);
+	
+	touch.target = document.elementFromPoint(touch.x, touch.y);
 	e.preventDefault();
 }
 
