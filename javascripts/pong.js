@@ -49,14 +49,19 @@ var WALLS = [TopWall, BottomWall];
 var Ball = new BallObject();
 //var BALLS = [Ball];
 
-var touch = {
-	isActive: false,
-	x: 0,
-	y: 0,
-	dx: 0,
-	dy: 0,
-	targetID: "",
-	fingerID: "",
+function Touch() {
+	this.x = 0;
+	this.y = 0;
+	this.dx = 0;
+	this.dy = 0;
+	this.targetID = "";
+	this.fingerID = "";
+	this.isActive = true;
+	this.listIndex = 0;
+}
+
+var activeTouchesList = new Array;
+var activeTouches = {
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -123,11 +128,15 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
-	if (touch.isActive) {
-		ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10);
-		drawCircle(touch.x, touch.y, 10);
-		drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+	for (var i = 0; i < activeTouchesList.length; i++) {
+		touch = activeTouchesList[i];
+		if (touch.isActive) {
+			// ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10);
+			drawCircle(touch.x, touch.y, 10);
+			drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+		}		
 	}
+
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -178,49 +187,72 @@ function keyUpEventHandler(e) {
 }
 
 function touchStartEventHandler(e) {
-	var firstFinger = e.changedTouches[0];
-	var targetElement = document.elementFromPoint(firstFinger.clientX, firstFinger.clientY);
-	touch.targetID = targetElement.id;
-	touch.fingerID = firstFinger.identifier;
+    var rect = canvas.getBoundingClientRect();
+    var touches = event.changedTouches;
+    for (var i = 0; i < touches.length; i++) {
+        var finger = touches[i];
+	var touch = Touch();
 	
-	var rect = canvas.getBoundingClientRect();
-	touch.x = parseInt(firstFinger.clientX) - rect.left;
-	touch.y = parseInt(firstFinger.clientY) - rect.top;
+	var fingerID = finger.identifier;
+	touch.fingerID = fingerID;
+
+	var targetElement = document.elementFromPoint(finger.clientX, finger.clientY);
+	touch.targetID = targetElement.id;
+
+	touch.x = parseInt(finger.clientX) - rect.left;
+	touch.y = parseInt(finger.clientY) - rect.top;
+	
+	activeTouches[touch.fingerID] = touch;
+        var length = activeTouchesList.push(touch);
+        touch.listIndex = length - 1;
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
 	}
-	
-	touch.isActive = true;
+    }
 }
 
 function touchMoveEventHandler(e) {
-	var firstFinger = e.changedTouches[0];
+    var rect = canvas.getBoundingClientRect();
+    var touches = event.changedTouches;
+    for (var i = 0; i < touches.length; i++) {
+    	var finger = touches[i];
+	var fingerID = finger.identifier;
+	var touch = activeTouches[fingerID];
 	
-	var rect = canvas.getBoundingClientRect();
-	touch.dx = parseInt(firstFinger.clientX) - rect.left - touch.x;
-	touch.dy = parseInt(firstFinger.clientY) - rect.top - touch.y;
+	touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
+	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
 	}
+    }
 }
 
 function touchEndEventHandler(e) {
-	var firstFinger = e.changedTouches[0];
+    var rect = canvas.getBoundingClientRect();
+    var touches = event.changedTouches;
+    for (var i = 0; i < touches.length; i++) {
+        var finger = touches[i];
+	var fingerID = finger.identifier;
+	var touch = activeTouches[fingerID];
 
 	var rect = canvas.getBoundingClientRect();
-	touch.dx = parseInt(firstFinger.clientX) - rect.left - touch.x;
-	touch.dy = parseInt(firstFinger.clientY) - rect.top - touch.y;
+	touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
+	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
 	}
 	
+	activeTouches[fingerID] = null;
+	activeTouchesList.splice(touch.listIndex, 1);
 	touch.isActive = false;
+    }
 }
 
-///////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
 function HorizontalWallObject(yCenterPos) {
 	this.width = canvas.width;
 	this.height = 4;
