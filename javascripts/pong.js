@@ -60,9 +60,8 @@ function Touch() {
 	this.listIndex = 0;
 }
 
-var activeTouchesList = new Array;
-var activeTouches = {
-};
+var activeTouchesList = [];
+var activeTouchesMap  = {};
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -191,9 +190,9 @@ function touchStartEventHandler(e) {
     var touches = event.changedTouches;
     for (var i = 0; i < touches.length; i++) {
         var finger = touches[i];
-	var touch = Touch();
-	
 	var fingerID = finger.identifier;
+
+	var touch = Touch();
 	touch.fingerID = fingerID;
 
 	var targetElement = document.elementFromPoint(finger.clientX, finger.clientY);
@@ -202,7 +201,7 @@ function touchStartEventHandler(e) {
 	touch.x = parseInt(finger.clientX) - rect.left;
 	touch.y = parseInt(finger.clientY) - rect.top;
 	
-	activeTouches[touch.fingerID] = touch;
+	activeTouchesMap[touch.fingerID] = touch;
         var length = activeTouchesList.push(touch);
         touch.listIndex = length - 1;
 	
@@ -218,7 +217,7 @@ function touchMoveEventHandler(e) {
     for (var i = 0; i < touches.length; i++) {
     	var finger = touches[i];
 	var fingerID = finger.identifier;
-	var touch = activeTouches[fingerID];
+	var touch = activeTouchesMap[fingerID];
 	
 	touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
 	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
@@ -235,9 +234,8 @@ function touchEndEventHandler(e) {
     for (var i = 0; i < touches.length; i++) {
         var finger = touches[i];
 	var fingerID = finger.identifier;
-	var touch = activeTouches[fingerID];
+	var touch = activeTouchesMap[fingerID];
 
-	var rect = canvas.getBoundingClientRect();
 	touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
 	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
 	
@@ -245,7 +243,7 @@ function touchEndEventHandler(e) {
 		e.preventDefault();
 	}
 	
-	activeTouches[fingerID] = null;
+	activeTouchesMap[fingerID] = null;
 	activeTouchesList.splice(touch.listIndex, 1);
 	touch.isActive = false;
     }
