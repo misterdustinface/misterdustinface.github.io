@@ -130,7 +130,7 @@ function drawTextInfo() {
 	for (var i = 0; i < activeTouchesList.length; i++) {
 		touch = activeTouchesList[i];
 		if (touch.isActive) {
-			// ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10);
+			ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 * i);
 			drawCircle(touch.x, touch.y, 10);
 			drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
 		}		
@@ -201,7 +201,7 @@ function touchStartEventHandler(e) {
 	touch.x = parseInt(finger.clientX) - rect.left;
 	touch.y = parseInt(finger.clientY) - rect.top;
 	
-	activeTouchesMap[touch.fingerID] = touch;
+	activeTouchesMap[fingerID] = touch;
         var length = activeTouchesList.push(touch);
         touch.listIndex = length - 1;
 	
