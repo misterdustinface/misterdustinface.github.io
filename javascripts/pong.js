@@ -199,8 +199,13 @@ function touchStartEventHandler(e) {
 	var touch = new Touch();
 	touch.fingerID = fingerID;
 
-	var targetElement = document.elementFromPoint(finger.clientX, finger.clientY);
-	touch.targetID = targetElement.id;
+	//var targetElement = document.elementFromPoint(finger.clientX, finger.clientY);
+	// touch.targetID = targetElement.id;
+	var isInGameCanvas = 	finger.clientX > rect.left && 
+				finger.clientX < rect.left + canvas.width && 
+				finger.clientY > rect.top &&
+				finger.clientY < rect.top + canvas.height;
+	touch.targetID = isInGameCanvas ? 'gamecanvas' : 'not important';
 
 	touch.x = parseInt(finger.clientX) - rect.left;
 	touch.y = parseInt(finger.clientY) - rect.top;
