@@ -50,6 +50,7 @@ var WALLS = [TopWall, BottomWall];
 var Ball = new BallObject();
 //var BALLS = [Ball];
 
+var TOUCH_TOLERANCE = 24; // pixels
 function Touch() {
 	this.x = 0;
 	this.y = 0;
@@ -262,11 +263,11 @@ function touchMoveEventHandler(e) {
 			touch.y = paddleMid;
 			touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
 
-			if (touch.dy > 0) {
+			if (touch.dy > TOUCH_TOLERANCE) {
 				LeftPaddle.up = false;
 				LeftPaddle.down = true;
 			}
-			if (touch.dy < 0) {
+			if (touch.dy < -TOUCH_TOLERANCE) {
 				LeftPaddle.up = true;
 				LeftPaddle.down = false;
 			}
@@ -276,11 +277,11 @@ function touchMoveEventHandler(e) {
 			touch.y = paddleMid;
 			touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
 			
-			if (touch.dy > 0) {
+			if (touch.dy > TOUCH_TOLERANCE) {
 				RightPaddle.up = false;
 				RightPaddle.down = true;
 			}
-			if (touch.dy < 0) {
+			if (touch.dy < -TOUCH_TOLERANCE) {
 				RightPaddle.up = true;
 				RightPaddle.down = false;
 			}
