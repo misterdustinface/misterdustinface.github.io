@@ -123,7 +123,8 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
-	for (var touch in activeTouchesMap) {
+	for (var key in activeTouchesMap) {
+		var touch = activeTouchesMap[key];
 		ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 - (15 * i));
 		drawCircle(touch.x, touch.y, 10);
 		drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
