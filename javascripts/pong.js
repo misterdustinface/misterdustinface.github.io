@@ -124,10 +124,12 @@ function drawTextInfo() {
 	}
 	
 	for (var key in activeTouchesMap) {
-		var touch = activeTouchesMap[key];
-		ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 - (15 * i));
-		drawCircle(touch.x, touch.y, 10);
-		drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+		if (activeTouchesMap.hasOwnProperty(key)) {
+			var touch = activeTouchesMap[key];
+			ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 - (15 * i));
+			drawCircle(touch.x, touch.y, 10);
+			drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+		}
 	}
 
 }
@@ -231,11 +233,11 @@ function touchEndEventHandler(e) {
 	touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
 	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
 	
+	activeTouchesMap[fingerID] = null;
+	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
 	}
-	
-	activeTouchesMap[fingerID] = null;
     }
 }
 
