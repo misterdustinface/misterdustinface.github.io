@@ -128,7 +128,7 @@ function drawTextInfo() {
 	
 	for (var i = 0; i < activeTouchesList.length; i++) {
 		touch = activeTouchesList[i];
-		ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 * i);
+		ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 - (15 * i));
 		drawCircle(touch.x, touch.y, 10);
 		drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
 	}
@@ -240,8 +240,8 @@ function touchEndEventHandler(e) {
 		e.preventDefault();
 	}
 	
-	activeTouchesMap[fingerID] = null;
 	activeTouchesList.splice(touch.listIndex, 1);
+	activeTouchesMap[fingerID] = null;
     }
 }
 
