@@ -38,6 +38,7 @@ var COLORS = [	"#FFFFFF",
 		"#00FF66", "#0066FF", "#FF0066", "#FF6600", 
 		"#000000"];
 var TEXTCOLOR = "#CCCCCC"; //"#777"
+var TOUCHCOLOR = "#111111";
 
 var LeftPaddle  = new VerticalPaddleObject(PADDLE_OFFSET);
 var RightPaddle = new VerticalPaddleObject(canvas.width - PADDLE_OFFSET);
@@ -123,6 +124,7 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
+	setColor(TOUCHCOLOR);
 	var i = 0;
 	for (var key in activeTouchesMap) {
 		if (activeTouchesMap.hasOwnProperty(key)) {
