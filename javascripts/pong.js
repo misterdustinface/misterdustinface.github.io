@@ -222,6 +222,7 @@ function touchMoveEventHandler(e) {
 	
 	if (touch.targetID == 'gamecanvas') {
 		if (touch.x < canvas.width/2) {
+			touch.y = LeftPaddle.y;
 			if (touch.dy > 0) {
 				LeftPaddle.up = false;
 				LeftPaddle.down = true;
@@ -232,6 +233,7 @@ function touchMoveEventHandler(e) {
 			}
 		}
 		if (touch.x > canvas.width/2) {
+			touch.y = RightPaddle.y;
 			if (touch.dy > 0) {
 				RightPaddle.up = false;
 				RightPaddle.down = true;
