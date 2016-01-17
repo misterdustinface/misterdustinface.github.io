@@ -2,7 +2,10 @@
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
 window.onload = function() {
 	window.addEventListener("keydown", keyDownEventHandler);
-	window.addEventListener("keyup",   keyUpEventHandler);
+	window.addEventListener("keyup", keyUpEventHandler);
+	window.addEventListener("touchstart", touchStartEventHandler);
+	window.addEventListener("touchmove", touchMoveEventHandler);
+	window.addEventListener("touchend", touchEndEventHandler);
 	window.focus();
 };
 var canvas = document.getElementById("gamecanvas");
@@ -118,6 +121,13 @@ var KEYS = {
 	SPACEBAR: 32, ESC: 27,
 };
 
+var touch = {
+	x: 0,
+	y: 0,
+	dx: 0,
+	dy: 0,
+};
+
 function keyDownEventHandler(e) {
 	if (e.keyCode == KEYS.SPACEBAR)
 		serveBall();
@@ -156,6 +166,27 @@ function keyUpEventHandler(e) {
 		RightPaddle.up = false;
 	if (e.keyCode == KEYS.DOWN_ARROW)
 		RightPaddle.down = false;
+}
+
+function touchStartEventHandler(e) {
+	var firstFinger = e.changedTouches[0];
+	touch.x = parseInt(firstFinger.clientX);
+	touch.y = parseInt(firstFinger.clientY);
+	e.preventDefault();
+}
+
+function touchMoveEventHandler(e) {
+	var firstFinger = e.changedTouches[0];
+	touch.dx = parseInt(firstFinger.clientX) - touch.x;
+	touch.dy = parseInt(firstFinger.clientY) - touch.y;
+	e.preventDefault();
+}
+
+function touchEndEventHandler(e) {
+	var firstFinger = e.changedTouches[0];
+	touch.dx = parseInt(firstFinger.clientX) - touch.x;
+	touch.dy = parseInt(firstFinger.clientY) - touch.y;
+	e.preventDefault();
 }
 
 ///////////////////////////////////////////////////////////////////
