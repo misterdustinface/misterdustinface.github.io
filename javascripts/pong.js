@@ -56,7 +56,6 @@ function Touch() {
 	this.dy = 0;
 	this.targetID = "";
 	this.fingerID = "";
-	this.isActive = true;
 	this.listIndex = 0;
 }
 
@@ -129,11 +128,9 @@ function drawTextInfo() {
 	
 	for (var i = 0; i < activeTouchesList.length; i++) {
 		touch = activeTouchesList[i];
-		if (touch.isActive) {
-			ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 * i);
-			drawCircle(touch.x, touch.y, 10);
-			drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
-		}		
+		ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 * i);
+		drawCircle(touch.x, touch.y, 10);
+		drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
 	}
 
 }
@@ -245,7 +242,6 @@ function touchEndEventHandler(e) {
 	
 	activeTouchesMap[fingerID] = null;
 	activeTouchesList.splice(touch.listIndex, 1);
-	touch.isActive = false;
     }
 }
 
