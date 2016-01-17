@@ -101,7 +101,7 @@ function initPlayerShip() {
     playerShip.height = 20;
     playerShip.xVel = 0;
     playerShip.xSpeed = 0.15;
-    playerShip.maxSpeed = 30;
+    playerShip.maxSpeed = 20;
     setPlayerShipToDefaultPosition();
     
     playerShipUserIntData.shoot = false;
@@ -290,7 +290,7 @@ function runTDD() {
     });
     
     x.test("moveRight+moveLeft_expectShipXVelocitySetToZero", function() {
-        playerShip.xVel = 20;
+        playerShip.xVel = playerShip.maxSpeed;
         playerShipUserIntData.moveLeft = true;
         playerShipUserIntData.moveRight = true;
         
@@ -299,7 +299,7 @@ function runTDD() {
     });
     
     x.test("noMovement_expectShipXVelocityIsZero", function() {
-        playerShip.xVel = 20;
+        playerShip.xVel = playerShip.maxSpeed;
         playerShipUserIntData.moveLeft = false;
         playerShipUserIntData.moveRight = false;
         
