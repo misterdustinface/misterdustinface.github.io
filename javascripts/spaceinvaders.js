@@ -149,9 +149,15 @@ function drawShip(xShip) {
 function updatePlayerShip() {
     if (playerShipUserIntData.moveRight ^ playerShipUserIntData.moveLeft) {
         if (playerShipUserIntData.moveRight) {
-            playerShip.xVel += playerShip.xSpeed;   
+            playerShip.xVel += playerShip.xSpeed;
+            if (playerShip.xVel > playerShip.maxSpeed) {
+                playerShip.xVel = playerShip.maxSpeed;
+            }
         } else {
             playerShip.xVel -= playerShip.xSpeed;
+            if (playerShip.xVel < -playerShip.maxSpeed) {
+                playerShip.xVel = -playerShip.maxSpeed;
+            }
         }
     } else {
         playerShip.xVel = 0;
