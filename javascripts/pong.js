@@ -50,6 +50,7 @@ var Ball = new BallObject();
 //var BALLS = [Ball];
 
 var touch = {
+	isActive: false,
 	x: 0,
 	y: 0,
 	dx: 0,
@@ -121,9 +122,11 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
-	ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10);
-	drawCircle(touch.x, touch.y, 10);
-	drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+	if (touch.isActive) {
+		ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10);
+		drawCircle(touch.x, touch.y, 10);
+		drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -183,6 +186,8 @@ function touchStartEventHandler(e) {
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
 	}
+	
+	touch.isActive = true;
 }
 
 function touchMoveEventHandler(e) {
@@ -203,6 +208,8 @@ function touchEndEventHandler(e) {
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
 	}
+	
+	touch.isActive = false;
 }
 
 ///////////////////////////////////////////////////////////////////
