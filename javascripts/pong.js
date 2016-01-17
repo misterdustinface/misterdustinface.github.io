@@ -54,7 +54,7 @@ var touch = {
 	y: 0,
 	dx: 0,
 	dy: 0,
-	target: "",
+	targetID: "",
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -121,7 +121,7 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
-	ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.target, 10, canvas.height - 10);
+	ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10);
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -176,22 +176,31 @@ function touchStartEventHandler(e) {
 	touch.x = parseInt(firstFinger.clientX);
 	touch.y = parseInt(firstFinger.clientY);
 	
-	touch.target = document.elementFromPoint(touch.x, touch.y);
-	e.preventDefault();
+	var targetElement = document.elementFromPoint(touch.x, touch.y);
+	touch.targetID = targetElement.id;
+	if (touch.targetID == 'gamecanvas') {
+		e.preventDefault();
+	}
 }
 
 function touchMoveEventHandler(e) {
 	var firstFinger = e.changedTouches[0];
 	touch.dx = parseInt(firstFinger.clientX) - touch.x;
 	touch.dy = parseInt(firstFinger.clientY) - touch.y;
-	e.preventDefault();
+	
+	if (touch.targetID == 'gamecanvas') {
+		e.preventDefault();
+	}
 }
 
 function touchEndEventHandler(e) {
 	var firstFinger = e.changedTouches[0];
 	touch.dx = parseInt(firstFinger.clientX) - touch.x;
 	touch.dy = parseInt(firstFinger.clientY) - touch.y;
-	e.preventDefault();
+	
+	if (touch.targetID == 'gamecanvas') {
+		e.preventDefault();
+	}
 }
 
 ///////////////////////////////////////////////////////////////////
