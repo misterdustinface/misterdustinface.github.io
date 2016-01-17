@@ -337,6 +337,24 @@ function runTDD() {
         expectEQ(-playerShip.maxSpeed, playerShip.xVel, "xVel should still be the max speed")
     });
     
+    x.test("moveLeft_whenShipIsMovingRight_expectShipVelocityIsZero", function() {
+        playerShip.xVel = playerShip.maxSpeed; // Moving right
+        playerShipUserIntData.moveLeft = true;
+        playerShipUserIntData.moveRight = false;
+        
+        updatePlayerShip();
+        expectEQ(0, playerShip.xVel, "xVel should be zero");
+    });
+    
+    x.test("moveRight_whenShipIsMovingLeft_expectShipVelocityInZero", function() {
+        playerShip.xVel = -playerShip.maxSpeed; // Moving left
+        playerShipUserIntData.moveLeft = false;
+        playerShipUserIntData.moveRight = true;
+        
+        updatePlayerShip();
+        expectEQ(0, playerShip.xVel, "xVel should be zero");
+    });
+    
     x.runTests();
     delete x;    
 }
