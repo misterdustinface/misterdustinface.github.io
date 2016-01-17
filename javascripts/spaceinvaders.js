@@ -153,10 +153,16 @@ function updatePlayerShip() {
             if (playerShip.xVel > playerShip.maxSpeed) {
                 playerShip.xVel = playerShip.maxSpeed;
             }
+            if (playerShip.xVel < 0) {
+                playerShip.xVel = 0;
+            }
         } else {
             playerShip.xVel -= playerShip.xSpeed;
             if (playerShip.xVel < -playerShip.maxSpeed) {
                 playerShip.xVel = -playerShip.maxSpeed;
+            }
+            if (playerShip.xVel > 0) {
+                playerShip.xVel = 0;
             }
         }
     } else {
