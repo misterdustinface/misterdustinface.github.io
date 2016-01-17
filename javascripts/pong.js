@@ -185,8 +185,9 @@ function touchStartEventHandler(e) {
 	touch.targetID = targetElement.id;
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
-		var top = canvas.offsetTop || 0;
-		var left = canvas.offsetLeft || 0;
+		var rect = canvas.getBoundingClientRect();
+		var top = rect.top;
+		var left = rect.left;
 		touch.x = touch.x - left;
 		touch.y = touch.y - top;
 	}
@@ -201,8 +202,9 @@ function touchMoveEventHandler(e) {
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
-		var top = canvas.offsetTop || 0;
-		var left = canvas.offsetLeft || 0;
+		var rect = canvas.getBoundingClientRect();
+		var top = rect.top;
+		var left = rect.left;
 		touch.dx = touch.dx - left;
 		touch.dy = touch.dy - top;
 	}
@@ -215,8 +217,9 @@ function touchEndEventHandler(e) {
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
-		var top = canvas.offsetTop || 0;
-		var left = canvas.offsetLeft || 0;
+		var rect = canvas.getBoundingClientRect();
+		var top = rect.top;
+		var left = rect.left;
 		touch.dx = touch.dx - left;
 		touch.dy = touch.dy - top;
 	}
