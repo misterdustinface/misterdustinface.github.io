@@ -221,6 +221,27 @@ function touchMoveEventHandler(e) {
 	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
 	
 	if (touch.targetID == 'gamecanvas') {
+		if (touch.x < canvas.width/2) {
+			if (touch.dy > 0) {
+				LeftPaddle.up = false;
+				LeftPaddle.down = true;
+			}
+			if (touch.dy < 0) {
+				LeftPaddle.up = true;
+				LeftPaddle.down = false;
+			}
+		}
+		if (touch.x > canvas.width/2) {
+			if (touch.dy > 0) {
+				RightPaddle.up = false;
+				RightPaddle.down = true;
+			}
+			if (touch.dy < 0) {
+				RightPaddle.up = true;
+				RightPaddle.down = false;
+			}
+		}
+		
 		e.preventDefault();
 	}
     }
@@ -240,6 +261,15 @@ function touchEndEventHandler(e) {
 	activeTouchesMap[fingerID] = null;
 	
 	if (touch.targetID == 'gamecanvas') {
+		if (touch.x < canvas.width/2) {
+			LeftPaddle.up = false;
+			LeftPaddle.down = false;
+		}
+		if (touch.x > canvas.width/2) {
+			RightPaddle.up = false;
+			RightPaddle.down = false;
+		}
+		
 		e.preventDefault();
 	}
     }
