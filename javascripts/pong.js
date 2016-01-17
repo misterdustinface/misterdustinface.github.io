@@ -57,6 +57,8 @@ function Touch() {
 	this.dy = 0;
 	this.targetID = "";
 	this.fingerID = "";
+	this.logicalX = 0;
+	this.logicalY = 0;
 }
 var activeTouchesMap = {};
 
@@ -130,8 +132,9 @@ function drawTextInfo() {
 		if (activeTouchesMap.hasOwnProperty(key)) {
 			var touch = activeTouchesMap[key];
 			ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 - (15 * i));
-			drawCircle(touch.x, touch.y, 10);
-			drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+			//drawCircle(touch.x, touch.y, 10);
+			//drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+			drawCircle(touch.logicalX, touch.logicalY, 10);
 			i = i + 1;
 		}
 	}
@@ -200,33 +203,37 @@ function touchStartEventHandler(e) {
 
 	touch.x = parseInt(finger.clientX) - rect.left;
 	touch.y = parseInt(finger.clientY) - rect.top;
+	touch.logicalX = touch.x;
+	touch.logicalY = touch.y;
 	
 	activeTouchesMap[fingerID] = touch;
 
 	if (touch.targetID == 'gamecanvas') {
+		serveBall();
+		
 		if (touch.x < canvas.width/2) {
 			var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
-			if (touch.y > paddleMid) {
+			if (touch.logicalY > paddleMid) {
 				LeftPaddle.up = false;
 				LeftPaddle.down = true;
 			}
-			if (touch.y < paddleMid) {
+			if (touch.logicalY < paddleMid) {
 				LeftPaddle.up = true;
 				LeftPaddle.down = false;
 			}
-			touch.y = paddleMid;
+			touch.logicalY = paddleMid;
 		}
 		if (touch.x > canvas.width/2) {
 			var paddleMid = (RightPaddle.y + RightPaddle.height/2);
-			if (touch.y > paddleMid) {
+			if (touch.logicalY > paddleMid) {
 				RightPaddle.up = false;
 				RightPaddle.down = true;
 			}
-			if (touch.y < paddleMid) {
+			if (touch.logicalY < paddleMid) {
 				RightPaddle.up = true;
 				RightPaddle.down = false;
 			}
-			touch.y = paddleMid;
+			touch.logicalY = paddleMid;
 		}
 		
 		e.preventDefault();
@@ -248,27 +255,27 @@ function touchMoveEventHandler(e) {
 	if (touch.targetID == 'gamecanvas') {
 		if (touch.x < canvas.width/2) {
 			var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
-			if (touch.y > paddleMid) {
+			if (touch.logicalY > paddleMid) {
 				LeftPaddle.up = false;
 				LeftPaddle.down = true;
 			}
-			if (touch.y < paddleMid) {
+			if (touch.logicalY < paddleMid) {
 				LeftPaddle.up = true;
 				LeftPaddle.down = false;
 			}
-			touch.y = paddleMid;
+			touch.logicalY = paddleMid;
 		}
 		if (touch.x > canvas.width/2) {
 			var paddleMid = (RightPaddle.y + RightPaddle.height/2);
-			if (touch.y > paddleMid) {
+			if (touch.logicalY > paddleMid) {
 				RightPaddle.up = false;
 				RightPaddle.down = true;
 			}
-			if (touch.y < paddleMid) {
+			if (touch.logicalY < paddleMid) {
 				RightPaddle.up = true;
 				RightPaddle.down = false;
 			}
-			touch.y = paddleMid;
+			touch.logicalY = paddleMid;
 		}
 		
 		e.preventDefault();
