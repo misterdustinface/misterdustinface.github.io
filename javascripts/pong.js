@@ -126,14 +126,15 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
-	setColor(TOUCHCOLOR);
 	var i = 0;
 	for (var key in activeTouchesMap) {
 		if (activeTouchesMap.hasOwnProperty(key)) {
 			var touch = activeTouchesMap[key];
+			setColor(TOUCHCOLOR);
 			ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 - (15 * i));
-			//drawCircle(touch.x, touch.y, 10);
-			//drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+			drawCircle(touch.x, touch.y, 10);
+			drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
+			setColor("#21C6A3");
 			drawCircle(touch.logicalX, touch.logicalY, 10);
 			i = i + 1;
 		}
