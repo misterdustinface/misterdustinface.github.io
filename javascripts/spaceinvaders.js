@@ -101,6 +101,7 @@ function initPlayerShip() {
     playerShip.height = 20;
     playerShip.xVel = 0;
     playerShip.xSpeed = 0.15;
+    playerShip.maxSpeed = 30;
     setPlayerShipToDefaultPosition();
     
     playerShipUserIntData.shoot = false;
@@ -298,6 +299,36 @@ function runTDD() {
         
         updatePlayerShip();
         expectEQ(0, playerShip.xVel, "xVel should be set to zero when neither left or right is selected");
+    });
+    
+    x.test("moveRightContinuously_expectShipXVelocityCutoffAtMaxSpeed", function() {
+        playerShip.xVel = 0;
+        playerShipUserIntData.moveLeft = false;
+        playerShipUserIntData.moveRight = true;
+       
+        for (i = 1; playerShip.xVel < playerShip.maxSpeed; i++) {
+            updatePlayerShip();
+            expectEQ(i * playerShip.xSpeed, playerShip.xVel, "xVel should be " + i + " times xSpeed")
+        }
+       
+        expectEQ(playerShip.maxSpeed, playerShip.xVel, "xVel should be the max speed")
+        updatePlayerShip();
+        expectEQ(playerShip.maxSpeed, playerShip.xVel, "xVel should still be the max speed")
+    });
+    
+    x.test("moveLeftContinuously_expectShipXVelocityCutoffAtMaxSpeed", function() {
+        playerShip.xVel = 0;
+        playerShipUserIntData.moveLeft = true;
+        playerShipUserIntData.moveRight = false;
+       
+        for (i = 1; playerShip.xVel > -playerShip.maxSpeed; i++) {
+            updatePlayerShip();
+            expectEQ(i * -playerShip.xSpeed, playerShip.xVel, "xVel should be " + i + " times xSpeed")
+        }
+       
+        expectEQ(-playerShip.maxSpeed, playerShip.xVel, "xVel should be the max speed")
+        updatePlayerShip();
+        expectEQ(-playerShip.maxSpeed, playerShip.xVel, "xVel should still be the max speed")
     });
     
     x.runTests();
