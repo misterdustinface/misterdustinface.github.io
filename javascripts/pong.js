@@ -189,7 +189,7 @@ function touchStartEventHandler(e) {
         var finger = touches[i];
 	var fingerID = finger.identifier;
 
-	var touch = Touch();
+	var touch = new Touch();
 	touch.fingerID = fingerID;
 
 	var targetElement = document.elementFromPoint(finger.clientX, finger.clientY);
