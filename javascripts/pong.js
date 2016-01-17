@@ -185,6 +185,10 @@ function touchStartEventHandler(e) {
 	touch.targetID = targetElement.id;
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
+		var top = canvas.offsetTop || 0;
+		var left = canvas.offsetLeft || 0;
+		touch.x = touch.x - left;
+		touch.y = touch.y - top;
 	}
 	
 	touch.isActive = true;
@@ -197,6 +201,10 @@ function touchMoveEventHandler(e) {
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
+		var top = canvas.offsetTop || 0;
+		var left = canvas.offsetLeft || 0;
+		touch.dx = touch.dx - left;
+		touch.dy = touch.dy - top;
 	}
 }
 
@@ -207,6 +215,10 @@ function touchEndEventHandler(e) {
 	
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
+		var top = canvas.offsetTop || 0;
+		var left = canvas.offsetLeft || 0;
+		touch.dx = touch.dx - left;
+		touch.dy = touch.dy - top;
 	}
 	
 	touch.isActive = false;
