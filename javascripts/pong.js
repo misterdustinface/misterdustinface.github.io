@@ -56,11 +56,8 @@ function Touch() {
 	this.dy = 0;
 	this.targetID = "";
 	this.fingerID = "";
-	this.listIndex = 0;
 }
-
-var activeTouchesList = [];
-var activeTouchesMap  = {};
+var activeTouchesMap = {};
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -126,8 +123,7 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
-	for (var i = 0; i < activeTouchesList.length; i++) {
-		touch = activeTouchesList[i];
+	for (var touch in activeTouchesMap) {
 		ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy + " target: " + touch.targetID, 10, canvas.height - 10 - (15 * i));
 		drawCircle(touch.x, touch.y, 10);
 		drawCircle(touch.x + touch.dx, touch.y + touch.dy, 10);
@@ -199,9 +195,7 @@ function touchStartEventHandler(e) {
 	touch.y = parseInt(finger.clientY) - rect.top;
 	
 	activeTouchesMap[fingerID] = touch;
-        var length = activeTouchesList.push(touch);
-        touch.listIndex = length - 1;
-	
+
 	if (touch.targetID == 'gamecanvas') {
 		e.preventDefault();
 	}
@@ -240,7 +234,6 @@ function touchEndEventHandler(e) {
 		e.preventDefault();
 	}
 	
-	activeTouchesList.splice(touch.listIndex, 1);
 	activeTouchesMap[fingerID] = null;
     }
 }
