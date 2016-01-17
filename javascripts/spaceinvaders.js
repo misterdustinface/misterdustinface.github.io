@@ -101,7 +101,7 @@ function initPlayerShip() {
     playerShip.height = 20;
     playerShip.xVel = 0;
     playerShip.xSpeed = 0.15;
-    playerShip.maxSpeed = 20;
+    playerShip.maxSpeed = 5;
     setPlayerShipToDefaultPosition();
     
     playerShipUserIntData.shoot = false;
