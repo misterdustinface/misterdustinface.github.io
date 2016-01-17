@@ -223,6 +223,7 @@ function touchStartEventHandler(e) {
 				LeftPaddle.down = false;
 			}
 			touch.logicalY = paddleMid;
+			touch.logicalX = (LeftPaddle.x + LeftPaddle.width/2);
 		}
 		if (touch.x > canvas.width/2) {
 			var paddleMid = (RightPaddle.y + RightPaddle.height/2);
@@ -235,6 +236,7 @@ function touchStartEventHandler(e) {
 				RightPaddle.down = false;
 			}
 			touch.logicalY = paddleMid;
+			touch.logicalX = (RightPaddle.x + RightPaddle.width/2);
 		}
 		
 		e.preventDefault();
@@ -254,30 +256,30 @@ function touchMoveEventHandler(e) {
 	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
 	
 	if (touch.targetID == 'gamecanvas') {
-		if (touch.x < canvas.width/2) {
-			var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
-			if (touch.logicalY > paddleMid) {
-				LeftPaddle.up = false;
-				LeftPaddle.down = true;
-			}
-			if (touch.logicalY < paddleMid) {
-				LeftPaddle.up = true;
-				LeftPaddle.down = false;
-			}
-			touch.logicalY = paddleMid;
-		}
-		if (touch.x > canvas.width/2) {
-			var paddleMid = (RightPaddle.y + RightPaddle.height/2);
-			if (touch.logicalY > paddleMid) {
-				RightPaddle.up = false;
-				RightPaddle.down = true;
-			}
-			if (touch.logicalY < paddleMid) {
-				RightPaddle.up = true;
-				RightPaddle.down = false;
-			}
-			touch.logicalY = paddleMid;
-		}
+		// if (touch.x < canvas.width/2) {
+		// 	var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
+		// 	if (touch.logicalY > paddleMid) {
+		// 		LeftPaddle.up = false;
+		// 		LeftPaddle.down = true;
+		// 	}
+		// 	if (touch.logicalY < paddleMid) {
+		// 		LeftPaddle.up = true;
+		// 		LeftPaddle.down = false;
+		// 	}
+		// 	touch.logicalY = paddleMid;
+		// }
+		// if (touch.x > canvas.width/2) {
+		// 	var paddleMid = (RightPaddle.y + RightPaddle.height/2);
+		// 	if (touch.logicalY > paddleMid) {
+		// 		RightPaddle.up = false;
+		// 		RightPaddle.down = true;
+		// 	}
+		// 	if (touch.logicalY < paddleMid) {
+		// 		RightPaddle.up = true;
+		// 		RightPaddle.down = false;
+		// 	}
+		// 	touch.logicalY = paddleMid;
+		// }
 		
 		e.preventDefault();
 	}
