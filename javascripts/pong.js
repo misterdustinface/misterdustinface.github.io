@@ -120,7 +120,7 @@ function drawTextInfo() {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
 	
-	ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
+	ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy, 10, canvas.height - 40);
 }
 
 ///////////////////////////////////////////////////////////////////
