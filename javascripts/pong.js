@@ -228,6 +228,7 @@ function touchStartEventHandler(e) {
 			}
 			touch.y = paddleMid;
 		}
+		
 		e.preventDefault();
 	}
     }
@@ -246,26 +247,28 @@ function touchMoveEventHandler(e) {
 	
 	if (touch.targetID == 'gamecanvas') {
 		if (touch.x < canvas.width/2) {
-			touch.y = LeftPaddle.y + LeftPaddle.height/2;
-			if (touch.dy > 0) {
+			var paddleMid = LeftPaddle.y + LeftPaddle.height/2;
+			if (touch.y > paddleMid) {
 				LeftPaddle.up = false;
 				LeftPaddle.down = true;
 			}
-			if (touch.dy < 0) {
+			if (touch.y < paddleMid {
 				LeftPaddle.up = true;
 				LeftPaddle.down = false;
 			}
+			touch.y = paddleMid;
 		}
 		if (touch.x > canvas.width/2) {
-			touch.y = RightPaddle.y + RightPaddle.height/2;
-			if (touch.dy > 0) {
+			var paddleMid = RightPaddle.y + RightPaddle.height/2;
+			if (touch.y > paddleMid) {
 				RightPaddle.up = false;
 				RightPaddle.down = true;
 			}
-			if (touch.dy < 0) {
+			if (touch.y < paddleMid) {
 				RightPaddle.up = true;
 				RightPaddle.down = false;
 			}
+			touch.y = paddleMid;
 		}
 		
 		e.preventDefault();
