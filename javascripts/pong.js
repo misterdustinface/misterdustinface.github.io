@@ -49,6 +49,13 @@ var WALLS = [TopWall, BottomWall];
 var Ball = new BallObject();
 //var BALLS = [Ball];
 
+var touch = {
+	x: 0,
+	y: 0,
+	dx: 0,
+	dy: 0,
+};
+
 //////////////////////////////////////////////////////////////////////////
 
 function update() {
@@ -112,6 +119,8 @@ function drawTextInfo() {
   	} else if (! Ball.isServed) {
     		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
+	
+	ctx.fillText("x: " + touch.x + " y: " + touch.y + " dx: " + touch.dx + " dy: " + touch.dy, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -119,13 +128,6 @@ var KEYS = {
 	W: 87, A: 65, S: 83, D: 68,
 	UP_ARROW: 38, LEFT_ARROW: 37, DOWN_ARROW: 40, RIGHT_ARROW: 39,
 	SPACEBAR: 32, ESC: 27,
-};
-
-var touch = {
-	x: 0,
-	y: 0,
-	dx: 0,
-	dy: 0,
 };
 
 function keyDownEventHandler(e) {
