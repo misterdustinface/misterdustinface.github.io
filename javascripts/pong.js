@@ -204,6 +204,30 @@ function touchStartEventHandler(e) {
 	activeTouchesMap[fingerID] = touch;
 
 	if (touch.targetID == 'gamecanvas') {
+		if (touch.x < canvas.width/2) {
+			var paddleMid = LeftPaddle.y + LeftPaddle.height/2;
+			if (touch.y > paddleMid) {
+				LeftPaddle.up = false;
+				LeftPaddle.down = true;
+			}
+			if (touch.y < paddleMid {
+				LeftPaddle.up = true;
+				LeftPaddle.down = false;
+			}
+			touch.y = paddleMid;
+		}
+		if (touch.x > canvas.width/2) {
+			var paddleMid = RightPaddle.y + RightPaddle.height/2;
+			if (touch.y > paddleMid) {
+				RightPaddle.up = false;
+				RightPaddle.down = true;
+			}
+			if (touch.y < paddleMid) {
+				RightPaddle.up = true;
+				RightPaddle.down = false;
+			}
+			touch.y = paddleMid;
+		}
 		e.preventDefault();
 	}
     }
