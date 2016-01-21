@@ -33,10 +33,12 @@ var PADDLE_SPEED	= 1;
 var PADDLE_DIRECTION_TRANSITION_RATE = 1/8;
 var WALL_OFFSET         = 8;
 
-var COLORS = [	"#FFFFFF", 
+var COLORS = [
+	  "#FFFFFF",
 		"#77C621", "#21C6A3", "#C621AC", "#C62721",
-		"#00FF66", "#0066FF", "#FF0066", "#FF6600", 
-		"#000000"];
+		"#00FF66", "#0066FF", "#FF0066", "#FF6600",
+		"#000000"
+];
 var TEXTCOLOR = "#CCCCCC"; //"#777"
 var TOUCHCOLOR = "#333333";
 
@@ -117,14 +119,14 @@ function drawTextInfo() {
 	ctx.fillStyle = TEXTCOLOR;
 	ctx.fillText(LEFT_SCORE + " [Score] " + RIGHT_SCORE, canvas.width/2 - (SCOREFIELD_LENGTH/2), SCORE_YPOS);
 
-  	if (RIGHT_WIN ^ LEFT_WIN) {
-  		var winnerText = (RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS"); 
-  		var length = ctx.measureText(winnerText).width;
+	if (RIGHT_WIN ^ LEFT_WIN) {
+		var winnerText = (RIGHT_WIN ? "RIGHT WINS" : "LEFT WINS");
+		var length = ctx.measureText(winnerText).width;
 		ctx.fillText(winnerText, canvas.width/2 - (length/2), MESSAGE_YPOS);
-  	} else if (! Ball.isServed) {
-    		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
+	} else if (! Ball.isServed) {
+		ctx.fillText(PROMPT_BALL_SERVE_TEXT, canvas.width/2 - (PROMPT_BALL_SERVE_TEXT_LENGTH/2), MESSAGE_YPOS);
 	}
-	
+
 	setColor(TOUCHCOLOR);
 	var i = 0;
 	for (var key in activeTouchesMap) {
@@ -151,7 +153,7 @@ function keyDownEventHandler(e) {
 		serveBall();
 	if (e.keyCode == KEYS.ESC)
 		resetGame();
-	
+
 	if (e.keyCode == KEYS.W)
 		LeftPaddle.up = true;
 	if (e.keyCode == KEYS.S)
@@ -160,23 +162,23 @@ function keyDownEventHandler(e) {
 		RightPaddle.up = true;
 	if (e.keyCode == KEYS.DOWN_ARROW)
 		RightPaddle.down = true;
-		
+
 	if (e.keyCode == KEYS.D)
-		LeftPaddle.colorindex++; 
+		LeftPaddle.colorindex++;
 	if (e.keyCode == KEYS.A)
 		LeftPaddle.colorindex--;
 	if (e.keyCode == KEYS.RIGHT_ARROW)
 		RightPaddle.colorindex++;
 	if (e.keyCode == KEYS.LEFT_ARROW)
 		RightPaddle.colorindex--;
-		
+
 	//if(e.keyCode == KEYS.D) Ball.radius++;
 	//if(e.keyCode == KEYS.A) Ball.radius--;
 }
 
 function keyUpEventHandler(e) {
 
-  	if (e.keyCode == KEYS.W)
+	if (e.keyCode == KEYS.W)
 		LeftPaddle.up = false;
 	if (e.keyCode == KEYS.S)
 		LeftPaddle.down = false;
@@ -187,139 +189,139 @@ function keyUpEventHandler(e) {
 }
 
 function touchStartEventHandler(e) {
-    var rect = canvas.getBoundingClientRect();
-    var touches = event.changedTouches;
-    for (var i = 0; i < touches.length; i++) {
-        var finger = touches[i];
-	var fingerID = finger.identifier;
+  var rect = canvas.getBoundingClientRect();
+  var touches = event.changedTouches;
+  for (var i = 0; i < touches.length; i++) {
+  	var finger = touches[i];
+		var fingerID = finger.identifier;
 
-	var touch = new Touch();
-	touch.fingerID = fingerID;
+		var touch = new Touch();
+		touch.fingerID = fingerID;
 
-	//var targetElement = document.elementFromPoint(finger.clientX, finger.clientY);
-	// touch.targetID = targetElement.id;
-	var isInGameCanvas = 	finger.clientX > rect.left && 
-				finger.clientX < rect.left + canvas.width && 
-				finger.clientY > rect.top &&
-				finger.clientY < rect.top + canvas.height;
-	touch.targetID = isInGameCanvas ? 'gamecanvas' : 'not important';
+		//var targetElement = document.elementFromPoint(finger.clientX, finger.clientY);
+		// touch.targetID = targetElement.id;
+		var isInGameCanvas = 	finger.clientX > rect.left &&
+					finger.clientX < rect.left + canvas.width &&
+					finger.clientY > rect.top &&
+					finger.clientY < rect.top + canvas.height;
+		touch.targetID = isInGameCanvas ? 'gamecanvas' : 'not important';
 
-	touch.x = parseInt(finger.clientX) - rect.left;
-	touch.y = parseInt(finger.clientY) - rect.top;
-	
-	activeTouchesMap[fingerID] = touch;
+		touch.x = parseInt(finger.clientX) - rect.left;
+		touch.y = parseInt(finger.clientY) - rect.top;
 
-	if (touch.targetID == 'gamecanvas') {
-		if (touch.x > canvas.width * (1/3) && touch.x < canvas.width * (2/3)) {
-			serveBall();
-		}
-		
-		if (touch.x < canvas.width * (1/3)) {
-			var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
-			if (touch.y > paddleMid) {
-				LeftPaddle.up = false;
-				LeftPaddle.down = true;
-			} else if (touch.y < paddleMid) {
-				LeftPaddle.up = true;
-				LeftPaddle.down = false;
+		activeTouchesMap[fingerID] = touch;
+
+		if (touch.targetID == 'gamecanvas') {
+			if (touch.x > canvas.width * (1/3) && touch.x < canvas.width * (2/3)) {
+				serveBall();
 			}
-			touch.y = paddleMid;
-			touch.x = (LeftPaddle.x + LeftPaddle.width/2);
-		}
-		if (touch.x > canvas.width/2 * (2/3)) {
-			var paddleMid = (RightPaddle.y + RightPaddle.height/2);
-			if (touch.y > paddleMid) {
-				RightPaddle.up = false;
-				RightPaddle.down = true;
-			} else if (touch.y < paddleMid) {
-				RightPaddle.up = true;
-				RightPaddle.down = false;
+
+			if (touch.x < canvas.width * (1/3)) {
+				var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
+				if (touch.y > paddleMid) {
+					LeftPaddle.up = false;
+					LeftPaddle.down = true;
+				} else if (touch.y < paddleMid) {
+					LeftPaddle.up = true;
+					LeftPaddle.down = false;
+				}
+				touch.y = paddleMid;
+				touch.x = (LeftPaddle.x + LeftPaddle.width/2);
 			}
-			touch.y = paddleMid;
-			touch.x = (RightPaddle.x + RightPaddle.width/2);
+			if (touch.x > canvas.width/2 * (2/3)) {
+				var paddleMid = (RightPaddle.y + RightPaddle.height/2);
+				if (touch.y > paddleMid) {
+					RightPaddle.up = false;
+					RightPaddle.down = true;
+				} else if (touch.y < paddleMid) {
+					RightPaddle.up = true;
+					RightPaddle.down = false;
+				}
+				touch.y = paddleMid;
+				touch.x = (RightPaddle.x + RightPaddle.width/2);
+			}
+
+			e.preventDefault();
 		}
-		
-		e.preventDefault();
-	}
-    }
+  }
 }
 
 function touchMoveEventHandler(e) {
-    var rect = canvas.getBoundingClientRect();
-    var touches = event.changedTouches;
-    for (var i = 0; i < touches.length; i++) {
-    	var finger = touches[i];
-	var fingerID = finger.identifier;
-	var touch = activeTouchesMap[fingerID];
-	
-	touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
-	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
-	
-	if (touch.targetID == 'gamecanvas') {
-		if (touch.x < canvas.width * (1/3)) {
-			var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
-			touch.y = paddleMid;
-			touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
+  var rect = canvas.getBoundingClientRect();
+  var touches = event.changedTouches;
+  for (var i = 0; i < touches.length; i++) {
+  	var finger = touches[i];
+		var fingerID = finger.identifier;
+		var touch = activeTouchesMap[fingerID];
 
-			if (touch.dy > TOUCH_TOLERANCE) {
-				LeftPaddle.up = false;
-				LeftPaddle.down = true;
-			} else if (touch.dy < -TOUCH_TOLERANCE) {
-				LeftPaddle.up = true;
-				LeftPaddle.down = false;
-			} else {
-				LeftPaddle.up = false;
-				LeftPaddle.down = false;
+		touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
+		touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
+
+		if (touch.targetID == 'gamecanvas') {
+			if (touch.x < canvas.width * (1/3)) {
+				var paddleMid = (LeftPaddle.y + LeftPaddle.height/2);
+				touch.y = paddleMid;
+				touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
+
+				if (touch.dy > TOUCH_TOLERANCE) {
+					LeftPaddle.up = false;
+					LeftPaddle.down = true;
+				} else if (touch.dy < -TOUCH_TOLERANCE) {
+					LeftPaddle.up = true;
+					LeftPaddle.down = false;
+				} else {
+					LeftPaddle.up = false;
+					LeftPaddle.down = false;
+				}
 			}
-		}
-		if (touch.x > canvas.width * (2/3)) {
-			var paddleMid = (RightPaddle.y + RightPaddle.height/2);
-			touch.y = paddleMid;
-			touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
-			
-			if (touch.dy > TOUCH_TOLERANCE) {
-				RightPaddle.up = false;
-				RightPaddle.down = true;
-			} else if (touch.dy < -TOUCH_TOLERANCE) {
-				RightPaddle.up = true;
-				RightPaddle.down = false;
-			} else {
-				RightPaddle.up = false;
-				RightPaddle.down = false;	
+			if (touch.x > canvas.width * (2/3)) {
+				var paddleMid = (RightPaddle.y + RightPaddle.height/2);
+				touch.y = paddleMid;
+				touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
+
+				if (touch.dy > TOUCH_TOLERANCE) {
+					RightPaddle.up = false;
+					RightPaddle.down = true;
+				} else if (touch.dy < -TOUCH_TOLERANCE) {
+					RightPaddle.up = true;
+					RightPaddle.down = false;
+				} else {
+					RightPaddle.up = false;
+					RightPaddle.down = false;
+				}
 			}
+
+			e.preventDefault();
 		}
-		
-		e.preventDefault();
-	}
-    }
+  }
 }
 
 function touchEndEventHandler(e) {
-    var rect = canvas.getBoundingClientRect();
-    var touches = event.changedTouches;
-    for (var i = 0; i < touches.length; i++) {
-        var finger = touches[i];
-	var fingerID = finger.identifier;
-	var touch = activeTouchesMap[fingerID];
+  var rect = canvas.getBoundingClientRect();
+  var touches = event.changedTouches;
+  for (var i = 0; i < touches.length; i++) {
+    var finger = touches[i];
+		var fingerID = finger.identifier;
+		var touch = activeTouchesMap[fingerID];
 
-	touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
-	touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
-	
-	activeTouchesMap[fingerID] = null;
-	
-	if (touch.targetID == 'gamecanvas') {
-		if (touch.x < canvas.width * (1/3)) {
-			LeftPaddle.up = false;
-			LeftPaddle.down = false;
+		touch.dx = parseInt(finger.clientX) - rect.left - touch.x;
+		touch.dy = parseInt(finger.clientY) - rect.top - touch.y;
+
+		activeTouchesMap[fingerID] = null;
+
+		if (touch.targetID == 'gamecanvas') {
+			if (touch.x < canvas.width * (1/3)) {
+				LeftPaddle.up = false;
+				LeftPaddle.down = false;
+			}
+			if (touch.x > canvas.width/2 * (2/3)) {
+				RightPaddle.up = false;
+				RightPaddle.down = false;
+			}
+
+			e.preventDefault();
 		}
-		if (touch.x > canvas.width/2 * (2/3)) {
-			RightPaddle.up = false;
-			RightPaddle.down = false;
-		}
-		
-		e.preventDefault();
-	}
-    }
+  }
 }
 
 //////////////////////////////////////////////////////////////////
@@ -358,10 +360,10 @@ function BallObject() {
 }
 
 function intersects (circle, rectangle) {
-	return 	circle.x + circle.radius >= rectangle.x && 
-      circle.x - circle.radius <= rectangle.x + rectangle.width && 
-      circle.y + circle.radius >= rectangle.y &&
-      circle.y - circle.radius <= rectangle.y + rectangle.height;
+	return 	circle.x + circle.radius >= rectangle.x &&
+	  circle.x - circle.radius <= rectangle.x + rectangle.width &&
+	  circle.y + circle.radius >= rectangle.y &&
+	  circle.y - circle.radius <= rectangle.y + rectangle.height;
 }
 
 //function intersects(point, rectangle) {
@@ -374,7 +376,7 @@ function updatePaddles() {
 		applyControllerCommandToPaddle(PADDLES[i]);
 		limitPaddleSpeed(PADDLES[i]);
 		keepPaddleInBounds(PADDLES[i]);
-    	}
+	}
 }
 
 function applyControllerCommandToPaddle(paddle) {
@@ -383,14 +385,14 @@ function applyControllerCommandToPaddle(paddle) {
  		if(paddle.down)	paddle.yVel += paddle.speed;
  		paddle.y += paddle.yVel; // move y position accordingly
 	} else {
-  		paddle.yVel *= PADDLE_DIRECTION_TRANSITION_RATE;
-  		paddle.y += paddle.yVel; // move y position accordingly
-  		//paddle.yVel = 0;
+		paddle.yVel *= PADDLE_DIRECTION_TRANSITION_RATE;
+		paddle.y += paddle.yVel; // move y position accordingly
+		//paddle.yVel = 0;
 	}
 }
 
 function limitPaddleSpeed(paddle) {
-  	if (paddle.yVel > MAX_PADDLE_SPEED)
+	if (paddle.yVel > MAX_PADDLE_SPEED)
 		paddle.yVel = MAX_PADDLE_SPEED;
 	if (paddle.yVel < -MAX_PADDLE_SPEED)
 		paddle.yVel = -MAX_PADDLE_SPEED;
@@ -405,9 +407,9 @@ function keepPaddleInBounds(paddle) {
 
 function serveBall() {
 	if (! Ball.isServed) {
-		
+
 		Ball.xVel = Math.random() * Ball.speed + MIN_BALL_XVEL;
-		
+
 		if (shouldBallFollowLeftPaddle() ^ shouldBallFollowRightPaddle()) {
 			if (shouldBallFollowLeftPaddle()) {
 				Ball.yVel = LeftPaddle.yVel;
@@ -420,13 +422,13 @@ function serveBall() {
 			if(Math.random() > 0.5)
 				Ball.xVel = -Ball.xVel;
 		}
-		
+
 		if (Math.abs(Ball.yVel) < 0.01) {
 			Ball.yVel = Math.random() * Ball.speed;
 			if (Math.random() > 0.5)
 				Ball.yVel = -Ball.yVel;
 		}
-		
+
 		Ball.isServed = true;
 	}
 }
@@ -480,7 +482,7 @@ function swatBall(paddle) {
 		if (Ball.xVel > MAX_BALL_XVEL)
 			Ball.xVel = MAX_BALL_XVEL;
 	}
-		
+
 	if ( (paddle.yVel < 0 && Ball.yVel > 0) || (paddle.yVel > 0 && Ball.yVel < 0) )
 		Ball.yVel = - Math.abs(Math.abs(paddle.yVel) - Math.abs(Ball.yVel));
 	else if (Math.random() > 0.5)
@@ -495,7 +497,7 @@ function keepBallInBounds() {
 		Ball.y = Ball.radius;
 		Ball.yVel = -Ball.yVel;
 	}
-	
+
 	if (Ball.x - Ball.radius > canvas.width) {
 		LEFT_SCORE += 1;
 		resetBall();
