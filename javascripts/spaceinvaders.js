@@ -5,7 +5,7 @@ function emptyFunction() {
     
 }
 
-function verboseCallback(xScriptFilePath, xCallback) {
+function getScript_verboseCallback(xScriptFilePath, xCallback) {
     return function(xResponse, xStatus) {
         if (xStatus !== "success") {
             var statusString = "Status of getScript(" + xScriptFilePath + "): " + xStatus;
@@ -20,8 +20,8 @@ window.onload = function() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.focus();
     $.when(
-        $.getScript(GRAPHICS_LIB_FILE_PATH, verboseCallback(GRAPHICS_LIB_FILE_PATH, loadGraphics)),
-        $.getScript(TDD_LIB_FILE_PATH,      verboseCallback(TDD_LIB_FILE_PATH,      emptyFunction)),
+        $.getScript(GRAPHICS_LIB_FILE_PATH, getScript_verboseCallback(GRAPHICS_LIB_FILE_PATH, loadGraphics)),
+        $.getScript(TDD_LIB_FILE_PATH,      getScript_verboseCallback(TDD_LIB_FILE_PATH,      emptyFunction)),
         $.Deferred(function(xDeferred) { $( xDeferred.resolve ); })
     ).done(loadGame);
 };
