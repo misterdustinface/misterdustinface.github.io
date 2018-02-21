@@ -12,9 +12,9 @@ var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
 ctx.font = "bold 16px Monospace";
 var UPS = 60;
-var FPS = 60;
+//var FPS = 60;
 setInterval(update, 1000/UPS);
-setInterval(draw, 1000/FPS);
+//setInterval(draw, 1000/FPS);
 
 var WINNING_SCORE	= 10;
 var LEFT_SCORE		= 0;
@@ -80,6 +80,7 @@ function draw() {
 	for (var i = 0; i < PADDLES.length; i++)
 		drawPaddle(PADDLES[i]);
 	drawTextInfo();
+	setTimeout(draw, 50)
 }
 
 function clearCanvas() {
@@ -536,3 +537,5 @@ function resetGameData(){
 	RIGHT_SCORE = 0;
 	LEFT_SCORE = 0;
 }
+
+draw()
