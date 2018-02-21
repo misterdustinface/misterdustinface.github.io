@@ -80,7 +80,7 @@ function draw() {
 	for (var i = 0; i < PADDLES.length; i++)
 		drawPaddle(PADDLES[i]);
 	drawTextInfo();
-	setTimeout(draw, 5)
+	draw()
 }
 
 function clearCanvas() {
