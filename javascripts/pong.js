@@ -80,7 +80,7 @@ function draw() {
 	for (var i = 0; i < PADDLES.length; i++)
 		drawPaddle(PADDLES[i]);
 	drawTextInfo();
-	setTimeout(draw, 1)
+	requestAnimationFrame(draw);
 }
 
 function clearCanvas() {
@@ -538,4 +538,4 @@ function resetGameData(){
 	LEFT_SCORE = 0;
 }
 
-draw()
+requestAnimationFrame(draw);
